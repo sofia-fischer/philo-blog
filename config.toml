@@ -1,5 +1,5 @@
 baseURL = "https://rafed.github.io/congo/"
 #CanonifyURLs=true
 
-languageCode = "en-us"
+languageCode = "en"
 theme = "congo"
