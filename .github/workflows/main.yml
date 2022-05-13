@@ -48,4 +48,4 @@ jobs:
           # This section sets up the environment used by the 
           # deploy script. These values are injected from 
           # the repo's secret store
-          $HETZNER_SSH_PASSWORD: ${{ secrets.$HETZNER_SSH_PASSWORD }}
+          HETZNER_SSH_PASSWORD: ${{ secrets.$HETZNER_SSH_PASSWORD }}
