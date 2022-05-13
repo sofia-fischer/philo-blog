@@ -36,8 +36,8 @@ jobs:
         with:
             hugo-version: '0.62.2'
 
-      - name: Build
-        run: hugo --minify
+#       - name: Build
+#         run: hugo --minify
 
       # The last step deploys the site to my server by running 
       # the deploy script located in the ci directory 
