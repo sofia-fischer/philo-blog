@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rafed.github.io/congo/sitemap.xml
