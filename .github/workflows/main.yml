@@ -46,7 +46,7 @@ jobs:
           username: ${{ secrets.HETZNER_SSH_USERNAME }}
           port: ${{ secrets.HETZNER_SSH_PORT }}
           password: ${{ secrets.HETZNER_SSH_PASSWORD }}
-          source: "public/ ci/"
+          source: "public/,ci/"
           target: "/home/${{ secrets.HETZNER_SSH_USERNAME }}/dev/philoblog/"
         
       # The last step deploys the site to my server by running 
