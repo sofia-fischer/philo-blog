@@ -46,16 +46,21 @@ jobs:
           username: ${{ secrets.HETZNER_SSH_USERNAME }}
           port: ${{ secrets.HETZNER_SSH_PORT }}
           password: ${{ secrets.HETZNER_SSH_PASSWORD }}
-          source: "public/"
+          source: "public/ ci/"
           target: "/home/${{ secrets.HETZNER_SSH_USERNAME }}/dev/philoblog/"
         
       # The last step deploys the site to my server by running 
       # the deploy script located in the ci directory 
       # within the repo
-      - name: deploy
-        run: source $GITHUB_WORKSPACE/ci/deploy.sh
-        env:
-          # This section sets up the environment used by the 
-          # deploy script. These values are injected from 
-          # the repo's secret store
-          HETZNER_SSH_PASSWORD: ${{ secrets.HETZNER_SSH_PASSWORD }}
+      - name: Execute Commands on Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HETZNER_SSH_HOST }}
+          username: ${{ secrets.HETZNER_SSH_USERNAME }}
+          port: ${{ secrets.HETZNER_SSH_PORT }}
+          password: ${{ secrets.HETZNER_SSH_PASSWORD }}
+          script_stop: true
+          script: |
+            export HETZNER_SSH_PASSWORD=${{ secrets.HETZNER_SSH_PASSWORD }}
+            export HETZNER_SSH_USERNAME=${{ secrets.HETZNER_SSH_USERNAME }}
+            bash /home/${{ secrets.HETZNER_SSH_USERNAME }}/dev/philoblog/ci/deploy.sh
