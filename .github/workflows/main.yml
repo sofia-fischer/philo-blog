@@ -48,8 +48,4 @@ jobs:
           # This section sets up the environment used by the 
           # deploy script. These values are injected from 
           # the repo's secret store
-          ACTIONS_DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-          SSH_USERNAME: ${{ secrets.HETZNER_SSH_USERNAME }}
-          SERVER_ADDRESS: ${{ secrets.HETZNER_SSH_HOST }}
-          SERVER_DESTINATION: "/home/${{ secrets.HETZNER_SSH_USERNAME }}/dev/philodev/"
-          SSH_PORT: ${{ secrets.HETZNER_SSH_PORT }}
+          $HETZNER_SSH_PASSWORD: ${{ secrets.$HETZNER_SSH_PASSWORD }}
