@@ -1,5 +1,7 @@
 # Philodev Blog
 
+See the Blog: [www.blog.philodev.one](https://www.blog.philodev.one/)
+
 ## Info About the Side
 
 ### Hugo
@@ -15,6 +17,7 @@ The Theme I used was Congo - main reason was because it supports Tailwind so I c
 conf when needed. 
 
 > [Congo Documentation](https://jpanther.github.io/congo/)
+> 
 > [Congo GitHub](https://github.com/jpanther/congo)
 
 ## Development
