@@ -1,19 +1,18 @@
 ---
-title: "Repository Pattern in Laravel for Query Organisation - an Alternative to Scopes"
+title: "Model Specific Query Builder - an Alternative to Scopes"
 
 date: 2022-05-14T08:20:44+02:00
 
 draft: false
 
 description: "Scopes are nice, but by extending the Eloquent Builder for a Model enables you to add custom,
-model-specific methods that are often used or should have a central definition following the Repository Pattern"
+model-specific methods that are often used or should have a central definition"
 
 tags: ["Development", "Software Pattern", "Laravel"]
 ---
 
 {{< lead >}} Scopes are nice, but by extending the Eloquent Builder for a Model enables you to add custom,
-model-specific methods that are often used or should have a central definition following the Repository Pattern
-{{</lead >}}
+model-specific methods that are often used or should have a central definition {{</lead >}}
 
 # Scopes are great, but ...
 
@@ -26,6 +25,10 @@ Scopes are great, but have two major drawbacks from my point of view: #1 no auto
 clicking" on it, no type hinting. This is because drawback #2 they are executed by Laravel magics. The Framework checks
 if the method you are trying to call is defined in `scope<yourMethodNameInCamelCase>` in the model and uses it then.
 
+I could not find a specific Pattern I could match the custom query builder with, but the Repository Pattern was the
+closest I could find. Most times the Repository handles create, delete, and index methods, while this post focuses on
+index / query methods only.
+
 {{< alert "circle-info" >}} **Repository Pattern**: One of many Software Design Patterns out there. The Repository is an
 abstraction Layer of Data, from this abstraction Layer the data may be retrieved using function like `Post::getAll()`
 or in the case of Eloquent `Post::all()`. Most implementations of the Repository pattern I found are doing the above
@@ -33,10 +36,12 @@ step of overwriting Eloquent methods with their own `getAll` method. But instead
 why not just extend them? {{< /alert >}}
 
 I encountered the pattern in the codebase of a customer, and was not referred a source. When I looked through the web,
-the only blog article I could find, which did not implement the repository pattern by reinventing the wheel of query
-builders was [this one by Martin Joo](https://martinjoo.dev/build-your-own-laravel-query-builders)
+the only blog articles I could find, which did implement this pattern
+where [this one by Martin Joo](https://martinjoo.dev/build-your-own-laravel-query-builders)
+and [this one by Tim MacDonald](https://timacdonald.me/dedicated-eloquent-model-query-builders/). Although both are not
+utalising the fully typed / auto-completion feature I value so much.
 
-## Writing a Repository that Extends the Eloquent Builder
+## Writing a Custom Builder that Extends the Eloquent Builder
 
 The Builder that Laravel uses behind every `::query()` is the `Illuminate\Database\Eloquent\Builder`. A class that
 extends this Builder for one Model offers the opportunity to add custom methods to the Builder.
