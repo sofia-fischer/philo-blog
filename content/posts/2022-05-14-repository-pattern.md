@@ -5,11 +5,15 @@ date: 2022-05-14T08:20:44+02:00
 
 draft: false
 
+description: "Scopes are nice, but by extending the Eloquent Builder for a Model enables you to add custom,
+model-specific methods that are often used or should have a central definition following the Repository Pattern"
+
 tags: ["Development", "Software Pattern", "Laravel"]
 ---
 
-{{< lead >}} TLDR: Scopes are nice, but by extending the Eloquent Builder for a Model enables you to add custom,
-model-specific methods that are often used or should have a central definition {{< /lead >}}
+{{< lead >}} Scopes are nice, but by extending the Eloquent Builder for a Model enables you to add custom,
+model-specific methods that are often used or should have a central definition following the Repository Pattern
+{{</lead >}}
 
 # Scopes are great, but ...
 
@@ -27,6 +31,10 @@ abstraction Layer of Data, from this abstraction Layer the data may be retrieved
 or in the case of Eloquent `Post::all()`. Most implementations of the Repository pattern I found are doing the above
 step of overwriting Eloquent methods with their own `getAll` method. But instead of overwriting the Eloquent methods,
 why not just extend them? {{< /alert >}}
+
+I encountered the pattern in the codebase of a customer, and was not referred a source. When I looked through the web,
+the only blog article I could find, which did not implement the repository pattern by reinventing the wheel of query
+builders was [this one by Martin Joo](https://martinjoo.dev/build-your-own-laravel-query-builders)
 
 ## Writing a Repository that Extends the Eloquent Builder
 
