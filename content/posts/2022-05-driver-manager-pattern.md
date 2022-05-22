@@ -3,7 +3,12 @@ title: "Manager and Driver Pattern - pattern, implementation, and usage"
 
 date: 2022-05-22T08:13:44+02:00
 
-draft: true
+draft: false
+
+description: "Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the
+framework. It's important to understand how Drivers and Managers work to understand how the framework solves some
+problems, but it's also a nice pattern to keep in mind for example to write tests that usually work with third-party
+APIs"
 
 tags: []
 ---
