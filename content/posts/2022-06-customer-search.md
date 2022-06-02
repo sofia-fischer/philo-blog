@@ -1,7 +1,7 @@
 ---
 title: "Technical Job Interview questions 2022"
 
-date: 2022-05-20T14:20:44+02:00
+date: 2022-06-02T14:20:44+02:00
 
 draft: false
 
@@ -23,6 +23,8 @@ back on the technical questions I got asked. {{< /lead >}}
 The kind of questions I want to write about are not the "describe yourself in a three minutes" or "explain your
 experience" questions. I want to rethink some technical interview questions I was asked and could or could not answer at
 that point in time.
+
+![Would code for money?](/images/2022-06-code-for-money.png)
 
 ## Laravel Questions
 
