@@ -10,7 +10,7 @@ framework. It's important to understand how Drivers and Managers work to underst
 problems, but it's also a nice pattern to keep in mind for example to write tests that usually work with third-party
 APIs"
 
-tags: []
+tags: ["Development", "Software Pattern", "Laravel"]
 ---
 
 {{< lead >}}
