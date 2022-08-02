@@ -27,7 +27,7 @@ For local development run:
 hugo server
 ```
 
-Development Server will start at `http://localhost:1313/`
+Development Server will start at [`http://localhost:1313/`](http://localhost:1313/)
 
 If tailwind is not working, start the npm watch: 
 ```shell
@@ -54,5 +54,5 @@ Pipelines. The following steps are required to deploy:
 hugo --minify
 ```
 
-2Push to master
+2. Push to master
 

@@ -192,3 +192,29 @@ to just write all the Collection methods you might miss. [^collection-spatie]
 
 [^collection-spatie]: [Spatie has a package](https://github.com/spatie/laravel-collection-macros) with nice examples if
 you are looking for something pre-build or inspiration
+
+## Bonus hin: custom Collections
+
+Next to the custom query builder, Laravel allows to also have customized the collections that get instntiated when e.g.
+a HasMany Relation is called without brackets or a query is call using `get()`. [^customCollections]
+
+```php
+use Illuminate\Database\Eloquent\Collection;
+
+class PostCollection extends Collection
+{
+    public function published(): self
+    {
+        return $this->filter(fn (Post $post) => $post->published_at); 
+    }
+}
+
+class Post extends Model
+{
+    public function newCollection(array $models = []): PostCollection {
+        return new PostCollection($models);
+    }
+}
+```
+
+[^customCollections]: Found in this book which refers to quite some topics I like: LARAVEL BEYOND CRUD by Brent Roose
