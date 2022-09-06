@@ -1,5 +1,5 @@
 ---
-title: "About Actions, Jobs, Repositories, Events"
+title: "Ethical Development"
 
 date: 2022-08-31T14:20:44+02:00
 
