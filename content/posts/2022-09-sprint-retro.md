@@ -54,8 +54,8 @@ changes that have an impact on the team. What I was missing in the retrospective
 ## Retrospectives Gamification
 
 I went to some retrospectives where the team was asked to display their mood using a weather frog in the best case,
-write down their problems on sticky notes and then put them on the same three colored miro rectangles every sprint in
-the worst case. It's not bad... it's just boring.
+or to write down their problems on sticky notes and then put them on the same three colored miro rectangles every sprint
+in the worst case. It's not bad... it's just boring.
 
 For my current team, I started to make the retrospectives a bit more fun. I started with different themes, and people
 enjoyed it. People started to ask how I created them, what my references where, and how I would come up with the ideas -
@@ -132,7 +132,7 @@ questioning some practices in the team.
 
 ![Finding Vision and Value](/images/2022-10-retro-4.png)
 
-### Collection of Themes
+## Collection of Themes
 
 The idea of this blog was to publish my themes. I made themes like:
 
