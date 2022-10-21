@@ -10,7 +10,7 @@ possible. Formulating it this way maybe describes why even the most rational min
 to think about the code they are designing, implementing, or requesting. From an ethical point of view: Is your code
 good?"
 
-tags: ["Development", "Service Pattern", "Action Pattern", "Jobs", "Events", "Pipeline Patter"]
+tags: ["Development", "Ethical", "IEEE 7000"]
 ---
 
 {{< lead >}}
