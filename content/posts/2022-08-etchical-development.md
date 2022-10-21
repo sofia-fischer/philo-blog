@@ -179,7 +179,7 @@ or the role of a critical thinker who wants to know how the company makes a deci
 minority group. A feature is always viewed from a different point of view, take your time to add additional views to
 be aware of ethical problems [^ethical aligned design].
 
-[^ethical aligned design] Ethically Aligned Design, including the book more information about this
+[^ethical aligned design]: Ethically Aligned Design, including the book more information about this
 process [here](https://ethicsinaction.ieee.org/)
 
 ### Know your values

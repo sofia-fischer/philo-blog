@@ -23,7 +23,7 @@ class or method do only one thing - Single Responsibility. This Post compares Re
 Events - not to find the best for all use cases, but to formulate some words on the question when the different patterns
 offer advantages over the others. {{< /lead >}}
 
-## Writing a Controller that
+## Writing a Controller that adds a new user as player to an existing game 
 
 Taking my favorite example, [Round Robin](https://round-robin.philodev.one/) - a little round-based gaming platform to
 register and play games with friends. A new user just registered and already has a game token, so they can just join an
@@ -195,10 +195,10 @@ class UserController
         }
 
          // step 2: Create the player
-         $playerCreateAction->exectue(token: $request->input('token'));
+         $playerCreateAction->execute(token: $request->input('token'));
         
          // step 3: Prepare the Player for the game
-         $playerInitialisationAction->exectue();
+         $playerInitialisationAction->execute();
 
         // imagine there is a custom Auth Facade extending the Auth Facade ...
         return view('GamePage', ['game' => Auth::player()->game]);
