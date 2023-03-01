@@ -5,7 +5,8 @@ date: 2023-01-28T14:20:44+02:00
 
 draft: false
 
-description: "Casts are already a great feature of Laravel. They allow you to easily convert a value from the database to the scalar
+description: "Casts are already a great feature of Laravel. They allow you to easily convert a value from the database
+to the scalar
 value actually needed. But in case of Arrays, especially in a Domain Driven Design context, the default Laravel Casts
 are reaching their limits. In this post, I want to celebrate the power of Laravel Custom Casts and how an implementation
 could look like."
@@ -85,12 +86,6 @@ constructor, it is not necessary as well, just a nice feature (if the Value Obje
 saved, the Database Value will still be null)
 
 ```php
-<?php
-
-declare(strict_types=1);
-
-namespace App\Support\ValueObjects;
-
 use JsonSerializable;
 use Illuminate\Contracts\Support\Arrayable;
 
@@ -148,12 +143,6 @@ I decided to put most of the logic in the Value Object class, a valid and maybe 
 put the logic in the Cast class.
 
 ```php
-<?php
-
-declare(strict_types=1);
-
-namespace App\Support\Casts;
-
 use App\Support\ValueObjectsNotificationSetting;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
@@ -187,5 +176,74 @@ called with `$model` the User Model, `$key` the name of the column, `$value` the
 the other attributes of the model as array.
 Vise versa, the `set` method is called when the model is saved, and the value object is serialized to json.
 
+## But wait, there is more! Other usages of Casts
 
+Casts can also be used to fill "imaginary" columns, that are not stored in the database, but are calculated from other
+sources. For example calculating the current State of a model, based on the timestamps of the model (or the existince of
+certain Relations) can be performed by a Cast.
 
+### Boolean Cast for Time Stamps
+
+Often boolean values are stored as timestamps in the database, most common example would be the `email_verified_at`
+column. While the information when the email was verfiied is interesting, most times in the code only the fact it is not
+null is relevant.
+
+For this use case, a parameter is passed to the cast, which is the name of the column that holds the timestamp.
+
+```php
+    protected $casts = [
+        'is_email_verified' => DateToBoolenCast::class . ':email_verified_at',
+    ];
+```
+
+In this setting requires a Castable class to inject the parameter into the Cast class.
+
+```php
+use Illuminate\Contracts\Database\Eloquent\Castable;
+
+class DateToBoolenCast implements Castable
+{
+    public static function castUsing(array $arguments)
+    {
+        return new NullableEnumCast($arguments[0]);
+    }
+}
+```
+
+While the Cast class performs the actual casting.
+
+```php
+use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+
+class NullableEnumCast implements CastsAttributes
+{
+    public function __construct(
+        private readonly string $column,
+    ) {
+    }
+
+    public function get($model, string $key, $value, array $attributes): bool
+    {
+        return (bool) $model->{$this->column};
+    }
+
+    /**
+     * @param $model
+     * @param  bool|null  $value
+     * @return mixed
+     */
+    public function set($model, string $key, $value, array $attributes): ?string
+    {
+        if ($value) {
+            $model->{$this->column} = now();
+        }
+    }
+}
+```
+
+## Conclusion
+
+Casts are a powerful tool to extend the functionality of the Eloquent ORM. They can be used to define Value Objects,
+calculate states, or fix columns to a more readable type.
+
+Happy Coding :)
