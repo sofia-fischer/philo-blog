@@ -76,11 +76,11 @@ CON
 
 ### Contract Testing using Open Api as Contract
 
-{{ < alert "circle-info" >}} **Contract Testing**:
+{{< alert "circle-info" >}} **Contract Testing**:
 Contract testing is a methodology for ensuring that two separate systems (such as two microservices) are compatible and
 can communicate with one other. It captures the interactions that are exchanged between each service, storing them in a
 contract, which then can be used to verify that both parties adhere to it. [^contractTesting]
-{{ < /alert >}}
+{{< /alert >}}
 
 [^contractTesting]: [Contract Testing explained](https://pactflow.io/blog/what-is-contract-testing/)
 

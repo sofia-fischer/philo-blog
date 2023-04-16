@@ -1,5 +1,5 @@
 ---
-title: "Communication between different teams who work on the same codebase"
+title: "Communication between different teams working on the same codebase"
 
 date: 2023-04-16T14:20:44+02:00
 
@@ -18,10 +18,10 @@ software system are influenced by the communication patterns and structures with
 
 ## Conways Law
 
-{{ < alert "circle-info" >}} **Conways Law**:
+{{< alert "circle-info" >}} **Conways Law**:
 Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the
 organization's communication structure. [^conwaysLaw]
-{{ < /alert >}}
+{{< /alert >}}
 
 [^conwaysLaw]: [Conway's Law](http://www.melconway.com/Home/Committees_Paper.html)
 
