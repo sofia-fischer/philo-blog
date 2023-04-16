@@ -1,7 +1,7 @@
 ---
 title: "Communication between different teams who work on the same codebase"
 
-date: 2023-03-28T14:20:44+02:00
+date: 2023-04-16T14:20:44+02:00
 
 draft: false
 
