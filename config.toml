@@ -1,5 +1,6 @@
 baseURL = "https://www.blog.philodev.one/"
 #CanonifyURLs=true
 
-languageCode = "en"
+languageCode = 'en-us'
+title = 'PhiloBlog'
 theme = "congo"

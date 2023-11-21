@@ -1,22 +1,24 @@
 languageCode = "en"
 languageName = "English"
-displayName = "EN"
-isoCode = "en"
 weight = 1
-rtl = false
+
+[params]
+    rtl = false
+    isoCode = "en"
+    displayName = "EN"
+    description = "The thoughts and ideas of a Code Wizard about coding, development process and self improvement"
 
 title = "Philodev Blog"
-logo = "logo.png"
-description = "The thoughts and ideas of a Code Wizard about coding, development process and self improvement"
+header.logo = "logo.png"
 # copyright = "Copy, _right?_ :thinking_face:"
 
 dateFormat = "2 January 2006"
 
-[author]
+[params.author]
   name = "Sofia Fischer"
   # image = "img/author.jpg"
   headline = "Philomathic Developer"
-  # bio = "A little bit about you"
+  # bio = "A little bit about me"
   links = [
     { email = "mailto:sofia@philodev.com" },
     { link = "https://www.philodev.one" },
