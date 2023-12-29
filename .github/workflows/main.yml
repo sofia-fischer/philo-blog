@@ -33,11 +33,12 @@ jobs:
       # the site
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
-        with:
-            hugo-version: '0.62.2'
+        # defaults to latest, in case breaking hugo update this might help
+        # with:
+            # hugo-version: '0.121.1' 
 
       - name: Build
-        run: hugo --minify --verbose
+        run: hugo --minify
 
       - name: Copy files to Server
         uses: appleboy/scp-action@master
