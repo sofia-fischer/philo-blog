@@ -1,179 +1,722 @@
-<!doctype html><html lang=en dir=ltr class=scroll-smooth data-default-appearance=dark data-auto-appearance=true><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="rgb(255,255,255)"><title>Laravel Validations &#183; PhiloBlog</title>
-<meta name=title content="Laravel Validations &#183; PhiloBlog"><script type=text/javascript src=/js/appearance.min.022d0ebc3b46a335eb1c7ef79b7f2de143d7cd5156d433638592ef1ce5f8554e.js integrity="sha256-Ai0OvDtGozXrHH73m38t4UPXzVFW1DNjhZLvHOX4VU4="></script><link type=text/css rel=stylesheet href=/css/main.bundle.min.da111574272c989ee0d004e7880fe24f819eeaa7cef904fc5623be203611694f.css integrity="sha256-2hEVdCcsmJ7g0ATniA/iT4Ge6qfO+QT8ViO+IDYRaU8="><meta name=description content="
+
+
+
+
+
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"
+><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="rgb(255,255,255)" />
+  
+  <title>Laravel Validations &middot; PhiloBlog</title>
+    <meta name="title" content="Laravel Validations &middot; PhiloBlog" />
+  
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.022d0ebc3b46a335eb1c7ef79b7f2de143d7cd5156d433638592ef1ce5f8554e.js"
+    integrity="sha256-Ai0OvDtGozXrHH73m38t4UPXzVFW1DNjhZLvHOX4VU4="
+  ></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.c64e8b4df8611ae48d61fd9350eb9e398b672bc049cde05189f34ee93ea00b25.css"
+    integrity="sha256-xk6LTfhhGuSNYf2TUOueOYtnK8BJzeBRifNO6T6gCyU="
+  />
+  
+  
+  
+  
+  
+  <meta
+    name="description"
+    content="
       Validations are great for ensuring that the data you receive is in the format you expect, while also handling a lot of edge cases (like ids that are not in the database). This ensures not only a fast failing of the request, but also gives the user (or front-end developer) a clear error message. Laravel offers great tools, in which I would like to dig deeper up to a final form of unintended usage - like Recursive Validations.
-    "><link rel=canonical href=https://www.blog.philodev.one/posts/2022-12-rules-with-validators/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><meta property="og:title" content="Laravel Validations"><meta property="og:description" content="Validations are great for ensuring that the data you receive is in the format you expect, while also handling a lot of edge cases (like ids that are not in the database). This ensures not only a fast failing of the request, but also gives the user (or front-end developer) a clear error message. Laravel offers great tools, in which I would like to dig deeper up to a final form of unintended usage - like Recursive Validations."><meta property="og:type" content="article"><meta property="og:url" content="https://www.blog.philodev.one/posts/2022-12-rules-with-validators/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-12-26T14:20:44+02:00"><meta property="article:modified_time" content="2022-12-26T14:20:44+02:00"><meta property="og:site_name" content="Philodev Blog"><meta name=twitter:card content="summary"><meta name=twitter:title content="Laravel Validations"><meta name=twitter:description content="Validations are great for ensuring that the data you receive is in the format you expect, while also handling a lot of edge cases (like ids that are not in the database). This ensures not only a fast failing of the request, but also gives the user (or front-end developer) a clear error message. Laravel offers great tools, in which I would like to dig deeper up to a final form of unintended usage - like Recursive Validations."><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","articleSection":"Posts","name":"Laravel Validations","headline":"Laravel Validations","description":"Validations are great for ensuring that the data you receive is in the format you expect, while also handling a lot of edge cases (like ids that are not in the database). This ensures not only a fast failing of the request, but also gives the user (or front-end developer) a clear error message. Laravel offers great tools, in which I would like to dig deeper up to a final form of unintended usage - like Recursive Validations.","abstract":"Validations are great for ensuring that the data you receive is in the format you expect, while also handling a lot of edge cases (like ids that are not in the database).","inLanguage":"en","url":"https:\/\/www.blog.philodev.one\/posts\/2022-12-rules-with-validators\/","author":{"@type":"Person","name":""},"copyrightYear":"2022","dateCreated":"2022-12-26T14:20:44\u002b02:00","datePublished":"2022-12-26T14:20:44\u002b02:00","dateModified":"2022-12-26T14:20:44\u002b02:00","keywords":["Development","Laravel","Validation","Framework"],"mainEntityOfPage":"true","wordCount":"1259"}</script></head><body class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"><div id=the-top class="absolute flex self-center"><a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600" href=#main-content><span class="font-bold pe-2 text-primary-600 dark:text-primary-400">&darr;</span>Skip to main content</a></div><header class="py-6 font-semibold text-neutral-900 dark:text-neutral print:hidden sm:py-10"><nav class="flex items-start justify-between sm:items-center"><div class="flex flex-row items-center"><a href=/ class=mr-2><img src=/logo.png width=1012 height=1012 class="max-h-[10rem] max-w-[10rem] object-scale-down object-left" alt=PhiloBlog>
-</a><a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2" rel=me href=/>PhiloBlog</a></div><ul class="flex flex-col list-none text-end sm:flex-row"><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=/posts/ title=Posts><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">Blog</span></a></li><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=https://www.philodev.one title><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">About Philodev</span></a></li><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=/tags/ title=Tags><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">Tags</span></a></li></ul></nav></header><div class="relative flex flex-col grow"><main id=main-content class=grow><article><header class=max-w-prose><ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden"><li class="inline hidden"><a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href=/>PhiloBlog</a><span class="px-1 text-primary-500">/</span></li><li class=inline><a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href=/posts/>Posts</a><span class="px-1 text-primary-500">/</span></li><li class="inline hidden"><a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href=/posts/2022-12-rules-with-validators/>Laravel Validations</a><span class="px-1 text-primary-500">/</span></li></ol><h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">Laravel Validations</h1><div class="mt-8 mb-12 text-base text-neutral-500 dark:text-neutral-400 print:hidden"><div class="flex flex-row flex-wrap items-center"><time datetime="2022-12-26 14:20:44 +0200 +0200">26 December 2022</time><span class="px-2 text-primary-500">&#183;</span><span title="Reading time">6 mins</span></div></div></header><section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row"><div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8"><div class="toc pe-5 print:hidden lg:sticky lg:top-10"><details open class="-ms-5 mt-0 overflow-hidden rounded-lg ps-5"><summary class="-ms-5 block cursor-pointer bg-neutral-100 py-1 ps-5 text-lg font-semibold text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">Table of Contents</summary><div class="-ms-5 border-s border-dotted border-neutral-300 py-2 ps-5 dark:border-neutral-600"><nav id=TableOfContents><ul><li><ul><li><a href=#validation-in-form-requests>Validation in Form Requests</a></li><li><a href=#custom-rules>Custom Rules</a></li><li><a href=#validations-in-rules>Validations in Rules</a><ul><li><a href=#fixing-the-problems-of-validations-in-rules>Fixing the problems of Validations in Rules</a></li><li><a href=#recursive-rules>Recursive Rules</a></li></ul></li><li><a href=#conclusion>Conclusion</a></li></ul></li></ul></nav></div></details></div></div><div class="min-w-0 min-h-0 max-w-prose grow"><div class="lead !mb-9 text-xl">Validations are great for ensuring that the data you receive is in the format you expect, while also handling a lot of
+    "
+  />
+  
+  
+  
+  <link rel="canonical" href="https://www.blog.philodev.one/posts/2022-12-rules-with-validators/" />
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Laravel Validations" />
+<meta property="og:description" content="Validations are great for ensuring that the data you receive is in the format you expect, while also handling a lot of edge cases (like ids that are not in the database). This ensures not only a fast failing of the request, but also gives the user (or front-end developer) a clear error message. Laravel offers great tools, in which I would like to dig deeper up to a final form of unintended usage - like Recursive Validations." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.blog.philodev.one/posts/2022-12-rules-with-validators/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-26T14:20:44+02:00" />
+<meta property="article:modified_time" content="2022-12-26T14:20:44+02:00" /><meta property="og:site_name" content="Philodev Blog" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Laravel Validations"/>
+<meta name="twitter:description" content="Validations are great for ensuring that the data you receive is in the format you expect, while also handling a lot of edge cases (like ids that are not in the database). This ensures not only a fast failing of the request, but also gives the user (or front-end developer) a clear error message. Laravel offers great tools, in which I would like to dig deeper up to a final form of unintended usage - like Recursive Validations."/>
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Laravel Validations",
+    "headline": "Laravel Validations",
+    "description": "Validations are great for ensuring that the data you receive is in the format you expect, while also handling a lot of edge cases (like ids that are not in the database). This ensures not only a fast failing of the request, but also gives the user (or front-end developer) a clear error message. Laravel offers great tools, in which I would like to dig deeper up to a final form of unintended usage - like Recursive Validations.",
+    "abstract": "Validations are great for ensuring that the data you receive is in the format you expect, while also handling a lot of edge cases (like ids that are not in the database).",
+    "inLanguage": "en",
+    "url" : "https:\/\/www.blog.philodev.one\/posts\/2022-12-rules-with-validators\/",
+    "author" : {
+      "@type": "Person",
+      "name": ""
+    },
+    "copyrightYear": "2022",
+    "dateCreated": "2022-12-26T14:20:44\u002b02:00",
+    "datePublished": "2022-12-26T14:20:44\u002b02:00",
+    
+    "dateModified": "2022-12-26T14:20:44\u002b02:00",
+    
+    "keywords": ["Development","Laravel","Validation","Framework"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1259"
+  }
+  </script>
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+  
+  
+</head>
+<body
+    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="font-bold pe-2 text-primary-600 dark:text-primary-400">&darr;</span
+        >Skip to main content</a
+      >
+    </div>
+    
+    
+      <header class="py-6 font-semibold text-neutral-900 dark:text-neutral print:hidden sm:py-10">
+  <nav class="flex items-start justify-between sm:items-center">
+    
+    <div class="flex flex-row items-center">
+      
+  <a
+    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+    rel="me"
+    href="/"
+    >PhiloBlog</a
+  >
+
+    </div>
+    
+    
+      <ul class="flex flex-col list-none text-end sm:flex-row">
+        
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/posts/"
+                  title="Posts"
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Blog</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="https://www.philodev.one"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >About Philodev</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/tags/"
+                  title="Tags"
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Tags</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+          
+        
+      </ul>
+    
+  </nav>
+</header>
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  <article>
+    <header class="max-w-prose">
+      
+        <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+  <li class="inline hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/"
+      >PhiloBlog</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline ">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/posts/"
+      >Posts</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/posts/2022-12-rules-with-validators/"
+      >Laravel Validations</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Laravel Validations
+      </h1>
+      <div class="mt-8 mb-12 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2022-12-26 14:20:44 &#43;0200 &#43;0200">26 December 2022</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">6 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+  
+
+
+      </div>
+      
+    </header>
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+        <div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8">
+          <div class="toc pe-5 print:hidden lg:sticky lg:top-10">
+            <details open class="-ms-5 mt-0 overflow-hidden rounded-lg ps-5">
+  <summary
+    class="-ms-5 block cursor-pointer bg-neutral-100 py-1 ps-5 text-lg font-semibold text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden"
+  >
+    Table of Contents
+  </summary>
+  <div class="-ms-5 border-s border-dotted border-neutral-300 py-2 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#validation-in-form-requests">Validation in Form Requests</a></li>
+        <li><a href="#custom-rules">Custom Rules</a></li>
+        <li><a href="#validations-in-rules">Validations in Rules</a>
+          <ul>
+            <li><a href="#fixing-the-problems-of-validations-in-rules">Fixing the problems of Validations in Rules</a></li>
+            <li><a href="#recursive-rules">Recursive Rules</a></li>
+          </ul>
+        </li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+          </div>
+        </div>
+      
+      <div class="min-w-0 min-h-0 max-w-prose grow">
+        <div class="lead !mb-9 text-xl">
+  Validations are great for ensuring that the data you receive is in the format you expect, while also handling a lot of
 edge cases (like ids that are not in the database). This ensures not only a fast failing of the request, but also gives
 the user (or front-end developer) a clear error message. Laravel offers great tools, in which I would like to dig deeper
-up to a final form of unintended usage - like Recursive Validations.</div><h2 id=validation-in-form-requests class="relative group">Validation in Form Requests <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#validation-in-form-requests aria-label=Anchor>#</a></span></h2><p>A custom FormRequest can have a <code>function rules()</code> which returns an array of rules, which are used to validate the data.
+up to a final form of unintended usage - like Recursive Validations.
+</div>
+
+<h2 id="validation-in-form-requests" class="relative group">Validation in Form Requests <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#validation-in-form-requests" aria-label="Anchor">#</a></span></h2><p>A custom FormRequest can have a <code>function rules()</code> which returns an array of rules, which are used to validate the data.
 The magic behind this function includes the <code>Validator</code> class (<code>Illuminate\Validation\Validator</code>) which loops over all
 key-value pairs, resolves the corresponding Rule (like &lsquo;min:2&rsquo; into Rule::min(2)) and checks if they fail.
 The &lsquo;old school&rsquo; Rules are classes that implement a <code>function passes()</code> that will return a boolean whether the given
 data is valid or not; based on that a translated error message is added to an Error Bag (and depending on the '
-stopOnFirstFailure&rsquo; the loop continues <sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>.</p><p>All this happens by magic if correctly injected in the Controller Method.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>declare</span><span class=p>(</span><span class=nx>strict_types</span><span class=o>=</span><span class=mi>1</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nx>App\Http\Requests</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Foundation\Http\FormRequest</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Validation\Rule</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>OrderRequest</span> <span class=k>extends</span> <span class=nx>FormRequest</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>rules</span><span class=p>()</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=p>[</span>
-</span></span><span class=line><span class=cl>            <span class=s1>&#39;name&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;nullable&#39;</span><span class=p>,</span> <span class=s1>&#39;integer&#39;</span><span class=p>,</span> <span class=s1>&#39;min:1&#39;</span><span class=p>,</span> <span class=s1>&#39;max:100&#39;</span><span class=p>],</span>
-</span></span><span class=line><span class=cl>            <span class=s1>&#39;game_id&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=s1>&#39;exists:games,id&#39;</span><span class=p>],</span>
-</span></span><span class=line><span class=cl>            <span class=c1>// mind, that the Rules can be called as static methods
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;role&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=nx>Rule</span><span class=o>::</span><span class=na>in</span><span class=p>([</span><span class=s1>&#39;knight&#39;</span><span class=p>,</span> <span class=s1>&#39;thief&#39;</span><span class=p>,</span> <span class=s1>&#39;ghost&#39;</span><span class=p>,</span> <span class=s1>&#39;wizard&#39;</span><span class=p>])],</span>
-</span></span><span class=line><span class=cl>            <span class=c1>// and that they may get closures as parameters
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=c1>// (this will return the default error message)
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;items&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=nx>Rule</span><span class=o>::</span><span class=na>requiredIf</span><span class=p>(</span><span class=nx>fn</span> <span class=p>()</span> <span class=o>=&gt;</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>role</span> <span class=o>===</span> <span class=s1>&#39;thief&#39;</span><span class=p>),</span> <span class=s1>&#39;array&#39;</span><span class=p>],</span>
-</span></span><span class=line><span class=cl>            <span class=c1>// or that a custom rule can be implemented as closure
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=c1>// this will return special error messages
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;spells&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;array&#39;</span><span class=p>,</span> <span class=k>function</span> <span class=p>(</span><span class=nv>$attribute</span><span class=p>,</span> <span class=nv>$value</span><span class=p>,</span> <span class=nv>$fail</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=p>(</span><span class=nv>$this</span><span class=o>-&gt;</span><span class=na>role</span> <span class=o>!==</span> <span class=s1>&#39;wizard&#39;</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                    <span class=nv>$fail</span><span class=p>(</span><span class=s1>&#39;Only wizards can cast spells&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>                <span class=p>}</span>
-</span></span><span class=line><span class=cl>                
-</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=p>(</span><span class=nx>count</span><span class=p>(</span><span class=nv>$value</span><span class=p>)</span> <span class=o>&gt;</span> <span class=mi>3</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                    <span class=nv>$fail</span><span class=p>(</span><span class=s1>&#39;A wizard can only cast 3 spells&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>                <span class=p>}</span>
-</span></span><span class=line><span class=cl>            <span class=p>}],</span>
-</span></span><span class=line><span class=cl>        <span class=p>];</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></div><h2 id=custom-rules class="relative group">Custom Rules <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#custom-rules aria-label=Anchor>#</a></span></h2><p>Often enough, these validations will contain some duplication. For example, in this RPG example, the <code>game_id</code> may only
+stopOnFirstFailure&rsquo; the loop continues <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p>All this happens by magic if correctly injected in the Controller Method.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">App\Http\Requests</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Foundation\Http\FormRequest</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Validation\Rule</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">OrderRequest</span> <span class="k">extends</span> <span class="nx">FormRequest</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">rules</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;nullable&#39;</span><span class="p">,</span> <span class="s1">&#39;integer&#39;</span><span class="p">,</span> <span class="s1">&#39;min:1&#39;</span><span class="p">,</span> <span class="s1">&#39;max:100&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;game_id&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="s1">&#39;exists:games,id&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// mind, that the Rules can be called as static methods
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;role&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="nx">Rule</span><span class="o">::</span><span class="na">in</span><span class="p">([</span><span class="s1">&#39;knight&#39;</span><span class="p">,</span> <span class="s1">&#39;thief&#39;</span><span class="p">,</span> <span class="s1">&#39;ghost&#39;</span><span class="p">,</span> <span class="s1">&#39;wizard&#39;</span><span class="p">])],</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// and that they may get closures as parameters
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// (this will return the default error message)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;items&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">Rule</span><span class="o">::</span><span class="na">requiredIf</span><span class="p">(</span><span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">role</span> <span class="o">===</span> <span class="s1">&#39;thief&#39;</span><span class="p">),</span> <span class="s1">&#39;array&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// or that a custom rule can be implemented as closure
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// this will return special error messages
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;spells&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$attribute</span><span class="p">,</span> <span class="nv">$value</span><span class="p">,</span> <span class="nv">$fail</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">role</span> <span class="o">!==</span> <span class="s1">&#39;wizard&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nv">$fail</span><span class="p">(</span><span class="s1">&#39;Only wizards can cast spells&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="nx">count</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nv">$fail</span><span class="p">(</span><span class="s1">&#39;A wizard can only cast 3 spells&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}],</span>
+</span></span><span class="line"><span class="cl">        <span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="custom-rules" class="relative group">Custom Rules <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#custom-rules" aria-label="Anchor">#</a></span></h2><p>Often enough, these validations will contain some duplication. For example, in this RPG example, the <code>game_id</code> may only
 belong to a game which is not finished yet. This can be implemented as a custom rule.
 Laravel provides this using Invokable Rules, which contain a single method: __invoke. This method receives the
-attribute name, its value, and a callback that should be invoked on failure with the validation error message.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>declare</span><span class=p>(</span><span class=nx>strict_types</span><span class=o>=</span><span class=mi>1</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nx>App\Http\Rules</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Contracts\Validation\InvokableRule</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>UnfinishedGameRule</span> <span class=k>implements</span> <span class=nx>InvokableRule</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=sd>/**
-</span></span></span><span class=line><span class=cl><span class=sd>     * @param  string  $attribute
-</span></span></span><span class=line><span class=cl><span class=sd>     * @param  mixed  $value
-</span></span></span><span class=line><span class=cl><span class=sd>     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
-</span></span></span><span class=line><span class=cl><span class=sd>     */</span>
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=fm>__invoke</span><span class=p>(</span><span class=nv>$attribute</span><span class=p>,</span> <span class=nv>$value</span><span class=p>,</span> <span class=nv>$fail</span><span class=p>)</span><span class=o>:</span> <span class=nx>void</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=nv>$game</span> <span class=o>=</span> <span class=nx>Game</span><span class=o>::</span><span class=na>find</span><span class=p>(</span><span class=nv>$value</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=nv>$game</span><span class=o>-&gt;</span><span class=na>isFinished</span><span class=p>())</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=nv>$fail</span><span class=p>(</span><span class=s1>&#39;The game is already finished&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
+attribute name, its value, and a callback that should be invoked on failure with the validation error message.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">App\Http\Rules</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Contracts\Validation\InvokableRule</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">UnfinishedGameRule</span> <span class="k">implements</span> <span class="nx">InvokableRule</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param  string  $attribute
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param  mixed  $value
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nv">$attribute</span><span class="p">,</span> <span class="nv">$value</span><span class="p">,</span> <span class="nv">$fail</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$game</span> <span class="o">=</span> <span class="nx">Game</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nv">$game</span><span class="o">-&gt;</span><span class="na">isFinished</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$fail</span><span class="p">(</span><span class="s1">&#39;The game is already finished&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>This rule can be used in the FormRequest as
-follows:</p><p><code>$request->validate(['game_id' => ['required', 'exists:games,id', new UnfinishedGameRule]]);</code></p><p>Rules offer some quite nice additions, like adding parameters to the Rule using its constructor, or implementing
-the <code>DataAwareRule</code> Interface which allows you to access the data of the request.</p><h2 id=validations-in-rules class="relative group">Validations in Rules <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#validations-in-rules aria-label=Anchor>#</a></span></h2><p>In theory, this should be enough &mldr; but when working with complex objects, it would be so nice to have a validation
+follows:</p>
+<p><code>$request-&gt;validate(['game_id' =&gt; ['required', 'exists:games,id', new UnfinishedGameRule]]);</code></p>
+<p>Rules offer some quite nice additions, like adding parameters to the Rule using its constructor, or implementing
+the <code>DataAwareRule</code> Interface which allows you to access the data of the request.</p>
+<h2 id="validations-in-rules" class="relative group">Validations in Rules <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#validations-in-rules" aria-label="Anchor">#</a></span></h2><p>In theory, this should be enough &hellip; but when working with complex objects, it would be so nice to have a validation
 inside the Rule Object. Just implementing a new Validator inside of the Rule would be a nice solution, but leads to some
-problems:</p><ol><li>The Validator will not return the correct error message, as it is not aware of the full attribute name (e.g. <code>name</code>
-instead of <code>items.0.name</code>)</li><li>The nesting of the Error Bag will be messed up</li><li>The original Validator will not be aware of the new rules, so it will not be able to access the data using $request->
-safe(&rsquo;name&rsquo;)</li><li><code>dependentRules</code> will not be displayed using the correct attribute name (e.g. if one value must be greater than
-another, the error message will not be displayed correctly)</li></ol><p>To solve this, we can use the <code>ValidatorAwareRule</code> Interface, which allows us to inject the Validator into the Rule.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>declare</span><span class=p>(</span><span class=nx>strict_types</span><span class=o>=</span><span class=mi>1</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nx>App\Http\Rules</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Contracts\Validation\InvokableRule</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Contracts\Validation\ValidatorAwareRule</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Support\Facades\Validator</span> <span class=k>as</span> <span class=nx>ValidatorFacade</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Validation\Validator</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ItemRule</span> <span class=k>implements</span> <span class=nx>InvokableRule</span><span class=p>,</span> <span class=nx>ValidatorAwareRule</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=k>protected</span> <span class=nx>Validator</span> <span class=nv>$validator</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=fm>__invoke</span><span class=p>(</span><span class=nv>$attribute</span><span class=p>,</span> <span class=nv>$value</span><span class=p>,</span> <span class=nv>$fail</span><span class=p>)</span><span class=o>:</span> <span class=nx>void</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=c1>// 1. fix attribute name
-</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nv>$attributeNames</span> <span class=o>=</span> <span class=nx>collect</span><span class=p>(</span><span class=nv>$this</span><span class=o>-&gt;</span><span class=na>rules</span><span class=p>(</span><span class=nv>$value</span><span class=p>))</span><span class=o>-&gt;</span><span class=na>keys</span><span class=p>()</span>
-</span></span><span class=line><span class=cl>            <span class=o>-&gt;</span><span class=na>mapWithKeys</span><span class=p>(</span><span class=nx>fn</span> <span class=p>(</span><span class=nx>string</span> <span class=nv>$key</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=nv>$key</span> <span class=o>=&gt;</span> <span class=nv>$attribute</span> <span class=o>.</span> <span class=s1>&#39;.&#39;</span> <span class=o>.</span> <span class=nv>$key</span><span class=p>])</span>
-</span></span><span class=line><span class=cl>            <span class=o>-&gt;</span><span class=na>toArray</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=nv>$validator</span> <span class=o>=</span> <span class=nx>ValidatorFacade</span><span class=o>::</span><span class=na>make</span><span class=p>(</span><span class=nv>$value</span><span class=p>,</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>rules</span><span class=p>(</span><span class=nv>$value</span><span class=p>),</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>messages</span><span class=p>())</span>
-</span></span><span class=line><span class=cl>            <span class=o>-&gt;</span><span class=na>setAttributeNames</span><span class=p>(</span><span class=nv>$attributeNames</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=c1>// 2. The errors will be added to the parent validator.
-</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>foreach</span> <span class=p>(</span><span class=nv>$validator</span><span class=o>-&gt;</span><span class=na>errors</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>getMessages</span><span class=p>()</span> <span class=k>as</span> <span class=nv>$key</span> <span class=o>=&gt;</span> <span class=nv>$message</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>validator</span><span class=o>-&gt;</span><span class=na>getMessageBag</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>add</span><span class=p>(</span><span class=nv>$attribute</span> <span class=o>.</span> <span class=s1>&#39;.&#39;</span> <span class=o>.</span> <span class=nv>$key</span><span class=p>,</span> <span class=nv>$message</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>??</span> <span class=s1>&#39;Validation failed&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>setValidator</span><span class=p>(</span><span class=nv>$validator</span><span class=p>)</span><span class=o>:</span> <span class=k>static</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>validator</span> <span class=o>=</span> <span class=nv>$validator</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=k>protected</span> <span class=k>function</span> <span class=nf>rules</span><span class=p>()</span><span class=o>:</span> <span class=k>array</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=p>[</span>
-</span></span><span class=line><span class=cl>            <span class=s1>&#39;name&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=s1>&#39;string&#39;</span><span class=p>,</span> <span class=s1>&#39;min:2&#39;</span><span class=p>,</span> <span class=s1>&#39;max:100&#39;</span><span class=p>],</span>
-</span></span><span class=line><span class=cl>            <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;nullable&#39;</span><span class=p>,</span> <span class=s1>&#39;string&#39;</span><span class=p>,</span> <span class=s1>&#39;min:2&#39;</span><span class=p>,</span> <span class=s1>&#39;max:100&#39;</span><span class=p>],</span>
-</span></span><span class=line><span class=cl>            <span class=s1>&#39;price&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=s1>&#39;numeric&#39;</span><span class=p>,</span> <span class=s1>&#39;min:0&#39;</span><span class=p>,</span> <span class=s1>&#39;max:1000&#39;</span><span class=p>],</span>
-</span></span><span class=line><span class=cl>            <span class=s1>&#39;amount&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=s1>&#39;integer&#39;</span><span class=p>,</span> <span class=s1>&#39;min:1&#39;</span><span class=p>,</span> <span class=s1>&#39;max:100&#39;</span><span class=p>],</span>
-</span></span><span class=line><span class=cl>        <span class=p>];</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    <span class=k>protected</span> <span class=k>function</span> <span class=nf>messages</span><span class=p>()</span><span class=o>:</span> <span class=k>array</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=p>[];</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></div><h3 id=fixing-the-problems-of-validations-in-rules class="relative group">Fixing the problems of Validations in Rules <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#fixing-the-problems-of-validations-in-rules aria-label=Anchor>#</a></span></h3><ol><li>Fixing the Attribute name</li></ol><p>Prefixing the attribute names will cause the error message to correctly display the path, e.g. &ldquo;The items.0.name field
-is required&rdquo; instead of &ldquo;The name field is required&rdquo;.</p><p>BUT, this will not work if Rule again includes a nested Rule, as the attribute name will need to be prefixed again.
+problems:</p>
+<ol>
+<li>The Validator will not return the correct error message, as it is not aware of the full attribute name (e.g. <code>name</code>
+instead of <code>items.0.name</code>)</li>
+<li>The nesting of the Error Bag will be messed up</li>
+<li>The original Validator will not be aware of the new rules, so it will not be able to access the data using $request-&gt;
+safe(&rsquo;name&rsquo;)</li>
+<li><code>dependentRules</code> will not be displayed using the correct attribute name (e.g. if one value must be greater than
+another, the error message will not be displayed correctly)</li>
+</ol>
+<p>To solve this, we can use the <code>ValidatorAwareRule</code> Interface, which allows us to inject the Validator into the Rule.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">App\Http\Rules</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Contracts\Validation\InvokableRule</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Contracts\Validation\ValidatorAwareRule</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Validator</span> <span class="k">as</span> <span class="nx">ValidatorFacade</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Validation\Validator</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ItemRule</span> <span class="k">implements</span> <span class="nx">InvokableRule</span><span class="p">,</span> <span class="nx">ValidatorAwareRule</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">protected</span> <span class="nx">Validator</span> <span class="nv">$validator</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nv">$attribute</span><span class="p">,</span> <span class="nv">$value</span><span class="p">,</span> <span class="nv">$fail</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 1. fix attribute name
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nv">$attributeNames</span> <span class="o">=</span> <span class="nx">collect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">rules</span><span class="p">(</span><span class="nv">$value</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">keys</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="o">-&gt;</span><span class="na">mapWithKeys</span><span class="p">(</span><span class="nx">fn</span> <span class="p">(</span><span class="nx">string</span> <span class="nv">$key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$attribute</span> <span class="o">.</span> <span class="s1">&#39;.&#39;</span> <span class="o">.</span> <span class="nv">$key</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nv">$validator</span> <span class="o">=</span> <span class="nx">ValidatorFacade</span><span class="o">::</span><span class="na">make</span><span class="p">(</span><span class="nv">$value</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">rules</span><span class="p">(</span><span class="nv">$value</span><span class="p">),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">messages</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="o">-&gt;</span><span class="na">setAttributeNames</span><span class="p">(</span><span class="nv">$attributeNames</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 2. The errors will be added to the parent validator.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$validator</span><span class="o">-&gt;</span><span class="na">errors</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validator</span><span class="o">-&gt;</span><span class="na">getMessageBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$attribute</span> <span class="o">.</span> <span class="s1">&#39;.&#39;</span> <span class="o">.</span> <span class="nv">$key</span><span class="p">,</span> <span class="nv">$message</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">??</span> <span class="s1">&#39;Validation failed&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">setValidator</span><span class="p">(</span><span class="nv">$validator</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validator</span> <span class="o">=</span> <span class="nv">$validator</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">protected</span> <span class="k">function</span> <span class="nf">rules</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="s1">&#39;min:2&#39;</span><span class="p">,</span> <span class="s1">&#39;max:100&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;nullable&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="s1">&#39;min:2&#39;</span><span class="p">,</span> <span class="s1">&#39;max:100&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;price&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="s1">&#39;numeric&#39;</span><span class="p">,</span> <span class="s1">&#39;min:0&#39;</span><span class="p">,</span> <span class="s1">&#39;max:1000&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="s1">&#39;integer&#39;</span><span class="p">,</span> <span class="s1">&#39;min:1&#39;</span><span class="p">,</span> <span class="s1">&#39;max:100&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">protected</span> <span class="k">function</span> <span class="nf">messages</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="fixing-the-problems-of-validations-in-rules" class="relative group">Fixing the problems of Validations in Rules <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#fixing-the-problems-of-validations-in-rules" aria-label="Anchor">#</a></span></h3><ol>
+<li>Fixing the Attribute name</li>
+</ol>
+<p>Prefixing the attribute names will cause the error message to correctly display the path, e.g. &ldquo;The items.0.name field
+is required&rdquo; instead of &ldquo;The name field is required&rdquo;.</p>
+<p>BUT, this will not work if Rule again includes a nested Rule, as the attribute name will need to be prefixed again.
 Assuming that the array separator <code>.</code> is used, the contained attribute can be prefixed again.
-This code is not even close to a readable, good solution; if you have a better idea, please let me know.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=c1>// The errors will be added to the parent validator.
-</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>foreach</span> <span class=p>(</span><span class=nv>$validator</span><span class=o>-&gt;</span><span class=na>errors</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>getMessages</span><span class=p>()</span> <span class=k>as</span> <span class=nv>$key</span> <span class=o>=&gt;</span> <span class=nv>$message</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>   <span class=nv>$newMessage</span> <span class=o>=</span> <span class=nx>is_array</span><span class=p>(</span><span class=nv>$message</span><span class=p>)</span> <span class=o>?</span> <span class=nv>$message</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>:</span> <span class=nv>$message</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>   <span class=c1>// If the rule is nested, we need to replace the {key} placeholder with the parent key.
-</span></span></span><span class=line><span class=cl><span class=c1></span>   <span class=k>if</span> <span class=p>(</span><span class=nx>str_contains</span><span class=p>((</span><span class=nx>string</span><span class=p>)</span> <span class=nv>$newMessage</span><span class=p>,</span> <span class=p>(</span><span class=nx>string</span><span class=p>)</span> <span class=nv>$key</span><span class=p>)</span> <span class=o>&amp;&amp;</span> <span class=nx>str_contains</span><span class=p>((</span><span class=nx>string</span><span class=p>)</span> <span class=nv>$key</span><span class=p>,</span> <span class=s1>&#39;.&#39;</span><span class=p>))</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>       <span class=nv>$newMessage</span> <span class=o>=</span> <span class=nx>str_replace</span><span class=p>(</span><span class=nv>$key</span><span class=p>,</span> <span class=nv>$attribute</span> <span class=o>.</span> <span class=s1>&#39;.&#39;</span> <span class=o>.</span> <span class=nv>$key</span><span class=p>,</span> <span class=p>(</span><span class=nx>string</span><span class=p>)</span> <span class=nv>$newMessage</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>   <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>   <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>validator</span><span class=o>-&gt;</span><span class=na>getMessageBag</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>add</span><span class=p>(</span><span class=nv>$attribute</span> <span class=o>.</span> <span class=s1>&#39;.&#39;</span> <span class=o>.</span> <span class=nv>$key</span><span class=p>,</span> <span class=nv>$newMessage</span><span class=p>);</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></div><ol start=2><li>Fixing the Error Bag</li></ol><p>The errors will be added to the parent validator, so both the messages and the errors will not be empty. Mind
-that I only add the first error message.</p><p>Conveniently, the Validators will bubble their ErrorBags up, so this allows for recursive usage of nested Rules.</p><ol start=3><li>Fixing the Rules</li></ol><p>Because this is an array (I suppose), this works just fine without adding the rules to the original Validator. In other
-cases code like this might be helpful:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl>  <span class=c1>// The rules will be added to the parent validator to access the attributes using e.g. $request-&gt;safe(&#39;key)
-</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=nv>$newRules</span> <span class=o>=</span> <span class=nx>collect</span><span class=p>(</span><span class=nv>$validator</span><span class=o>-&gt;</span><span class=na>getRules</span><span class=p>())</span>
-</span></span><span class=line><span class=cl>      <span class=o>-&gt;</span><span class=na>mapWithKeys</span><span class=p>(</span><span class=nx>fn</span> <span class=p>(</span><span class=nv>$rules</span><span class=p>,</span> <span class=nv>$key</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=nv>$attribute</span> <span class=o>.</span> <span class=s1>&#39;.&#39;</span> <span class=o>.</span> <span class=nv>$key</span> <span class=o>=&gt;</span> <span class=nv>$rules</span><span class=p>])</span>
-</span></span><span class=line><span class=cl>      <span class=o>-&gt;</span><span class=na>toArray</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>  <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>validator</span><span class=o>-&gt;</span><span class=na>addRules</span><span class=p>(</span><span class=nv>$newRules</span><span class=p>);</span>
-</span></span></code></pre></div><ol start=4><li>Fixing the Dependent Rule messages</li></ol><p>This will work with the fix of 1.</p><h3 id=recursive-rules class="relative group">Recursive Rules <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#recursive-rules aria-label=Anchor>#</a></span></h3><div class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900"><span class="pe-3 text-primary-400"><span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M256 0C114.6.0.0 114.6.0 256s114.6 256 256 256 256-114.6 256-256S397.4.0 256 0zm0 128c17.67.0 32 14.33 32 32 0 17.67-14.33 32-32 32s-32-14.3-32-32 14.3-32 32-32zm40 256h-80c-13.2.0-24-10.7-24-24s10.75-24 24-24h16v-64h-8c-13.25.0-24-10.75-24-24s10.8-24 24-24h32c13.25.0 24 10.75 24 24v88h16c13.25.0 24 10.75 24 24s-10.7 24-24 24z"/></svg></span></span><span class=dark:text-neutral-300><strong>New Feature Unlocked</strong>:
+This code is not even close to a readable, good solution; if you have a better idea, please let me know.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// The errors will be added to the parent validator.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">foreach</span> <span class="p">(</span><span class="nv">$validator</span><span class="o">-&gt;</span><span class="na">errors</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nv">$newMessage</span> <span class="o">=</span> <span class="nx">is_array</span><span class="p">(</span><span class="nv">$message</span><span class="p">)</span> <span class="o">?</span> <span class="nv">$message</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="nv">$message</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="c1">// If the rule is nested, we need to replace the {key} placeholder with the parent key.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="k">if</span> <span class="p">(</span><span class="nx">str_contains</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$newMessage</span><span class="p">,</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$key</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">str_contains</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$key</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">       <span class="nv">$newMessage</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$attribute</span> <span class="o">.</span> <span class="s1">&#39;.&#39;</span> <span class="o">.</span> <span class="nv">$key</span><span class="p">,</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$newMessage</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validator</span><span class="o">-&gt;</span><span class="na">getMessageBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$attribute</span> <span class="o">.</span> <span class="s1">&#39;.&#39;</span> <span class="o">.</span> <span class="nv">$key</span><span class="p">,</span> <span class="nv">$newMessage</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol start="2">
+<li>Fixing the Error Bag</li>
+</ol>
+<p>The errors will be added to the parent validator, so both the messages and the errors will not be empty. Mind
+that I only add the first error message.</p>
+<p>Conveniently, the Validators will bubble their ErrorBags up, so this allows for recursive usage of nested Rules.</p>
+<ol start="3">
+<li>Fixing the Rules</li>
+</ol>
+<p>Because this is an array (I suppose), this works just fine without adding the rules to the original Validator. In other
+cases code like this might be helpful:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">  <span class="c1">// The rules will be added to the parent validator to access the attributes using e.g. $request-&gt;safe(&#39;key)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nv">$newRules</span> <span class="o">=</span> <span class="nx">collect</span><span class="p">(</span><span class="nv">$validator</span><span class="o">-&gt;</span><span class="na">getRules</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-&gt;</span><span class="na">mapWithKeys</span><span class="p">(</span><span class="nx">fn</span> <span class="p">(</span><span class="nv">$rules</span><span class="p">,</span> <span class="nv">$key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nv">$attribute</span> <span class="o">.</span> <span class="s1">&#39;.&#39;</span> <span class="o">.</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$rules</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validator</span><span class="o">-&gt;</span><span class="na">addRules</span><span class="p">(</span><span class="nv">$newRules</span><span class="p">);</span>
+</span></span></code></pre></div><ol start="4">
+<li>Fixing the Dependent Rule messages</li>
+</ol>
+<p>This will work with the fix of 1.</p>
+<h3 id="recursive-rules" class="relative group">Recursive Rules <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#recursive-rules" aria-label="Anchor">#</a></span></h3><div class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900">
+  <span class="pe-3 text-primary-400">
+    <span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
+</span>
+  </span>
+  <span class="dark:text-neutral-300"><strong>New Feature Unlocked</strong>:
 For the validation of recursive data structures - this is one implementation idea.
 Adding a private property of the current nesting level to the Rule and incrementing it on each call of the Rule will
-enable the validation of the whole data without too much extra code, and enforce changing maximum nesting levels.</span></div><p>Example for nesting:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>public</span> <span class=k>function</span> <span class=nf>rules</span><span class=p>()</span><span class=o>:</span> <span class=k>array</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>[</span>
-</span></span><span class=line><span class=cl>        <span class=s1>&#39;name&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=s1>&#39;string&#39;</span><span class=p>,</span> <span class=s1>&#39;min:2&#39;</span><span class=p>,</span> <span class=s1>&#39;max:100&#39;</span><span class=p>],</span>
-</span></span><span class=line><span class=cl>        <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;nullable&#39;</span><span class=p>,</span> <span class=s1>&#39;string&#39;</span><span class=p>,</span> <span class=s1>&#39;min:2&#39;</span><span class=p>,</span> <span class=s1>&#39;max:100&#39;</span><span class=p>],</span>
-</span></span><span class=line><span class=cl>        <span class=s1>&#39;price&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=s1>&#39;numeric&#39;</span><span class=p>,</span> <span class=s1>&#39;min:0&#39;</span><span class=p>,</span> <span class=s1>&#39;max:1000&#39;</span><span class=p>],</span>
-</span></span><span class=line><span class=cl>        <span class=s1>&#39;amount&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=s1>&#39;integer&#39;</span><span class=p>,</span> <span class=s1>&#39;min:1&#39;</span><span class=p>,</span> <span class=s1>&#39;max:100&#39;</span><span class=p>],</span>
-</span></span><span class=line><span class=cl>        <span class=s1>&#39;subItems&#39;</span> <span class=o>=&gt;</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>currentNestingLevel</span> <span class=o>&gt;=</span> <span class=mi>3</span> <span class=o>?</span> <span class=p>[</span><span class=s1>&#39;prohibited&#39;</span><span class=p>]</span> <span class=o>:</span> <span class=p>[</span><span class=s1>&#39;nullable&#39;</span><span class=p>,</span> <span class=s1>&#39;array&#39;</span><span class=p>],</span>
-</span></span><span class=line><span class=cl>        <span class=s1>&#39;subItems.*&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;nullable&#39;</span><span class=p>,</span> <span class=k>new</span> <span class=nx>self</span><span class=p>(</span><span class=nv>$this</span><span class=o>-&gt;</span><span class=na>currentNestingLevel</span> <span class=o>+</span> <span class=mi>1</span><span class=p>)],</span>
-</span></span><span class=line><span class=cl>    <span class=p>];</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></div><h2 id=conclusion class="relative group">Conclusion <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#conclusion aria-label=Anchor>#</a></span></h2><p>If such a complex validation is needed, it might be a good idea to use a custom Rule.
+enable the validation of the whole data without too much extra code, and enforce changing maximum nesting levels.</span>
+</div>
+
+<p>Example for nesting:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="nf">rules</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="s1">&#39;min:2&#39;</span><span class="p">,</span> <span class="s1">&#39;max:100&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;nullable&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="s1">&#39;min:2&#39;</span><span class="p">,</span> <span class="s1">&#39;max:100&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;price&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="s1">&#39;numeric&#39;</span><span class="p">,</span> <span class="s1">&#39;min:0&#39;</span><span class="p">,</span> <span class="s1">&#39;max:1000&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="s1">&#39;integer&#39;</span><span class="p">,</span> <span class="s1">&#39;min:1&#39;</span><span class="p">,</span> <span class="s1">&#39;max:100&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;subItems&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">currentNestingLevel</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="o">?</span> <span class="p">[</span><span class="s1">&#39;prohibited&#39;</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="s1">&#39;nullable&#39;</span><span class="p">,</span> <span class="s1">&#39;array&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;subItems.*&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;nullable&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">self</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">currentNestingLevel</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="conclusion" class="relative group">Conclusion <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#conclusion" aria-label="Anchor">#</a></span></h2><p>If such a complex validation is needed, it might be a good idea to use a custom Rule.
 If that custom Rule would benefit from implementing its own validation, this is possible with some workarounds.
 If recursive validation is needed, this can be achieved by enhancing the Rule with a private property for the nesting
-level.</p><p>If, on the other hand, the validation is not that complex, keep it simple.</p><p>Happy Coding :)</p><div class=footnotes role=doc-endnotes><hr><ol><li id=fn:1><p><a href=https://laravel.com/docs/9.x/validation target=_blank rel=noreferrer>That and more explained in the Laravel Docs</a>.&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></div></div></section><footer class="pt-8 max-w-prose print:hidden"><div class=flex><div class=place-self-center><div class="text-2xl sm:text-lg"></div></div></div><div class=pt-8><hr class="border-dotted border-neutral-300 dark:border-neutral-600"><div class="flex justify-between pt-3"><span><a class="group flex" href=/posts/2022-12-queues/><span class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"><span class="ltr:inline rtl:hidden">&larr;</span><span class="ltr:hidden rtl:inline">&rarr;</span></span>
-<span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500">The Laravel Queue</span>
-<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"><time datetime="2022-12-11 14:20:44 +0200 +0200">11 December 2022</time>
-</span></span></a></span><span><a class="group flex text-right" href=/posts/2023-01-laravel-custom-casts/><span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500">Laravel Custom Casts</span>
-<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"><time datetime="2023-01-28 14:20:44 +0200 +0200">28 January 2023</time>
-</span></span><span class="ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"><span class="ltr:inline rtl:hidden">&rarr;</span><span class="ltr:hidden rtl:inline">&larr;</span></span></a></span></div></div></footer></article><div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12"><a href=#the-top class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400" aria-label="Scroll to top" title="Scroll to top">&uarr;</a></div></main><footer class="py-10 print:hidden"><div class="flex items-center justify-between"><div><p class="text-sm text-neutral-500 dark:text-neutral-400">&copy;
-2023</p><p class="text-xs text-neutral-500 dark:text-neutral-400">Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://gohugo.io/ target=_blank rel="noopener noreferrer">Hugo</a> & <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://github.com/jpanther/congo target=_blank rel="noopener noreferrer">Congo</a></p></div><div class="flex flex-row items-center"><div class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"><button id=appearance-switcher-0 type=button aria-label="appearance switcher"><div class="flex items-center justify-center w-12 h-12 dark:hidden" title="Switch to dark appearance"><span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M32 256C32 132.2 132.3 32 255.8 32c11.36.0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z"/></svg></span></div><div class="items-center justify-center hidden w-12 h-12 dark:flex" title="Switch to light appearance"><span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M256 159.1c-53.02.0-95.1 42.98-95.1 95.1s41.2 96.9 95.1 96.9 95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347l-63.2-91.9 63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89 164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6 12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256 2.74 347.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7 19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109 109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69.0-127.1-57.31-127.1-127.1.0-70.69 57.31-127.1 127.1-127.1S383.1 186.2 383.1 256c0 70.7-56.4 127.1-127.1 127.1z"/></svg></span></div></button></div></div></div></footer></div></body></html>
+level.</p>
+<p>If, on the other hand, the validation is not that complex, keep it simple.</p>
+<p>Happy Coding :)</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://laravel.com/docs/9.x/validation" target="_blank" rel="noreferrer">That and more explained in the Laravel Docs</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+      </div>
+    </section>
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  <div class="flex">
+    
+    <div class="place-self-center">
+      
+      
+      <div class="text-2xl sm:text-lg">
+</div>
+    </div>
+  </div>
+
+
+      
+
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="group flex" href="/posts/2022-12-queues/">
+              <span
+                class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+                ><span class="ltr:inline rtl:hidden">&larr;</span
+                ><span class="ltr:hidden rtl:inline">&rarr;</span></span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >The Laravel Queue</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2022-12-11 14:20:44 &#43;0200 &#43;0200">11 December 2022</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="group flex text-right" href="/posts/2023-01-laravel-custom-casts/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Laravel Custom Casts</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2023-01-28 14:20:44 &#43;0200 &#43;0200">28 January 2023</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+                ><span class="ltr:inline rtl:hidden">&rarr;</span
+                ><span class="ltr:hidden rtl:inline">&larr;</span></span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+          <div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12">
+            <a
+              href="#the-top"
+              class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+              aria-label="Scroll to top"
+              title="Scroll to top"
+            >
+              &uarr;
+            </a>
+          </div>
+        
+      </main><footer class="py-10 print:hidden">
+  
+  
+  <div class="flex items-center justify-between">
+    <div>
+      
+      
+        <p class="text-sm text-neutral-500 dark:text-neutral-400">
+            &copy;
+            2023
+            
+        </p>
+      
+      
+      
+        <p class="text-xs text-neutral-500 dark:text-neutral-400">
+          
+          
+          Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href="https://github.com/jpanther/congo" target="_blank" rel="noopener noreferrer">Congo</a>
+        </p>
+      
+    </div>
+    <div class="flex flex-row items-center">
+      
+      
+      
+      
+        <div
+          class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        >
+          <button id="appearance-switcher-0" type="button" aria-label="appearance switcher">
+            <div
+              class="flex items-center justify-center w-12 h-12 dark:hidden"
+              title="Switch to dark appearance"
+            >
+              <span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+            </div>
+            <div
+              class="items-center justify-center hidden w-12 h-12 dark:flex"
+              title="Switch to light appearance"
+            >
+              <span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+            </div>
+          </button>
+        </div>
+      
+    </div>
+  </div>
+  
+  
+</footer>
+
+    </div>
+  </body>
+</html>

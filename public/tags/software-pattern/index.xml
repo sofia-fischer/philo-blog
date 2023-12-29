@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Software Pattern on PhiloBlog</title><link>https://www.blog.philodev.one/tags/software-pattern/</link><description>Recent content in Software Pattern on PhiloBlog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 22 May 2022 08:13:44 +0200</lastBuildDate><atom:link href="https://www.blog.philodev.one/tags/software-pattern/index.xml" rel="self" type="application/rss+xml"/><item><title>Manager and Driver Pattern - pattern, implementation, and usage</title><link>https://www.blog.philodev.one/posts/2022-05-driver-manager-pattern/</link><pubDate>Sun, 22 May 2022 08:13:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2022-05-driver-manager-pattern/</guid><description>Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework.</description></item><item><title>Model Specific Query Builder - an Alternative to Scopes</title><link>https://www.blog.philodev.one/posts/2022-05-custom-query-builder-pattern/</link><pubDate>Sat, 14 May 2022 08:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2022-05-custom-query-builder-pattern/</guid><description>Scopes are nice, but by extending the Eloquent Builder for a Model enables you to add custom, model-specific methods that are often used or should have a central definition Scopes are great, but &amp;hellip; #Local scopes allow you to define common sets of query constraints that you may easily re-use throughout your application; read more in the Laravel Docs.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software Pattern on PhiloBlog</title>
+    <link>https://www.blog.philodev.one/tags/software-pattern/</link>
+    <description>Recent content in Software Pattern on PhiloBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 22 May 2022 08:13:44 +0200</lastBuildDate>
+    <atom:link href="https://www.blog.philodev.one/tags/software-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Manager and Driver Pattern - pattern, implementation, and usage</title>
+      <link>https://www.blog.philodev.one/posts/2022-05-driver-manager-pattern/</link>
+      <pubDate>Sun, 22 May 2022 08:13:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2022-05-driver-manager-pattern/</guid>
+      <description>Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework.</description>
+    </item>
+    <item>
+      <title>Model Specific Query Builder - an Alternative to Scopes</title>
+      <link>https://www.blog.philodev.one/posts/2022-05-custom-query-builder-pattern/</link>
+      <pubDate>Sat, 14 May 2022 08:20:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2022-05-custom-query-builder-pattern/</guid>
+      <description>Scopes are nice, but by extending the Eloquent Builder for a Model enables you to add custom, model-specific methods that are often used or should have a central definition Scopes are great, but &amp;hellip; #Local scopes allow you to define common sets of query constraints that you may easily re-use throughout your application; read more in the Laravel Docs.</description>
+    </item>
+  </channel>
+</rss>

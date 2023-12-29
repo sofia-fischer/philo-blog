@@ -1,1 +1,110 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PhiloBlog</title><link>https://www.blog.philodev.one/</link><description>Recent content on PhiloBlog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 21 Nov 2023 14:20:44 +0200</lastBuildDate><atom:link href="https://www.blog.philodev.one/index.xml" rel="self" type="application/rss+xml"/><item><title>Using data for Sprint Planning</title><link>https://www.blog.philodev.one/posts/2023-11-using-data-to-ignite-action/</link><pubDate>Tue, 21 Nov 2023 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2023-11-using-data-to-ignite-action/</guid><description>&amp;ldquo;It is better to be vaguely right than exactly wrong.</description></item><item><title>Communication between different teams working on the same codebase</title><link>https://www.blog.philodev.one/posts/2023-04-communicating-between-teams/</link><pubDate>Sun, 16 Apr 2023 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2023-04-communicating-between-teams/</guid><description>Effective communication is essential in software development.</description></item><item><title>Testing Open Api files</title><link>https://www.blog.philodev.one/posts/2023-03-testing-open-api-specs/</link><pubDate>Tue, 28 Mar 2023 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2023-03-testing-open-api-specs/</guid><description>Using Tests to verify the type and nullable correctness of an Open Api file is one way to ensure a usable documentation (if the file cannot be generated).</description></item><item><title>Laravel Custom Casts</title><link>https://www.blog.philodev.one/posts/2023-01-laravel-custom-casts/</link><pubDate>Sat, 28 Jan 2023 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2023-01-laravel-custom-casts/</guid><description>Casts are already a great feature of Laravel.</description></item><item><title>Laravel Validations</title><link>https://www.blog.philodev.one/posts/2022-12-rules-with-validators/</link><pubDate>Mon, 26 Dec 2022 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2022-12-rules-with-validators/</guid><description>Validations are great for ensuring that the data you receive is in the format you expect, while also handling a lot of edge cases (like ids that are not in the database).</description></item><item><title>The Laravel Queue</title><link>https://www.blog.philodev.one/posts/2022-12-queues/</link><pubDate>Sun, 11 Dec 2022 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2022-12-queues/</guid><description>After debugging problems with the Serialisation of Classes, I learned I know way too little about Laravel Queues.</description></item><item><title>Improving Retros from a Devs Perspective</title><link>https://www.blog.philodev.one/posts/2022-09-sprint-retro/</link><pubDate>Mon, 10 Oct 2022 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2022-09-sprint-retro/</guid><description>As a developer, most of the meetings I join I either want to talk about code, or I am asking myself why I joined the meeting, and if I would not be more productive writing code.</description></item><item><title>Ethical Development</title><link>https://www.blog.philodev.one/posts/2022-08-etchical-development/</link><pubDate>Wed, 31 Aug 2022 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2022-08-etchical-development/</guid><description>Ethical behaviour helps a social group to flourish, and strives to develop the best possible version.</description></item><item><title>About Actions, Jobs, Repositories, Events</title><link>https://www.blog.philodev.one/posts/2022-07-action-and-other-patterns/</link><pubDate>Sun, 31 Jul 2022 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2022-07-action-and-other-patterns/</guid><description>Simple REST APIs are nice.</description></item><item><title>Technical Job Interview questions 2022</title><link>https://www.blog.philodev.one/posts/2022-06-customer-search/</link><pubDate>Thu, 02 Jun 2022 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2022-06-customer-search/</guid><description>Looking for a customer is the same process compared to looking for a job.</description></item><item><title>Manager and Driver Pattern - pattern, implementation, and usage</title><link>https://www.blog.philodev.one/posts/2022-05-driver-manager-pattern/</link><pubDate>Sun, 22 May 2022 08:13:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2022-05-driver-manager-pattern/</guid><description>Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework.</description></item><item><title>Useful and Useless Relationship Definitions</title><link>https://www.blog.philodev.one/posts/2022-05-relationships/</link><pubDate>Fri, 20 May 2022 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2022-05-relationships/</guid><description>Programmer giving Relationship Advice - A summary about Laravel / Eloquent relationships including some hints, advanced techniques to use and misuse relations Relationships are great #Relational Databases like mySql or postgres tend to have that thing called relations.</description></item><item><title>Model Specific Query Builder - an Alternative to Scopes</title><link>https://www.blog.philodev.one/posts/2022-05-custom-query-builder-pattern/</link><pubDate>Sat, 14 May 2022 08:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2022-05-custom-query-builder-pattern/</guid><description>Scopes are nice, but by extending the Eloquent Builder for a Model enables you to add custom, model-specific methods that are often used or should have a central definition Scopes are great, but &amp;hellip; #Local scopes allow you to define common sets of query constraints that you may easily re-use throughout your application; read more in the Laravel Docs.</description></item><item><title>Demo Environments and what I learned from implementing one</title><link>https://www.blog.philodev.one/posts/2022-05-demo-env/</link><pubDate>Wed, 11 May 2022 20:36:22 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2022-05-demo-env/</guid><description>I got the task to implement a Demo environment, learned something about Laravel Factories and the usage of an environment to give possible customers / investors a taste of your product and the developers to find response time / query problems and UX bugs A &amp;ldquo;Demo&amp;rdquo; Feature Request #This card was proposed in a sprint planning and sparked a discussion around multiple problems and ideas.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PhiloBlog</title>
+    <link>https://www.blog.philodev.one/</link>
+    <description>Recent content on PhiloBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 21 Nov 2023 14:20:44 +0200</lastBuildDate>
+    <atom:link href="https://www.blog.philodev.one/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using data for Sprint Planning</title>
+      <link>https://www.blog.philodev.one/posts/2023-11-using-data-to-ignite-action/</link>
+      <pubDate>Tue, 21 Nov 2023 14:20:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2023-11-using-data-to-ignite-action/</guid>
+      <description>&amp;ldquo;It is better to be vaguely right than exactly wrong.</description>
+    </item>
+    <item>
+      <title>Communication between different teams working on the same codebase</title>
+      <link>https://www.blog.philodev.one/posts/2023-04-communicating-between-teams/</link>
+      <pubDate>Sun, 16 Apr 2023 14:20:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2023-04-communicating-between-teams/</guid>
+      <description>Effective communication is essential in software development.</description>
+    </item>
+    <item>
+      <title>Testing Open Api files</title>
+      <link>https://www.blog.philodev.one/posts/2023-03-testing-open-api-specs/</link>
+      <pubDate>Tue, 28 Mar 2023 14:20:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2023-03-testing-open-api-specs/</guid>
+      <description>Using Tests to verify the type and nullable correctness of an Open Api file is one way to ensure a usable documentation (if the file cannot be generated).</description>
+    </item>
+    <item>
+      <title>Laravel Custom Casts</title>
+      <link>https://www.blog.philodev.one/posts/2023-01-laravel-custom-casts/</link>
+      <pubDate>Sat, 28 Jan 2023 14:20:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2023-01-laravel-custom-casts/</guid>
+      <description>Casts are already a great feature of Laravel.</description>
+    </item>
+    <item>
+      <title>Laravel Validations</title>
+      <link>https://www.blog.philodev.one/posts/2022-12-rules-with-validators/</link>
+      <pubDate>Mon, 26 Dec 2022 14:20:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2022-12-rules-with-validators/</guid>
+      <description>Validations are great for ensuring that the data you receive is in the format you expect, while also handling a lot of edge cases (like ids that are not in the database).</description>
+    </item>
+    <item>
+      <title>The Laravel Queue</title>
+      <link>https://www.blog.philodev.one/posts/2022-12-queues/</link>
+      <pubDate>Sun, 11 Dec 2022 14:20:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2022-12-queues/</guid>
+      <description>After debugging problems with the Serialisation of Classes, I learned I know way too little about Laravel Queues.</description>
+    </item>
+    <item>
+      <title>Improving Retros from a Devs Perspective</title>
+      <link>https://www.blog.philodev.one/posts/2022-09-sprint-retro/</link>
+      <pubDate>Mon, 10 Oct 2022 14:20:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2022-09-sprint-retro/</guid>
+      <description>As a developer, most of the meetings I join I either want to talk about code, or I am asking myself why I joined the meeting, and if I would not be more productive writing code.</description>
+    </item>
+    <item>
+      <title>Ethical Development</title>
+      <link>https://www.blog.philodev.one/posts/2022-08-etchical-development/</link>
+      <pubDate>Wed, 31 Aug 2022 14:20:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2022-08-etchical-development/</guid>
+      <description>Ethical behaviour helps a social group to flourish, and strives to develop the best possible version.</description>
+    </item>
+    <item>
+      <title>About Actions, Jobs, Repositories, Events</title>
+      <link>https://www.blog.philodev.one/posts/2022-07-action-and-other-patterns/</link>
+      <pubDate>Sun, 31 Jul 2022 14:20:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2022-07-action-and-other-patterns/</guid>
+      <description>Simple REST APIs are nice.</description>
+    </item>
+    <item>
+      <title>Technical Job Interview questions 2022</title>
+      <link>https://www.blog.philodev.one/posts/2022-06-customer-search/</link>
+      <pubDate>Thu, 02 Jun 2022 14:20:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2022-06-customer-search/</guid>
+      <description>Looking for a customer is the same process compared to looking for a job.</description>
+    </item>
+    <item>
+      <title>Manager and Driver Pattern - pattern, implementation, and usage</title>
+      <link>https://www.blog.philodev.one/posts/2022-05-driver-manager-pattern/</link>
+      <pubDate>Sun, 22 May 2022 08:13:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2022-05-driver-manager-pattern/</guid>
+      <description>Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework.</description>
+    </item>
+    <item>
+      <title>Useful and Useless Relationship Definitions</title>
+      <link>https://www.blog.philodev.one/posts/2022-05-relationships/</link>
+      <pubDate>Fri, 20 May 2022 14:20:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2022-05-relationships/</guid>
+      <description>Programmer giving Relationship Advice - A summary about Laravel / Eloquent relationships including some hints, advanced techniques to use and misuse relations Relationships are great #Relational Databases like mySql or postgres tend to have that thing called relations.</description>
+    </item>
+    <item>
+      <title>Model Specific Query Builder - an Alternative to Scopes</title>
+      <link>https://www.blog.philodev.one/posts/2022-05-custom-query-builder-pattern/</link>
+      <pubDate>Sat, 14 May 2022 08:20:44 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2022-05-custom-query-builder-pattern/</guid>
+      <description>Scopes are nice, but by extending the Eloquent Builder for a Model enables you to add custom, model-specific methods that are often used or should have a central definition Scopes are great, but &amp;hellip; #Local scopes allow you to define common sets of query constraints that you may easily re-use throughout your application; read more in the Laravel Docs.</description>
+    </item>
+    <item>
+      <title>Demo Environments and what I learned from implementing one</title>
+      <link>https://www.blog.philodev.one/posts/2022-05-demo-env/</link>
+      <pubDate>Wed, 11 May 2022 20:36:22 +0200</pubDate>
+      <guid>https://www.blog.philodev.one/posts/2022-05-demo-env/</guid>
+      <description>I got the task to implement a Demo environment, learned something about Laravel Factories and the usage of an environment to give possible customers / investors a taste of your product and the developers to find response time / query problems and UX bugs A &amp;ldquo;Demo&amp;rdquo; Feature Request #This card was proposed in a sprint planning and sparked a discussion around multiple problems and ideas.</description>
+    </item>
+  </channel>
+</rss>

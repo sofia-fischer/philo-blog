@@ -1,161 +1,726 @@
-<!doctype html><html lang=en dir=ltr class=scroll-smooth data-default-appearance=dark data-auto-appearance=true><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="rgb(255,255,255)"><title>Manager and Driver Pattern - pattern, implementation, and usage &#183; PhiloBlog</title>
-<meta name=title content="Manager and Driver Pattern - pattern, implementation, and usage &#183; PhiloBlog"><script type=text/javascript src=/js/appearance.min.022d0ebc3b46a335eb1c7ef79b7f2de143d7cd5156d433638592ef1ce5f8554e.js integrity="sha256-Ai0OvDtGozXrHH73m38t4UPXzVFW1DNjhZLvHOX4VU4="></script><link type=text/css rel=stylesheet href=/css/main.bundle.min.da111574272c989ee0d004e7880fe24f819eeaa7cef904fc5623be203611694f.css integrity="sha256-2hEVdCcsmJ7g0ATniA/iT4Ge6qfO+QT8ViO+IDYRaU8="><meta name=description content="
-      Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework. It's important to understand how Drivers and Managers work to understand how the framework solves some problems, but it's also a nice pattern to keep in mind for example to write tests that usually work with third-party APIs
-    "><link rel=canonical href=https://www.blog.philodev.one/posts/2022-05-driver-manager-pattern/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><meta property="og:title" content="Manager and Driver Pattern - pattern, implementation, and usage"><meta property="og:description" content="Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework. It's important to understand how Drivers and Managers work to understand how the framework solves some problems, but it's also a nice pattern to keep in mind for example to write tests that usually work with third-party APIs"><meta property="og:type" content="article"><meta property="og:url" content="https://www.blog.philodev.one/posts/2022-05-driver-manager-pattern/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-05-22T08:13:44+02:00"><meta property="article:modified_time" content="2022-05-22T08:13:44+02:00"><meta property="og:site_name" content="Philodev Blog"><meta name=twitter:card content="summary"><meta name=twitter:title content="Manager and Driver Pattern - pattern, implementation, and usage"><meta name=twitter:description content="Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework. It's important to understand how Drivers and Managers work to understand how the framework solves some problems, but it's also a nice pattern to keep in mind for example to write tests that usually work with third-party APIs"><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","articleSection":"Posts","name":"Manager and Driver Pattern - pattern, implementation, and usage","headline":"Manager and Driver Pattern - pattern, implementation, and usage","description":"Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework. It\u0027s important to understand how Drivers and Managers work to understand how the framework solves some problems, but it\u0027s also a nice pattern to keep in mind for example to write tests that usually work with third-party APIs","abstract":"Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework.","inLanguage":"en","url":"https:\/\/www.blog.philodev.one\/posts\/2022-05-driver-manager-pattern\/","author":{"@type":"Person","name":""},"copyrightYear":"2022","dateCreated":"2022-05-22T08:13:44\u002b02:00","datePublished":"2022-05-22T08:13:44\u002b02:00","dateModified":"2022-05-22T08:13:44\u002b02:00","keywords":["Development","Software Pattern","Laravel"],"mainEntityOfPage":"true","wordCount":"1572"}</script></head><body class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"><div id=the-top class="absolute flex self-center"><a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600" href=#main-content><span class="font-bold pe-2 text-primary-600 dark:text-primary-400">&darr;</span>Skip to main content</a></div><header class="py-6 font-semibold text-neutral-900 dark:text-neutral print:hidden sm:py-10"><nav class="flex items-start justify-between sm:items-center"><div class="flex flex-row items-center"><a href=/ class=mr-2><img src=/logo.png width=1012 height=1012 class="max-h-[10rem] max-w-[10rem] object-scale-down object-left" alt=PhiloBlog>
-</a><a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2" rel=me href=/>PhiloBlog</a></div><ul class="flex flex-col list-none text-end sm:flex-row"><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=/posts/ title=Posts><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">Blog</span></a></li><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=https://www.philodev.one title><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">About Philodev</span></a></li><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=/tags/ title=Tags><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">Tags</span></a></li></ul></nav></header><div class="relative flex flex-col grow"><main id=main-content class=grow><article><header class=max-w-prose><ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden"><li class="inline hidden"><a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href=/>PhiloBlog</a><span class="px-1 text-primary-500">/</span></li><li class=inline><a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href=/posts/>Posts</a><span class="px-1 text-primary-500">/</span></li><li class="inline hidden"><a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href=/posts/2022-05-driver-manager-pattern/>Manager and Driver Pattern - pattern, implementation, and usage</a><span class="px-1 text-primary-500">/</span></li></ol><h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">Manager and Driver Pattern - pattern, implementation, and usage</h1><div class="mt-8 mb-12 text-base text-neutral-500 dark:text-neutral-400 print:hidden"><div class="flex flex-row flex-wrap items-center"><time datetime="2022-05-22 08:13:44 +0200 CEST">22 May 2022</time><span class="px-2 text-primary-500">&#183;</span><span title="Reading time">8 mins</span></div></div></header><section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row"><div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8"><div class="toc pe-5 print:hidden lg:sticky lg:top-10"><details open class="-ms-5 mt-0 overflow-hidden rounded-lg ps-5"><summary class="-ms-5 block cursor-pointer bg-neutral-100 py-1 ps-5 text-lg font-semibold text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">Table of Contents</summary><div class="-ms-5 border-s border-dotted border-neutral-300 py-2 ps-5 dark:border-neutral-600"><nav id=TableOfContents><ul><li><ul><li><a href=#manager-and-driver-pattern-ad-other-patterns>Manager and Driver Pattern (ad other Patterns)</a><ul><li><a href=#builder-pattern>Builder Pattern</a></li><li><a href=#provider-pattern>Provider Pattern</a></li><li><a href=#factory-pattern>Factory Pattern</a></li><li><a href=#the-driver-pattern-in-contrast-to-all-of-them>The Driver Pattern in contrast to all of them</a></li></ul></li><li><a href=#when-to-use-a-driver-manager-solution>When to use a Driver Manager Solution</a></li><li><a href=#implementation>Implementation</a><ul><li><a href=#folder-structure>Folder Structure</a></li><li><a href=#facade>Facade</a></li><li><a href=#manager>Manager</a></li><li><a href=#driver>Driver</a></li><li><a href=#additional>Additional</a></li></ul></li><li><a href=#happy-coding>Happy Coding</a></li></ul></li></ul></nav></div></details></div></div><div class="min-w-0 min-h-0 max-w-prose grow"><div class="lead !mb-9 text-xl">Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the
+
+
+
+
+
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"
+><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="rgb(255,255,255)" />
+  
+  <title>Manager and Driver Pattern - pattern, implementation, and usage &middot; PhiloBlog</title>
+    <meta name="title" content="Manager and Driver Pattern - pattern, implementation, and usage &middot; PhiloBlog" />
+  
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.022d0ebc3b46a335eb1c7ef79b7f2de143d7cd5156d433638592ef1ce5f8554e.js"
+    integrity="sha256-Ai0OvDtGozXrHH73m38t4UPXzVFW1DNjhZLvHOX4VU4="
+  ></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.c64e8b4df8611ae48d61fd9350eb9e398b672bc049cde05189f34ee93ea00b25.css"
+    integrity="sha256-xk6LTfhhGuSNYf2TUOueOYtnK8BJzeBRifNO6T6gCyU="
+  />
+  
+  
+  
+  
+  
+  <meta
+    name="description"
+    content="
+      Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework. It&#39;s important to understand how Drivers and Managers work to understand how the framework solves some problems, but it&#39;s also a nice pattern to keep in mind for example to write tests that usually work with third-party APIs
+    "
+  />
+  
+  
+  
+  <link rel="canonical" href="https://www.blog.philodev.one/posts/2022-05-driver-manager-pattern/" />
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Manager and Driver Pattern - pattern, implementation, and usage" />
+<meta property="og:description" content="Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework. It&#39;s important to understand how Drivers and Managers work to understand how the framework solves some problems, but it&#39;s also a nice pattern to keep in mind for example to write tests that usually work with third-party APIs" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.blog.philodev.one/posts/2022-05-driver-manager-pattern/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-22T08:13:44+02:00" />
+<meta property="article:modified_time" content="2022-05-22T08:13:44+02:00" /><meta property="og:site_name" content="Philodev Blog" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Manager and Driver Pattern - pattern, implementation, and usage"/>
+<meta name="twitter:description" content="Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework. It&#39;s important to understand how Drivers and Managers work to understand how the framework solves some problems, but it&#39;s also a nice pattern to keep in mind for example to write tests that usually work with third-party APIs"/>
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Manager and Driver Pattern - pattern, implementation, and usage",
+    "headline": "Manager and Driver Pattern - pattern, implementation, and usage",
+    "description": "Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework. It\u0027s important to understand how Drivers and Managers work to understand how the framework solves some problems, but it\u0027s also a nice pattern to keep in mind for example to write tests that usually work with third-party APIs",
+    "abstract": "Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the framework.",
+    "inLanguage": "en",
+    "url" : "https:\/\/www.blog.philodev.one\/posts\/2022-05-driver-manager-pattern\/",
+    "author" : {
+      "@type": "Person",
+      "name": ""
+    },
+    "copyrightYear": "2022",
+    "dateCreated": "2022-05-22T08:13:44\u002b02:00",
+    "datePublished": "2022-05-22T08:13:44\u002b02:00",
+    
+    "dateModified": "2022-05-22T08:13:44\u002b02:00",
+    
+    "keywords": ["Development","Software Pattern","Laravel"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1572"
+  }
+  </script>
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+  
+  
+</head>
+<body
+    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="font-bold pe-2 text-primary-600 dark:text-primary-400">&darr;</span
+        >Skip to main content</a
+      >
+    </div>
+    
+    
+      <header class="py-6 font-semibold text-neutral-900 dark:text-neutral print:hidden sm:py-10">
+  <nav class="flex items-start justify-between sm:items-center">
+    
+    <div class="flex flex-row items-center">
+      
+  <a
+    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+    rel="me"
+    href="/"
+    >PhiloBlog</a
+  >
+
+    </div>
+    
+    
+      <ul class="flex flex-col list-none text-end sm:flex-row">
+        
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/posts/"
+                  title="Posts"
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Blog</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="https://www.philodev.one"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >About Philodev</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/tags/"
+                  title="Tags"
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Tags</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+          
+        
+      </ul>
+    
+  </nav>
+</header>
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  <article>
+    <header class="max-w-prose">
+      
+        <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+  <li class="inline hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/"
+      >PhiloBlog</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline ">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/posts/"
+      >Posts</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/posts/2022-05-driver-manager-pattern/"
+      >Manager and Driver Pattern - pattern, implementation, and usage</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Manager and Driver Pattern - pattern, implementation, and usage
+      </h1>
+      <div class="mt-8 mb-12 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2022-05-22 08:13:44 &#43;0200 CEST">22 May 2022</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+  
+
+
+      </div>
+      
+    </header>
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+        <div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8">
+          <div class="toc pe-5 print:hidden lg:sticky lg:top-10">
+            <details open class="-ms-5 mt-0 overflow-hidden rounded-lg ps-5">
+  <summary
+    class="-ms-5 block cursor-pointer bg-neutral-100 py-1 ps-5 text-lg font-semibold text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden"
+  >
+    Table of Contents
+  </summary>
+  <div class="-ms-5 border-s border-dotted border-neutral-300 py-2 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#manager-and-driver-pattern-ad-other-patterns">Manager and Driver Pattern (ad other Patterns)</a>
+          <ul>
+            <li><a href="#builder-pattern">Builder Pattern</a></li>
+            <li><a href="#provider-pattern">Provider Pattern</a></li>
+            <li><a href="#factory-pattern">Factory Pattern</a></li>
+            <li><a href="#the-driver-pattern-in-contrast-to-all-of-them">The Driver Pattern in contrast to all of them</a></li>
+          </ul>
+        </li>
+        <li><a href="#when-to-use-a-driver-manager-solution">When to use a Driver Manager Solution</a></li>
+        <li><a href="#implementation">Implementation</a>
+          <ul>
+            <li><a href="#folder-structure">Folder Structure</a></li>
+            <li><a href="#facade">Facade</a></li>
+            <li><a href="#manager">Manager</a></li>
+            <li><a href="#driver">Driver</a></li>
+            <li><a href="#additional">Additional</a></li>
+          </ul>
+        </li>
+        <li><a href="#happy-coding">Happy Coding</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+          </div>
+        </div>
+      
+      <div class="min-w-0 min-h-0 max-w-prose grow">
+        <div class="lead !mb-9 text-xl">
+  Driver-based Development is a coding pattern that is common in the Laravel world and used in multiple instances in the
 framework. It&rsquo;s important to understand how Drivers and Managers work to understand how the framework solves some
 problems, but it&rsquo;s also a nice pattern to keep in mind for example to write tests that usually work with third-party
-APIs</div><h2 id=manager-and-driver-pattern-ad-other-patterns class="relative group">Manager and Driver Pattern (ad other Patterns) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#manager-and-driver-pattern-ad-other-patterns aria-label=Anchor>#</a></span></h2><p>I started the research for this post to learn more about the software patterns. After my last learning on the usage of
-the Repository Pattern in
-<a href=https://www.blog.philodev.one/posts/2022-05-custom-query-builder-pattern/>this post</a> about something similar
+APIs
+</div>
+
+<h2 id="manager-and-driver-pattern-ad-other-patterns" class="relative group">Manager and Driver Pattern (ad other Patterns) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#manager-and-driver-pattern-ad-other-patterns" aria-label="Anchor">#</a></span></h2><p>I started the research for this post to learn more about the software patterns. After my last learning on the usage of
+the Repository Pattern in 
+  
+  
+    
+<a href="https://www.blog.philodev.one/posts/2022-05-custom-query-builder-pattern/">this post</a> about something similar
 to the Repository Pattern. So to keep this from happening, I want to give a small overview of the patterns that crossed
 my research path. This resulted in some learning, some confusion, and a somewhat understanding of the different patterns
 that people associated with the Driver Pattern. Keep in mind, in the end, Software Patterns are proven concepts that
-solve common problems in programming.</p><p><figure><img class="mx-auto my-0 rounded-md" width=2732 height=2048 srcset="/images/2022-05-patterns_huc55a63462c8d86d72c0291556247450f_1043859_330x0_resize_box_3.png 330w,/images/2022-05-patterns_huc55a63462c8d86d72c0291556247450f_1043859_660x0_resize_box_3.png 660w,/images/2022-05-patterns_huc55a63462c8d86d72c0291556247450f_1043859_1024x0_resize_box_3.png 1024w,/images/2022-05-patterns_huc55a63462c8d86d72c0291556247450f_1043859_1320x0_resize_box_3.png 2x" src=/images/2022-05-patterns_huc55a63462c8d86d72c0291556247450f_1043859_660x0_resize_box_3.png alt="Why do I care for Software Patterns?" loading=lazy></figure></p><h3 id=builder-pattern class="relative group">Builder Pattern <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#builder-pattern aria-label=Anchor>#</a></span></h3><p>The Builder Pattern enables the build-up of complex objects, the most common example would be the ORM Eloquent. Every
+solve common problems in programming.</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="mx-auto my-0 rounded-md"
+        
+          width="2732"
+          height="2048"
+          
+            srcset="/images/2022-05-patterns_huc55a63462c8d86d72c0291556247450f_1043859_330x0_resize_box_3.png 330w,/images/2022-05-patterns_huc55a63462c8d86d72c0291556247450f_1043859_660x0_resize_box_3.png 660w,/images/2022-05-patterns_huc55a63462c8d86d72c0291556247450f_1043859_1024x0_resize_box_3.png 1024w,/images/2022-05-patterns_huc55a63462c8d86d72c0291556247450f_1043859_1320x0_resize_box_3.png 2x"
+            src="/images/2022-05-patterns_huc55a63462c8d86d72c0291556247450f_1043859_660x0_resize_box_3.png"
+          
+        
+        alt="Why do I care for Software Patterns?"
+        
+          loading="lazy"
+        
+      />
+      
+    </figure>
+  
+</p>
+<h3 id="builder-pattern" class="relative group">Builder Pattern <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#builder-pattern" aria-label="Anchor">#</a></span></h3><p>The Builder Pattern enables the build-up of complex objects, the most common example would be the ORM Eloquent. Every
 Laravel developer has used it to build the complex object representation of a SQL query. Another example are Laravel
 Factories, which also use a number of methods to create a complex object in a readable way. I
-recommend <a href=http://snags88.github.io/builder-pattern-in-laravel target=_blank rel=noreferrer>this post to learn more</a>.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nv>$users</span> <span class=o>=</span> <span class=nx>User</span><span class=o>::</span><span class=na>factory</span><span class=p>()</span>
-</span></span><span class=line><span class=cl>    <span class=o>-&gt;</span><span class=na>has</span><span class=p>(</span><span class=nx>Post</span><span class=o>::</span><span class=na>factory</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>count</span><span class=p>(</span><span class=mi>3</span><span class=p>))</span>
-</span></span><span class=line><span class=cl>    <span class=o>-&gt;</span><span class=na>suspended</span><span class=p>()</span>
-</span></span><span class=line><span class=cl>    <span class=o>-&gt;</span><span class=na>make</span><span class=p>();</span>
-</span></span></code></pre></div><h3 id=provider-pattern class="relative group">Provider Pattern <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#provider-pattern aria-label=Anchor>#</a></span></h3><p>The Provider Pattern has more definitions than I expected&mldr; It can refer to the Data Provider pattern I used in Flutter
+recommend <a href="http://snags88.github.io/builder-pattern-in-laravel" target="_blank" rel="noreferrer">this post to learn more</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$users</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="nx">Post</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">suspended</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">make</span><span class="p">();</span>
+</span></span></code></pre></div><h3 id="provider-pattern" class="relative group">Provider Pattern <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#provider-pattern" aria-label="Anchor">#</a></span></h3><p>The Provider Pattern has more definitions than I expected&hellip; It can refer to the Data Provider pattern I used in Flutter
 and Angular to store and hold data; it may refer to the encapsulation of methods that do different things like a plugin
 or STK; or in the Laravel world Provider refer to application bootstrapping and configuration, they register routes,
-singletons, or bind listeners to events. I recommend asking the person who mentioned it to explain to what they refer.</p><h3 id=factory-pattern class="relative group">Factory Pattern <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#factory-pattern aria-label=Anchor>#</a></span></h3><p>The Factory Pattern (not Laravel Factories!) enables the creation of various types of objects on runtime. The decision
+singletons, or bind listeners to events. I recommend asking the person who mentioned it to explain to what they refer.</p>
+<h3 id="factory-pattern" class="relative group">Factory Pattern <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#factory-pattern" aria-label="Anchor">#</a></span></h3><p>The Factory Pattern (not Laravel Factories!) enables the creation of various types of objects on runtime. The decision
 on which precise class to create is done during runtime, but usually the same in different environments. It can be
 powerful if you don&rsquo;t know which type of object to create, e.g. if the client may decide this; or you want to have the
 creation of multiple objects in one class to localise them or share functions they both need. I
-recommend <a href=https://www.sitepoint.com/understanding-the-factory-method-design-pattern/ target=_blank rel=noreferrer>this post to learn more</a></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nx>ProductFactory</span><span class=o>::</span><span class=na>build</span><span class=p>(</span><span class=s1>&#39;Computer&#39;</span><span class=p>);</span>
-</span></span></code></pre></div><h3 id=the-driver-pattern-in-contrast-to-all-of-them class="relative group">The Driver Pattern in contrast to all of them <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#the-driver-pattern-in-contrast-to-all-of-them aria-label=Anchor>#</a></span></h3><p>Different Drivers enable different implementations to perform the same tasks. The most common example is sending
+recommend <a href="https://www.sitepoint.com/understanding-the-factory-method-design-pattern/" target="_blank" rel="noreferrer">this post to learn more</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">ProductFactory</span><span class="o">::</span><span class="na">build</span><span class="p">(</span><span class="s1">&#39;Computer&#39;</span><span class="p">);</span>
+</span></span></code></pre></div><h3 id="the-driver-pattern-in-contrast-to-all-of-them" class="relative group">The Driver Pattern in contrast to all of them <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#the-driver-pattern-in-contrast-to-all-of-them" aria-label="Anchor">#</a></span></h3><p>Different Drivers enable different implementations to perform the same tasks. The most common example is sending
 messages using different services. A driver could be <code>sms</code>, one <code>mail</code>, and one <code>push notification</code>. The task is always
 sending the message to the given set of users, but the implementation is different, other third-party APIs might be used
 and sometimes the decision of which driver to use is done on runtime. Another example in the Laravel world is the Cache
 Driver that stores your cache in <code>redis</code> or <code>table</code>, or the Database Driver that translates your Eloquent to <code>mySql</code>
-or <code>pgsql</code>.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nx>Message</span><span class=o>::</span><span class=na>channel</span><span class=p>(</span><span class=s1>&#39;mail&#39;</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>    <span class=o>-&gt;</span><span class=na>to</span><span class=p>(</span><span class=nv>$user</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>    <span class=o>-&gt;</span><span class=na>content</span><span class=p>(</span><span class=s1>&#39;Do not think about pink elephants&#39;</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>    <span class=o>-&gt;</span><span class=na>send</span><span class=p>();</span>
+or <code> pgsql</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">Message</span><span class="o">::</span><span class="na">channel</span><span class="p">(</span><span class="s1">&#39;mail&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">to</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">content</span><span class="p">(</span><span class="s1">&#39;Do not think about pink elephants&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 </span></span></code></pre></div><p>Now about the different Patterns: This code utilizes the Builder Pattern to set the properties of the object step by
 step, but the Driver Pattern Magic happens just in the first line which determines how the message is sent. In the
 Driver class itself somewhere the implementation of the sending must be, and there I would call some Service class or
 library for actually sending emails and another one for sending SMS. The Factory Pattern might look similar at first
 sight as it also creates an object on runtime based on a string, but the Factory Pattern aims to instantiate Models
-while the Driver Pattern aims to instantiate classes that offer defined functionalities.</p><h2 id=when-to-use-a-driver-manager-solution class="relative group">When to use a Driver Manager Solution <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#when-to-use-a-driver-manager-solution aria-label=Anchor>#</a></span></h2><p>The most common answer to this question I found was:</p><blockquote><p>A driver-based service is the right choice when the same utility can be provided by more than one technology.
-<a href=https://inspector.dev/how-to-extend-laravel-with-driver-based-services/ target=_blank rel=noreferrer>Source</a></p></blockquote><p>So whenever you discover a problem that might now (or in the future) be solved by multiple or changing technologies,
+while the Driver Pattern aims to instantiate classes that offer defined functionalities.</p>
+<h2 id="when-to-use-a-driver-manager-solution" class="relative group">When to use a Driver Manager Solution <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#when-to-use-a-driver-manager-solution" aria-label="Anchor">#</a></span></h2><p>The most common answer to this question I found was:</p>
+<blockquote>
+<p>A driver-based service is the right choice when the same utility can be provided by more than one technology.
+<a href="https://inspector.dev/how-to-extend-laravel-with-driver-based-services/" target="_blank" rel="noreferrer">Source</a></p>
+</blockquote>
+<p>So whenever you discover a problem that might now (or in the future) be solved by multiple or changing technologies,
 this pattern can make it easy and simple to switch between the technologies depending on runtime decisions, database
-entries, or environment variables.</p><p><strong>But there is more</strong>! I want to emphasize two other options when this pattern can be a handy tool:</p><p><strong>Testing and local development</strong> can be a non-trivial task if you use third-party APIs or your own Micro Services.
+entries, or environment variables.</p>
+<p><strong>But there is more</strong>! I want to emphasize two other options when this pattern can be a handy tool:</p>
+<p><strong>Testing and local development</strong> can be a non-trivial task if you use third-party APIs or your own Micro Services.
 During tests (and sometimes during local development) you don&rsquo;t care about the correctness of the technology you are
 using, and maybe don&rsquo;t even want to trigger any outside communication. Based on your Environment (<code>testing</code> or <code>local</code>)
 you can then switch to a FakerDriver that maybe can be configured in the test to simulate a long request, a wrong
-answer, or just correct behavior.</p><p><strong>A-B Testing of Services</strong> The first time I came in contact with this pattern, one of the reasons (besides many others)
+answer, or just correct behavior.</p>
+<p><strong>A-B Testing of Services</strong> The first time I came in contact with this pattern, one of the reasons (besides many others)
 why we went for this pattern was the easy implementation of an A-B Test of a new Recommendation System. In a situation
 in which you have two technologies to do the same job, but want to compare how the users react to both of them you can
 implement a Driver pattern to let different users use different technologies and compare the individual engagement rate
-of features for different user groups.</p><h2 id=implementation class="relative group">Implementation <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#implementation aria-label=Anchor>#</a></span></h2><h3 id=folder-structure class="relative group">Folder Structure <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#folder-structure aria-label=Anchor>#</a></span></h3><p>Here is the plan: The two Driver are <code>FakeDriver</code> and <code>HugoDriver</code> (No need to search for that name, I just made it up).
+of features for different user groups.</p>
+<h2 id="implementation" class="relative group">Implementation <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#implementation" aria-label="Anchor">#</a></span></h2><h3 id="folder-structure" class="relative group">Folder Structure <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#folder-structure" aria-label="Anchor">#</a></span></h3><p>Here is the plan: The two Driver are <code>FakeDriver</code> and <code>HugoDriver</code> (No need to search for that name, I just made it up).
 To ensure the next developer who implements a Driver will implement everything we need, the <code>RecommenderContract</code>
 defines which methods should be in a Driver. The <code>RecommenderManager</code> is the file in which we define which string causes
 the instantiation of which Driver, and which Driver is the Default. And the <code>Recommender</code> is the Facade we will be using
-in practice.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Support
-</span></span><span class=line><span class=cl>└─── Drivers
-</span></span><span class=line><span class=cl>│   │   RecommenderContract.php
-</span></span><span class=line><span class=cl>│   │   FakeDriver.php
-</span></span><span class=line><span class=cl>│   │   HugoDriver.php
-</span></span><span class=line><span class=cl>│
-</span></span><span class=line><span class=cl>└─── Facades
-</span></span><span class=line><span class=cl>│   │   Recommender.php
-</span></span><span class=line><span class=cl>│
-</span></span><span class=line><span class=cl>└─── Managers
-</span></span><span class=line><span class=cl>    │   RecommenderManager.php
-</span></span></code></pre></div><p>To now understand the implementation I would like to follow the code starting with the usage I aim for.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=c1>// using default driver
-</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>Recommender</span><span class=o>::</span><span class=na>recommendationsForUser</span><span class=p>(</span><span class=nv>$user</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=c1>// using custom driver
-</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>Recommender</span><span class=o>::</span><span class=na>driver</span><span class=p>(</span><span class=s1>&#39;hugo&#39;</span><span class=p>)</span><span class=o>-&gt;</span><span class=na>recommendationsForUser</span><span class=p>(</span><span class=nv>$user</span><span class=p>);</span>
-</span></span></code></pre></div><h3 id=facade class="relative group">Facade <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#facade aria-label=Anchor>#</a></span></h3><p>To achieve this code, we first need a <a href=https://laravel.com/docs/9.x/facades#main-content target=_blank rel=noreferrer>Laravel Facade</a>. This Facade
-will call the Recommender Manager.</p><blockquote><p>In a Laravel application, a facade is a class that provides access to an object from the container.
+in practice.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Support
+</span></span><span class="line"><span class="cl">└─── Drivers
+</span></span><span class="line"><span class="cl">│   │   RecommenderContract.php
+</span></span><span class="line"><span class="cl">│   │   FakeDriver.php
+</span></span><span class="line"><span class="cl">│   │   HugoDriver.php
+</span></span><span class="line"><span class="cl">│
+</span></span><span class="line"><span class="cl">└─── Facades
+</span></span><span class="line"><span class="cl">│   │   Recommender.php
+</span></span><span class="line"><span class="cl">│
+</span></span><span class="line"><span class="cl">└─── Managers
+</span></span><span class="line"><span class="cl">    │   RecommenderManager.php
+</span></span></code></pre></div><p>To now understand the implementation I would like to follow the code starting with the usage I aim for.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// using default driver
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Recommender</span><span class="o">::</span><span class="na">recommendationsForUser</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// using custom driver
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Recommender</span><span class="o">::</span><span class="na">driver</span><span class="p">(</span><span class="s1">&#39;hugo&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">recommendationsForUser</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+</span></span></code></pre></div><h3 id="facade" class="relative group">Facade <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#facade" aria-label="Anchor">#</a></span></h3><p>To achieve this code, we first need a <a href="https://laravel.com/docs/9.x/facades#main-content" target="_blank" rel="noreferrer">Laravel Facade</a>. This Facade
+will call the Recommender Manager.</p>
+<blockquote>
+<p>In a Laravel application, a facade is a class that provides access to an object from the container.
 The machinery that makes this work is in the Facade class. Laravel&rsquo;s facades, and any custom facades you create,
-will extend the base Illuminate\Support\Facades\Facade class.</p></blockquote><p>As so often I recommend to type-hint all methods to utilize autocompletion as well as the possibility to &ldquo;click through&rdquo;
-your code easily.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Support\Facades\Facade</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=sd>/**
-</span></span></span><span class=line><span class=cl><span class=sd> * Class Recommender
-</span></span></span><span class=line><span class=cl><span class=sd> *
-</span></span></span><span class=line><span class=cl><span class=sd> * @method recommendationsForUser(array $models, ?int $userId = null)
-</span></span></span><span class=line><span class=cl><span class=sd> * @see \App\Support\Drivers\HugoDriver::recommendationsForUser()
-</span></span></span><span class=line><span class=cl><span class=sd> * @method driver(string $name)
-</span></span></span><span class=line><span class=cl><span class=sd> *
-</span></span></span><span class=line><span class=cl><span class=sd> * @see \App\Support\Managers\RecommenderManager
-</span></span></span><span class=line><span class=cl><span class=sd> */</span>
-</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Recommender</span> <span class=k>extends</span> <span class=nx>Facade</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=k>protected</span> <span class=k>static</span> <span class=k>function</span> <span class=nf>getFacadeAccessor</span><span class=p>()</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nx>RecommenderManager</span><span class=o>::</span><span class=na>class</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></div><h3 id=manager class="relative group">Manager <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#manager aria-label=Anchor>#</a></span></h3><p>The Manager defines which Driver is initiated. For this extend the <code>Illuminate\Support\Manager</code>. To implement this class
+will extend the base Illuminate\Support\Facades\Facade class.</p>
+</blockquote>
+<p>As so often I recommend to type-hint all methods to utilize autocompletion as well as the possibility to &ldquo;click through&rdquo;
+your code easily.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Facade</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Class Recommender
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @method recommendationsForUser(array $models, ?int $userId = null)
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @see \App\Support\Drivers\HugoDriver::recommendationsForUser()
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @method driver(string $name)
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @see \App\Support\Managers\RecommenderManager
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Recommender</span> <span class="k">extends</span> <span class="nx">Facade</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getFacadeAccessor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">RecommenderManager</span><span class="o">::</span><span class="na">class</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="manager" class="relative group">Manager <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#manager" aria-label="Anchor">#</a></span></h3><p>The Manager defines which Driver is initiated. For this extend the <code>Illuminate\Support\Manager</code>. To implement this class
 you need to define the method <code>getDefaultDriver</code>. If you want a different default per environment, this would be the
 place to either return a config value or an environment variable. Then you need one method per Driver you want to build.
 The Illuminate Manager will guess the method name based on the string you put in (e.g. <code>'fake'</code>)
-using <code>$method = 'create'.Str::studly($driver).'Driver';</code>.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Support\Manager</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>RecommenderManager</span> <span class=k>extends</span> <span class=nx>Manager</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>getDefaultDriver</span><span class=p>()</span><span class=o>:</span> <span class=nx>string</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nx>env</span><span class=p>(</span><span class=s1>&#39;RECOMMENDER_DRIVER&#39;</span><span class=p>,</span> <span class=s1>&#39;fake&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>createHugoDriver</span><span class=p>()</span><span class=o>:</span> <span class=nx>HugoDriver</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=k>new</span> <span class=nx>HugoDriver</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>createFakeDriver</span><span class=p>()</span><span class=o>:</span> <span class=nx>FakeDriver</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=k>new</span> <span class=nx>FakeDriver</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
+using <code> $method = 'create'.Str::studly($driver).'Driver';</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Support\Manager</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">RecommenderManager</span> <span class="k">extends</span> <span class="nx">Manager</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDefaultDriver</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">env</span><span class="p">(</span><span class="s1">&#39;RECOMMENDER_DRIVER&#39;</span><span class="p">,</span> <span class="s1">&#39;fake&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">createHugoDriver</span><span class="p">()</span><span class="o">:</span> <span class="nx">HugoDriver</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="nx">HugoDriver</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">createFakeDriver</span><span class="p">()</span><span class="o">:</span> <span class="nx">FakeDriver</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="nx">FakeDriver</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>One step is missing until this is working - registering the Manager. This is done using
-a <a href=https://laravel.com/docs/9.x/providers target=_blank rel=noreferrer>Laravel Service Provider</a>. As I don&rsquo;t plan to use the Recommender
-functionality in every request I made it a deferred Provider.</p><blockquote><p>If your provider is only registering bindings in the service container, you may choose to defer its registration until
+a <a href="https://laravel.com/docs/9.x/providers" target="_blank" rel="noreferrer">Laravel Service Provider</a>. As I don&rsquo;t plan to use the Recommender
+functionality in every request I made it a deferred Provider.</p>
+<blockquote>
+<p>If your provider is only registering bindings in the service container, you may choose to defer its registration until
 one of the registered bindings is actually needed. Deferring the loading of such a provider will improve the
-performance of your application, since it is not loaded from the filesystem on every request.</p></blockquote><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Support\ServiceProvider</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Contracts\Support\DeferrableProvider</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>RecommenderServiceProvider</span> <span class=k>extends</span> <span class=nx>ServiceProvider</span> <span class=k>implements</span> <span class=nx>DeferrableProvider</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>register</span><span class=p>()</span><span class=o>:</span> <span class=nx>void</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>app</span><span class=o>-&gt;</span><span class=na>singleton</span><span class=p>(</span><span class=nx>RecommenderManager</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=nx>fn</span> <span class=p>(</span><span class=nv>$app</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=k>new</span> <span class=nx>RecommenderManager</span><span class=p>(</span><span class=nv>$app</span><span class=p>));</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>provides</span><span class=p>()</span><span class=o>:</span> <span class=k>array</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=p>[</span><span class=nx>RecommenderManager</span><span class=o>::</span><span class=na>class</span><span class=p>];</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></div><h3 id=driver class="relative group">Driver <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#driver aria-label=Anchor>#</a></span></h3><p>The Facade calls the Manager, and the Manager decides which Driver to call, now the Driver is missing implementation.
-This is very straightforward. Whatever Hugo does, Hugo does it here!</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Support\Collection</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>HugoDriver</span> <span class=k>implements</span> <span class=nx>RecommenderContract</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>recommendationsForUser</span><span class=p>(</span><span class=k>array</span> <span class=nv>$models</span><span class=p>,</span> <span class=o>?</span><span class=nx>int</span> <span class=nv>$userId</span> <span class=o>=</span> <span class=k>null</span><span class=p>)</span><span class=o>:</span> <span class=nx>Collection</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=c1>// implement magic here
-</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>return</span> <span class=nx>collect</span><span class=p>([]);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></div><h3 id=additional class="relative group">Additional <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#additional aria-label=Anchor>#</a></span></h3><p>As I mentioned I use this to test my code if it utilises third-party technology. So when I write a FakeDriver I
+performance of your application, since it is not loaded from the filesystem on every request.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Support\ServiceProvider</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Contracts\Support\DeferrableProvider</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">RecommenderServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span> <span class="k">implements</span> <span class="nx">DeferrableProvider</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">singleton</span><span class="p">(</span><span class="nx">RecommenderManager</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">RecommenderManager</span><span class="p">(</span><span class="nv">$app</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">provides</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">[</span><span class="nx">RecommenderManager</span><span class="o">::</span><span class="na">class</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="driver" class="relative group">Driver <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#driver" aria-label="Anchor">#</a></span></h3><p>The Facade calls the Manager, and the Manager decides which Driver to call, now the Driver is missing implementation.
+This is very straightforward. Whatever Hugo does, Hugo does it here!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Support\Collection</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">HugoDriver</span> <span class="k">implements</span> <span class="nx">RecommenderContract</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">recommendationsForUser</span><span class="p">(</span><span class="k">array</span> <span class="nv">$models</span><span class="p">,</span> <span class="o">?</span><span class="nx">int</span> <span class="nv">$userId</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">Collection</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// implement magic here
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="nx">collect</span><span class="p">([]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="additional" class="relative group">Additional <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#additional" aria-label="Anchor">#</a></span></h3><p>As I mentioned I use this to test my code if it utilises third-party technology. So when I write a FakeDriver I
 implement additional methods, that allow me to fake different states, time delays, or other things. Sure, you can also
 write tiny Unit Tests to test such behaviors, I made the best experience with feature tests and this method of faking
-data during the tests.</p><h2 id=happy-coding class="relative group">Happy Coding <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#happy-coding aria-label=Anchor>#</a></span></h2><p>This was my two cents on Manager and Drivers, and the way I implemented it. When I discovered the pattern I read through
-this <a href=https://itnext.io/building-driver-based-components-in-laravel-5b390dc25bd9 target=_blank rel=noreferrer>post by Orobo</a>, as well
-as <a href=https://inspector.dev/how-to-extend-laravel-with-driver-based-services/ target=_blank rel=noreferrer>this on by Valerio</a>.</p><p>If you spot an error, please don&rsquo;t hesitate on enlighten me,</p><p>Happy Coding :)</p></div></section><footer class="pt-8 max-w-prose print:hidden"><div class=flex><div class=place-self-center><div class="text-2xl sm:text-lg"></div></div></div><div class=pt-8><hr class="border-dotted border-neutral-300 dark:border-neutral-600"><div class="flex justify-between pt-3"><span><a class="group flex" href=/posts/2022-05-relationships/><span class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"><span class="ltr:inline rtl:hidden">&larr;</span><span class="ltr:hidden rtl:inline">&rarr;</span></span>
-<span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500">Useful and Useless Relationship Definitions</span>
-<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"><time datetime="2022-05-20 14:20:44 +0200 CEST">20 May 2022</time>
-</span></span></a></span><span><a class="group flex text-right" href=/posts/2022-06-customer-search/><span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500">Technical Job Interview questions 2022</span>
-<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"><time datetime="2022-06-02 14:20:44 +0200 CEST">2 June 2022</time>
-</span></span><span class="ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"><span class="ltr:inline rtl:hidden">&rarr;</span><span class="ltr:hidden rtl:inline">&larr;</span></span></a></span></div></div></footer></article><div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12"><a href=#the-top class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400" aria-label="Scroll to top" title="Scroll to top">&uarr;</a></div></main><footer class="py-10 print:hidden"><div class="flex items-center justify-between"><div><p class="text-sm text-neutral-500 dark:text-neutral-400">&copy;
-2023</p><p class="text-xs text-neutral-500 dark:text-neutral-400">Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://gohugo.io/ target=_blank rel="noopener noreferrer">Hugo</a> & <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://github.com/jpanther/congo target=_blank rel="noopener noreferrer">Congo</a></p></div><div class="flex flex-row items-center"><div class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"><button id=appearance-switcher-0 type=button aria-label="appearance switcher"><div class="flex items-center justify-center w-12 h-12 dark:hidden" title="Switch to dark appearance"><span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M32 256C32 132.2 132.3 32 255.8 32c11.36.0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z"/></svg></span></div><div class="items-center justify-center hidden w-12 h-12 dark:flex" title="Switch to light appearance"><span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M256 159.1c-53.02.0-95.1 42.98-95.1 95.1s41.2 96.9 95.1 96.9 95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347l-63.2-91.9 63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89 164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6 12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256 2.74 347.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7 19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109 109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69.0-127.1-57.31-127.1-127.1.0-70.69 57.31-127.1 127.1-127.1S383.1 186.2 383.1 256c0 70.7-56.4 127.1-127.1 127.1z"/></svg></span></div></button></div></div></div></footer></div></body></html>
+data during the tests.</p>
+<h2 id="happy-coding" class="relative group">Happy Coding <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#happy-coding" aria-label="Anchor">#</a></span></h2><p>This was my two cents on Manager and Drivers, and the way I implemented it. When I discovered the pattern I read through
+this <a href="https://itnext.io/building-driver-based-components-in-laravel-5b390dc25bd9" target="_blank" rel="noreferrer">post by Orobo</a>, as well
+as <a href="https://inspector.dev/how-to-extend-laravel-with-driver-based-services/" target="_blank" rel="noreferrer">this on by Valerio</a>.</p>
+<p>If you spot an error, please don&rsquo;t hesitate on enlighten me,</p>
+<p>Happy Coding :)</p>
+
+      </div>
+    </section>
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  <div class="flex">
+    
+    <div class="place-self-center">
+      
+      
+      <div class="text-2xl sm:text-lg">
+</div>
+    </div>
+  </div>
+
+
+      
+
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="group flex" href="/posts/2022-05-relationships/">
+              <span
+                class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+                ><span class="ltr:inline rtl:hidden">&larr;</span
+                ><span class="ltr:hidden rtl:inline">&rarr;</span></span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Useful and Useless Relationship Definitions</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2022-05-20 14:20:44 &#43;0200 CEST">20 May 2022</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="group flex text-right" href="/posts/2022-06-customer-search/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Technical Job Interview questions 2022</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2022-06-02 14:20:44 &#43;0200 CEST">2 June 2022</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+                ><span class="ltr:inline rtl:hidden">&rarr;</span
+                ><span class="ltr:hidden rtl:inline">&larr;</span></span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+          <div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12">
+            <a
+              href="#the-top"
+              class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+              aria-label="Scroll to top"
+              title="Scroll to top"
+            >
+              &uarr;
+            </a>
+          </div>
+        
+      </main><footer class="py-10 print:hidden">
+  
+  
+  <div class="flex items-center justify-between">
+    <div>
+      
+      
+        <p class="text-sm text-neutral-500 dark:text-neutral-400">
+            &copy;
+            2023
+            
+        </p>
+      
+      
+      
+        <p class="text-xs text-neutral-500 dark:text-neutral-400">
+          
+          
+          Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href="https://github.com/jpanther/congo" target="_blank" rel="noopener noreferrer">Congo</a>
+        </p>
+      
+    </div>
+    <div class="flex flex-row items-center">
+      
+      
+      
+      
+        <div
+          class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        >
+          <button id="appearance-switcher-0" type="button" aria-label="appearance switcher">
+            <div
+              class="flex items-center justify-center w-12 h-12 dark:hidden"
+              title="Switch to dark appearance"
+            >
+              <span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+            </div>
+            <div
+              class="items-center justify-center hidden w-12 h-12 dark:flex"
+              title="Switch to light appearance"
+            >
+              <span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+            </div>
+          </button>
+        </div>
+      
+    </div>
+  </div>
+  
+  
+</footer>
+
+    </div>
+  </body>
+</html>
