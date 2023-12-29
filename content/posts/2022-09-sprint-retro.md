@@ -10,7 +10,7 @@ joined the meeting, and if I would not be more productive writing code. Retrospe
 retrospectives. I enjoy the feeling of improvement after a retro, I like the open communication of retros, and I like
 the feeling of being heard."
 
-tags: ["Agile", "Retrospective", "Scrum"]
+tags: [ "Agile", "Retrospective", "Scrum" ]
 ---
 
 {{< lead >}}
@@ -131,6 +131,31 @@ enforcing
 questioning some practices in the team.
 
 ![Finding Vision and Value](/images/2022-10-retro-4.png)
+
+## Special Retros (updated 29.12.2023)
+
+From time to time, a special retro can provide an overview of the team's long-term state, can be used to celebrate
+very big milestones, or fill retros which will presumably not be very productive.
+
+### Timeline Retros
+
+Perfect for pre new year retrospectives, or for retrospectives after finishing a great milestone.
+
+First Step - Reconstruct the timeline: A timeline over a selected time frame (e.g. the last half year) is provided.
+Additionally, a set of categories (new Team member started, achievement unlocked, new technology introduced, ...) or
+some timeline distinctions (team events, company events, ...) may be provided as help.
+In our team, it was helpful to do this step as discussion instead of individual work, as already in this step the team
+discovered that the team does not remember achievements and want to celebrate them more.
+
+I already find this step very valuable, and the next step depends on the team capabilities to communicate their
+feelings. Not all teams are comfortable sharing their feelings, but if they are, the next step can provide nice
+insides.
+
+Second Step - Match the teams feelings: The team is asked to place their feelings on the timeline.
+This can be used to discuss what events changed the team's mood, and what events can maybe celebrated or discussed in
+future.
+
+![Timeline Retro](/images/2023-12-retro-5.png)
 
 ## Collection of Themes
 
