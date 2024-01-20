@@ -6,10 +6,10 @@ weight = 1
     rtl = false
     isoCode = "en"
     displayName = "EN"
-    description = "The thoughts and ideas of a Code Wizard about coding, development process and self improvement"
+    description = "The thoughts and ideas of a Developer about coding, development process and self improvement"
 
 title = "Philodev Blog"
-"header.logo" = "logo.png"
+header.logo = "logo.png"
 # copyright = "Copy, _right?_ :thinking_face:"
 
 dateFormat = "2 January 2006"
