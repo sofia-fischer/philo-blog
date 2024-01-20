@@ -13,8 +13,6 @@ tags: [ "Agile", "Team Communication" ]
 {{< lead >}}
 PHP attributes are a great addition to the language. But how are they used, can I use them, and what are Use Cases?
 {{< /lead >}}
-[^carveth]
-[^carveth]: [Logic - DEDUCTIVE AND INDUCTIVE](https://www.gutenberg.org/files/18440/18440-h/18440-h.html)
 
 ## What Attributes can do
 
