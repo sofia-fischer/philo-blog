@@ -1,5 +1,5 @@
 ---
-title: "Job Interview questions 2023"
+title: "From Php to GoLang"
 
 date: 2023-05-06T14:20:44+02:00
 
@@ -8,7 +8,7 @@ draft: true
 description: "Uncannily like about the same time last year, I again collect technical Interview questions.
 Here are some of my favorites, including my (rethought) answers."
 
-tags: [ "Agile", "Team Communication" ]
+tags: [ "Development", "GoLang" ]
 ---
 
 {{< lead >}}

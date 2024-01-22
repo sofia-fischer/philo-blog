@@ -7,7 +7,7 @@ draft: false
 
 description: How does the Symfony Messenger Component work; How can I hook into the process; and how can I use it for my own needs?
 
-tags: [ "PHP", "Symfony", "Queue", "Pipeline Pattern", "Patterns", "Development", ]
+tags: [ "Symfony", "Queue", "Software Pattern", "Development" ]
 ---
 
 {{< lead >}}

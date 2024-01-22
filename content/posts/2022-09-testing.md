@@ -7,7 +7,7 @@ draft: true
 
 description: "TODO"
 
-tags: ["Development", "Testing", "Unit Testing", "Laravel", "Feature Testing", "Contracts Testing"]
+tags: ["Development", "Testing", "Laravel"]
 ---
 
 {{< lead >}}

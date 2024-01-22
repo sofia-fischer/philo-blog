@@ -9,7 +9,7 @@ description: "It is better to be vaguely right than exactly wrong. - Carveth Rea
   in a direction to put a metric on everything to drive decisions, most teams I have worked with are still in the
   beginning of this journey. Here is a collection on Information on what, how, and why to collect Data for project planning"
 
-tags: [ "Agile", "Team Communication" ]
+tags: [ "Agile", "Devops" ]
 ---
 
 {{< lead >}}

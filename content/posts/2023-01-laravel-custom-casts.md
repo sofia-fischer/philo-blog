@@ -11,7 +11,7 @@ value actually needed. But in case of Arrays, especially in a Domain Driven Desi
 are reaching their limits. In this post, I want to celebrate the power of Laravel Custom Casts and how an implementation
 could look like."
 
-tags: ["Development", "Laravel", "Casts", "Framework"]
+tags: ["Development", "Laravel"]
 ---
 
 {{< lead >}}

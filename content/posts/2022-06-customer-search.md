@@ -10,7 +10,7 @@ find companies that are looking for my tech stack and send a spontaneous applica
 interview, maybe a technical interview with dev-related questions, or sometimes a coding challenge. In this post I want
 to look back on the technical questions I got asked."
 
-tags: ["Development", "Laravel", "Job"]
+tags: ["Development", "Laravel", "Developer Life"]
 ---
 
 {{< lead >}} Looking for a customer is the same process compared to looking for a job. I use the usual platforms to find

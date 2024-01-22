@@ -1,369 +1,12 @@
-
-
-
-
-
-
-<!DOCTYPE html>
-<html
-  lang="en"
-  dir="ltr"
-  class="scroll-smooth"
-  data-default-appearance="dark"
-  data-auto-appearance="true"
-><head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="rgb(255,255,255)" />
-  
-  <title>Communication between different teams working on the same codebase &middot; PhiloBlog</title>
-    <meta name="title" content="Communication between different teams working on the same codebase &middot; PhiloBlog" />
-  
-  
-  
-  
-  
-  <script
-    type="text/javascript"
-    src="/js/appearance.min.022d0ebc3b46a335eb1c7ef79b7f2de143d7cd5156d433638592ef1ce5f8554e.js"
-    integrity="sha256-Ai0OvDtGozXrHH73m38t4UPXzVFW1DNjhZLvHOX4VU4="
-  ></script>
-  
-  
-  
-  
-  
-  
-  
-  
-  <link
-    type="text/css"
-    rel="stylesheet"
-    href="/css/main.bundle.min.c64e8b4df8611ae48d61fd9350eb9e398b672bc049cde05189f34ee93ea00b25.css"
-    integrity="sha256-xk6LTfhhGuSNYf2TUOueOYtnK8BJzeBRifNO6T6gCyU="
-  />
-  
-  
-  
-  
-  
-  <meta
-    name="description"
-    content="
-      Effective communication is essential in software development. As per Conway&#39;s Law, the structure and architecture of a software system are influenced by the communication patterns and structures within the organization. 
-    "
-  />
-  
-  
-  
-  <link rel="canonical" href="https://www.blog.philodev.one/posts/2023-04-communicating-between-teams/" />
-  
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-  
-  
-  
-  
-  
-  
-  
-  <meta property="og:title" content="Communication between different teams working on the same codebase" />
-<meta property="og:description" content="Effective communication is essential in software development. As per Conway&#39;s Law, the structure and architecture of a software system are influenced by the communication patterns and structures within the organization. " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.blog.philodev.one/posts/2023-04-communicating-between-teams/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-04-16T14:20:44+02:00" />
-<meta property="article:modified_time" content="2023-04-16T14:20:44+02:00" /><meta property="og:site_name" content="Philodev Blog" />
-
-
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Communication between different teams working on the same codebase"/>
-<meta name="twitter:description" content="Effective communication is essential in software development. As per Conway&#39;s Law, the structure and architecture of a software system are influenced by the communication patterns and structures within the organization. "/>
-
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "articleSection": "Posts",
-    "name": "Communication between different teams working on the same codebase",
-    "headline": "Communication between different teams working on the same codebase",
-    "description": "Effective communication is essential in software development. As per Conway\u0027s Law, the structure and architecture of a software system are influenced by the communication patterns and structures within the organization. ",
-    "abstract": "Effective communication is essential in software development.",
-    "inLanguage": "en",
-    "url" : "https:\/\/www.blog.philodev.one\/posts\/2023-04-communicating-between-teams\/",
-    "author" : {
-      "@type": "Person",
-      "name": ""
-    },
-    "copyrightYear": "2023",
-    "dateCreated": "2023-04-16T14:20:44\u002b02:00",
-    "datePublished": "2023-04-16T14:20:44\u002b02:00",
-    
-    "dateModified": "2023-04-16T14:20:44\u002b02:00",
-    
-    "keywords": ["Agile","Team Communication"],
-    
-    "mainEntityOfPage": "true",
-    "wordCount": "1064"
-  }
-  </script>
-
-
-  
-  
-  
-  
-  
-
-
-
-
-
-
-  
-  
-  
-  
-  
-
-  
-  
-</head>
-<body
-    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"
-  >
-    <div id="the-top" class="absolute flex self-center">
-      <a
-        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
-        href="#main-content"
-        ><span class="font-bold pe-2 text-primary-600 dark:text-primary-400">&darr;</span
-        >Skip to main content</a
-      >
-    </div>
-    
-    
-      <header class="py-6 font-semibold text-neutral-900 dark:text-neutral print:hidden sm:py-10">
-  <nav class="flex items-start justify-between sm:items-center">
-    
-    <div class="flex flex-row items-center">
-      
-  <a
-    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
-    rel="me"
-    href="/"
-    >PhiloBlog</a
-  >
-
-    </div>
-    
-    
-      <ul class="flex flex-col list-none text-end sm:flex-row">
-        
-          
-            
-            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
-              
-                <a
-                  href="/posts/"
-                  title="Posts"
-                  
-                  ><span
-                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
-                      >Blog</span
-                    >
-                  </a
-                >
-              
-            </li>
-          
-            
-            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
-              
-                <a
-                  href="https://www.philodev.one"
-                  title=""
-                  
-                  ><span
-                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
-                      >About Philodev</span
-                    >
-                  </a
-                >
-              
-            </li>
-          
-            
-            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
-              
-                <a
-                  href="/tags/"
-                  title="Tags"
-                  
-                  ><span
-                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
-                      >Tags</span
-                    >
-                  </a
-                >
-              
-            </li>
-          
-          
-        
-      </ul>
-    
-  </nav>
-</header>
-
-    
-    <div class="relative flex flex-col grow">
-      <main id="main-content" class="grow">
-        
-  <article>
-    <header class="max-w-prose">
-      
-        <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
-  
-  
-    
-  
-    
-  
-  <li class="inline hidden">
-    <a
-      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
-      href="/"
-      >PhiloBlog</a
-    ><span class="px-1 text-primary-500">/</span>
-  </li>
-
-  
-  <li class="inline ">
-    <a
-      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
-      href="/posts/"
-      >Posts</a
-    ><span class="px-1 text-primary-500">/</span>
-  </li>
-
-  
-  <li class="inline hidden">
-    <a
-      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
-      href="/posts/2023-04-communicating-between-teams/"
-      >Communication between different teams working on the same codebase</a
-    ><span class="px-1 text-primary-500">/</span>
-  </li>
-
-</ol>
-
-
-      
-      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-        Communication between different teams working on the same codebase
-      </h1>
-      <div class="mt-8 mb-12 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
-        
-
-
-
-
-
-  
-  
-
-
-
-  
-
-  
-  
-    
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-
-  <div class="flex flex-row flex-wrap items-center">
-    
-    
-      <time datetime="2023-04-16 14:20:44 &#43;0200 CEST">16 April 2023</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
-    
-
-    
-    
-  </div>
-
-  
-  
-
-
-      </div>
-      
-    </header>
-    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
-      
-        <div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8">
-          <div class="toc pe-5 print:hidden lg:sticky lg:top-10">
-            <details open class="-ms-5 mt-0 overflow-hidden rounded-lg ps-5">
-  <summary
-    class="-ms-5 block cursor-pointer bg-neutral-100 py-1 ps-5 text-lg font-semibold text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden"
-  >
-    Table of Contents
-  </summary>
-  <div class="-ms-5 border-s border-dotted border-neutral-300 py-2 ps-5 dark:border-neutral-600">
-    <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#conways-law">Conways Law</a></li>
-        <li><a href="#ways-to-improve-communication">Ways to improve communication</a>
-          <ul>
-            <li><a href="#architecture-decision-records">Architecture Decision Records</a></li>
-            <li><a href="#kpis-as-a-common-goal">KPIs as a common goal</a></li>
-            <li><a href="#team-structure">Team Structure</a></li>
-            <li><a href="#common-meetings">Common Meetings</a></li>
-          </ul>
-        </li>
-        <li><a href="#conclusion">Conclusion</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-  </div>
-</details>
-
-          </div>
-        </div>
-      
-      <div class="min-w-0 min-h-0 max-w-prose grow">
-        <div class="lead !mb-9 text-xl">
-  Effective communication is essential in software development. As per Conway&rsquo;s Law, the structure and architecture of a
-software system are influenced by the communication patterns and structures within the organization.
-</div>
-
-<h2 id="conways-law" class="relative group">Conways Law <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#conways-law" aria-label="Anchor">#</a></span></h2><div class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900">
-  <span class="pe-3 text-primary-400">
-    <span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
-</span>
-  </span>
-  <span class="dark:text-neutral-300"><strong>Conways Law</strong>:
+<!doctype html><html lang=en dir=ltr class=scroll-smooth data-default-appearance=dark data-auto-appearance=true><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="rgb(255,255,255)"><title>Communication between different teams working on the same codebase &#183; PhiloBlog</title>
+<meta name=title content="Communication between different teams working on the same codebase &#183; PhiloBlog"><script type=text/javascript src=/js/appearance.min.022d0ebc3b46a335eb1c7ef79b7f2de143d7cd5156d433638592ef1ce5f8554e.js integrity="sha256-Ai0OvDtGozXrHH73m38t4UPXzVFW1DNjhZLvHOX4VU4="></script><link type=text/css rel=stylesheet href=/css/main.bundle.min.c64e8b4df8611ae48d61fd9350eb9e398b672bc049cde05189f34ee93ea00b25.css integrity="sha256-xk6LTfhhGuSNYf2TUOueOYtnK8BJzeBRifNO6T6gCyU="><meta name=description content="
+      Effective communication is essential in software development. As per Conway's Law, the structure and architecture of a software system are influenced by the communication patterns and structures within the organization. 
+    "><link rel=canonical href=https://www.blog.philodev.one/posts/2023-04-communicating-between-teams/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><meta property="og:title" content="Communication between different teams working on the same codebase"><meta property="og:description" content="Effective communication is essential in software development. As per Conway's Law, the structure and architecture of a software system are influenced by the communication patterns and structures within the organization. "><meta property="og:type" content="article"><meta property="og:url" content="https://www.blog.philodev.one/posts/2023-04-communicating-between-teams/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-04-16T14:20:44+02:00"><meta property="article:modified_time" content="2023-04-16T14:20:44+02:00"><meta property="og:site_name" content="Philodev Blog"><meta name=twitter:card content="summary"><meta name=twitter:title content="Communication between different teams working on the same codebase"><meta name=twitter:description content="Effective communication is essential in software development. As per Conway's Law, the structure and architecture of a software system are influenced by the communication patterns and structures within the organization. "><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","articleSection":"Posts","name":"Communication between different teams working on the same codebase","headline":"Communication between different teams working on the same codebase","description":"Effective communication is essential in software development. As per Conway\u0027s Law, the structure and architecture of a software system are influenced by the communication patterns and structures within the organization. ","abstract":"Effective communication is essential in software development.","inLanguage":"en","url":"https:\/\/www.blog.philodev.one\/posts\/2023-04-communicating-between-teams\/","author":{"@type":"Person","name":""},"copyrightYear":"2023","dateCreated":"2023-04-16T14:20:44\u002b02:00","datePublished":"2023-04-16T14:20:44\u002b02:00","dateModified":"2023-04-16T14:20:44\u002b02:00","keywords":["Agile","DevOps"],"mainEntityOfPage":"true","wordCount":"1064"}</script></head><body class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"><div id=the-top class="absolute flex self-center"><a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600" href=#main-content><span class="font-bold pe-2 text-primary-600 dark:text-primary-400">&darr;</span>Skip to main content</a></div><header class="py-6 font-semibold text-neutral-900 dark:text-neutral print:hidden sm:py-10"><nav class="flex items-start justify-between sm:items-center"><div class="flex flex-row items-center"><a href=/ class=mr-2><img src=/logo.png width=1012 height=1012 class="max-h-[10rem] max-w-[10rem] object-scale-down object-left" alt=PhiloBlog>
+</a><a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2" rel=me href=/>PhiloBlog</a></div><ul class="flex flex-col list-none text-end sm:flex-row"><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=/posts/ title=Posts><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">Posts</span></a></li><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=https://www.philodev.one title><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">About Philodev</span></a></li><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=/tags/ title=Tags><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">Tags</span></a></li></ul></nav></header><div class="relative flex flex-col grow"><main id=main-content class=grow><article><header class=max-w-prose><ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden"><li class="inline hidden"><a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href=/>PhiloBlog</a><span class="px-1 text-primary-500">/</span></li><li class=inline><a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href=/posts/>Posts</a><span class="px-1 text-primary-500">/</span></li><li class="inline hidden"><a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href=/posts/2023-04-communicating-between-teams/>Communication between different teams working on the same codebase</a><span class="px-1 text-primary-500">/</span></li></ol><h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">Communication between different teams working on the same codebase</h1><div class="mt-8 mb-12 text-base text-neutral-500 dark:text-neutral-400 print:hidden"><div class="flex flex-row flex-wrap items-center"><time datetime="2023-04-16 14:20:44 +0200 CEST">16 April 2023</time><span class="px-2 text-primary-500">&#183;</span><span title="Reading time">5 mins</span></div><div class="flex flex-wrap my-1 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400"><a href=/tags/agile/ class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400">Agile</a>
+<a href=/tags/devops/ class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400">DevOps</a></div></div></header><section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row"><div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8"><div class="toc pe-5 print:hidden lg:sticky lg:top-10"><details open class="-ms-5 mt-0 overflow-hidden rounded-lg ps-5"><summary class="-ms-5 block cursor-pointer bg-neutral-100 py-1 ps-5 text-lg font-semibold text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">Table of Contents</summary><div class="-ms-5 border-s border-dotted border-neutral-300 py-2 ps-5 dark:border-neutral-600"><nav id=TableOfContents><ul><li><ul><li><a href=#conways-law>Conways Law</a></li><li><a href=#ways-to-improve-communication>Ways to improve communication</a><ul><li><a href=#architecture-decision-records>Architecture Decision Records</a></li><li><a href=#kpis-as-a-common-goal>KPIs as a common goal</a></li><li><a href=#team-structure>Team Structure</a></li><li><a href=#common-meetings>Common Meetings</a></li></ul></li><li><a href=#conclusion>Conclusion</a></li></ul></li></ul></nav></div></details></div></div><div class="min-w-0 min-h-0 max-w-prose grow"><div class="lead !mb-9 text-xl">Effective communication is essential in software development. As per Conway&rsquo;s Law, the structure and architecture of a
+software system are influenced by the communication patterns and structures within the organization.</div><h2 id=conways-law class="relative group">Conways Law <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#conways-law aria-label=Anchor>#</a></span></h2><div class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900"><span class="pe-3 text-primary-400"><span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M256 0C114.6.0.0 114.6.0 256s114.6 256 256 256 256-114.6 256-256S397.4.0 256 0zm0 128c17.67.0 32 14.33 32 32 0 17.67-14.33 32-32 32s-32-14.3-32-32 14.3-32 32-32zm40 256h-80c-13.2.0-24-10.7-24-24s10.75-24 24-24h16v-64h-8c-13.25.0-24-10.75-24-24s10.8-24 24-24h32c13.25.0 24 10.75 24 24v88h16c13.25.0 24 10.75 24 24s-10.7 24-24 24z"/></svg></span></span><span class=dark:text-neutral-300><strong>Conways Law</strong>:
 Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the
-organization&rsquo;s communication structure. [^conwaysLaw]</span>
-</div>
-
-<p>Conway&rsquo;s Law means that the communication structures and patterns within the team will impact the design and
+organization&rsquo;s communication structure. [^conwaysLaw]</span></div><p>Conway&rsquo;s Law means that the communication structures and patterns within the team will impact the design and
 architecture of the software system a set of Developer Teams is developing.
 If the team is structured in a way that promotes collaboration and communication between different members and
 departments, the resulting software system will likely be well-structured and modular, with clear interfaces between
@@ -371,281 +14,68 @@ different components.
 On the other hand, if the team is siloed and communication is poor, the software system may end up being poorly
 organized and difficult to maintain.
 Silos can occur when teams are organized around a specific product and do not have the chance to collaborate with other
-teams or consider reuse of existing work.</p>
-<h2 id="ways-to-improve-communication" class="relative group">Ways to improve communication <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#ways-to-improve-communication" aria-label="Anchor">#</a></span></h2><p>There are many ways to improve the communication between teams, some will be outlined here.</p>
-<p>
-
-
-
-
-  
-  
-    
-  
-  
-    <figure>
-      <img
-        class="mx-auto my-0 rounded-md"
-        
-          width="842"
-          height="596"
-          
-            srcset="/images/2023-04-talk_hudf40c5d7f933275c5c93f5d8e6d62838_48538_330x0_resize_box_3.png 330w,/images/2023-04-talk_hudf40c5d7f933275c5c93f5d8e6d62838_48538_660x0_resize_box_3.png 660w,/images/2023-04-talk_hudf40c5d7f933275c5c93f5d8e6d62838_48538_1024x0_resize_box_3.png 1024w,/images/2023-04-talk_hudf40c5d7f933275c5c93f5d8e6d62838_48538_1320x0_resize_box_3.png 2x"
-            src="/images/2023-04-talk_hudf40c5d7f933275c5c93f5d8e6d62838_48538_660x0_resize_box_3.png"
-          
-        
-        alt="Talk to the Corgi Butt"
-        
-          loading="lazy"
-        
-      />
-      
-    </figure>
-  
-</p>
-<h3 id="architecture-decision-records" class="relative group">Architecture Decision Records <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#architecture-decision-records" aria-label="Anchor">#</a></span></h3><p>Tests, comments, and human readable code are in my experience the most read and used documentation.
+teams or consider reuse of existing work.</p><h2 id=ways-to-improve-communication class="relative group">Ways to improve communication <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#ways-to-improve-communication aria-label=Anchor>#</a></span></h2><p>There are many ways to improve the communication between teams, some will be outlined here.</p><p><figure><img class="mx-auto my-0 rounded-md" width=842 height=596 srcset="/images/2023-04-talk_hudf40c5d7f933275c5c93f5d8e6d62838_48538_330x0_resize_box_3.png 330w,/images/2023-04-talk_hudf40c5d7f933275c5c93f5d8e6d62838_48538_660x0_resize_box_3.png 660w,/images/2023-04-talk_hudf40c5d7f933275c5c93f5d8e6d62838_48538_1024x0_resize_box_3.png 1024w,/images/2023-04-talk_hudf40c5d7f933275c5c93f5d8e6d62838_48538_1320x0_resize_box_3.png 2x" src=/images/2023-04-talk_hudf40c5d7f933275c5c93f5d8e6d62838_48538_660x0_resize_box_3.png alt="Talk to the Corgi Butt" loading=lazy></figure></p><h3 id=architecture-decision-records class="relative group">Architecture Decision Records <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#architecture-decision-records aria-label=Anchor>#</a></span></h3><p>Tests, comments, and human readable code are in my experience the most read and used documentation.
 But still, there are situations in which the way the code is written only makes sense in the context in which the
 decision was made.
 Often enough, that bad looking class has a reason to exists in that way - and even if the explanation is &ldquo;because of
 historic reasons&rdquo;, it something in a lot of codebases has to be communicated verbally.
 Especially in cases, where multiple teams work on the same code base this can be a problem - that is why Architecture
-Decisn Records (ADR) can fill that communication gap.</p>
-<p><strong>Hype or Established?</strong> The concept of ADRs was coined in 2011 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, was added in the thoughtworks tech
-radar in 2016 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, and is now in usage in multiple tech companies (often if the teams are very independent).
-The tools on the other hand are often open source, sometimes still working, and rarely maintained well <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.
+Decisn Records (ADR) can fill that communication gap.</p><p><strong>Hype or Established?</strong> The concept of ADRs was coined in 2011 <sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>, was added in the thoughtworks tech
+radar in 2016 <sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup>, and is now in usage in multiple tech companies (often if the teams are very independent).
+The tools on the other hand are often open source, sometimes still working, and rarely maintained well <sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup>.
 My personal two cents are: Architecture Decision Records are established, but the tools are often more hyped that
-practical.</p>
-<p>Example of an ADR:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="gh"># Use Markdown for Architecture Decision Records
-</span></span></span><span class="line"><span class="cl"><span class="gh"></span>
-</span></span><span class="line"><span class="cl"><span class="gu">## Context and Problem Statement
-</span></span></span><span class="line"><span class="cl"><span class="gu"></span>
-</span></span><span class="line"><span class="cl">We want to record architectural decisions made in this project. The following requirements apply:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">-</span> The format should be human readable and easy to write.
-</span></span><span class="line"><span class="cl"><span class="k">-</span> The files should be inside the code base, such that a new decision can be made using a pull request.
-</span></span><span class="line"><span class="cl"><span class="k">-</span> The format should enable references to older decisions or files in the code base.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Some established solutions:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">*</span> [<span class="nt">MADR</span>](<span class="na">https://adr.github.io/madr/</span>) - Some simple Markdown solution
-</span></span><span class="line"><span class="cl"><span class="k">*</span> Michael Nygard&#39;s template [^techRadar] – Markdown with Status and Consequences
-</span></span><span class="line"><span class="cl"><span class="k">*</span> The Y-Statements - &#34;we decided for XXX and against ZZZ to achieve A and B, accepting that C&#34;.
-</span></span><span class="line"><span class="cl"><span class="k">*</span> Formless – No conventions for file format and structure
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="gu">## Decision Outcome
-</span></span></span><span class="line"><span class="cl"><span class="gu"></span>
-</span></span><span class="line"><span class="cl">The benefits of Michael Nygard&#39;s template are the Consequences, so a section to update information on the decision, e.g.
-</span></span><span class="line"><span class="cl">by now a new feature has replaced this decision, but this one customer still needs it, so it is marked deprecated.
-</span></span><span class="line"><span class="cl">This contradicts the idea that these files a immutable, but here I am still coding PHP so what do I know.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="gu">## Status
-</span></span></span><span class="line"><span class="cl"><span class="gu"></span>
-</span></span><span class="line"><span class="cl">I wrote a blog post, will have hold a presentation in my current company, and see what happens.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="gu">## Consequences
-</span></span></span><span class="line"><span class="cl"><span class="gu"></span>
-</span></span><span class="line"><span class="cl">//
-</span></span></code></pre></div><h3 id="kpis-as-a-common-goal" class="relative group">KPIs as a common goal <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#kpis-as-a-common-goal" aria-label="Anchor">#</a></span></h3><p>To fight Silos, one option is to give teams common, meaningful KPIs and missions that contribute towards larger
+practical.</p><p>Example of an ADR:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-markdown data-lang=markdown><span class=line><span class=cl><span class=gh># Use Markdown for Architecture Decision Records
+</span></span></span><span class=line><span class=cl><span class=gh></span>
+</span></span><span class=line><span class=cl><span class=gu>## Context and Problem Statement
+</span></span></span><span class=line><span class=cl><span class=gu></span>
+</span></span><span class=line><span class=cl>We want to record architectural decisions made in this project. The following requirements apply:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>-</span> The format should be human readable and easy to write.
+</span></span><span class=line><span class=cl><span class=k>-</span> The files should be inside the code base, such that a new decision can be made using a pull request.
+</span></span><span class=line><span class=cl><span class=k>-</span> The format should enable references to older decisions or files in the code base.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Some established solutions:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>*</span> [<span class=nt>MADR</span>](<span class=na>https://adr.github.io/madr/</span>) - Some simple Markdown solution
+</span></span><span class=line><span class=cl><span class=k>*</span> Michael Nygard&#39;s template [^techRadar] – Markdown with Status and Consequences
+</span></span><span class=line><span class=cl><span class=k>*</span> The Y-Statements - &#34;we decided for XXX and against ZZZ to achieve A and B, accepting that C&#34;.
+</span></span><span class=line><span class=cl><span class=k>*</span> Formless – No conventions for file format and structure
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=gu>## Decision Outcome
+</span></span></span><span class=line><span class=cl><span class=gu></span>
+</span></span><span class=line><span class=cl>The benefits of Michael Nygard&#39;s template are the Consequences, so a section to update information on the decision, e.g.
+</span></span><span class=line><span class=cl>by now a new feature has replaced this decision, but this one customer still needs it, so it is marked deprecated.
+</span></span><span class=line><span class=cl>This contradicts the idea that these files a immutable, but here I am still coding PHP so what do I know.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=gu>## Status
+</span></span></span><span class=line><span class=cl><span class=gu></span>
+</span></span><span class=line><span class=cl>I wrote a blog post, will have hold a presentation in my current company, and see what happens.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=gu>## Consequences
+</span></span></span><span class=line><span class=cl><span class=gu></span>
+</span></span><span class=line><span class=cl>//
+</span></span></code></pre></div><h3 id=kpis-as-a-common-goal class="relative group">KPIs as a common goal <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#kpis-as-a-common-goal aria-label=Anchor>#</a></span></h3><p>To fight Silos, one option is to give teams common, meaningful KPIs and missions that contribute towards larger
 goals, encouraging collaboration and avoiding the siloing of teams.
 Communication is also key to breaking down silos, and teams should seek opportunities to work together and learn from
-each other&rsquo;s areas of expertise <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
-<h3 id="team-structure" class="relative group">Team Structure <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#team-structure" aria-label="Anchor">#</a></span></h3><p>Silos can develop in software development when teams or departments become isolated and focused only on their own goals
+each other&rsquo;s areas of expertise <sup id=fnref:4><a href=#fn:4 class=footnote-ref role=doc-noteref>4</a></sup>.</p><h3 id=team-structure class="relative group">Team Structure <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#team-structure aria-label=Anchor>#</a></span></h3><p>Silos can develop in software development when teams or departments become isolated and focused only on their own goals
 and objectives, without considering how their work impacts the rest of the organization.
-This can lead to a lack of collaboration, poor communication, and a fragmented approach to software development.</p>
-<ul>
-<li>Shared accountability: Cross-functional teams are accountable for the success of the project as a whole, not just
-their individual tasks.</li>
-<li>Improved communication: Cross-functional teams encourage open communication between team members from different
-disciplines, which can help to break down silos by promoting a culture of knowledge sharing and collaboration.</li>
-<li>Shared knowledge: Cross-functional teams bring together different areas of expertise, which can help to reduce silos
-by sharing knowledge and skills across the team.</li>
-<li>Faster decision-making: Cross-functional teams can make faster decisions as there is no need to wait for approval from
-different departments.</li>
-</ul>
-<p>Also switching around the teams can improve communication and collaboration, as well as knowledge sharing.</p>
-<h3 id="common-meetings" class="relative group">Common Meetings <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#common-meetings" aria-label="Anchor">#</a></span></h3><p>A possible Agenda may vary from meeting to meeting, but the goal is to have a common meeting where all teams can
-participate and exchange knowledge.</p>
-<ul>
-<li><strong>Latest Features</strong>: A meeting in which each team presents the latest features they have implemented, including the
-added dependencies or patterns.</li>
-<li><strong>Latest Wins</strong>: Talking about patterns which have proven useful, Code styles that made things easier to read, or
-anything else that has been a win for the team and can be a win for others.</li>
-<li><strong>Latest Fails</strong>: Having a shared Post Mortem of a failed feature or a failed deployment can help to avoid the same
-mistakes in the future.</li>
-<li><strong>New Ideas</strong>: A meeting in which a new Idea is pitched to be discussed and feedback is given.</li>
-<li><strong>Social</strong>: The goal of such a meeting may be nothing more than social interaction, just having a pub quiz as only
+This can lead to a lack of collaboration, poor communication, and a fragmented approach to software development.</p><ul><li>Shared accountability: Cross-functional teams are accountable for the success of the project as a whole, not just
+their individual tasks.</li><li>Improved communication: Cross-functional teams encourage open communication between team members from different
+disciplines, which can help to break down silos by promoting a culture of knowledge sharing and collaboration.</li><li>Shared knowledge: Cross-functional teams bring together different areas of expertise, which can help to reduce silos
+by sharing knowledge and skills across the team.</li><li>Faster decision-making: Cross-functional teams can make faster decisions as there is no need to wait for approval from
+different departments.</li></ul><p>Also switching around the teams can improve communication and collaboration, as well as knowledge sharing.</p><h3 id=common-meetings class="relative group">Common Meetings <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#common-meetings aria-label=Anchor>#</a></span></h3><p>A possible Agenda may vary from meeting to meeting, but the goal is to have a common meeting where all teams can
+participate and exchange knowledge.</p><ul><li><strong>Latest Features</strong>: A meeting in which each team presents the latest features they have implemented, including the
+added dependencies or patterns.</li><li><strong>Latest Wins</strong>: Talking about patterns which have proven useful, Code styles that made things easier to read, or
+anything else that has been a win for the team and can be a win for others.</li><li><strong>Latest Fails</strong>: Having a shared Post Mortem of a failed feature or a failed deployment can help to avoid the same
+mistakes in the future.</li><li><strong>New Ideas</strong>: A meeting in which a new Idea is pitched to be discussed and feedback is given.</li><li><strong>Social</strong>: The goal of such a meeting may be nothing more than social interaction, just having a pub quiz as only
 agenda point can
-be relaxing from time to time.</li>
-</ul>
-<h2 id="conclusion" class="relative group">Conclusion <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#conclusion" aria-label="Anchor">#</a></span></h2><p>There are ways to improve Team communication, and the way the communication is organized, how hygienic and structured it
+be relaxing from time to time.</li></ul><h2 id=conclusion class="relative group">Conclusion <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#conclusion aria-label=Anchor>#</a></span></h2><p>There are ways to improve Team communication, and the way the communication is organized, how hygienic and structured it
 is, can have a huge impact on the software system that is being developed. I would not dare to enforce long, daily or
 weekly meetings on developers who prefer sitting in their cellar and coding, because communication does not need to be a
-meeting, nor a formal setup with 50 people.</p>
-<p>Happy communicating!</p>
-<div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p><a href="https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions" target="_blank" rel="noreferrer">Michael Nygard: Architecture Decision Records</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p><a href="https://www.thoughtworks.com/en-us/radar/techniques/lightweight-architecture-decision-records" target="_blank" rel="noreferrer">Thoughtworks Tech Radar</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:3">
-<p><a href="https://adr.github.io/" target="_blank" rel="noreferrer">ADR Tools</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:4">
-<p><a href="https://www.infoq.com/podcasts/balancing-synchronous-asynchronous-work/" target="_blank" rel="noreferrer">Becoming a Great Engineering Manager and Balancing Synchronous and Asynchronous Work - InfoQ Podcast</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>
-
-      </div>
-    </section>
-    <footer class="pt-8 max-w-prose print:hidden">
-      
-  <div class="flex">
-    
-    <div class="place-self-center">
-      
-      
-      <div class="text-2xl sm:text-lg">
-</div>
-    </div>
-  </div>
-
-
-      
-
-      
-  
-    
-    
-    
-    <div class="pt-8">
-      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
-      <div class="flex justify-between pt-3">
-        <span>
-          
-            <a class="group flex" href="/posts/2023-03-testing-open-api-specs/">
-              <span
-                class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
-                ><span class="ltr:inline rtl:hidden">&larr;</span
-                ><span class="ltr:hidden rtl:inline">&rarr;</span></span
-              >
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >Testing Open Api files</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                    <time datetime="2023-03-28 14:20:44 &#43;0200 CEST">28 March 2023</time>
-                  
-                </span>
-              </span>
-            </a>
-          
-        </span>
-        <span>
-          
-            <a class="group flex text-right" href="/posts/2023-11-using-data-to-ignite-action/">
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >Using data for Sprint Planning</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                    <time datetime="2023-11-21 14:20:44 &#43;0200 &#43;0200">21 November 2023</time>
-                  
-                </span>
-              </span>
-              <span
-                class="ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
-                ><span class="ltr:inline rtl:hidden">&rarr;</span
-                ><span class="ltr:hidden rtl:inline">&larr;</span></span
-              >
-            </a>
-          
-        </span>
-      </div>
-    </div>
-  
-
-
-      
-    </footer>
-  </article>
-
-        
-          <div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12">
-            <a
-              href="#the-top"
-              class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
-              aria-label="Scroll to top"
-              title="Scroll to top"
-            >
-              &uarr;
-            </a>
-          </div>
-        
-      </main><footer class="py-10 print:hidden">
-  
-  
-  <div class="flex items-center justify-between">
-    <div>
-      
-      
-        <p class="text-sm text-neutral-500 dark:text-neutral-400">
-            &copy;
-            2023
-            
-        </p>
-      
-      
-      
-        <p class="text-xs text-neutral-500 dark:text-neutral-400">
-          
-          
-          Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
-            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href="https://github.com/jpanther/congo" target="_blank" rel="noopener noreferrer">Congo</a>
-        </p>
-      
-    </div>
-    <div class="flex flex-row items-center">
-      
-      
-      
-      
-        <div
-          class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
-        >
-          <button id="appearance-switcher-0" type="button" aria-label="appearance switcher">
-            <div
-              class="flex items-center justify-center w-12 h-12 dark:hidden"
-              title="Switch to dark appearance"
-            >
-              <span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
-</span>
-            </div>
-            <div
-              class="items-center justify-center hidden w-12 h-12 dark:flex"
-              title="Switch to light appearance"
-            >
-              <span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
-</span>
-            </div>
-          </button>
-        </div>
-      
-    </div>
-  </div>
-  
-  
-</footer>
-
-    </div>
-  </body>
-</html>
+meeting, nor a formal setup with 50 people.</p><p>Happy communicating!</p><div class=footnotes role=doc-endnotes><hr><ol><li id=fn:1><p><a href=https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions target=_blank rel=noreferrer>Michael Nygard: Architecture Decision Records</a>&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:2><p><a href=https://www.thoughtworks.com/en-us/radar/techniques/lightweight-architecture-decision-records target=_blank rel=noreferrer>Thoughtworks Tech Radar</a>&#160;<a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:3><p><a href=https://adr.github.io/ target=_blank rel=noreferrer>ADR Tools</a>&#160;<a href=#fnref:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:4><p><a href=https://www.infoq.com/podcasts/balancing-synchronous-asynchronous-work/ target=_blank rel=noreferrer>Becoming a Great Engineering Manager and Balancing Synchronous and Asynchronous Work - InfoQ Podcast</a>&#160;<a href=#fnref:4 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></div></div></section><footer class="pt-8 max-w-prose print:hidden"><div class=flex><div class=place-self-center><div class="text-2xl sm:text-lg"></div></div></div><div class=pt-8><hr class="border-dotted border-neutral-300 dark:border-neutral-600"><div class="flex justify-between pt-3"><span><a class="group flex" href=/posts/2023-03-testing-open-api-specs/><span class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"><span class="ltr:inline rtl:hidden">&larr;</span><span class="ltr:hidden rtl:inline">&rarr;</span></span>
+<span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500">Testing Open Api files</span>
+<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"><time datetime="2023-03-28 14:20:44 +0200 CEST">28 March 2023</time>
+</span></span></a></span><span><a class="group flex text-right" href=/posts/2023-11-using-data-to-ignite-action/><span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500">Using data for Sprint Planning</span>
+<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"><time datetime="2023-11-21 14:20:44 +0200 +0200">21 November 2023</time>
+</span></span><span class="ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"><span class="ltr:inline rtl:hidden">&rarr;</span><span class="ltr:hidden rtl:inline">&larr;</span></span></a></span></div></div></footer></article><div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12"><a href=#the-top class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400" aria-label="Scroll to top" title="Scroll to top">&uarr;</a></div></main><footer class="py-10 print:hidden"><div class="flex items-center justify-between"><div><p class="text-sm text-neutral-500 dark:text-neutral-400">&copy;
+2024</p><p class="text-xs text-neutral-500 dark:text-neutral-400">Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://gohugo.io/ target=_blank rel="noopener noreferrer">Hugo</a> & <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://github.com/jpanther/congo target=_blank rel="noopener noreferrer">Congo</a></p></div><div class="flex flex-row items-center"><div class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"><button id=appearance-switcher-0 type=button aria-label="appearance switcher"><div class="flex items-center justify-center w-12 h-12 dark:hidden" title="Switch to dark appearance"><span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M32 256C32 132.2 132.3 32 255.8 32c11.36.0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z"/></svg></span></div><div class="items-center justify-center hidden w-12 h-12 dark:flex" title="Switch to light appearance"><span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentcolor" d="M256 159.1c-53.02.0-95.1 42.98-95.1 95.1s41.2 96.9 95.1 96.9 95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347l-63.2-91.9 63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89 164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6 12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256 2.74 347.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7 19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109 109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69.0-127.1-57.31-127.1-127.1.0-70.69 57.31-127.1 127.1-127.1S383.1 186.2 383.1 256c0 70.7-56.4 127.1-127.1 127.1z"/></svg></span></div></button></div></div></div></footer></div></body></html>

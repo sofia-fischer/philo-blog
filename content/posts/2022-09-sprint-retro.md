@@ -10,7 +10,7 @@ joined the meeting, and if I would not be more productive writing code. Retrospe
 retrospectives. I enjoy the feeling of improvement after a retro, I like the open communication of retros, and I like
 the feeling of being heard."
 
-tags: [ "Agile", "Retrospective", "Scrum" ]
+tags: [ "Agile" ]
 ---
 
 {{< lead >}}

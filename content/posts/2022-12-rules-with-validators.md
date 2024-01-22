@@ -11,7 +11,7 @@ edge cases (like ids that are not in the database). This ensures not only a fast
 the user (or front-end developer) a clear error message. Laravel offers great tools, in which I would like to dig deeper
 up to a final form of unintended usage - like Recursive Validations."
 
-tags: ["Development", "Laravel", "Validation", "Framework"]
+tags: ["Development", "Laravel", "Validation"]
 ---
 
 {{< lead >}}

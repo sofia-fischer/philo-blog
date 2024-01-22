@@ -18,7 +18,7 @@ enableCodeCopy = false
 footer.showScrollToTop = true
 
 [homepage]
-  layout = "profile" # valid options: page, profile, custom
+  layout = "custom" # valid options: page, profile, custom
   showRecent = true
 
 [article]
@@ -35,9 +35,9 @@ footer.showScrollToTop = true
   invertPagination = false
   showReadingTime = true
   showTableOfContents = true
-  showTaxonomies = false
+  showTaxonomies = true
   showWordCount = false
-  # sharingLinks = ["facebook", "twitter", "pinterest", "reddit", "linkedin", "email"]
+  # sharingLinks = ["twitter", "reddit", "linkedin", "email"]
 
 [list]
   showBreadcrumbs = false

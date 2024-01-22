@@ -9,7 +9,7 @@ description: "I got the task to implement a Demo environment, learned something 
 an environment to give possible customers / investors a taste of your product and the developers to find response time /
 query problems and UX bugs"
 
-tags: ["Development", "Infrastructure", "Laravel"]
+tags: ["Development", "DevOps", "Laravel"]
 ---
 
 {{< lead >}} I got the task to implement a Demo environment, learned something about Laravel Factories and the usage of

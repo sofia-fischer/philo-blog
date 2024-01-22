@@ -1,0 +1,112 @@
+<div style="max-width: 100%; font-size: 1.25rem; line-height: 1.75rem; margin-top: 5rem">
+    <h1 style="width: 20rem;font-family: monospace;">
+        <div class="text-4xl font-extrabold">Sofia Fischer, {{ with .Site.Language.Params.Author.links }}
+            <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500 text-2xl">
+                {{ range $links := . }}
+                {{ range $name, $url := $links }}
+                <a class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+                    style="will-change:transform;"
+                    href="{{ $url | safeURL }}"
+                    target="_blank"
+                    aria-label="{{ $name | title }}"
+                    rel="me noopener noreferrer"
+                >{{ partial "icon.html" $name }}</a
+                >
+                {{ end }}
+                {{ end }}
+            </div>
+                                             {{ end }}
+        </div>
+        <div class="flex whitespace-nowrap text-xl text-neutral-500 " style="margin-top: 35px">
+            <div class="text-box">
+                <h2 id="result"></h2>
+            </div>
+            <span class="cursor"></span>
+        </div>
+    </h1>
+
+    <style>
+        .text-box {
+            animation: width 25s infinite ease;
+            overflow: hidden;
+            width: 30rem;
+            color: #DB2777FF
+        }
+
+        #result::after {
+            content: "Backend Developer";
+            animation: content 25s infinite ease;
+        }
+
+        span.cursor {
+            height: 30px;
+            width: 10px;
+            background: white;
+            display: block;
+            animation: flicker 1s infinite ease;
+        }
+
+        @keyframes flicker {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes content {
+            0%, 33% {
+                content: "Philomathic Developer";
+            }
+            34%, 66% {
+                content: "Agile Enthusiast";
+            }
+            67%, 100% {
+                content: "Backend Developer";
+            }
+        }
+
+        @keyframes width {
+            0%, 10% {
+                width: 0;
+            }
+            20%, 25% {
+                width: 100%;
+            }
+            33%, 45% {
+                width: 0;
+            }
+            50%, 55% {
+                width: 100%;
+            }
+            66%, 75% {
+                width: 0;
+            }
+            85%, 90% {
+                width: 100%;
+            }
+            100% {
+                width: 0%;
+            }
+        }
+    </style>
+</div>
+
+<section class="flex flex-wrap" style="margin-top: 14rem">
+    {{ $taxo := "tags" }}
+    <ul class="{{ $taxo }} flex flex-wrap">
+        {{ with ($.Site.GetPage (printf "/%s" $taxo)) }}
+        {{ range .Pages }}
+        <li class="ms-1 rounded-md border border-primary-400 p-1 m-1 text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        </li>
+        {{ end }}
+        {{ end }}
+    </ul>
+</section>
+
+{{ partial "recent-articles.html" . }}

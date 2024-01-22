@@ -9,7 +9,7 @@ description: "Using Tests to verify the type and nullable correctness of an Open
 documentation (if the file cannot be generated). This blog post is the result of a use case on testing requests and
 responses to Open Api conformity."
 
-tags: ["Development", "Laravel", "Casts", "Framework"]
+tags: ["Development", "Testing", "DevOps"]
 ---
 
 {{< lead >}}

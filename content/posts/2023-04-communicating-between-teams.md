@@ -8,7 +8,7 @@ draft: false
 description: "Effective communication is essential in software development. As per Conway's Law, the structure and
 architecture of a software system are influenced by the communication patterns and structures within the organization. "
 
-tags: ["Agile", "Team Communication"]
+tags: ["Agile", "DevOps"]
 ---
 
 {{< lead >}}

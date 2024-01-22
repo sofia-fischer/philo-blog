@@ -17,11 +17,10 @@ dateFormat = "2 January 2006"
 [params.author]
   name = "Sofia Fischer"
   # image = "img/author.jpg"
-  headline = "Philomathic Developer"
+  headline = "Philomathic Developer | Backend Developer | Agile Enthusiast"
   # bio = "A little bit about me"
   links = [
     { email = "mailto:sofia@philodev.com" },
-    { link = "https://www.philodev.one" },
     { github = "https://github.com/sofia-fischer" },
     { linkedin = "https://www.linkedin.com/in/sofia-fischer-58b1611b9/" },
   ]

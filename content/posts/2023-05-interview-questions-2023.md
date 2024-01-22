@@ -8,7 +8,7 @@ draft: true
 description: "Uncannily like about the same time last year, I again collect technical Interview questions.
 Here are some of my favorites, including my (rethought) answers."
 
-tags: [ "Agile", "Team Communication" ]
+tags: [ "Agile", "Developer Life" ]
 ---
 
 {{< lead >}}
