@@ -7,7 +7,7 @@ draft: false
 
 description: PHP attributes are a great addition to the language. But how are they used, can I use them, and what are Use Cases?
 
-tags: [ "Agile", "Team Communication" ]
+tags: [ "PHP","Development"]
 ---
 
 {{< lead >}}

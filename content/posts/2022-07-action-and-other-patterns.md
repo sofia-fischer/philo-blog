@@ -13,7 +13,7 @@ Events (and gives inspiration for piptes) - not to find the best for all use cas
 question when the different patterns
 offer advantages over the others."
 
-tags: ["Development", "Laravel", "Patterns", "Single Responsibility", "Repository Pattern", "Service Pattern", "Action Pattern", "Jobs", "Events", "Pipeline Patter"]
+tags: ["Development", "Laravel", "Patterns", "Single Responsibility", "Repository Pattern", "Service Pattern", "Action Pattern", "Queue", "Pipeline Pattern"]
 ---
 
 {{< lead >}} Simple REST APIs are nice. But once a Controller needs to perform more than just the basic update, create,
