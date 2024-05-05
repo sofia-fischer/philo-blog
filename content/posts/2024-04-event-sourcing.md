@@ -221,7 +221,7 @@ option, on the other I require the discriminator map to be in code for better ma
 it, you will not maintain it); also, I found myself debugging the Injection of the resulting serializer very hard -
 please feel free to teach me better and share your implementation.
 
-[discriminators]: [Symfony Discriminator Map](https://symfony.com/doc/current/components/serializer.html#serializing-interfaces-and-abstract-classes)
+[^discriminators]: [Symfony Discriminator Map](https://symfony.com/doc/current/components/serializer.html#serializing-interfaces-and-abstract-classes)
 
 ```php
 public function fromArray(array $row): Achievement
@@ -243,7 +243,7 @@ Repository classes containing to instantiate entities from the database are some
 A cleaner solution for this problem that comes in handy with instantiating events from json or from a raw database row
 is using a normalizer. [^normalizer]
 
-[normalizer]: [Symfony Normalizer](https://symfony.com/doc/current/serializer/custom_normalizer.html)
+[^normalizer]: [Symfony Normalizer](https://symfony.com/doc/current/serializer/custom_normalizer.html)
 
 ```php
 class AchievementNormalizer implements NormlizerInterface, DenormalizerInterface
