@@ -1,7 +1,7 @@
 ---
 title: "Event Sourcing for long living projects"
 
-date: 2024-04-05T10:20:44+02:00
+date: 2024-04-28T10:20:44+02:00
 
 draft: false
 
@@ -215,7 +215,7 @@ Relation::enforceMorphMap([
 ```
 
 In Symfony the instantiation often happens more declarative, which also might cause a lot more boilerplate code. But
-Symfony does support a similar feature [discriminators]. These exact implementation will not be discussed here, as I
+Symfony does support a similar feature [^discriminators]. These exact implementation will not be discussed here, as I
 personally had multiple problems implementing it. On one hand in this particular project the attributes were not an
 option, on the other I require the discriminator map to be in code for better maintainability (if you can not click on
 it, you will not maintain it); also, I found myself debugging the Injection of the resulting serializer very hard -
@@ -241,7 +241,7 @@ public function fromArray(array $row): Achievement
 
 Repository classes containing to instantiate entities from the database are sometimes quite big and messy.
 A cleaner solution for this problem that comes in handy with instantiating events from json or from a raw database row
-is using a normalizer. [normalizer]
+is using a normalizer. [^normalizer]
 
 [normalizer]: [Symfony Normalizer](https://symfony.com/doc/current/serializer/custom_normalizer.html)
 
