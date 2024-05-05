@@ -308,7 +308,7 @@ public function testSerializeAndDeserialize(): void
 Also, a test that grabs all achievements from the directory folder and checks if they can be deserialized should be
 added to ensure that the map is always updated when a developer adds a new achievement.
 
-### Conclusion
+## Conclusion
 
 Event Sourcing is a great pattern, and for certain use cases the best solution. The implementation can be quite tricky,
 but if the team works through the current and future challenges, the pattern can be a great addition to the project.
