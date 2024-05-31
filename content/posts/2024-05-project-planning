@@ -1,0 +1,60 @@
+---
+title: "Designing Code as a Team"
+
+date: 2024-04-28T10:20:44+02:00
+
+draft: true
+
+description: Event Sourcing is a software pattern for stateful entity management. Instead of storing the current state of an Entity,
+  only the state changes are stored. This blog post is about the advantages and disadvantages of the pattern, and how to
+  avoid some challenges I faced in long living projects.
+
+tags: [ "Development", "Software Pattern", "Symfony"]
+---
+
+{{< lead >}}
+Rarely a team has the opportuinity to start a new repository, a new minioproject, a new micro service, a new doce base. These opportunities are in my experience often handled less gracefully as they could be.{{< /lead >}}
+
+## Architecture and Agile
+
+One change that came with the agile culture was replacing detailed architecture plans and class structure diagrams "YAGNI" mentality of only developing the current ticket loosing overview over the bigger picture. Both extremes are not practical and will end up in an agile architecture. 
+
+In every software project there are decisions that need to be done upfront, that will highly influence the architecture of the project - programming language, database decision, authentication, patterns ... 
+These decisions can not be solved by the first feature ticket by one developer. But I made the experience that exactly that happens - one developer gets the task of "build the project", locks themselfes in a dark room and emerges after weeks with a barebone of a project every other team member is forced to use from that point on. 
+
+{{<quote>
+The phrase “Agile architecture” evokes two concepts:
+1. A system or software architecture that is versatile, easy to evolve, and easy to modify, while resilient enough not to degrade after a few changes.
+2. An Agile way to define an architecture, using an iterative lifecycle, allowing the architectural design to tactically evolve over time, as the problem and the constraints are better understood.
+{{</quote>
+[^agileArchitecture]
+
+[^agileArchitecture]: [How to Agilely Architect an Agile Architecture](https://insights.sei.cmu.edu/documents/1395/2014_101_001_493902.pdf)
+
+Agile Architecture is very possible, often disscussed in blogs and in my experience badly practiced in companies. 
+
+### Different Perspectives for Requirements
+
+While Agile Methodoolgies provide a wide range of tools to define the requirements for products from a user and a business perspective; they often lack the perspective of an architect, future developer, or tester. 
+When formulating the User Story, the architectural requirements are often left out, which means in agile they are invisible for time constraints, deadlines, and work recognition.
+
+Some examples of these requirements, that highly interfer in the the architecture: 
+* As an Security Expert, I want to the project to use the company Identity provider to authenticate without static credentials
+* As Testing Expert, I want to test the API independently from the Client
+* As Database Expert, I want to utalize Query and Command Segregation as I want to handle the future databse performance by using read replica
+* As an Interface Expert, I want to communicate with this third party service using a shared Queue
+* As a third party user of the service, I want an Open Api definition first aproach to have a priorisation of API Interface
+* As an Deployment Expert, I want to be able deploy an independ instance of the project with 
+mocks to test single branches
+
+Those requirements may be backed into the work style of the company or team, they may differ a lot, they may only be possible to write down by some team members - still, they exists and in agile will only be visible when written down. 
+
+## The 
+
+
+
+The `apply` function is called with the events from the database, and the entity is in the correct state. For this
+pattern a repository is pattern that will help to control the hydration from the DB. [^eventSourcing]
+
+[^eventSourcing]: Implementation idea and code snippets are inspired by the book "Implementing Domain-Driven Design" by
+Vaughn Vernon.
