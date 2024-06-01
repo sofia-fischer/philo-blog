@@ -15,14 +15,9 @@ tags: [ "Development", "Software Pattern", "Symfony"]
 {{< lead >}}
 Rarely a team has the opportuinity to start a new repository, a new minioproject, a new micro service, a new doce base. These opportunities are in my experience often handled less gracefully as they could be.{{< /lead >}}
 
-## Architecture and Agile
+## Agile Architecture
 
 One change that came with the agile culture was replacing detailed architecture plans and class structure diagrams "YAGNI" mentality of only developing the current ticket loosing overview over the bigger picture. Both extremes are not practical and will end up in an agile architecture. 
-
-In every software project there are decisions that need to be done upfront, that will highly influence the architecture of the project - programming language, database decision, authentication, patterns ... 
-These decisions should not be solved by the first feature ticket by one developer. But I made the experience that exactly that happens - one developer gets the task of "build the project", locks themselfes in a dark room and emerges after weeks with a barebone of a project every other team member is forced to use from that point on. 
-
-From my idealistic point of view, the decisions should be discussed in the team, after understanding the idea of the product, to design an agile architecture that is flexible enough to be iterated on. 
 
 {{<quote>
 The phrase “Agile architecture” evokes two concepts:
@@ -33,9 +28,25 @@ The phrase “Agile architecture” evokes two concepts:
 
 [^agileArchitecture]: [How to Agilely Architect an Agile Architecture](https://insights.sei.cmu.edu/documents/1395/2014_101_001_493902.pdf)
 
-Agile Architecture is very possible, often disscussed in blogs and in my experience badly practiced in companies. 
+In every software project there are decisions that need to be done upfront, that will highly influence the architecture of the project - programming language, database decision, authentication, patterns ... 
+These decisions should not be solved by the first feature ticket by one developer. But I made the experience that exactly that happens - one developer gets the task of "build the project", locks themselfes in a dark room and emerges after weeks with a barebone of a project every other team member is forced to use from that point on. 
 
-### Different Perspectives for Requirements
+## Defining Architecture and their Requirements
+From my idealistic point of view, the architecture decisions should be discussed in the team, after understanding the idea of the product, to design an agile architecture that is flexible enough to be iterated on. 
+For this to work, achritecture can not be define the same way as in Waterfall projects in which the architecture was designed and set in stone before the first ticket was started. "The software architecture isn't a set of diagrams, it's not a set of review meetings, it's not a software architecture document, but it is a set of decisions that the team makes about some critical aspects of the system". [^continousArchitecture]
+
+[^continousArchitecture]:[Continuous Architecture with Kurt Bittner and Pierre Pureur](https://www.infoq.com/podcasts/continuous-architecture/)
+
+### Capturating and Documenting Architecture
+
+Viewing Architecture as a set of decisions makes the Architecture Decision Records a very relatable way of documenting architecture. 
+Drawing fancy diagrams - something I am very enjoy to do - is a great way to document how a system is working, but often enough the question why it was build this way is the more important question if developers see themselves confronted with the need for change. 
+
+{{
+
+What is a ar 
+
+### Architecture Perspectives for Requirements
 
 While Agile Methodoolgies provide a wide range of tools to define the requirements for products from a user and a business perspective; they often lack the perspective of an architect, future developer, or tester. 
 When formulating the User Story, the architectural requirements are often left out, which means in agile they are invisible for time constraints, deadlines, and work recognition. 
