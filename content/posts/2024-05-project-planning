@@ -1,19 +1,18 @@
 ---
-title: "Designing Code as a Team"
+title: "Agile Software Architecture"
 
 date: 2024-04-28T10:20:44+02:00
 
 draft: true
 
-description: Event Sourcing is a software pattern for stateful entity management. Instead of storing the current state of an Entity,
-  only the state changes are stored. This blog post is about the advantages and disadvantages of the pattern, and how to
-  avoid some challenges I faced in long living projects.
+description: Architecture is no longer a set of diagrams that define upfront how features are implemented, but continously growing and evolving set of decisions
 
-tags: [ "Development", "Software Pattern", "Symfony"]
+tags: [ "Development", "Agile"]
 ---
 
 {{< lead >}}
-Rarely a team has the opportuinity to start a new repository, a new minioproject, a new micro service, a new doce base. These opportunities are in my experience often handled less gracefully as they could be.{{< /lead >}}
+ Architecture is no longer a set of diagrams that define upfront how features are implemented, but continously growing and evolving set of decisions
+{{< /lead >}}
 
 ## Agile Architecture
 
@@ -42,9 +41,11 @@ For this to work, achritecture can not be define the same way as in Waterfall pr
 Viewing Architecture as a set of decisions makes the Architecture Decision Records a very relatable way of documenting architecture. 
 Drawing fancy diagrams - something I am very enjoy to do - is a great way to document how a system is working, but often enough the question why it was build this way is the more important question if developers see themselves confronted with the need for change. 
 
-{{
+{{<alert>
+Architecture Design Records: A set of point in time documentations of architectural decisions, usually stored in the code base to get information on the thoughts and reasons why the code was implemented in a certain way. Some more information here XXXXXXXX
+</alert>}}
 
-What is a ar 
+The boundary of architectural decision in contrast to an implementation decision is not easy, by may be defined for practical reasons - if the cost of changing a desicion, it is probably an architectural decision.
 
 ### Architecture Perspectives for Requirements
 
@@ -61,13 +62,34 @@ Some examples of these requirements, that highly interfer in the the architectur
 * As an Deployment Expert, I want to be able deploy an independ instance of the project with mocks to test single branches
 * As Developer, I want the system to be controllabe and observable on production
 
-In these example the requirement may be unrefined, but they provide a starting point to enrich the process with architectural requirements. [^agileArchitecture]
 
-### How to design Agile Architecture
+These requirements match partially with the idea of non-functional requirements; but functional requirements do not by definition have the major impact on development cost.
+Architectural / Design Requirements may enable or stop non functional requirements, and functional requirements should be consulted to create architectural decisions. How many microseconds a request may take is a non-functional requirement that may  be satisfied without making costly future decisions. As sidenote, the idea of framing non-functional requirements in a quantitave, measurable, testable number (target number and unacceptable number) also udnerlines that these requirements are revisited regularly, influenced by the architecture, but not causing architectural changes per se  [^nonFuncReqs]. 
+
+[^nonFuncReqs]: [Non Functional Requirements](https://scaledagileframework.com/nonfunctional-requirements/)
+
+## How to design Agile Architecture
+### Minimal Viable Architecture
+
+Similar to the concept of a Minimum Viable Product, the idea of a Minimum Viable Architecture is to deliver an architecture that fulfills the in the current point in time relevant requirements. This architecture is than iterated over in the upcoming features and requirements.[^mva]
+
+[^mva]: [Minimal Viable Architecture](https://continuousarchitecture.com/2021/12/21/minimum-viable-architecture-how-to-continuously-evolve-an-architectural-design-over-time/)
 
 * *Model the architecture*: The Model should be a tool for communication (not documentation)
 * *Consider Alternatives*: Following the LEAN principles, discuss more than one option and consider drawbacks and benefits
 * *Mind Cordways Law*: Companies tend to implement systems that reflect their communication structure. If there is no functioning communication structure to the team that builds the service that your system requires, the implementation might reflect that
-* *Travel light*: The Architecture will change within the agile process, it can not and should not be defined 
+* *Architect for change*: The Architecture will change within the agile process, it can not and should not be defined in a way that eliminates future opportunities
+* *Mind testability, deployability, and developer usability*: The Devs, Testers, and Infras are the users of the architecture that is build. It should be clear and easy to use it. 
+* *Keep minimal viable*: Travel light - Making too many decisions too early might restrict future implementations. If there is a decision that might as well be set in stone later, delay it
 
+### Feedback loops
 
+Looking at the former requirements, the respective user may be asked if the decisions led to the desired quality attributes. When a new Developer joins the team, is the code structure easy to follow and udnerstand? How clear is it for the tester how to confirm the testability? How easy is the project deployed and how often does the architecture decisions cause interruptions? Do the current devs enjoy working in the architecture?
+
+Refining such quality attributes and assess them across teams might be the modern interpretation of an architect role. 
+
+## Conclusion
+
+Architecture is no longer step in development, but a continous process of iterative decisions. As those decisions happen in strong coupling with the current product requirements and the developers who are working on the code it can and should not be practiced in a closed room, but in an open space. Architecture decisions should be documented, evaluated, experimented, and assesed. 
+
+Happy Coding :)
