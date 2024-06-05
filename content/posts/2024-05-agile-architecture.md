@@ -80,7 +80,7 @@ Similar to the concept of a Minimum Viable Product, the idea of a Minimum Viable
 
 * *Model the architecture*: The Model should be a tool for communication (not documentation)
 * *Consider Alternatives*: Following the LEAN principles, discuss more than one option and consider drawbacks and benefits
-* *Mind Cordways Law*: Companies tend to implement systems that reflect their communication structure. If there is no functioning communication structure to the team that builds the service that your system requires, the implementation might reflect that
+* *Mind Conways Law*: Companies tend to implement systems that reflect their communication structure. If there is no functioning communication structure to the team that builds the service that your system requires, the implementation might reflect that
 * *Architect for change*: The Architecture will change within the agile process, it can not and should not be defined in a way that eliminates future opportunities
 * *Mind testability, deployability, and developer usability*: The Devs, Testers, and Infras are the users of the architecture that is built. It should be clear and easy to use it. 
 * *Keep minimal viable*: Travel light - Making too many decisions too early might restrict future implementations. If there is a decision that might as well be set in stone later, delay it
