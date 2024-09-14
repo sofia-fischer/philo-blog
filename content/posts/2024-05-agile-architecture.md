@@ -1,7 +1,7 @@
 ---
 title: "Agile Software Architecture"
 
-date: 2024-04-28T10:20:44+02:00
+date: 2024-05-28T10:20:44+02:00
 
 draft: false
 
