@@ -1,19 +1,474 @@
-<!doctype html><html lang=en dir=ltr class=scroll-smooth data-default-appearance=dark data-auto-appearance=true><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#FFFFFF"><title>Useful and Useless Relationship Definitions &#183; PhiloBlog</title>
-<meta name=title content="Useful and Useless Relationship Definitions &#183; PhiloBlog"><script type=text/javascript src=/js/appearance.min.8a082f81b27f3cb2ee528df0b0bdc39787034cf2cc34d4669fbc9977c929023c.js integrity="sha256-iggvgbJ/PLLuUo3wsL3Dl4cDTPLMNNRmn7yZd8kpAjw="></script><link type=text/css rel=stylesheet href=/css/main.bundle.min.cd65e744f39f2e1530fc9baa021748abbe422c38751e5618d85bc544b7eae4c1.css integrity="sha256-zWXnRPOfLhUw/JuqAhdIq75CLDh1HlYY2FvFRLfq5ME="><meta name=description content="
+
+
+
+
+
+
+
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#FFFFFF" />
+  
+  <title>Useful and Useless Relationship Definitions &middot; PhiloBlog</title>
+    <meta name="title" content="Useful and Useless Relationship Definitions &middot; PhiloBlog" />
+  
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.8a082f81b27f3cb2ee528df0b0bdc39787034cf2cc34d4669fbc9977c929023c.js"
+    integrity="sha256-iggvgbJ/PLLuUo3wsL3Dl4cDTPLMNNRmn7yZd8kpAjw="
+  ></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.cd65e744f39f2e1530fc9baa021748abbe422c38751e5618d85bc544b7eae4c1.css"
+    integrity="sha256-zWXnRPOfLhUw/JuqAhdIq75CLDh1HlYY2FvFRLfq5ME="
+  />
+  
+  
+  
+  
+  
+  
+  
+  <meta
+    name="description"
+    content="
       Programmer giving Relationship Advice - A summary about Laravel / Eloquent relationships including some hints, advanced techniques to use and misuse relations
-    "><link rel=canonical href=https://www.blog.philodev.one/posts/2022-05-relationships/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><meta property="og:url" content="https://www.blog.philodev.one/posts/2022-05-relationships/"><meta property="og:site_name" content="PhiloBlog"><meta property="og:title" content="Useful and Useless Relationship Definitions"><meta property="og:description" content="Programmer giving Relationship Advice - A summary about Laravel / Eloquent relationships including some hints, advanced techniques to use and misuse relations"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-05-20T14:20:44+02:00"><meta property="article:modified_time" content="2022-05-20T14:20:44+02:00"><meta property="article:tag" content="Development"><meta property="article:tag" content="Laravel"><meta name=twitter:card content="summary"><meta name=twitter:title content="Useful and Useless Relationship Definitions"><meta name=twitter:description content="Programmer giving Relationship Advice - A summary about Laravel / Eloquent relationships including some hints, advanced techniques to use and misuse relations"><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","articleSection":"Posts","name":"Useful and Useless Relationship Definitions","headline":"Useful and Useless Relationship Definitions","description":"Programmer giving Relationship Advice - A summary about Laravel \/ Eloquent relationships including some hints, advanced techniques to use and misuse relations","abstract":"Programmer giving Relationship Advice - A summary about Laravel \/ Eloquent relationships including some hints, advanced techniques to use and misuse relations Relationships are great #Relational Databases like mySql or postgres tend to have that thing called relations.","inLanguage":"en","url":"https:\/\/www.blog.philodev.one\/posts\/2022-05-relationships\/","author":{"@type":"Person","name":"Sofia Fischer"},"copyrightYear":"2022","dateCreated":"2022-05-20T14:20:44\u002b02:00","datePublished":"2022-05-20T14:20:44\u002b02:00","dateModified":"2022-05-20T14:20:44\u002b02:00","keywords":["Development","Laravel"],"mainEntityOfPage":"true","wordCount":"1763"}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.blog.philodev.one/","name":"Philo Blog","position":1},{"@type":"ListItem","item":"https://www.blog.philodev.one/posts/","name":"Posts","position":2},{"@type":"ListItem","name":"Useful and Useless Relationship Definitions","position":3}]}</script><meta name=author content="Sofia Fischer"><link href=mailto:sofia@philodev.com rel=me><link href=https://github.com/sofia-fischer rel=me><link href=https://www.linkedin.com/in/sofia-fischer-58b1611b9/ rel=me><script defer type=text/javascript src=/js/mermaid.bundle.7388d891d67c69d0565884dd82c692581adf4d9a3fe08ed1ef4a1885dde9899630af8969859cb11f8fc129fd8d5297e1a0debcc09f1aaf41d35da5b5137fd387.js integrity="sha512-c4jYkdZ8adBWWITdgsaSWBrfTZo/4I7R70oYhd3piZYwr4lphZyxH4/BKf2NUpfhoN68wJ8ar0HTXaW1E3/Thw=="></script></head><body class="m-auto flex h-screen max-w-7xl flex-col bg-neutral px-6 text-lg leading-7 text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"><div id=the-top class="absolute flex self-center"><a class="-translate-y-8 rounded-b-lg bg-primary-200 px-3 py-1 text-sm focus:translate-y-0 dark:bg-neutral-600" href=#main-content><span class="pe-2 font-bold text-primary-600 dark:text-primary-400">&darr;</span>Skip to main content</a></div><header class="py-6 font-semibold text-neutral-900 dark:text-neutral sm:py-10 print:hidden"><nav class="flex items-start justify-between sm:items-center"><div class="flex flex-row items-center"><a href=/ class=mr-2><img src=/logo.png width=1012 height=1012 class="max-h-[10rem] max-w-[10rem] object-scale-down object-left" alt=PhiloBlog>
-</a><a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2" rel=me href=/>PhiloBlog</a></div><ul class="flex list-none flex-col text-end sm:flex-row"><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=/posts/ title><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">Posts</span></a></li><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=/tags/ title><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">Tags</span></a></li></ul></nav></header><div class="relative flex grow flex-col"><main id=main-content class=grow><article><header class=max-w-prose><ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden"><li class="hidden inline"><a class="dark:underline-neutral-600 decoration-neutral-300 hover:underline" href=/>PhiloBlog</a><span class="px-1 text-primary-500">/</span></li><li class=inline><a class="dark:underline-neutral-600 decoration-neutral-300 hover:underline" href=/posts/>Posts</a><span class="px-1 text-primary-500">/</span></li><li class="hidden inline"><a class="dark:underline-neutral-600 decoration-neutral-300 hover:underline" href=/posts/2022-05-relationships/>Useful and Useless Relationship Definitions</a><span class="px-1 text-primary-500">/</span></li></ol><h1 class="mb-8 mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">Useful and Useless Relationship Definitions</h1><div class="mb-10 text-base text-neutral-500 dark:text-neutral-400 print:hidden"><div class="flex flex-row flex-wrap items-center"><time datetime="2022-05-20 14:20:44 +0200 CEST">20 May 2022</time><span class="px-2 text-primary-500">&#183;</span><span title="Reading time">9 mins</span></div><div class="my-1 flex flex-wrap text-xs leading-relaxed text-neutral-500 dark:text-neutral-400"><a href=/tags/development/ class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400">Development</a>
-<a href=/tags/laravel/ class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400">Laravel</a></div></div></header><section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row"><div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8"><div class="toc pe-5 lg:sticky lg:top-10 print:hidden"><details open class="-ms-5 mt-0 overflow-hidden rounded-lg ps-5"><summary class="block cursor-pointer bg-neutral-100 py-1 ps-5 text-lg font-semibold text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">Table of Contents</summary><div class="border-s border-dotted border-neutral-300 py-2 ps-5 dark:border-neutral-600"><nav id=TableOfContents><ul><li><ul><li><a href=#relationships-are-great>Relationships are great</a></li><li><a href=#example-database-structure>Example Database structure</a><ul><li><a href=#class-diagram>Class diagram</a></li></ul></li><li><a href=#one-to-one>One to One</a><ul><li><a href=#hasone-and-belongsto><strong>HasOne</strong> and <strong>BelongsTo</strong></a></li><li><a href=#creative-usage-of-the-extra-parameters>&ldquo;Creative&rdquo; usage of the extra Parameters</a></li><li><a href=#default-models>Default Models</a></li></ul></li><li><a href=#one-to-many>One To Many</a><ul><li><a href=#hasmany-and-belongsto><strong>HasMany</strong> and <strong>BelongsTo</strong></a></li><li><a href=#queries-in-relations>Queries in Relations</a></li><li><a href=#using-hasone-ofmany>Using <strong>HasOne</strong>->ofMany</a></li><li><a href=#creative-one-to-many-relations>&ldquo;Creative&rdquo; One to Many Relations</a></li><li><a href=#having-things-through>Having Things Through</a><ul><li><a href=#creative-hasmanythroughs>&ldquo;Creative&rdquo; HasManyThroughs</a></li></ul></li></ul></li><li><a href=#many-to-many>Many To Many</a><ul><li><a href=#creative-many-to-many-relations>&ldquo;Creative&rdquo; Many to Many Relations</a></li></ul></li><li><a href=#last-words>Last words</a></li></ul></li></ul></nav></div></details></div></div><div class="min-h-0 min-w-0 max-w-prose grow"><div class="lead !mb-9 text-xl">Programmer giving Relationship Advice - A summary about Laravel / Eloquent relationships including some
-hints, advanced techniques to use and misuse relations</div><h2 id=relationships-are-great class="relative group">Relationships are great <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#relationships-are-great aria-label=Anchor>#</a></span></h2><p>Relational Databases like mySql or postgres tend to have that thing called relations. There are used in almost all
+    "
+  />
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/2022-05-relationships/" />
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="http://localhost:1313/posts/2022-05-relationships/">
+  <meta property="og:site_name" content="PhiloBlog">
+  <meta property="og:title" content="Useful and Useless Relationship Definitions">
+  <meta property="og:description" content="Programmer giving Relationship Advice - A summary about Laravel / Eloquent relationships including some hints, advanced techniques to use and misuse relations">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-05-20T14:20:44+02:00">
+    <meta property="article:modified_time" content="2022-05-20T14:20:44+02:00">
+    <meta property="article:tag" content="Development">
+    <meta property="article:tag" content="Laravel">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Useful and Useless Relationship Definitions">
+  <meta name="twitter:description" content="Programmer giving Relationship Advice - A summary about Laravel / Eloquent relationships including some hints, advanced techniques to use and misuse relations">
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Useful and Useless Relationship Definitions",
+    "headline": "Useful and Useless Relationship Definitions",
+    "description": "Programmer giving Relationship Advice - A summary about Laravel \/ Eloquent relationships including some hints, advanced techniques to use and misuse relations",
+    "abstract": "Programmer giving Relationship Advice - A summary about Laravel \/ Eloquent relationships including some hints, advanced techniques to use and misuse relations Relationships are great #Relational Databases like mySql or postgres tend to have that thing called relations.",
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/posts\/2022-05-relationships\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Sofia Fischer"
+    },
+    "copyrightYear": "2022",
+    "dateCreated": "2022-05-20T14:20:44\u002b02:00",
+    "datePublished": "2022-05-20T14:20:44\u002b02:00",
+    
+    "dateModified": "2022-05-20T14:20:44\u002b02:00",
+    
+    "keywords": ["Development","Laravel"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1763"
+  }
+  </script>
+    
+    <script type="application/ld+json">
+    {
+   "@context": "https://schema.org",
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+     {
+       "@type": "ListItem",
+       "item": "http://localhost:1313/",
+       "name": "Philo Blog",
+       "position": 1
+     },
+     {
+       "@type": "ListItem",
+       "item": "http://localhost:1313/posts/",
+       "name": "Posts",
+       "position": 2
+     },
+     {
+       "@type": "ListItem",
+       "name": "Useful and Useless Relationship Definitions",
+       "position": 3
+     }
+   ]
+ }
+  </script>
+
+  
+  <meta name="author" content="Sofia Fischer" />
+  
+    
+      <link href="mailto:sofia@philodev.com" rel="me" />
+    
+      <link href="https://github.com/sofia-fischer" rel="me" />
+    
+      <link href="https://www.linkedin.com/in/sofia-fischer-58b1611b9/" rel="me" />
+    
+  
+  
+  
+
+  
+  
+  
+  
+  <script
+    defer
+    type="text/javascript"
+    src="/js/mermaid.bundle.7388d891d67c69d0565884dd82c692581adf4d9a3fe08ed1ef4a1885dde9899630af8969859cb11f8fc129fd8d5297e1a0debcc09f1aaf41d35da5b5137fd387.js"
+    integrity="sha512-c4jYkdZ8adBWWITdgsaSWBrfTZo/4I7R70oYhd3piZYwr4lphZyxH4/BKf2NUpfhoN68wJ8ar0HTXaW1E3/Thw=="
+  ></script>
+
+
+
+
+
+
+  
+  
+
+  
+  
+</head>
+<body
+    class="m-auto flex h-screen max-w-7xl flex-col bg-neutral px-6 text-lg leading-7 text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="-translate-y-8 rounded-b-lg bg-primary-200 px-3 py-1 text-sm focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="pe-2 font-bold text-primary-600 dark:text-primary-400">&darr;</span
+        >Skip to main content</a
+      >
+    </div>
+    
+    
+      <header class="py-6 font-semibold text-neutral-900 dark:text-neutral sm:py-10 print:hidden">
+  <nav class="flex items-start justify-between sm:items-center">
+    
+    <div class="flex flex-row items-center">
+      
+    <a href="/" class="mr-2">
+      
+      <img
+        src="/logo.png"
+        width="1012"
+        height="1012"
+        class="max-h-[10rem] max-w-[10rem] object-scale-down object-left
+        "
+        alt="PhiloBlog"
+      />
+    </a>
+  <a
+    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+    rel="me"
+    href="/"
+    >PhiloBlog</a
+  >
+
+    </div>
+    
+    
+      <ul class="flex list-none flex-col text-end sm:flex-row">
+        
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/posts/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Posts</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/tags/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Tags</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+          
+        
+      </ul>
+    
+  </nav>
+</header>
+
+    
+    <div class="relative flex grow flex-col">
+      <main id="main-content" class="grow">
+        
+  <article>
+    <header class="max-w-prose">
+      
+        <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+  <li class="hidden inline">
+    <a
+      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
+      href="/"
+      >PhiloBlog</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class=" inline">
+    <a
+      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
+      href="/posts/"
+      >Posts</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="hidden inline">
+    <a
+      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
+      href="/posts/2022-05-relationships/"
+      >Useful and Useless Relationship Definitions</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+      
+      <h1 class="mb-8 mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Useful and Useless Relationship Definitions
+      </h1>
+      
+        <div class="mb-10 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+          
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2022-05-20 14:20:44 &#43;0200 CEST">20 May 2022</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">9 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+  
+    <div class="my-1 flex flex-wrap text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
+      
+        
+      
+        
+          
+            <a
+              href="/tags/development/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Development</a
+            >
+          
+            <a
+              href="/tags/laravel/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Laravel</a
+            >
+          
+        
+      
+    </div>
+  
+
+
+        </div>
+      
+      
+    </header>
+    <section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row">
+      
+        <div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8">
+          <div class="toc pe-5 lg:sticky lg:top-10 print:hidden">
+            <details open class="-ms-5 mt-0 overflow-hidden rounded-lg ps-5">
+  <summary
+    class="block cursor-pointer bg-neutral-100 py-1 ps-5 text-lg font-semibold text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden"
+  >
+    Table of Contents
+  </summary>
+  <div class="border-s border-dotted border-neutral-300 py-2 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#relationships-are-great">Relationships are great</a></li>
+        <li><a href="#example-database-structure">Example Database structure</a>
+          <ul>
+            <li><a href="#class-diagram">Class diagram</a></li>
+          </ul>
+        </li>
+        <li><a href="#one-to-one">One to One</a>
+          <ul>
+            <li><a href="#hasone-and-belongsto"><strong>HasOne</strong> and <strong>BelongsTo</strong></a></li>
+            <li><a href="#creative-usage-of-the-extra-parameters">&ldquo;Creative&rdquo; usage of the extra Parameters</a></li>
+            <li><a href="#default-models">Default Models</a></li>
+          </ul>
+        </li>
+        <li><a href="#one-to-many">One To Many</a>
+          <ul>
+            <li><a href="#hasmany-and-belongsto"><strong>HasMany</strong> and <strong>BelongsTo</strong></a></li>
+            <li><a href="#queries-in-relations">Queries in Relations</a></li>
+            <li><a href="#using-hasone-ofmany">Using <strong>HasOne</strong>-&gt;ofMany</a></li>
+            <li><a href="#creative-one-to-many-relations">&ldquo;Creative&rdquo; One to Many Relations</a></li>
+            <li><a href="#having-things-through">Having Things Through</a>
+              <ul>
+                <li><a href="#creative-hasmanythroughs">&ldquo;Creative&rdquo; HasManyThroughs</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#many-to-many">Many To Many</a>
+          <ul>
+            <li><a href="#creative-many-to-many-relations">&ldquo;Creative&rdquo; Many to Many Relations</a></li>
+          </ul>
+        </li>
+        <li><a href="#last-words">Last words</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+          </div>
+        </div>
+      
+      <div class="min-h-0 min-w-0 max-w-prose grow">
+        <div class="lead !mb-9 text-xl">
+  Programmer giving Relationship Advice - A summary about Laravel / Eloquent relationships including some
+hints, advanced techniques to use and misuse relations
+</div>
+
+<h2 id="relationships-are-great" class="relative group">Relationships are great <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#relationships-are-great" aria-label="Anchor">#</a></span></h2><p>Relational Databases like mySql or postgres tend to have that thing called relations. There are used in almost all
 Laravel Projects with a database and most Laravel developers know them and know how to use them. But not every developer
-knows <a href=https://laravel.com/docs/9.x/eloquent-relationships target=_blank rel=noreferrer>the Laravel Docs</a> by heart and there are even some features
-that are not mentioned in the Laravel Docs at all, but can only be discovered by clicking through the Eloquent code.</p><p><figure><img src=/images/2022-05-relations.png alt="Example Image with Humans, Dogs, and Toys to explain Relationships" class="mx-auto my-0 rounded-md"></figure></p><p>This blog post wants to sum up the basic relations Eloquent offers, hinting at some special ways to define relations and
+knows <a href="https://laravel.com/docs/9.x/eloquent-relationships" target="_blank" rel="noreferrer">the Laravel Docs</a> by heart and there are even some features
+that are not mentioned in the Laravel Docs at all, but can only be discovered by clicking through the Eloquent code.</p>
+<p>
+
+
+
+
+
+
+  
+  
+<figure><img src="/images/2022-05-relations.png" alt="Example Image with Humans, Dogs, and Toys to explain Relationships" class="mx-auto my-0 rounded-md" />
+</figure>
+</p>
+<p>This blog post wants to sum up the basic relations Eloquent offers, hinting at some special ways to define relations and
 advanced techniques to create relations that might be useful for querying. However, this post does not cover the usage
 of relations, their benefits for query optimization, or general explanations of how they work (for learning that I
-recommend the Laravel Docs or <a href=https://geekflare.com/laravel-eloquent-model-relationship/ target=_blank rel=noreferrer>this Blog Article</a>) - only
-the definition of them.</p><h2 id=example-database-structure class="relative group">Example Database structure <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#example-database-structure aria-label=Anchor>#</a></span></h2><p>Let&rsquo;s play a game, shall we? Let&rsquo;s have some <code>games</code>, each with a <code>hostPlayer</code>, some <code>players</code> who belong to a game and
+recommend the Laravel Docs or <a href="https://geekflare.com/laravel-eloquent-model-relationship/" target="_blank" rel="noreferrer">this Blog Article</a>) - only
+the definition of them.</p>
+<h2 id="example-database-structure" class="relative group">Example Database structure <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#example-database-structure" aria-label="Anchor">#</a></span></h2><p>Let&rsquo;s play a game, shall we? Let&rsquo;s have some <code>games</code>, each with a <code>hostPlayer</code>, some <code>players</code> who belong to a game and
 a user. A game consists of multiple <code>rounds</code>, in each round one player is active, and all players may make a <code>move</code>
-resulting in a score per round.</p><h3 id=class-diagram class="relative group">Class diagram <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#class-diagram aria-label=Anchor>#</a></span></h3><pre tabindex=0><code><div class=mermaid align=center>
+resulting in a score per round.</p>
+<h3 id="class-diagram" class="relative group">Class diagram <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#class-diagram" aria-label="Anchor">#</a></span></h3><pre tabindex="0"><code><div class="mermaid" align="center">
    
 classDiagram 
 Move --> Round : Round has many Moves, </br> Move belongs to a Round
@@ -54,9 +509,10 @@ score
 
 </div>
 
-</code></pre><h2 id=one-to-one class="relative group">One to One <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#one-to-one aria-label=Anchor>#</a></span></h2><h3 id=hasone-and-belongsto class="relative group"><strong>HasOne</strong> and <strong>BelongsTo</strong> <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#hasone-and-belongsto aria-label=Anchor>#</a></span></h3><p>If a model has a column containing another model&rsquo;s id, forming a One to One Relationship. Every Relationship has its
+</code></pre><h2 id="one-to-one" class="relative group">One to One <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#one-to-one" aria-label="Anchor">#</a></span></h2><h3 id="hasone-and-belongsto" class="relative group"><strong>HasOne</strong> and <strong>BelongsTo</strong> <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#hasone-and-belongsto" aria-label="Anchor">#</a></span></h3><p>If a model has a column containing another model&rsquo;s id, forming a One to One Relationship. Every Relationship has its
 inverse form - if a User <strong>HasOne</strong> Level, a Level <strong>BelongsTo</strong> a User. A Model with a <strong>HasOne</strong>
-says &ldquo;the id of mine is in on another table&rdquo;, the standard example would be:</p><pre tabindex=0><code><div class=mermaid align=center>
+says &ldquo;the id of mine is in on another table&rdquo;, the standard example would be:</p>
+<pre tabindex="0"><code><div class="mermaid" align="center">
    
 classDiagram 
 User <-- Level: User has one Level </br> Level belongs to User
@@ -76,112 +532,140 @@ over_all_score
 
 </div>
 
-</code></pre><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>class</span> <span class=nc>User</span> <span class=k>extends</span> <span class=nx>Model</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>  
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>level</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\HasOne</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>hasOne</span><span class=p>(</span><span class=nx>Level</span><span class=o>::</span><span class=na>class</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=o>...</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Level</span> <span class=k>extends</span> <span class=nx>Model</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>  
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>user</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\BelongsTo</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>belongsTo</span><span class=p>(</span><span class=nx>User</span><span class=o>::</span><span class=na>class</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=o>...</span>
-</span></span></code></pre></div><h3 id=creative-usage-of-the-extra-parameters class="relative group">&ldquo;Creative&rdquo; usage of the extra Parameters <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#creative-usage-of-the-extra-parameters aria-label=Anchor>#</a></span></h3><p><strong>A word on parameter naming</strong> The <code>something_id</code> column is called <code>foreign_id</code>, while the id column of this model is
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">level</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\HasOne</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasOne</span><span class="p">(</span><span class="nx">Level</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Level</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">user</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\BelongsTo</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="nx">User</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span></code></pre></div><h3 id="creative-usage-of-the-extra-parameters" class="relative group">&ldquo;Creative&rdquo; usage of the extra Parameters <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#creative-usage-of-the-extra-parameters" aria-label="Anchor">#</a></span></h3><p><strong>A word on parameter naming</strong> The <code>something_id</code> column is called <code>foreign_id</code>, while the id column of this model is
 referred to as <code>local_id</code>; the model to which this foreign_id belongs is the owner model, and its id column is referred
 to as <code>owner_id</code>. In Laravel it is possible to enter alternative values (other than Laravel&rsquo;s guessed
-values <code>$this->belongsTo(User::class, 'user_id', 'id')</code>) for reasons like using <code>uuids</code> or naming conventions.</p><p>But you can use these parameters also in more creative ways, let&rsquo;s say you want to display the level of the user next to
-a players icon:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>class</span> <span class=nc>Player</span> <span class=k>extends</span> <span class=nx>Model</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>  
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>level</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\HasOne</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>hasOne</span><span class=p>(</span><span class=nx>Level</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=s1>&#39;user_id&#39;</span><span class=p>,</span> <span class=s1>&#39;user_id&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=o>...</span>
-</span></span></code></pre></div><div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900"><span class="pe-3 text-primary-400"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M256 0C114.6.0.0 114.6.0 256s114.6 256 256 256 256-114.6 256-256S397.4.0 256 0zm0 128c17.67.0 32 14.33 32 32 0 17.67-14.33 32-32 32s-32-14.3-32-32 14.3-32 32-32zm40 256h-80c-13.2.0-24-10.7-24-24s10.75-24 24-24h16v-64h-8c-13.25.0-24-10.75-24-24s10.8-24 24-24h32c13.25.0 24 10.75 24 24v88h16c13.25.0 24 10.75 24 24s-10.7 24-24 24z"/></svg>
-</span></span><span class=dark:text-neutral-300>The idea of &ldquo;misusing&rdquo; relations in this way is considerable, strange, not intuitive for readers, and confusing for
+values <code>$this-&gt;belongsTo(User::class, 'user_id', 'id')</code>) for reasons like using <code>uuids</code> or naming conventions.</p>
+<p>But you can use these parameters also in more creative ways, let&rsquo;s say you want to display the level of the user next to
+a players icon:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Player</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">level</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\HasOne</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasOne</span><span class="p">(</span><span class="nx">Level</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;user_id&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span></code></pre></div><div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900">
+  <span class="pe-3 text-primary-400">
+    <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
+</span>
+  </span>
+  <span class="dark:text-neutral-300">The idea of &ldquo;misusing&rdquo; relations in this way is considerable, strange, not intuitive for readers, and confusing for
 beginners - so maybe just don&rsquo;t do them. With this blog post I just want to point out, that this way of working with
-relationships is possible, works for some cases great, and is kinda fun to think about.</span></div><p>If I need the relation (for eager loading, query optimization&mldr;) it is handy to take the shortcut of just using the
-user_ids. The problems I want to point out:</p><ul><li>Using the create function will not create a user, and honestly, I have no idea what would happen or which id would be
-set there</li><li>This query will not check if the user exists or is deleted</li></ul><h3 id=default-models class="relative group">Default Models <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#default-models aria-label=Anchor>#</a></span></h3><p>Both <strong>HasOne</strong> and <strong>BelongsTo</strong> relations may have a default which (for example for a level) comes in handy because
-you don&rsquo;t have to store a model for a user who maybe never plays a game.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>level</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\HasOne</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>hasOne</span><span class=p>(</span><span class=nx>Level</span><span class=o>::</span><span class=na>class</span><span class=p>)</span><span class=o>-&gt;</span><span class=na>withDefault</span><span class=p>([</span><span class=s1>&#39;overall_score&#39;</span> <span class=o>=&gt;</span> <span class=mi>0</span><span class=p>]);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span></code></pre></div><h2 id=one-to-many class="relative group">One To Many <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#one-to-many aria-label=Anchor>#</a></span></h2><h3 id=hasmany-and-belongsto class="relative group"><strong>HasMany</strong> and <strong>BelongsTo</strong> <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#hasmany-and-belongsto aria-label=Anchor>#</a></span></h3><p>The more common One to Many relations are indistinguishable from a database perspective (if there is no <code>unique</code>
+relationships is possible, works for some cases great, and is kinda fun to think about.</span>
+</div>
+
+<p>If I need the relation (for eager loading, query optimization&hellip;) it is handy to take the shortcut of just using the
+user_ids. The problems I want to point out:</p>
+<ul>
+<li>Using the create function will not create a user, and honestly, I have no idea what would happen or which id would be
+set there</li>
+<li>This query will not check if the user exists or is deleted</li>
+</ul>
+<h3 id="default-models" class="relative group">Default Models <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#default-models" aria-label="Anchor">#</a></span></h3><p>Both <strong>HasOne</strong> and <strong>BelongsTo</strong> relations may have a default which (for example for a level) comes in handy because
+you don&rsquo;t have to store a model for a user who maybe never plays a game.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">level</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\HasOne</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasOne</span><span class="p">(</span><span class="nx">Level</span><span class="o">::</span><span class="na">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">withDefault</span><span class="p">([</span><span class="s1">&#39;overall_score&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><h2 id="one-to-many" class="relative group">One To Many <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#one-to-many" aria-label="Anchor">#</a></span></h2><h3 id="hasmany-and-belongsto" class="relative group"><strong>HasMany</strong> and <strong>BelongsTo</strong> <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#hasmany-and-belongsto" aria-label="Anchor">#</a></span></h3><p>The more common One to Many relations are indistinguishable from a database perspective (if there is no <code>unique</code>
 constraint on the foreign key column). The difference is the possibility of the Owner to have more than one model
-belonging to it.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>class</span> <span class=nc>Game</span> <span class=k>extends</span> <span class=nx>Model</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>  
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>rounds</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\HasMany</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>hasMany</span><span class=p>(</span><span class=nx>Round</span><span class=o>::</span><span class=na>class</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=o>...</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Round</span> <span class=k>extends</span> <span class=nx>Model</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>  
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>game</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\BelongsTo</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>belongsTo</span><span class=p>(</span><span class=nx>Game</span><span class=o>::</span><span class=na>class</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=o>...</span>
-</span></span></code></pre></div><h3 id=queries-in-relations class="relative group">Queries in Relations <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#queries-in-relations aria-label=Anchor>#</a></span></h3><p>Compared to <code>ofMany</code> adding extra queries on the relation is possible as well and can come in quite handy:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>class</span> <span class=nc>Game</span> <span class=k>extends</span> <span class=nx>Model</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>  
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>redPlayers</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\HasMany</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>hasMany</span><span class=p>(</span><span class=nx>Player</span><span class=o>::</span><span class=na>class</span><span class=p>)</span><span class=o>-&gt;</span><span class=na>where</span><span class=p>(</span><span class=s1>&#39;color&#39;</span><span class=p>,</span> <span class=s1>&#39;red&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>playersWithoutMove</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\HasMany</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>hasMany</span><span class=p>(</span><span class=nx>Player</span><span class=o>::</span><span class=na>class</span><span class=p>)</span><span class=o>-&gt;</span><span class=na>whereDosntHave</span><span class=p>(</span><span class=s1>&#39;move&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=o>...</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></div><h3 id=using-hasone-ofmany class="relative group">Using <strong>HasOne</strong>->ofMany <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#using-hasone-ofmany aria-label=Anchor>#</a></span></h3><p>But <code>HasOne</code> also offers great options if you are often looking for one special model of a <strong>HasMany</strong> Relationship.
-This use case is very common, so I think the <code>ofMany</code> function is underrated.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>class</span> <span class=nc>Round</span> <span class=k>extends</span> <span class=nx>Model</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=c1>// latest (current) Move
-</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>public</span> <span class=k>function</span> <span class=nf>latestMove</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\HasOne</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>         <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>hasOne</span><span class=p>(</span><span class=nx>Move</span><span class=o>::</span><span class=na>class</span><span class=p>)</span><span class=o>-&gt;</span><span class=na>latestOfMany</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=c1>// best Move
-</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>public</span> <span class=k>function</span> <span class=nf>latestMove</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\HasOne</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>         <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>hasOne</span><span class=p>(</span><span class=nx>Move</span><span class=o>::</span><span class=na>class</span><span class=p>)</span><span class=o>-&gt;</span><span class=na>latestOfMany</span><span class=p>(</span><span class=s1>&#39;score&#39;</span><span class=p>,</span> <span class=s1>&#39;max&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=c1>// best, latest move where score is positive
-</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>public</span> <span class=k>function</span> <span class=nf>bestLatestMoveWithPositiveScore</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\HasOne</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>hasOne</span><span class=p>(</span><span class=nx>Move</span><span class=o>::</span><span class=na>class</span><span class=p>)</span><span class=o>-&gt;</span><span class=na>ofMany</span><span class=p>(</span>
-</span></span><span class=line><span class=cl>            <span class=p>[</span><span class=s1>&#39;created_at&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;max&#39;</span><span class=p>,</span> <span class=s1>&#39;score&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;max&#39;</span><span class=p>],</span> 
-</span></span><span class=line><span class=cl>            <span class=nx>fn</span> <span class=p>(</span><span class=nv>$query</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=nv>$query</span><span class=o>-&gt;</span><span class=na>where</span><span class=p>(</span><span class=s1>&#39;score&#39;</span><span class=p>,</span> <span class=s1>&#39;&gt;&#39;</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=o>...</span>
-</span></span></code></pre></div><h3 id=creative-one-to-many-relations class="relative group">&ldquo;Creative&rdquo; One to Many Relations <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#creative-one-to-many-relations aria-label=Anchor>#</a></span></h3><p>Breaking it down to the minimal requirement, a <code>HasMany</code> relation requires that there is another table, which holds an
-identifier that the local table holds as well.</p><p>If you look at our class diagram, for example, there is no direct connection between <code>Move</code> and <code>Game</code>, if you want the
+belonging to it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Game</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">rounds</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\HasMany</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="nx">Round</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Round</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">game</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\BelongsTo</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="nx">Game</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span></code></pre></div><h3 id="queries-in-relations" class="relative group">Queries in Relations <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#queries-in-relations" aria-label="Anchor">#</a></span></h3><p>Compared to <code>ofMany</code> adding extra queries on the relation is possible as well and can come in quite handy:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Game</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">redPlayers</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\HasMany</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="nx">Player</span><span class="o">::</span><span class="na">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">playersWithoutMove</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\HasMany</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="nx">Player</span><span class="o">::</span><span class="na">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">whereDosntHave</span><span class="p">(</span><span class="s1">&#39;move&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="using-hasone-ofmany" class="relative group">Using <strong>HasOne</strong>-&gt;ofMany <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#using-hasone-ofmany" aria-label="Anchor">#</a></span></h3><p>But <code>HasOne</code> also offers great options if you are often looking for one special model of a <strong>HasMany</strong> Relationship.
+This use case is very common, so I think the <code>ofMany</code> function is underrated.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Round</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// latest (current) Move
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">latestMove</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\HasOne</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasOne</span><span class="p">(</span><span class="nx">Move</span><span class="o">::</span><span class="na">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">latestOfMany</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// best Move
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">latestMove</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\HasOne</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasOne</span><span class="p">(</span><span class="nx">Move</span><span class="o">::</span><span class="na">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">latestOfMany</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// best, latest move where score is positive
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">bestLatestMoveWithPositiveScore</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\HasOne</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasOne</span><span class="p">(</span><span class="nx">Move</span><span class="o">::</span><span class="na">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">ofMany</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="p">[</span><span class="s1">&#39;created_at&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;max&#39;</span><span class="p">],</span> 
+</span></span><span class="line"><span class="cl">            <span class="nx">fn</span> <span class="p">(</span><span class="nv">$query</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span></code></pre></div><h3 id="creative-one-to-many-relations" class="relative group">&ldquo;Creative&rdquo; One to Many Relations <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#creative-one-to-many-relations" aria-label="Anchor">#</a></span></h3><p>Breaking it down to the minimal requirement, a <code>HasMany</code> relation requires that there is another table, which holds an
+identifier that the local table holds as well.</p>
+<p>If you look at our class diagram, for example, there is no direct connection between <code>Move</code> and <code>Game</code>, if you want the
 moves of a game you have to use the <code>Round</code> as a middleman. Now let&rsquo;s say I want a statistic that proves that my game is
 fair and that the host player does not make moves with higher scores or so - whatever reason I might have to create such
-a relation.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>class</span> <span class=nc>Game</span> <span class=k>extends</span> <span class=nx>Model</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>  
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>hostPlayerMoves</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\HasMany</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>hasMany</span><span class=p>(</span><span class=nx>Moves</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=s1>&#39;player_id&#39;</span><span class=p>,</span> <span class=s1>&#39;host_player_id&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=o>...</span>
-</span></span></code></pre></div><div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900"><span class="pe-3 text-primary-400"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M256 0C114.6.0.0 114.6.0 256s114.6 256 256 256 256-114.6 256-256S397.4.0 256 0zm0 128c17.67.0 32 14.33 32 32 0 17.67-14.33 32-32 32s-32-14.3-32-32 14.3-32 32-32zm40 256h-80c-13.2.0-24-10.7-24-24s10.75-24 24-24h16v-64h-8c-13.25.0-24-10.75-24-24s10.8-24 24-24h32c13.25.0 24 10.75 24 24v88h16c13.25.0 24 10.75 24 24s-10.7 24-24 24z"/></svg>
-</span></span><span class=dark:text-neutral-300>Again, creating this kind of relationships might be smelly or hacky, but it can be handy if you keep the possibilities
-in mind that relations offer.</span></div><h3 id=having-things-through class="relative group">Having Things Through <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#having-things-through aria-label=Anchor>#</a></span></h3><p>Laravel provides a relation for two consecutive <code>HasMany</code> relations.</p><pre tabindex=0><code><div class=mermaid align=center>
+a relation.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Game</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">hostPlayerMoves</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\HasMany</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="nx">Moves</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;host_player_id&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span></code></pre></div><div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900">
+  <span class="pe-3 text-primary-400">
+    <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
+</span>
+  </span>
+  <span class="dark:text-neutral-300">Again, creating this kind of relationships might be smelly or hacky, but it can be handy if you keep the possibilities
+in mind that relations offer.</span>
+</div>
+
+<h3 id="having-things-through" class="relative group">Having Things Through <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#having-things-through" aria-label="Anchor">#</a></span></h3><p>Laravel provides a relation for two consecutive <code>HasMany</code> relations.</p>
+<pre tabindex="0"><code><div class="mermaid" align="center">
    
 classDiagram 
 Round --> Game : Game has many Rounds, </br> Round belongs to a Game 
@@ -211,85 +695,295 @@ score
 
 </div>
 
-</code></pre><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>class</span> <span class=nc>Game</span> <span class=k>extends</span> <span class=nx>Model</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>  
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>moves</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\HasManyThrough</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>hasManyThrough</span><span class=p>(</span><span class=nx>Move</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=nx>Round</span><span class=o>::</span><span class=na>class</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=o>...</span>
-</span></span></code></pre></div><h4 id=creative-hasmanythroughs class="relative group">&ldquo;Creative&rdquo; HasManyThroughs <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#creative-hasmanythroughs aria-label=Anchor>#</a></span></h4><p>Let&rsquo;s say we want to display the Level of the overall Game - maybe to match with other Games or whatever. Again we can
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Game</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">moves</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\HasManyThrough</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasManyThrough</span><span class="p">(</span><span class="nx">Move</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">Round</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span></code></pre></div><h4 id="creative-hasmanythroughs" class="relative group">&ldquo;Creative&rdquo; HasManyThroughs <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#creative-hasmanythroughs" aria-label="Anchor">#</a></span></h4><p>Let&rsquo;s say we want to display the Level of the overall Game - maybe to match with other Games or whatever. Again we can
 use the additional parameters to skip some tables on the way between Game and Level. Usually, we would start at the
 Game, and look for the players, look for the users, look for the levels. But both the levels and the players share the
-same user_id - why not skip the User?</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>class</span> <span class=nc>Game</span> <span class=k>extends</span> <span class=nx>Model</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>  
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>levels</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\HasManyThrough</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>hasManyThrough</span><span class=p>(</span>
-</span></span><span class=line><span class=cl>            <span class=nx>Level</span><span class=o>::</span><span class=na>class</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>            <span class=nx>Player</span><span class=o>::</span><span class=na>class</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>            <span class=s1>&#39;game_id&#39;</span><span class=p>,</span> <span class=c1>// Foreign key on the players table
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;user_id&#39;</span><span class=p>,</span> <span class=c1>// Foreign key on the levels table
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;id&#39;</span><span class=p>,</span> <span class=c1>// Local key on the games table
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;user_id&#39;</span> <span class=c1>// Local key on the players table
-</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=o>...</span>
-</span></span></code></pre></div><div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900"><span class="pe-3 text-primary-400"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M256 0C114.6.0.0 114.6.0 256s114.6 256 256 256 256-114.6 256-256S397.4.0 256 0zm0 128c17.67.0 32 14.33 32 32 0 17.67-14.33 32-32 32s-32-14.3-32-32 14.3-32 32-32zm40 256h-80c-13.2.0-24-10.7-24-24s10.75-24 24-24h16v-64h-8c-13.25.0-24-10.75-24-24s10.8-24 24-24h32c13.25.0 24 10.75 24 24v88h16c13.25.0 24 10.75 24 24s-10.7 24-24 24z"/></svg>
-</span></span><span class=dark:text-neutral-300>Again, creating this kind of relationships might be smelly or hacky, but it can be handy if you keep the possibilities
-in mind that relations offer.</span></div><h2 id=many-to-many class="relative group">Many To Many <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#many-to-many aria-label=Anchor>#</a></span></h2><p>Many to Many relations are the kind of relations that require a pivot table. If compared to the implementation depicted
+same user_id - why not skip the User?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Game</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">levels</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\HasManyThrough</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasManyThrough</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">Level</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">Player</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;game_id&#39;</span><span class="p">,</span> <span class="c1">// Foreign key on the players table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="c1">// Foreign key on the levels table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="c1">// Local key on the games table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;user_id&#39;</span> <span class="c1">// Local key on the players table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span></code></pre></div><div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900">
+  <span class="pe-3 text-primary-400">
+    <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
+</span>
+  </span>
+  <span class="dark:text-neutral-300">Again, creating this kind of relationships might be smelly or hacky, but it can be handy if you keep the possibilities
+in mind that relations offer.</span>
+</div>
+
+<h2 id="many-to-many" class="relative group">Many To Many <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#many-to-many" aria-label="Anchor">#</a></span></h2><p>Many to Many relations are the kind of relations that require a pivot table. If compared to the implementation depicted
 in the examples above, where a user has a player per game I could have implemented a Many to Many relation using
 a <code>game_user</code> or <code>game^user</code> or <code>games_2_users</code> table or other conventional namings for pivot tables. That would look
-like this:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>class</span> <span class=nc>Game</span> <span class=k>extends</span> <span class=nx>Model</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>  
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>player</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\HasManyThrough</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>belongsToMany</span><span class=p>(</span><span class=nx>User</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=s1>&#39;game_user&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=o>...</span>
+like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Game</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">player</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\HasManyThrough</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsToMany</span><span class="p">(</span><span class="nx">User</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;game_user&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
 </span></span></code></pre></div><p>The point I don&rsquo;t like about this is #1 the naming convention does not reflect the meaning of the relation; I prefer
 calling a thing by their name, in this case, <code>players</code>. 2# The first thing especially bugs me after you start adding
 more columns in the pivot table, starting with timestamps, then maybe a soft delete, and then a custom link or so. At
 some point, a lot of the pivot tables I saw would have looked cleaner, and caused less code smell if they were models
-from the very beginning.</p><p>This does not mean, that many to many relations are useless. As I mentioned in the last examples, there are many ways to
+from the very beginning.</p>
+<p>This does not mean, that many to many relations are useless. As I mentioned in the last examples, there are many ways to
 use the additional parameters in the relationship functions. So if you see <code>Player</code> as a pivot model, you can still
-define this relation:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>class</span> <span class=nc>Game</span> <span class=k>extends</span> <span class=nx>Model</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>  
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>users</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\BelongsToMany</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>belongsToMany</span><span class=p>(</span>
-</span></span><span class=line><span class=cl>            <span class=nx>User</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=c1>// target model
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;players&#39;</span><span class=p>,</span> <span class=c1>// pivot table
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;game_id&#39;</span><span class=p>,</span> <span class=c1>// Foreign key on pivot player table
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;user_id&#39;</span><span class=p>,</span> <span class=c1>// Foreign key on pivot player table
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;id&#39;</span><span class=p>,</span> <span class=c1>// Parent key on the games table
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;id&#39;</span> <span class=c1>// Related key on the users table
-</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=o>...</span>
-</span></span></code></pre></div><p>Any table with two foreign ids may be used as a pivot table!</p><h3 id=creative-many-to-many-relations class="relative group">&ldquo;Creative&rdquo; Many to Many Relations <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#creative-many-to-many-relations aria-label=Anchor>#</a></span></h3><p>You may again use this information even further and again create sometimes useful relations by using the additional
-function parameters. For example, if you want to have the Levels instead of the Users of a Game.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>class</span> <span class=nc>Game</span> <span class=k>extends</span> <span class=nx>Model</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>  
-</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>levels</span><span class=p>()</span><span class=o>:</span> <span class=nx>\Illuminate\Database\Eloquent\Relations\BelongsToMany</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>belongsToMany</span><span class=p>(</span>
-</span></span><span class=line><span class=cl>            <span class=nx>Level</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=c1>// target model
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;players&#39;</span><span class=p>,</span> <span class=c1>// pivot table
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;game_id&#39;</span><span class=p>,</span> <span class=c1>// Foreign key on pivot player table
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;user_id&#39;</span><span class=p>,</span> <span class=c1>// Foreign key on pivot player table
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;id&#39;</span><span class=p>,</span> <span class=c1>// Parent key on the games table
-</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=s1>&#39;user_id&#39;</span> <span class=c1>// Related key on the levels table
-</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=o>...</span>
-</span></span></code></pre></div><h2 id=last-words class="relative group">Last words <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#last-words aria-label=Anchor>#</a></span></h2><p>This was a collection of infos, hints, and hacks about the definition of Laravel or Eloquent Relationships. If you found
-any mistakes or have additional tricks please feel free to contact me :D</p><p>Happy coding</p></div></section><footer class="max-w-prose pt-8 print:hidden"><div class=flex><div class=place-self-center><div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">Author</div><div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">Sofia Fischer</div><div class="text-2xl sm:text-lg"><div class="flex flex-wrap text-neutral-400 dark:text-neutral-500"><a class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400" style=will-change:transform href=mailto:sofia@philodev.com target=_blank aria-label=Email rel="me noopener noreferrer"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1-27.64 140.9 68.65 266.2 199.1 285.1 19.01 2.888 36.17-12.26 36.17-31.49l1e-4-.6631c0-15.74-11.44-28.88-26.84-31.24-84.35-12.98-149.2-86.13-149.2-174.2.0-102.9 88.61-185.5 193.4-175.4 91.54 8.869 158.6 91.25 158.6 183.2v16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98.0036c-7.299.0-13.2 4.992-15.12 11.68-24.85-12.15-54.24-16.38-86.06-5.106-38.75 13.73-68.12 48.91-73.72 89.64-9.483 69.01 43.81 128 110.9 128 26.44.0 50.43-9.544 69.59-24.88 24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3c0-149.2-133.9-265.632-287.3-235.57zM239.1 304.3c-26.47.0-48-21.56-48-48.05s21.53-48.05 48-48.05 48 21.56 48 48.05-20.6 48.05-48 48.05z"/></svg>
-</span></a><a class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400" style=will-change:transform href=https://github.com/sofia-fischer target=_blank aria-label=Github rel="me noopener noreferrer"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 496 512"><path fill="currentcolor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6.0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6.0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3.0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1.0-6.2-.3-40.4-.3-61.4.0.0-70 15-84.7-29.8.0.0-11.4-29.1-27.8-36.6.0.0-22.9-15.7 1.6-15.4.0.0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5.0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9.0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4.0 33.7-.3 75.4-.3 83.6.0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6.0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9.0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-</span></a><a class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400" style=will-change:transform href=https://www.linkedin.com/in/sofia-fischer-58b1611b9/ target=_blank aria-label=Linkedin rel="me noopener noreferrer"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 448 512"><path fill="currentcolor" d="M416 32H31.9C14.3 32 0 46.5.0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6.0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3.0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2.0 38.5 17.3 38.5 38.5.0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6.0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2.0 79.7 44.3 79.7 101.9V416z"/></svg></span></a></div></div></div></div><div class=pt-8><hr class="border-dotted border-neutral-300 dark:border-neutral-600"><div class="flex justify-between pt-3"><span><a class="group flex" href=/posts/2022-05-custom-query-builder-pattern/><span class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"><span class="ltr:inline rtl:hidden">&larr;</span><span class="ltr:hidden rtl:inline">&rarr;</span></span>
-<span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500">Model Specific Query Builder - an Alternative to Scopes</span>
-<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"><time datetime="2022-05-14 08:20:44 +0200 CEST">14 May 2022</time>
-</span></span></a></span><span><a class="group flex text-right" href=/posts/2022-05-driver-manager-pattern/><span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500">Manager and Driver Pattern - pattern, implementation, and usage</span>
-<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"><time datetime="2022-05-22 08:13:44 +0200 CEST">22 May 2022</time>
-</span></span><span class="ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[-2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"><span class="ltr:inline rtl:hidden">&rarr;</span><span class="ltr:hidden rtl:inline">&larr;</span></span></a></span></div></div></footer></article></main><div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12" id=to-top hidden=true><a href=#the-top class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400" aria-label="Scroll to top" title="Scroll to top">&uarr;</a></div><footer class="py-10 print:hidden"><div class="flex items-center justify-between"><div><p class="text-sm text-neutral-500 dark:text-neutral-400">&copy;
-2024
-Sofia Fischer</p><p class="text-xs text-neutral-500 dark:text-neutral-400">Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://gohugo.io/ target=_blank rel="noopener noreferrer">Hugo</a> & <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://github.com/jpanther/congo target=_blank rel="noopener noreferrer">Congo</a></p></div><div class="flex flex-row items-center"><div class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"><button id=appearance-switcher-0 type=button aria-label="appearance switcher"><div class="flex h-12 w-12 items-center justify-center dark:hidden" title="Switch to dark appearance"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M32 256C32 132.2 132.3 32 255.8 32c11.36.0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z"/></svg></span></div><div class="hidden h-12 w-12 items-center justify-center dark:flex" title="Switch to light appearance"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M256 159.1c-53.02.0-95.1 42.98-95.1 95.1s41.2 96.9 95.1 96.9 95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347l-63.2-91.9 63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89 164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6 12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256 2.74 347.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7 19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109 109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69.0-127.1-57.31-127.1-127.1.0-70.69 57.31-127.1 127.1-127.1S383.1 186.2 383.1 256c0 70.7-56.4 127.1-127.1 127.1z"/></svg></span></div></button></div></div></div></footer></div></body></html>
+define this relation:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Game</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">users</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\BelongsToMany</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsToMany</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">User</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="c1">// target model
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;players&#39;</span><span class="p">,</span> <span class="c1">// pivot table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;game_id&#39;</span><span class="p">,</span> <span class="c1">// Foreign key on pivot player table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="c1">// Foreign key on pivot player table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="c1">// Parent key on the games table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;id&#39;</span> <span class="c1">// Related key on the users table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span></code></pre></div><p>Any table with two foreign ids may be used as a pivot table!</p>
+<h3 id="creative-many-to-many-relations" class="relative group">&ldquo;Creative&rdquo; Many to Many Relations <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#creative-many-to-many-relations" aria-label="Anchor">#</a></span></h3><p>You may again use this information even further and again create sometimes useful relations by using the additional
+function parameters. For example, if you want to have the Levels instead of the Users of a Game.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Game</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">levels</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Illuminate\Database\Eloquent\Relations\BelongsToMany</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsToMany</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">Level</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="c1">// target model
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;players&#39;</span><span class="p">,</span> <span class="c1">// pivot table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;game_id&#39;</span><span class="p">,</span> <span class="c1">// Foreign key on pivot player table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="c1">// Foreign key on pivot player table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="c1">// Parent key on the games table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s1">&#39;user_id&#39;</span> <span class="c1">// Related key on the levels table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span></code></pre></div><h2 id="last-words" class="relative group">Last words <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#last-words" aria-label="Anchor">#</a></span></h2><p>This was a collection of infos, hints, and hacks about the definition of Laravel or Eloquent Relationships. If you found
+any mistakes or have additional tricks please feel free to contact me :D</p>
+<p>Happy coding</p>
+
+      </div>
+    </section>
+    <footer class="max-w-prose pt-8 print:hidden">
+      
+  <div class="flex">
+    
+    
+    
+    <div class="place-self-center">
+      
+        <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+          Author
+        </div>
+        <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+          Sofia Fischer
+        </div>
+      
+      
+      <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="mailto:sofia@philodev.com"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://github.com/sofia-fischer"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://www.linkedin.com/in/sofia-fischer-58b1611b9/"
+          target="_blank"
+          aria-label="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+    </div>
+  </div>
+
+
+      
+
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="group flex" href="/posts/2022-05-custom-query-builder-pattern/">
+              <span
+                class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+                ><span class="ltr:inline rtl:hidden">&larr;</span
+                ><span class="ltr:hidden rtl:inline">&rarr;</span></span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Model Specific Query Builder - an Alternative to Scopes</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2022-05-14 08:20:44 &#43;0200 CEST">14 May 2022</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="group flex text-right" href="/posts/2022-05-driver-manager-pattern/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Manager and Driver Pattern - pattern, implementation, and usage</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2022-05-22 08:13:44 &#43;0200 CEST">22 May 2022</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[-2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+                ><span class="ltr:inline rtl:hidden">&rarr;</span
+                ><span class="ltr:hidden rtl:inline">&larr;</span></span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+      </main>
+      
+        <div
+          class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12"
+          id="to-top"
+          hidden="true"
+        >
+          <a
+            href="#the-top"
+            class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+            aria-label="Scroll to top"
+            title="Scroll to top"
+          >
+            &uarr;
+          </a>
+        </div>
+      <footer class="py-10 print:hidden">
+  
+  
+  <div class="flex items-center justify-between">
+    <div>
+      
+      
+        <p class="text-sm text-neutral-500 dark:text-neutral-400">
+            &copy;
+            2024
+            Sofia Fischer
+        </p>
+      
+      
+      
+        <p class="text-xs text-neutral-500 dark:text-neutral-400">
+          
+          
+          Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href="https://github.com/jpanther/congo" target="_blank" rel="noopener noreferrer">Congo</a>
+        </p>
+      
+    </div>
+    <div class="flex flex-row items-center">
+      
+      
+      
+      
+        <div
+          class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        >
+          <button id="appearance-switcher-0" type="button" aria-label="appearance switcher">
+            <div
+              class="flex h-12 w-12 items-center justify-center dark:hidden"
+              title="Switch to dark appearance"
+            >
+              <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+            </div>
+            <div
+              class="hidden h-12 w-12 items-center justify-center dark:flex"
+              title="Switch to light appearance"
+            >
+              <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+            </div>
+          </button>
+        </div>
+      
+    </div>
+  </div>
+  
+  
+</footer>
+
+    </div>
+  </body>
+</html>

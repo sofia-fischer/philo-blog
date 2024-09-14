@@ -1,1 +1,61 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DevOps on PhiloBlog</title><link>https://www.blog.philodev.one/tags/devops/</link><description>Recent content in DevOps on PhiloBlog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 10 Sep 2024 10:20:44 +0200</lastBuildDate><atom:link href="https://www.blog.philodev.one/tags/devops/index.xml" rel="self" type="application/rss+xml"/><item><title>Understanding other oAuth flows</title><link>https://www.blog.philodev.one/posts/2024-09-o-auth-2/</link><pubDate>Tue, 10 Sep 2024 10:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2024-09-o-auth-2/</guid><description>oAuth pprovides more flows than just the authentication of a user, but also authentication of services against one Authentication Server or a federated net of Authentication Servers.</description></item><item><title>Understanding oAuth Authentication Code Flow</title><link>https://www.blog.philodev.one/posts/2024-08-o-auth/</link><pubDate>Mon, 09 Sep 2024 10:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2024-08-o-auth/</guid><description>oAuth is a hard to get into because of its (necessary) complexity.</description></item><item><title>Gitlab Feature Flags (for Backends)</title><link>https://www.blog.philodev.one/posts/2024-02-feature-flags/</link><pubDate>Tue, 05 Mar 2024 10:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2024-02-feature-flags/</guid><description>Feature Flags are both - a hit on the bullshit bingo and case for a trigger warning.</description></item><item><title>Using data for Sprint Planning</title><link>https://www.blog.philodev.one/posts/2023-11-using-data-to-ignite-action/</link><pubDate>Tue, 21 Nov 2023 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2023-11-using-data-to-ignite-action/</guid><description>&amp;ldquo;It is better to be vaguely right than exactly wrong.</description></item><item><title>Communication between different teams working on the same codebase</title><link>https://www.blog.philodev.one/posts/2023-04-communicating-between-teams/</link><pubDate>Sun, 16 Apr 2023 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2023-04-communicating-between-teams/</guid><description>Effective communication is essential in software development.</description></item><item><title>Testing Open Api files</title><link>https://www.blog.philodev.one/posts/2023-03-testing-open-api-specs/</link><pubDate>Tue, 28 Mar 2023 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2023-03-testing-open-api-specs/</guid><description>Using Tests to verify the type and nullable correctness of an Open Api file is one way to ensure a usable documentation (if the file cannot be generated).</description></item><item><title>Demo Environments and what I learned from implementing one</title><link>https://www.blog.philodev.one/posts/2022-05-demo-env/</link><pubDate>Wed, 11 May 2022 20:36:22 +0200</pubDate><guid>https://www.blog.philodev.one/posts/2022-05-demo-env/</guid><description>I got the task to implement a Demo environment, learned something about Laravel Factories and the usage of an environment to give possible customers / investors a taste of your product and the developers to find response time / query problems and UX bugs A &amp;ldquo;Demo&amp;rdquo; Feature Request #This card was proposed in a sprint planning and sparked a discussion around multiple problems and ideas.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DevOps on PhiloBlog</title>
+    <link>http://localhost:1313/tags/devops/</link>
+    <description>Recent content in DevOps on PhiloBlog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 10 Sep 2024 10:20:44 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding other oAuth flows</title>
+      <link>http://localhost:1313/posts/2024-09-o-auth-2/</link>
+      <pubDate>Tue, 10 Sep 2024 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2024-09-o-auth-2/</guid>
+      <description>oAuth pprovides more flows than just the authentication of a user, but also authentication of services against one Authentication Server or a federated net of Authentication Servers.</description>
+    </item>
+    <item>
+      <title>Understanding oAuth Authentication Code Flow</title>
+      <link>http://localhost:1313/posts/2024-08-o-auth/</link>
+      <pubDate>Mon, 09 Sep 2024 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2024-08-o-auth/</guid>
+      <description>oAuth is a hard to get into because of its (necessary) complexity.</description>
+    </item>
+    <item>
+      <title>Gitlab Feature Flags (for Backends)</title>
+      <link>http://localhost:1313/posts/2024-02-feature-flags/</link>
+      <pubDate>Tue, 05 Mar 2024 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2024-02-feature-flags/</guid>
+      <description>Feature Flags are both - a hit on the bullshit bingo and case for a trigger warning.</description>
+    </item>
+    <item>
+      <title>Using data for Sprint Planning</title>
+      <link>http://localhost:1313/posts/2023-11-using-data-to-ignite-action/</link>
+      <pubDate>Tue, 21 Nov 2023 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2023-11-using-data-to-ignite-action/</guid>
+      <description>&amp;ldquo;It is better to be vaguely right than exactly wrong.</description>
+    </item>
+    <item>
+      <title>Communication between different teams working on the same codebase</title>
+      <link>http://localhost:1313/posts/2023-04-communicating-between-teams/</link>
+      <pubDate>Sun, 16 Apr 2023 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2023-04-communicating-between-teams/</guid>
+      <description>Effective communication is essential in software development.</description>
+    </item>
+    <item>
+      <title>Testing Open Api files</title>
+      <link>http://localhost:1313/posts/2023-03-testing-open-api-specs/</link>
+      <pubDate>Tue, 28 Mar 2023 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2023-03-testing-open-api-specs/</guid>
+      <description>Using Tests to verify the type and nullable correctness of an Open Api file is one way to ensure a usable documentation (if the file cannot be generated).</description>
+    </item>
+    <item>
+      <title>Demo Environments and what I learned from implementing one</title>
+      <link>http://localhost:1313/posts/2022-05-demo-env/</link>
+      <pubDate>Wed, 11 May 2022 20:36:22 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2022-05-demo-env/</guid>
+      <description>I got the task to implement a Demo environment, learned something about Laravel Factories and the usage of an environment to give possible customers / investors a taste of your product and the developers to find response time / query problems and UX bugs A &amp;ldquo;Demo&amp;rdquo; Feature Request #This card was proposed in a sprint planning and sparked a discussion around multiple problems and ideas.</description>
+    </item>
+  </channel>
+</rss>
