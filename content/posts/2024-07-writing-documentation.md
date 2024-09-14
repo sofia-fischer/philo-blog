@@ -3,7 +3,7 @@ title: "Agile Software Architecture"
 
 date: 2024-05-28T10:20:44+02:00
 
-draft: false
+draft: true
 
 description: Architecture is no longer a set of diagrams that define upfront how features are implemented, but a continuously growing and evolving set of decisions
 
@@ -45,17 +45,26 @@ The boundary of the architectural decision in contrast to an implementation deci
 ### Architecture Perspectives for Requirements
 
 While Agile Methodoolgies provide a wide range of tools to define the requirements for products from a user and a business perspective; they often lack the perspective of an architect, future developer, or tester. 
-When formulating the User Story, the architectural requirements are often left out, which means in agile they are invisible to time constraints, deadlines, and work recognition. 
+When formulating the User Story, the architectural requirements are often left out, which means in agile they are invisible to time constraints, deadlines, and work recognition.
+
+There is one common framework existing that deals with the definition of such architectural or quality attribute requirements: The Six Part Scenario 
+
+* Source of stimulus (some entity or event, e.g. an user, an attacker)
+* Stimulus (condition that needs to be considered, e.g. faulty request)
+* Environment (providing context, e.g. during overloaded times, while DB is recovering from an error)
+* Artifact (what part of the system is acting)
+* Response (activity undertaken after the arrival of the stimulus, e.g. reporting, escalating, restarting)
+* Response measure (make the response measurable and testable)
+[^sixpartscenario]
+
+[^sixpartscenario]:[Software Architecture in Practice, Felix Bachman and Mark Klein](https://www.win.tue.nl/~wstomv/edu/2ii45/year-0910/Software_Architecture_in_Practice_2nd_Edition_Chapter4.pdf)
 
 Some examples of these requirements, that highly interfere with the the architecture: 
-* As a Developer I want to be able to understand the architecture of the project easily and want easy ways to add unplanned features
-* As a Security Expert, I want the project to use the company Identity provider to authenticate without static credentials
-* As a Testing Expert, I want to test the API independently from the Client
-* As a Database Expert, I want to utalise Query and Command Segregation as I want to handle future database performance by using read replica
-* As an Interface Expert, I want to communicate with this third party service using a shared Queue
-* As a third party user of the service, I want an Open API definition first approach to have a prioritisation of API Interface
-* As a Deployment Expert, I want to be able to deploy an independent instance of the project with mocks to test single branches
-* As a Developer, I want the system to be controllabe and observable on production
+* A User requires the handling of a large numbers items by a micro service, in an environment that does not require sync processes, but handling of the micro service failing; the services uses an async communication, the current state and number of tries should be reported (may lead to a Queue that supports retry mechanisms)
+* An event is dispatched to trigger a command, but the command will fail as the Database is currently recovering; the command should be retried automatically several times before it failes and reports an error.
+* One User requests a separate file format and therefore requires the usage of a different (third party) service instead of the most used, in a normal busines environment; the system should be able to automatically detect file format by input and switch the service used, the used client should be stored and visible to the user. (Might lead to something like a driver pattern)
+* A User want to authenticate against the system and related micro services in a normal busines environment; The authentication process should include the permissions to also authenticate against the microservices, the system should run without a separate authentication (might lead to something like oAuth)
+* A User requests a list of data enteries without the need to store something, during a timeslot with very high demand; the system should direct such request to a read replica of the DB; the Master-DB statistics should reflect a much lower number of only read statements (might lead to Query Command Segragation) 
 
 These requirements match partially with the idea of non-functional requirements; but functional requirements do not by definition have the major impact on development cost.
 Architectural / Design Requirements may enable or stop non functional requirements, and functional requirements should be consulted to create architectural decisions. How many microseconds a request may take is a non-functional requirement that may  be satisfied without making costly future decisions. As sidenote, the idea of framing non-functional requirements in a quantitative, measurable, testable number (target number and unacceptable number) also underlines that these requirements are revisited regularly, influenced by the architecture, but not causing architectural changes per se  [^nonFuncReqs]. 
@@ -71,16 +80,18 @@ Similar to the concept of a Minimum Viable Product, the idea of a Minimum Viable
 
 * *Model the architecture*: The Model should be a tool for communication (not documentation)
 * *Consider Alternatives*: Following the LEAN principles, discuss more than one option and consider drawbacks and benefits
-* *Mind Cordways Law*: Companies tend to implement systems that reflect their communication structure. If there is no functioning communication structure to the team that builds the service that your system requires, the implementation might reflect that
+* *Mind Conways Law*: Companies tend to implement systems that reflect their communication structure. If there is no functioning communication structure to the team that builds the service that your system requires, the implementation might reflect that
 * *Architect for change*: The Architecture will change within the agile process, it can not and should not be defined in a way that eliminates future opportunities
 * *Mind testability, deployability, and developer usability*: The Devs, Testers, and Infras are the users of the architecture that is built. It should be clear and easy to use it. 
 * *Keep minimal viable*: Travel light - Making too many decisions too early might restrict future implementations. If there is a decision that might as well be set in stone later, delay it
 
 ### Feedback loops
 
+One of the from my point of view most important perspectives of the Quality Attribute Requirements is the visibility of the result. How are those architectural requirements visible to the user, the dev (so the user of the code), or the tester?
+
 Looking at the former requirements, the respective user may be asked if the decisions led to the desired quality attributes. When a new Developer joins the team, is the code structure easy to follow and understand? How clear is it for the tester to confirm the testability? How easy is the project to deploy and how often do the architecture decisions cause interruptions? Do the current devs enjoy working in the architecture?
 
-Refining such quality attributes and assessing them across teams might be the modern interpretation of an architect's role. 
+Refining such quality attributes and assessing them across teams might be a part of the modern interpretation of an architect's role. 
 
 ## Conclusion
 
