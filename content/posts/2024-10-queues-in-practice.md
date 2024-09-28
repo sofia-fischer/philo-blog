@@ -29,7 +29,7 @@ Queues come with great benefits:
 * Control of the flow of messages and therefore the system performance
 * Increase loose coupling and scalability
 
-{{< alert > {{< alert "circle-info" >}}
+{{< alert "circle-info" >}}
 **How well is a Queue Performing?** The main attributes to look at are the Queue Age (the age of the oldest message in
 queue) and the Queue Size (the number of messages in the queue). A queue with one thousand messages doesn't need to be a
 Problem if the oldest message is only a second
