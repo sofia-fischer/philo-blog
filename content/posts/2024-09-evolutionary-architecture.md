@@ -1,5 +1,5 @@
 ---
-title: "Book takeaways: Building Evolutionary Architecture"
+title: "📚 Book takeaways: Building Evolutionary Architecture"
 
 date: 2024-09-27T10:20:44+02:00
 
@@ -16,8 +16,11 @@ tags: [ "Book", "Architecture", "Metrics", "Development" ]
 Building Evolutionary Architectures
 Neal Ford, Rebecca Parsons, Patrick Kua, and Pramod Sadalage.
 {{< /lead >}}
+[^book]
 
-{{< alert "circle-info" >}}
+[^book]: [Building Evolutionary Architectures](https://www.oreilly.com/library/view/building-evolutionary-architectures/9781492097532/)
+
+{{< alert "comment" >}}
 **Expectation Management** : This blog post reflects my personal takeaways from the book. Chapters that I did not find
 interesting or relevant to my work are not covered, chapters that particularly resonated with me are covered in more
 detail. In between I added information I found useful to understand the context of the book.
@@ -33,7 +36,7 @@ over generations. The algorithms utilise a fitness function to evaluate the solu
 by (more or less random) mutations to generate a new population. The generations will be selected and mutated over time
 to localise local optimums.
 
-{{< alert "circle-info" >}}
+{{< alert "comment" >}}
 While the concept and the term fitness function are very helpful in when dealing with architecture, I would like to
 think about the limitations. Small mutations may be costly on architectures, architecture mutations should not be
 random, but rather by decision and therefore understandable and traceable.
@@ -70,13 +73,13 @@ architecture that can evolve in the required dimensions of the characteristics. 
 time the architectural characteristics utilizes fitness functions to project the quality and evolvability of the
 architecture.
 
-> “Decide early what the objective drivers are and prioritize decisions accordingly.”
+> Decide early what the objective drivers are and prioritize decisions accordingly.
 
 In an agile development environment, many decisions are made incrementally, so should not all architecture decisions be
 made upfront, but at the _last responsible moment_. Decisions should bring benefits to the current product, and should
 therfore be sacrificial in the possible future of the product.
 
-{{< alert "circle-info" >}}
+{{< alert "comment" >}}
 One of the most important characteristics of an architecture (in my opinion) is _testability_. An easily testable
 system often comes already with its own set of fitness functions.
 
@@ -87,8 +90,8 @@ A system that is easily testable for a developer is often also easier to underst
 
 ### Fitness Functions
 
-> “An architectural fitness function is any mechanism that provides an objective integrity assessment of some
-> architectural characteristic(s).”
+> An architectural fitness function is any mechanism that provides an objective integrity assessment of some
+> architectural characteristic(s).
 
 Fitness functions in practice make take the form of:
 
@@ -118,9 +121,11 @@ Temporal fitness functions run in defined time frames, like a reminder for a sta
 alert on outdated libraries.
 Manual fitness functions are run by humans, like a QA review.
 
-{{< alert "circle-info" >}}
-In this context, Monitor Driven Development is mentioned, and seems like something I need to look into! [^mdd]
+{{< alert "comment" >}}
+In this context, Monitor Driven Development is mentioned, and seems like something I need to look into!
 {{< /alert >}}
+[^mdd]
+
 [^mdd]: [Monitor Driven Development](https://benjiweber.co.uk/blog/2015/03/02/monitoring-check-smells/)
 
 **Static or Dynamic results** : Static fitness functions have fixed results like a passed or failed test.
@@ -199,8 +204,8 @@ The topology of the software system has a significant impact on the ability to e
 
 ### Connascence
 
-> “Two components are connascent if a change in one would require the other to be modified in order to maintain the
-> overall correctness of the system.”
+> Two components are connascent if a change in one would require the other to be modified in order to maintain the
+> overall correctness of the system.
 
 Connascence is a measure of the coupling between components. Different types of Connascence are more desirable than
 other, the order of desirability listed here from most strong to weak.
@@ -238,8 +243,8 @@ The Book provides guidlines from Page-Jones for using connascence to improve sys
 
 ### Architectural Quantum
 
-> “An architectural quantum is an independently deployable component with high functional cohesion, high static
-> coupling, which includes all the structural elements required for the system to function properly.”
+> An architectural quantum is an independently deployable component with high functional cohesion, high static
+> coupling, which includes all the structural elements required for the system to function properly.
 
 Independently deployable means that the component can be deployed without the need to deploy other components.
 High static coupling refers how services are wired together (in contrast to dynamic coupling, which refers to how
@@ -255,13 +260,13 @@ orchestrator vs. choreographer).
 
 ### Orthogonal Coupling
 
-> “Two parts of an architecture may be orthogonally coupled if they serve two distinct purposes that still
-> intersect to form a complete solution”
+> Two parts of an architecture may be orthogonally coupled if they serve two distinct purposes that still
+> intersect to form a complete solution
 
 An example of such orthogonal coupling would be a service that is responsible for the business logic and a service that
 is responsible for monitoring the requests.
 
-{{< alert "circle-info" >}}
+{{< alert "comment" >}}
 I mark many things here as my opinion, as I am not sure if I got the concepts of the book correctly, and asked for help,
 but found the answers worth noting down my learnings, even if they might differ from the book.
 
@@ -280,7 +285,7 @@ Following the concept of orthogonal coupling, any two containers in one pod migh
 This is a concept connected to the Side Car Pattern, in which an application has a service as "side-car" that is managed
 more centralized e.g. by the platform team.
 
-{{< alert "circle-info" >}}
+{{< alert "comment" >}}
 If each pod has a side-car responsible for request handling (in php world for example a nginx), this allows to move
 authorization to the side-car completely. Any request in and out of the pod would go through the side-car, so
 any tokens can be added or checked in this service. This is a Service Mesh.
@@ -293,8 +298,8 @@ satisfying the contracts, and if there are performance bottlenecks in the commun
 
 ### Evolutionary Data
 
-> “Evolutionary design in databases occurs when developers can build and evolve the structure of the database as
-> requirements change over time”
+> Evolutionary design in databases occurs when developers can build and evolve the structure of the database as
+> requirements change over time
 
 This requires migrations to change the database schema:
 
@@ -307,7 +312,7 @@ This requires migrations to change the database schema:
 Fitness functions may also be used to ensure that data constraints are met, for example that identify is kept throughout
 the system, or that data deletions are propagated to other services.
 
-{{< alert "circle-info" >}}
+{{< alert "comment" >}}
 I am missing the concept of database normalisations in this context. Databases normalisation is a process of organizing
 a relational database according to a set of defined rules to ensure data integrity and minimize redundancy.
 
