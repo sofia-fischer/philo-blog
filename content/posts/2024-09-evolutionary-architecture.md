@@ -36,14 +36,19 @@ over generations. The algorithms utilise a fitness function to evaluate the solu
 by (more or less random) mutations to generate a new population. The generations will be selected and mutated over time
 to localise local optimums.
 
+This concept can be transferred to software architecture. With small incremental changes, the architecture can evolve
+with the current requirements, while data-driven tested by certain fitness functions to check if the evolution is in the
+right direction.
+
 {{< alert "comment" >}}
-While the concept and the term fitness function are very helpful in when dealing with architecture, I would like to
-think about the limitations. Small mutations may be costly on architectures, architecture mutations should not be
-random, but rather by decision and therefore understandable and traceable.
-Architecture is not only a way of optimising component dependencies, but also a way of communicating guidelines to
-developers and imply limitations to the product.
+While the concept and the term fitness function are very helpful when dealing with architecture, I would like to
+think about the limitations. Architecture is not only a performance optimization problem, but also a communication tool
+to the developers. In a good architecture, developers know why certain decisions have been made, and can use that
+understanding to make more decisions. It also a way of communicating guidelines to developers and imply limitations of
+the product.
 Architects sometimes focus more on the restrictions of developers and communicate through long wiki pages instead of
 providing guidance and expectations.
+
 I want to emphasize that the concept of Evolutionary Architecture can be a great tool for communicating the boundaries
 and reasons for architectural decisions, but it can also be misused to enforce restrictions on developers, especially if
 the fitness functions are written in a way that do not provide the needed context and reason for failure.
@@ -54,11 +59,6 @@ the fitness functions are written in a way that do not provide the needed contex
 The mechanics of Evolutionary Architecture are covering fitness functions, as well as practices, metrics, and tools that
 support architectural governance.
 These mechanics are a tool for architects to guide teams in their architectural decision-making.
-Architects are not supposed to sit in their ivory tower, controlling all projects by code reviews or designing hard to
-change architecture to enforce their ideas.
-Fitness functions are a way to communicate the architectural guidelines and expectations to the developers, and to
-ensure that the architecture evolves in the right direction. From developers perspective, fitness functions should feel
-like checklists, not annoying restriction.
 
 ### Architecture Characteristics
 
@@ -67,11 +67,8 @@ about in a previous blog post about [Agile Architecture]({{< ref "posts/2024-05-
 These architecture characteristics represent critical requirements for the success and maintainability of the product.
 The common characteristics in the book include Auditability, Performance, Security, Requirements, Data, Legality,
 Scalability.
-
-Although architecture characteristics should be defined in the beginning of a project, and used to design an
-architecture that can evolve in the required dimensions of the characteristics. As the business requirements evolve over
-time the architectural characteristics utilizes fitness functions to project the quality and evolvability of the
-architecture.
+As the business requirements evolve over time the architectural characteristics utilizes fitness functions to project
+the quality of the architecture.
 
 > Decide early what the objective drivers are and prioritize decisions accordingly.
 
@@ -200,7 +197,8 @@ $cyclomaticComplexity = count($linesOfCode) - count($decisionsPoints) + 2;
 
 ## Structure
 
-The topology of the software system has a significant impact on the ability to evolve it.
+The topology of the software system has a significant impact on the ability to evolve it. The book describes different
+form of coupling in software architecture.
 
 ### Connascence
 
@@ -267,8 +265,8 @@ An example of such orthogonal coupling would be a service that is responsible fo
 is responsible for monitoring the requests.
 
 {{< alert "comment" >}}
-I mark many things here as my opinion, as I am not sure if I got the concepts of the book correctly, and asked for help,
-but found the answers worth noting down my learnings, even if they might differ from the book.
+I mark many things here as my opinion, as I am not sure if I got the concepts of the book correctly, and asked for other
+help, and think it's worth noting down my learnings, even if they might differ from the book.
 
 Moving the orthogonal coupling to the Kubernetes world, both services would be containers in one pod.
 A pod is a small deployable unit in Kubernetes. It is a group of one or more containers,
