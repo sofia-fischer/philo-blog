@@ -266,24 +266,3 @@ Documentation is a key part of the development process. It should be written wit
 with a spark of creativity.
 
 Happy documenting :)
-
-[//]: # (
-  Writing Error Messages
-  Deliver the best user experience.
-  Are universally accessible. To learn more, take Tech Writing for Accessibility
-  Enable users to help themselves.
-  Reduce the support workload.
-  Enable faster resolution of issues.
-  This is not only for frontend, but also for backend, and API's !!!
-  - Don't fail silently
-    - follow error standard https://google.aip.dev/193
-    - Avoid swallowing the root cause e.g. `server error`
-    - Log the error codes and provide unique error codes in your aplication
-    - Raise errors as early as possible
-    - Tell users exactly what went wrong. Be specific—vague error messages frustrate users e.g. what input is wrong how,
-      with all requirements, not only the current most wrong
-    - Explain how to fix the problem
-    - Provide examples
-    - Write for the audience, in simple, active, not-double-negative language
-    - Readability over magic numbers!
-  )
