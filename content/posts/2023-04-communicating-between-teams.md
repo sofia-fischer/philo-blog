@@ -8,7 +8,7 @@ draft: false
 description: "Effective communication is essential in software development. As per Conway's Law, the structure and
 architecture of a software system are influenced by the communication patterns and structures within the organization. "
 
-tags: ["Agile", "DevOps"]
+tags: [ "Agile", "DevOps" ]
 ---
 
 {{< lead >}}
@@ -41,10 +41,9 @@ There are many ways to improve the communication between teams, some will be out
 
 ![Talk to the Corgi Butt](/images/2023-04-talk.png)
 
-
 ### Architecture Decision Records
 
-Tests, comments, and human readable code are in my experience the most read and used documentation.
+Tests, comments, and human-readable code are in my experience the most read and used documentation.
 But still, there are situations in which the way the code is written only makes sense in the context in which the
 decision was made.
 Often enough, that bad looking class has a reason to exists in that way - and even if the explanation is "because of
@@ -61,6 +60,19 @@ practical.
 [^git]: [ADR Tools](https://adr.github.io/)
 [^techRadar]: [Thoughtworks Tech Radar](https://www.thoughtworks.com/en-us/radar/techniques/lightweight-architecture-decision-records)
 [^netflix]: [Michael Nygard: Architecture Decision Records](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions)
+
+**Update 06.10.2024**
+**Which decision should be recorded?** ADRs are used to document decisions that are important to the team in long-term.
+Decisions that are easy to change, or which are not backed by the team don't need to be recorded. Recorded decisions
+should have a reason to be recorded [^patterns]:
+
+* Decisions that impact the way developers work, e.g. the decision to use a specific framework or library, or to
+  implement a specific pattern.
+* Decisions that are hard to change.
+* Decisions that are often revisited to record the reasons for the decisions, trials, failures, and more context.
+* Decisions that are often asked by new team members, or that are hard to understand without context.
+
+[^patterns]: [Communication Patterns by Jacqui Read](https://www.oreilly.com/library/view/communication-patterns/9781098140533/)
 
 Example of an ADR:
 
@@ -139,11 +151,21 @@ participate and exchange knowledge.
   agenda point can
   be relaxing from time to time.
 
+### Culture
+
+All the comminucation tools and structures only can work if the culture of the company is pushing towards sharing
+knowledge.
+
+* **Redirect to Documentations or ADRs**: When others asks, redirect to the documentation next to an explanation.
+* **Make Decision Recording a habit**: Write down Meeting outcomes in chats, ADRs, or other shared notes.
+* **Hold up Review standards for Documentation and ADRs**: Documentation and ADRs should be reviewed with the same
+  caution as code. The motivation for that should also focus on sharing knowledge.
+
 ## Conclusion
 
 There are ways to improve Team communication, and the way the communication is organized, how hygienic and structured it
 is, can have a huge impact on the software system that is being developed. I would not dare to enforce long, daily or
 weekly meetings on developers who prefer sitting in their cellar and coding, because communication does not need to be a
-meeting, nor a formal setup with 50 people. 
+meeting, nor a formal setup with 50 people.
 
 Happy communicating!

@@ -74,7 +74,7 @@ the quality of the architecture.
 
 In an agile development environment, many decisions are made incrementally, so should not all architecture decisions be
 made upfront, but at the _last responsible moment_. Decisions should bring benefits to the current product, and should
-therfore be sacrificial in the possible future of the product.
+therefore be sacrificial in the possible future of the product.
 
 {{< alert "comment" >}}
 One of the most important characteristics of an architecture (in my opinion) is _testability_. An easily testable
@@ -230,10 +230,10 @@ weaker forms of connascence can be used. Domain Driven Design uses the concept o
 each entity works within a localized context, implying strong connascence within the context and weak connascence
 between contexts.
 
-The Degree of Connascence describes the size of impact. A connaissance of type has less impact on a softwaresystem if it
+The Degree of Connascence describes the size of impact. A connaissance of type has less impact on a software system if it
 used a normalisation / anti corruption layer to not drag type changes of the other system through it.
 
-The Book provides guidlines from Page-Jones for using connascence to improve systems modularity:
+The Book provides guidelines from Page-Jones for using connascence to improve systems modularity:
 
 * Minimize overall connascence by breaking the system into encapsulated elements.
 * Minimize any remaining connascence that crosses encapsulation boundaries.

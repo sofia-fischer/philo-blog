@@ -1,100 +1,291 @@
 ---
-title: "Agile Software Architecture"
+title: "Writing good Documentation"
 
-date: 2024-05-28T10:20:44+02:00
+date: 2024-10-06T10:20:44+02:00
 
 draft: true
 
-description: Architecture is no longer a set of diagrams that define upfront how features are implemented, but a continuously growing and evolving set of decisions
+description: It might depend on your project if you only need a README or a handbook - although the worst documentation is no documentation
 
-tags: [ "Development", "Agile"]
+tags: [ "Development", "Agile" ]
 ---
 
 {{< lead >}}
- Architecture is no longer a set of diagrams that define upfront how features are implemented, but a continuously growing and evolving set of decisions
+It might depend on your project if you only need a README or a handbook - although the worst documentation is no
+documentation
 {{< /lead >}}
 
-## Agile Architecture
+Technical writing is writing to convey technical information. The main key is understanding the audience and their
+needs. This article aims to cover things to consider when writing documentation, how to structure text and diagrams and
+question to ask to understand the audience. No tools are discussed, the written is applicable to any language or
+project.
 
-One change that came with the agile culture was replacing detailed architecture plans and class structure diagrams "YAGNI" mentality of only developing the current ticket losing overview over the bigger picture. Both extremes are not practical and will end up in an agile architecture. 
+## The Readers Perspective
 
-The term Agile Architecture implies that a software system is designed in a versatile, easy to-evolve, changeable way, while also being resilient to change; but also that the architecture is contiguously growing in an iterative live cycle to evolve with respect to the upcoming features of the product.[^agileArchitecture]
+The first paragraph of a Documentation page should state the audience, topic and goal of the page.
+Documentation is always written for somebody and to answer their question - not the curiosity of the writer.
 
-[^agileArchitecture]: [How to Agilely Architect an Agile Architecture](https://insights.sei.cmu.edu/documents/1395/2014_101_001_493902.pdf)
+- **Know Your Audience** : Define audience by roles with certain knowledge. For example, a developer that just
+  started in the company; a backend developer of a different team; a product owner ...
+- **Understand the Audience's Needs** : What do they want? Meeting the needs of the audience is the primary goal of
+  documentation.
+- **Know what you want from the audience** : Do you need them to make decisions? Do you want them to understand the
+  system? Do you want them to use the system?
+- **Understand the Audience's Knowledge** : Experts often suffer from the curse of knowledge, which means that their
+  expert understanding of a topic ruins their
+  explanations to newcomers. What is their technical understanding? What is their domain knowledge? What
+  diagrams can they understand?
 
-In every software project, some decisions need to be made upfront, that will highly influence the architecture of the project - programming language, database decision, authentication, patterns ... 
-These decisions should not be solved by the first feature ticket by one developer. But I had the experience that exactly that happens - one developer gets the task of "build the project", locks themselves in a dark room and emerges after weeks with a barebone of a project every other team member is forced to use from that point on. 
+The best documentation is written by a person with empathy for their audience. Understanding the audience is key to
+communication. How much does the audience know about the topic? Does the audience know about similar topics, which
+analogies can they understand? Does the audience know the stated, but hasn't used the knowledge since some time? Does
+your audience have out of date knowledge? What is the audience's motivation to read the documentation? What does the
+audience need to learn to accomplish their goal? Does the audience need to act in a certain order?  [^patterns]
 
-## Defining Architecture and their Requirements
-From my idealistic point of view, the architecture decisions should be discussed in the team, after understanding the idea of the product, to design an agile architecture that is flexible enough to be iterated on. 
-For this to work, architecture can not be defined the same way as in Waterfall projects in which the architecture was designed and set in stone before the first ticket was started. "The software architecture isn't a set of diagrams, it's not a set of review meetings, it's not a software architecture document, but it is a set of decisions that the team makes about some critical aspects of the system". [^continousArchitecture]
+{{< alert "circle-info" >}}
+Written communication holds all the complexity of spoken communication. Humans will always interpret the text, and will
+resist any message if they think their needs are not understood. Dropping empathy in business communication is not
+constructive, demonstrating understanding and alignment of goals is. Persuasion is progress.
+{{< /alert >}}
 
-[^continousArchitecture]:[Continuous Architecture with Kurt Bittner and Pierre Pureur](https://www.infoq.com/podcasts/continuous-architecture/)
+For every audience, the documentation should follow a **narrative**. When deciding on the structure of a documentation (
+and even the structure of each diagram or chapter in it), consider drafting a narrative as guidance.
+Example narratives could be **a Success Story** how a solution was implemented successfully, **a Failure Story** how a
+solution failed and what lessons were learned, **a Use Case** a visualisation on how the system is used, **a Clarity
+Story** to expain why a decision was made.
 
-### Capturing and Documenting Architecture
+### Accessibility
 
-Viewing Architecture as a set of decisions makes the Architecture Decision Records a very relatable way of documenting architecture. 
-Drawing fancy diagrams - something I enjoy to do - is a great way to document how a system is working, but often enough the question of why it was built this way is the more important question if developers see themselves confronted with the need for change. 
+**Accessibility is Inclusiveness** : The curb cut effect describes how designing for accessibility benefits everyone.
+Originally, curb cuts (sidewalk ramps) were designed for people in wheelchairs. However, many people benefit from curb
+cuts, such as anyone with a stroller, suitcase, or delivery cart. [^google]
 
-{{<alert>}}
-Architecture Design Records: A set of point in time documentation of architectural decisions, usually stored in the code base to get information on the thoughts and reasons why the code was implemented in a certain way. [I wrote more about it in this post](https://www.blog.philodev.one/posts/2023-04-communicating-between-teams/#architecture-decision-records).
-{{</alert>}}
+Accessibility in documentation means that the documentation is usable by everyone, including people who are colorblind,
+using an uncommon screen ratio, who have problems reading unstructured text due to neurodiversity, or have any other
+form of impairment possible in the audience. Things to consider could be: [^patterns]
 
-The boundary of the architectural decision in contrast to an implementation decision is not easy, by may be defined for practical reasons - if the cost of changing a decision, it is probably an architectural decision.
+* Do not rely on color alone to convey information (additionally form, text, or symbols). Pay attention to contrast and
+  color choices in pictures or diagrams. Use tools like [Color Oracle](https://colororacle.org/)to simulate color
+  blindness.
+* Mind the device that the audience is using. Especially for phones or screen readers using tables can make the
+  information harder to access.
+* Structure the text using linkable headings. Use paragraphs for related ideas, and use the first paragraph in a chapter
+  to communicate the main idea, as readers pay more attention to the first paragraph. Use Clear language (easy to read,
+  listen to, and translate)
+* Provide an alternative text for images that explain images in the context of the text.
+* Use Inclusive language and examples.
 
-### Architecture Perspectives for Requirements
+**Keep your writing culturally neutral** : "Piece of cake" and "Bob's your uncle" are culturally specific idioms that
+can only be understood by people from certain cultural backgrounds.
 
-While Agile Methodoolgies provide a wide range of tools to define the requirements for products from a user and a business perspective; they often lack the perspective of an architect, future developer, or tester. 
-When formulating the User Story, the architectural requirements are often left out, which means in agile they are invisible to time constraints, deadlines, and work recognition.
-
-There is one common framework existing that deals with the definition of such architectural or quality attribute requirements: The Six Part Scenario 
-
-* Source of stimulus (some entity or event, e.g. an user, an attacker)
-* Stimulus (condition that needs to be considered, e.g. faulty request)
-* Environment (providing context, e.g. during overloaded times, while DB is recovering from an error)
-* Artifact (what part of the system is acting)
-* Response (activity undertaken after the arrival of the stimulus, e.g. reporting, escalating, restarting)
-* Response measure (make the response measurable and testable)
-[^sixpartscenario]
-
-[^sixpartscenario]:[Software Architecture in Practice, Felix Bachman and Mark Klein](https://www.win.tue.nl/~wstomv/edu/2ii45/year-0910/Software_Architecture_in_Practice_2nd_Edition_Chapter4.pdf)
-
-Some examples of these requirements, that highly interfere with the the architecture: 
-* A User requires the handling of a large numbers items by a micro service, in an environment that does not require sync processes, but handling of the micro service failing; the services uses an async communication, the current state and number of tries should be reported (may lead to a Queue that supports retry mechanisms)
-* An event is dispatched to trigger a command, but the command will fail as the Database is currently recovering; the command should be retried automatically several times before it failes and reports an error.
-* One User requests a separate file format and therefore requires the usage of a different (third party) service instead of the most used, in a normal busines environment; the system should be able to automatically detect file format by input and switch the service used, the used client should be stored and visible to the user. (Might lead to something like a driver pattern)
-* A User want to authenticate against the system and related micro services in a normal busines environment; The authentication process should include the permissions to also authenticate against the microservices, the system should run without a separate authentication (might lead to something like oAuth)
-* A User requests a list of data enteries without the need to store something, during a timeslot with very high demand; the system should direct such request to a read replica of the DB; the Master-DB statistics should reflect a much lower number of only read statements (might lead to Query Command Segragation) 
-
-These requirements match partially with the idea of non-functional requirements; but functional requirements do not by definition have the major impact on development cost.
-Architectural / Design Requirements may enable or stop non functional requirements, and functional requirements should be consulted to create architectural decisions. How many microseconds a request may take is a non-functional requirement that may  be satisfied without making costly future decisions. As sidenote, the idea of framing non-functional requirements in a quantitative, measurable, testable number (target number and unacceptable number) also underlines that these requirements are revisited regularly, influenced by the architecture, but not causing architectural changes per se  [^nonFuncReqs]. 
-
-[^nonFuncReqs]: [Non Functional Requirements](https://scaledagileframework.com/nonfunctional-requirements/)
-
-## How to design Agile Architecture
-### Minimal Viable Architecture
-
-Similar to the concept of a Minimum Viable Product, the idea of a Minimum Viable Architecture is to deliver an architecture that fulfils the current point in time relevant requirements. This architecture is iterated over in the upcoming features and requirements.[^mva]
-
-[^mva]: [Minimal Viable Architecture](https://continuousarchitecture.com/2021/12/21/minimum-viable-architecture-how-to-continuously-evolve-an-architectural-design-over-time/)
-
-* *Model the architecture*: The Model should be a tool for communication (not documentation)
-* *Consider Alternatives*: Following the LEAN principles, discuss more than one option and consider drawbacks and benefits
-* *Mind Conways Law*: Companies tend to implement systems that reflect their communication structure. If there is no functioning communication structure to the team that builds the service that your system requires, the implementation might reflect that
-* *Architect for change*: The Architecture will change within the agile process, it can not and should not be defined in a way that eliminates future opportunities
-* *Mind testability, deployability, and developer usability*: The Devs, Testers, and Infras are the users of the architecture that is built. It should be clear and easy to use it. 
-* *Keep minimal viable*: Travel light - Making too many decisions too early might restrict future implementations. If there is a decision that might as well be set in stone later, delay it
+{{< alert "circle-info" >}}
+Accessibility also refers to the availability of skills of the audience. When there is only a subset of people that
+can read UML Diagrams, that parts of documentation are not accessible to the whole audience. If there are even less
+people who can write UML Diagrams, the documentation is prone to become stale.
+{{< /alert >}}
 
 ### Feedback loops
 
-One of the from my point of view most important perspectives of the Quality Attribute Requirements is the visibility of the result. How are those architectural requirements visible to the user, the dev (so the user of the code), or the tester?
+Get feedback early and often from multiple audiences. Get feedback on small parts as well as the overall design.
+Identify errors and misunderstandings early, when they were not yet repeated in the documentation. Ensure alignment with
+business. Identify risks and challanges early. [^patterns]
 
-Looking at the former requirements, the respective user may be asked if the decisions led to the desired quality attributes. When a new Developer joins the team, is the code structure easy to follow and understand? How clear is it for the tester to confirm the testability? How easy is the project to deploy and how often do the architecture decisions cause interruptions? Do the current devs enjoy working in the architecture?
+**Establish a dialogue with the audience**. Documentation can have a formal pull request process, scrum reviews can also
+present documentation.
 
-Refining such quality attributes and assessing them across teams might be a part of the modern interpretation of an architect's role. 
+Focus your feedback requests on useful and representable picks of the audience. Generic feedback is not helpful, but
+regular contact with the audience can help to understand their needs and to adjust the documentation to them.
+
+{{< alert "circle-info" >}}
+
+## Technical Writing
+
+### Terminology
+
+Naming things is hard. Every project should take away one thing from Domain Driven Design - the ubiquitous language that
+is shared between developers and users, and listed in the documentation. The language should be consistent, as simple
+and precise as possible (like `invoiceSum` instead of `commutativeTotalSum`), best if the terms are "googleable".
+Consider that some part of the audience are using a translation tool, using simple language avoids translation errors.
+When possible introduce (or link to the glossary) new terminology in the beginning of the paragraph that rely on
+them. [^google]
+
+While one central point "glossary" for the ubiquitous language can help the users and the developers.
+
+Acronyms should be avoided. They do not provide any benefits, but only the opportunity for misunderstandings.
+
+### Writing Style
+
+[^google]: [Google Technical writing courses](https://developers.google.com/tech-writing/overview)
+
+**Answer what, why, and how** : Good paragraphs answer these three questions:
+What are you trying to tell your reader?
+Why is it important for the reader to know this?
+How should the reader use this knowledge? Alternatively, how should the reader know your point to be true?
+
+> **Minto Pyramid Principle** The easiest order for a reader is to receive the major, more abstract ideas before he is
+> required to take in the minor supporting ones. And since the major ideas are always derived from the minor ones, the
+> ideal structure of the ideas will always be a pyramid of groups of ideas tied together by a single overall
+> thought.[^minto]
+
+[^minto]: Barbara Minto about the Pyramid Principle. Citation copied from "Communication Patterns by Jacqui Read"
+
+* Adopt a style guide
+* Replace this or that with the appropriate noun.
+* Prefer active voice to passive voice `The Code is interpreted by Python, but the code is compiled by C++` vs
+  `Python interprets the code, but C++ compiles the code`
+* Reduce there is / there are
+  `There are setences starting with "there is" or "there are" that should be avoided or rewritten to replace the generic topic with a more specific one`
+  vs
+  `Sentences starting with "there is" or "there are" should be avoided or rewritten to replace the generic topic with a more specific one`
+* **Keep it short** - Shorter documentation reads faster. Focus each sentence on a single idea and break up long
+  sentences into lists.xf
+
+### Diagrams
+
+An audience should be guided from high abstraction to detailed information, using diagrams with intention and without
+clutter. [^patterns]
+
+**Keep the Abstraction level consistent** : Levels of abstraction refer to the granularity of the information presented.
+Mixing abstraction levels can confuse readers, and depending on the audience turn a diagram unreadable.
+
+{{< alert "circle-info" >}}
+**C4 Model Hierarchy of abstraction** describes the four levels of abstraction for software architecture diagrams:
+
+* Context Level Diagrams show the system in its environment
+* Container Level Diagrams show the high-level structure of the system
+* Component Level Diagrams show the components inside the containers
+* Code Level Diagrams show the implementation inside the components
+  {{< /alert >}}
+
+**Representational Consistency** : When the audience is navigating between diagrams of different levels of abstraction,
+it should be easy to understand the relationships between the diagrams. Consistency in naming, style, and added
+container / component boxes should guide the reader and reduce cognitive load.
+
+**Purposeful Styling** : Colors can be used to highlight important information, but they should be used with the
+intention to provide an extra level of information (like categories, or status). Same goes for shapes and lines. Styling
+a box in a sketched way can indicate that the component is not yet implemented and can again add an extra level of
+information.
+
+**Simplify the geometry** : The excessive use of boxes, relationships, and lines can make a diagram unreadable. A good
+starting point can be to make a diagram symmetrical with non-crossing, uni directional lines. If you do not want to
+communicate something particular, all similar objects should have the same size. A good abstraction may
+redesign reality like subway maps are an abstraction stripped by the reality of a city map to make it more readable and
+understandable. Relationships can be of hierarchical, sequential, causal, proportional (scale) or spatial (relative
+position) nature.
+
+**Include a legend and labels** : Labels should be placed if they help the audience to understand the message of the
+diagram, and be moved to a legend or note if not. Similar to a coder naming a function or variable to avoid a comment,
+the message of a diagram should be explicit by composition, component, and labels.
+
+**Utalise the audiences expectations** : Match the diagram to expectations (of content, shapes, and flow). from
+left-to-right, top-to-bottom,
+with start of information in the top left corner, and the end in the bottom right. The audience may also expect certain
+shapes to represent certain things.
+Like a narrative, the diagram should have a beginning with which the audience starts reading, a middle, and an end with
+a result or conclusion.
+
+**Single Responsibility Principle** : A diagram should have a single purpose to effectively comm unicate a single
+message. It should either describe the behavior of a system or the structure of a system. Structure diagrams communicate
+what and where, visualising relationships or physical location of hardware. Behavior diagrams communicate how and whom,
+visualising the flow of data or state changes.
+
+**Example Code should work** : Example code should perform the task it claims to perform and be as production-ready as
+possible. Language-specific conventions should be followed.
+
+[^patterns]: [Communication Patterns by Jacqui Read](https://www.oreilly.com/library/view/communication-patterns/9781098140533/)
+
+### Structure
+
+**Product over Project** : A project is a temporary endeavor with a defined beginning and end, while a product is
+something that is ongoing and has a lifecycle. Documentation should be written for products, not projects.
+
+A Product Mindset comes with a long term view, and a focus on the customer. Collaboration and reusability will benefit
+on product centered documentations, especially with more than one team working on a product, or products that witch
+switching teams. The documentation can a holistic view of a product not a snapshot of a project.
+Consistency across products can emerge from templates and shared best practices.
+
+**Use Metadata** : Metadata can be used to structure the documentation, and to provide context to the reader. It may
+contain tags to categorize the documentation, a version number, a date of last update, or a list of contributors or
+responsible team.
+
+**Perspective Driven Documentation** : A pattern that focuses on Perspectives, a collection of one or more artifacts
+that address one (or multiple related) concers of a particular audience. One key principle is to no repeat information
+and use links and references instead. Perspectives are fractal and can be embedded into other perspectives. An example
+for this can be layered diagrams, which respond to different perspectives of different audiences depending on the
+
+**Just in Time Documentation** : "You are not gonna need it" is a development principle to only implement functionality
+that is needed not to avoid overengineering for use cases that never come. A principle that can be applied to
+Documentation and Knowledge management. This encourages faster, more efficient working on a more up-to-date
+documentation that is clear of fortune told waste pages, written document pages that are lost and never used. There can
+be a place to record information that could be relevant in the future.
+
+**Use Architecture Design Records and document Architecture**: Document architecture decisions, reasons, and future
+risks in the code base using ADRs (which I explained also in [this post about team communication]({{< ref "
+posts/2023-04-communicating-between-teams" >}}). Architecture can also be documenting by recording Architecture
+Characteristics (discussed in [this post about agile architecture]({{< ref "
+posts/2024-05-agile-architecture" >}}) or by following evolutionary architecture and document decisions via fitness
+functions (discussed in [this post about Evolutionary Architecture]({{< ref "
+posts/2024-09-evolutionary-architecture" >}})
+
+**Company-wide Documentation** : Documentation does not only exist in the context of a product. It should be searchable
+and accessible throughout the company where needed, if possible with the company-wide wiki or knowledge management tool.
+Also, there are documentation types about the company, like a tech radar, or how to things work around the company (from
+using HRs "products" like how to access educational resources and of course the companies platform tools).
+
+## Testing and Automating Documentation
+
+**Documentation as Code**
+Documentation should be created, updated, and live in the same environment (e.g. IDE) as the code it describes. This
+allows easier workflows, utalises existing review processes, better discoverability, enabled collaboration, and
+automation.
+
+**Automating Documentation Publishing** : Not every audience is able to read documentation from the code base. Subsets
+of the documentation should be readable from outside the team or even the company. This can be enabled by providing an
+endpoint which always returns the current state of the Open Api File which is based in the code base. But it can also
+mean syncing parts of the markdown documentation files to other documentation systems like syncing the glossary to
+Confluence.
+
+{{< alert "circle-info" >}}
+I made perfect experiences writing the glossary as code, matching it to class and variable names, and ensuring a
+developer wrote and one reviewed the description; and syncing it to confluence to provide visibility and exchange with
+management or product.
+{{< /alert >}}
+
+**Generating Documentation** : Generating documentation should be used with care. Using AI to generate documentation
+especially, as AI tools are still in their infancy. But generating selected parts of the architecture can be very
+helpful and ease keeping the docs up to date; like generating a state graph out of the events and handlers in an
+event-driven architecture.
+
+{{< alert "circle-info" >}}
+Especially with generated Open Api Files I did make unpleasant experiences which is why I would suggest consumer facing
+documentation to be written by hand. But it can help a lot to either generate code based on the Open Api file, or to
+[test the implementation against the expected Open Api File]({{< ref "posts/2023-03-testing-open-api-specs" >}}).
+{{< /alert >}}
 
 ## Conclusion
 
-Architecture is no longer a step in development, but a continuous process of iterative decisions. As those decisions happen in strong coupling with the current product requirements and the developers who are working on the code they can and should not be practised in a closed room, but in an open space. Architecture decisions should be documented, evaluated, experimented, and assessed.
+Documentation is a key part of the development process. It should be written with empathy for the audience, with care,
+with a spark of creativity.
 
-Happy Coding :)
+Happy documenting :)
+
+[//]: # (
+  Writing Error Messages
+  Deliver the best user experience.
+  Are universally accessible. To learn more, take Tech Writing for Accessibility
+  Enable users to help themselves.
+  Reduce the support workload.
+  Enable faster resolution of issues.
+  This is not only for frontend, but also for backend, and API's !!!
+  - Don't fail silently
+    - follow error standard https://google.aip.dev/193
+    - Avoid swallowing the root cause e.g. `server error`
+    - Log the error codes and provide unique error codes in your aplication
+    - Raise errors as early as possible
+    - Tell users exactly what went wrong. Be specific—vague error messages frustrate users e.g. what input is wrong how,
+      with all requirements, not only the current most wrong
+    - Explain how to fix the problem
+    - Provide examples
+    - Write for the audience, in simple, active, not-double-negative language
+    - Readability over magic numbers!
+  )
