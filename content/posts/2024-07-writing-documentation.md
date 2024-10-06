@@ -1,5 +1,5 @@
 ---
-title: "Writing good Documentation"
+title: "Writing useful Documentation"
 
 date: 2024-10-06T10:20:44+02:00
 
