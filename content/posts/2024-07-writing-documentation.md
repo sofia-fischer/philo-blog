@@ -96,8 +96,6 @@ present documentation.
 Focus your feedback requests on useful and representable picks of the audience. Generic feedback is not helpful, but
 regular contact with the audience can help to understand their needs and to adjust the documentation to them.
 
-{{< alert "circle-info" >}}
-
 ## Technical Writing
 
 ### Terminology
@@ -220,12 +218,12 @@ documentation that is clear of fortune told waste pages, written document pages 
 be a place to record information that could be relevant in the future.
 
 **Use Architecture Design Records and document Architecture**: Document architecture decisions, reasons, and future
-risks in the code base using ADRs (which I explained also in [this post about team communication]({{< ref "
-posts/2023-04-communicating-between-teams" >}}). Architecture can also be documenting by recording Architecture
-Characteristics (discussed in [this post about agile architecture]({{< ref "
-posts/2024-05-agile-architecture" >}}) or by following evolutionary architecture and document decisions via fitness
-functions (discussed in [this post about Evolutionary Architecture]({{< ref "
-posts/2024-09-evolutionary-architecture" >}})
+risks in the code base using ADRs (which I explained also in
+[this post about team communication]({{< ref "posts/2023-04-communicating-between-teams" >}}). Architecture can also be
+documenting by recording Architecture Characteristics (discussed in
+[this post about agile architecture]({{< ref "posts/2024-05-agile-architecture" >}}) or by following evolutionary
+architecture and document decisions via fitness functions (discussed in
+[this post about Evolutionary Architecture]({{< ref "posts/2024-09-evolutionary-architecture" >}})
 
 **Company-wide Documentation** : Documentation does not only exist in the context of a product. It should be searchable
 and accessible throughout the company where needed, if possible with the company-wide wiki or knowledge management tool.

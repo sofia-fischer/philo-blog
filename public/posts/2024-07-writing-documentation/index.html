@@ -1,703 +1,140 @@
-
-
-
-
-
-
-
-<!doctype html>
-<html
-  lang="en"
-  dir="ltr"
-  class="scroll-smooth"
-  data-default-appearance="dark"
-  data-auto-appearance="true"
-><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#FFFFFF" />
-  
-  <title>Agile Software Architecture &middot; PhiloBlog</title>
-    <meta name="title" content="Agile Software Architecture &middot; PhiloBlog" />
-  
-  
-  
-  
-  
-  <script
-    type="text/javascript"
-    src="/js/appearance.min.8a082f81b27f3cb2ee528df0b0bdc39787034cf2cc34d4669fbc9977c929023c.js"
-    integrity="sha256-iggvgbJ/PLLuUo3wsL3Dl4cDTPLMNNRmn7yZd8kpAjw="
-  ></script>
-  
-  
-  
-  
-  
-  
-  
-  
-  <link
-    type="text/css"
-    rel="stylesheet"
-    href="/css/main.bundle.min.cd65e744f39f2e1530fc9baa021748abbe422c38751e5618d85bc544b7eae4c1.css"
-    integrity="sha256-zWXnRPOfLhUw/JuqAhdIq75CLDh1HlYY2FvFRLfq5ME="
-  />
-  
-  
-  
-  
-  
-  
-  
-  <meta
-    name="description"
-    content="
-      Architecture is no longer a set of diagrams that define upfront how features are implemented, but a continuously growing and evolving set of decisions
-    "
-  />
-  
-  
-  
-  <link rel="canonical" href="http://localhost:1313/posts/2024-07-writing-documentation/" />
-  
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-  
-  
-  
-  
-  
-  
-  
-  
-  <meta property="og:url" content="http://localhost:1313/posts/2024-07-writing-documentation/">
-  <meta property="og:site_name" content="PhiloBlog">
-  <meta property="og:title" content="Agile Software Architecture">
-  <meta property="og:description" content="Architecture is no longer a set of diagrams that define upfront how features are implemented, but a continuously growing and evolving set of decisions">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-05-28T10:20:44+02:00">
-    <meta property="article:modified_time" content="2024-05-28T10:20:44+02:00">
-    <meta property="article:tag" content="Development">
-    <meta property="article:tag" content="Agile">
-
-  
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Agile Software Architecture">
-  <meta name="twitter:description" content="Architecture is no longer a set of diagrams that define upfront how features are implemented, but a continuously growing and evolving set of decisions">
-
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "articleSection": "Posts",
-    "name": "Agile Software Architecture",
-    "headline": "Agile Software Architecture",
-    "description": "Architecture is no longer a set of diagrams that define upfront how features are implemented, but a continuously growing and evolving set of decisions",
-    "abstract": "Architecture is no longer a set of diagrams that define upfront how features are implemented, but a continuously growing and evolving set of decisions Agile Architecture #One change that came with the agile culture was replacing detailed architecture plans and class structure diagrams \u0026ldquo;YAGNI\u0026rdquo; mentality of only developing the current ticket losing overview over the bigger picture.",
-    "inLanguage": "en",
-    "url" : "http:\/\/localhost:1313\/posts\/2024-07-writing-documentation\/",
-    "author" : {
-      "@type": "Person",
-      "name": "Sofia Fischer"
-    },
-    "copyrightYear": "2024",
-    "dateCreated": "2024-05-28T10:20:44\u002b02:00",
-    "datePublished": "2024-05-28T10:20:44\u002b02:00",
-    
-    "dateModified": "2024-05-28T10:20:44\u002b02:00",
-    
-    "keywords": ["Development","Agile"],
-    
-    "mainEntityOfPage": "true",
-    "wordCount": "1421"
-  }
-  </script>
-    
-    <script type="application/ld+json">
-    {
-   "@context": "https://schema.org",
-   "@type": "BreadcrumbList",
-   "itemListElement": [
-     {
-       "@type": "ListItem",
-       "item": "http://localhost:1313/",
-       "name": "Philo Blog",
-       "position": 1
-     },
-     {
-       "@type": "ListItem",
-       "item": "http://localhost:1313/posts/",
-       "name": "Posts",
-       "position": 2
-     },
-     {
-       "@type": "ListItem",
-       "name": "Agile Software Architecture",
-       "position": 3
-     }
-   ]
- }
-  </script>
-
-  
-  <meta name="author" content="Sofia Fischer" />
-  
-    
-      <link href="mailto:sofia@philodev.com" rel="me" />
-    
-      <link href="https://github.com/sofia-fischer" rel="me" />
-    
-      <link href="https://www.linkedin.com/in/sofia-fischer-58b1611b9/" rel="me" />
-    
-  
-  
-  
-
-
-
-
-
-
-  
-  
-
-  
-  
-</head>
-<body
-    class="m-auto flex h-screen max-w-7xl flex-col bg-neutral px-6 text-lg leading-7 text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"
-  >
-    <div id="the-top" class="absolute flex self-center">
-      <a
-        class="-translate-y-8 rounded-b-lg bg-primary-200 px-3 py-1 text-sm focus:translate-y-0 dark:bg-neutral-600"
-        href="#main-content"
-        ><span class="pe-2 font-bold text-primary-600 dark:text-primary-400">&darr;</span
-        >Skip to main content</a
-      >
-    </div>
-    
-    
-      <header class="py-6 font-semibold text-neutral-900 dark:text-neutral sm:py-10 print:hidden">
-  <nav class="flex items-start justify-between sm:items-center">
-    
-    <div class="flex flex-row items-center">
-      
-    <a href="/" class="mr-2">
-      
-      <img
-        src="/logo.png"
-        width="1012"
-        height="1012"
-        class="max-h-[10rem] max-w-[10rem] object-scale-down object-left
-        "
-        alt="PhiloBlog"
-      />
-    </a>
-  <a
-    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
-    rel="me"
-    href="/"
-    >PhiloBlog</a
-  >
-
-    </div>
-    
-    
-      <ul class="flex list-none flex-col text-end sm:flex-row">
-        
-          
-            
-            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
-              
-                <a
-                  href="/posts/"
-                  title=""
-                  
-                  ><span
-                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
-                      >Posts</span
-                    >
-                  </a
-                >
-              
-            </li>
-          
-            
-            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
-              
-                <a
-                  href="/tags/"
-                  title=""
-                  
-                  ><span
-                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
-                      >Tags</span
-                    >
-                  </a
-                >
-              
-            </li>
-          
-          
-        
-      </ul>
-    
-  </nav>
-</header>
-
-    
-    <div class="relative flex grow flex-col">
-      <main id="main-content" class="grow">
-        
-  <article>
-    <header class="max-w-prose">
-      
-        <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
-  
-  
-    
-  
-    
-  
-  <li class="hidden inline">
-    <a
-      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
-      href="/"
-      >PhiloBlog</a
-    ><span class="px-1 text-primary-500">/</span>
-  </li>
-
-  
-  <li class=" inline">
-    <a
-      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
-      href="/posts/"
-      >Posts</a
-    ><span class="px-1 text-primary-500">/</span>
-  </li>
-
-  
-  <li class="hidden inline">
-    <a
-      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
-      href="/posts/2024-07-writing-documentation/"
-      >Agile Software Architecture</a
-    ><span class="px-1 text-primary-500">/</span>
-  </li>
-
-</ol>
-
-
-      
-      <h1 class="mb-8 mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-        Agile Software Architecture
-      </h1>
-      
-        <div class="mb-10 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
-          
-
-
-
-
-
-  
-  
-
-
-
-  
-
-  
-  
-    
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-
-  <div class="flex flex-row flex-wrap items-center">
-    
-    
-      <time datetime="2024-05-28 10:20:44 &#43;0200 CEST">28 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
-    
-
-    
-    
-      <span class="ps-2"><span class="flex">
-  <span
-    class="ms-1 rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    Draft
-  </span>
-</span>
-</span>
-    
-  </div>
-
-  
-  
-    <div class="my-1 flex flex-wrap text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
-      
-        
-      
-        
-          
-            <a
-              href="/tags/development/"
-              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
-              >Development</a
-            >
-          
-            <a
-              href="/tags/agile/"
-              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
-              >Agile</a
-            >
-          
-        
-      
-    </div>
-  
-
-
-        </div>
-      
-      
-    </header>
-    <section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row">
-      
-        <div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8">
-          <div class="toc pe-5 lg:sticky lg:top-10 print:hidden">
-            <details open class="-ms-5 mt-0 overflow-hidden rounded-lg ps-5">
-  <summary
-    class="block cursor-pointer bg-neutral-100 py-1 ps-5 text-lg font-semibold text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden"
-  >
-    Table of Contents
-  </summary>
-  <div class="border-s border-dotted border-neutral-300 py-2 ps-5 dark:border-neutral-600">
-    <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#agile-architecture">Agile Architecture</a></li>
-        <li><a href="#defining-architecture-and-their-requirements">Defining Architecture and their Requirements</a>
-          <ul>
-            <li><a href="#capturing-and-documenting-architecture">Capturing and Documenting Architecture</a></li>
-            <li><a href="#architecture-perspectives-for-requirements">Architecture Perspectives for Requirements</a></li>
-          </ul>
-        </li>
-        <li><a href="#how-to-design-agile-architecture">How to design Agile Architecture</a>
-          <ul>
-            <li><a href="#minimal-viable-architecture">Minimal Viable Architecture</a></li>
-            <li><a href="#feedback-loops">Feedback loops</a></li>
-          </ul>
-        </li>
-        <li><a href="#conclusion">Conclusion</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-  </div>
-</details>
-
-          </div>
-        </div>
-      
-      <div class="min-h-0 min-w-0 max-w-prose grow">
-        <div class="lead !mb-9 text-xl">
-  Architecture is no longer a set of diagrams that define upfront how features are implemented, but a continuously growing and evolving set of decisions
-</div>
-
-<h2 id="agile-architecture" class="relative group">Agile Architecture <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#agile-architecture" aria-label="Anchor">#</a></span></h2><p>One change that came with the agile culture was replacing detailed architecture plans and class structure diagrams &ldquo;YAGNI&rdquo; mentality of only developing the current ticket losing overview over the bigger picture. Both extremes are not practical and will end up in an agile architecture.</p>
-<p>The term Agile Architecture implies that a software system is designed in a versatile, easy to-evolve, changeable way, while also being resilient to change; but also that the architecture is contiguously growing in an iterative live cycle to evolve with respect to the upcoming features of the product.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
-<p>In every software project, some decisions need to be made upfront, that will highly influence the architecture of the project - programming language, database decision, authentication, patterns &hellip;
-These decisions should not be solved by the first feature ticket by one developer. But I had the experience that exactly that happens - one developer gets the task of &ldquo;build the project&rdquo;, locks themselves in a dark room and emerges after weeks with a barebone of a project every other team member is forced to use from that point on.</p>
-<h2 id="defining-architecture-and-their-requirements" class="relative group">Defining Architecture and their Requirements <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#defining-architecture-and-their-requirements" aria-label="Anchor">#</a></span></h2><p>From my idealistic point of view, the architecture decisions should be discussed in the team, after understanding the idea of the product, to design an agile architecture that is flexible enough to be iterated on.
-For this to work, architecture can not be defined the same way as in Waterfall projects in which the architecture was designed and set in stone before the first ticket was started. &ldquo;The software architecture isn&rsquo;t a set of diagrams, it&rsquo;s not a set of review meetings, it&rsquo;s not a software architecture document, but it is a set of decisions that the team makes about some critical aspects of the system&rdquo;. <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
-<h3 id="capturing-and-documenting-architecture" class="relative group">Capturing and Documenting Architecture <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#capturing-and-documenting-architecture" aria-label="Anchor">#</a></span></h3><p>Viewing Architecture as a set of decisions makes the Architecture Decision Records a very relatable way of documenting architecture.
-Drawing fancy diagrams - something I enjoy to do - is a great way to document how a system is working, but often enough the question of why it was built this way is the more important question if developers see themselves confronted with the need for change.</p>
-<div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900">
-  <span class="pe-3 text-primary-400">
-    <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"/></svg>
-</span>
-  </span>
-  <span class="dark:text-neutral-300">Architecture Design Records: A set of point in time documentation of architectural decisions, usually stored in the code base to get information on the thoughts and reasons why the code was implemented in a certain way. <a href="https://www.blog.philodev.one/posts/2023-04-communicating-between-teams/#architecture-decision-records" target="_blank" rel="noreferrer">I wrote more about it in this post</a>.</span>
-</div>
-
-<p>The boundary of the architectural decision in contrast to an implementation decision is not easy, by may be defined for practical reasons - if the cost of changing a decision, it is probably an architectural decision.</p>
-<h3 id="architecture-perspectives-for-requirements" class="relative group">Architecture Perspectives for Requirements <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#architecture-perspectives-for-requirements" aria-label="Anchor">#</a></span></h3><p>While Agile Methodoolgies provide a wide range of tools to define the requirements for products from a user and a business perspective; they often lack the perspective of an architect, future developer, or tester.
-When formulating the User Story, the architectural requirements are often left out, which means in agile they are invisible to time constraints, deadlines, and work recognition.</p>
-<p>There is one common framework existing that deals with the definition of such architectural or quality attribute requirements: The Six Part Scenario</p>
-<ul>
-<li>Source of stimulus (some entity or event, e.g. an user, an attacker)</li>
-<li>Stimulus (condition that needs to be considered, e.g. faulty request)</li>
-<li>Environment (providing context, e.g. during overloaded times, while DB is recovering from an error)</li>
-<li>Artifact (what part of the system is acting)</li>
-<li>Response (activity undertaken after the arrival of the stimulus, e.g. reporting, escalating, restarting)</li>
-<li>Response measure (make the response measurable and testable)
-<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></li>
-</ul>
-<p>Some examples of these requirements, that highly interfere with the the architecture:</p>
-<ul>
-<li>A User requires the handling of a large numbers items by a micro service, in an environment that does not require sync processes, but handling of the micro service failing; the services uses an async communication, the current state and number of tries should be reported (may lead to a Queue that supports retry mechanisms)</li>
-<li>An event is dispatched to trigger a command, but the command will fail as the Database is currently recovering; the command should be retried automatically several times before it failes and reports an error.</li>
-<li>One User requests a separate file format and therefore requires the usage of a different (third party) service instead of the most used, in a normal busines environment; the system should be able to automatically detect file format by input and switch the service used, the used client should be stored and visible to the user. (Might lead to something like a driver pattern)</li>
-<li>A User want to authenticate against the system and related micro services in a normal busines environment; The authentication process should include the permissions to also authenticate against the microservices, the system should run without a separate authentication (might lead to something like oAuth)</li>
-<li>A User requests a list of data enteries without the need to store something, during a timeslot with very high demand; the system should direct such request to a read replica of the DB; the Master-DB statistics should reflect a much lower number of only read statements (might lead to Query Command Segragation)</li>
-</ul>
-<p>These requirements match partially with the idea of non-functional requirements; but functional requirements do not by definition have the major impact on development cost.
-Architectural / Design Requirements may enable or stop non functional requirements, and functional requirements should be consulted to create architectural decisions. How many microseconds a request may take is a non-functional requirement that may  be satisfied without making costly future decisions. As sidenote, the idea of framing non-functional requirements in a quantitative, measurable, testable number (target number and unacceptable number) also underlines that these requirements are revisited regularly, influenced by the architecture, but not causing architectural changes per se  <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
-<h2 id="how-to-design-agile-architecture" class="relative group">How to design Agile Architecture <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#how-to-design-agile-architecture" aria-label="Anchor">#</a></span></h2><h3 id="minimal-viable-architecture" class="relative group">Minimal Viable Architecture <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#minimal-viable-architecture" aria-label="Anchor">#</a></span></h3><p>Similar to the concept of a Minimum Viable Product, the idea of a Minimum Viable Architecture is to deliver an architecture that fulfils the current point in time relevant requirements. This architecture is iterated over in the upcoming features and requirements.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
-<ul>
-<li><em>Model the architecture</em>: The Model should be a tool for communication (not documentation)</li>
-<li><em>Consider Alternatives</em>: Following the LEAN principles, discuss more than one option and consider drawbacks and benefits</li>
-<li><em>Mind Conways Law</em>: Companies tend to implement systems that reflect their communication structure. If there is no functioning communication structure to the team that builds the service that your system requires, the implementation might reflect that</li>
-<li><em>Architect for change</em>: The Architecture will change within the agile process, it can not and should not be defined in a way that eliminates future opportunities</li>
-<li><em>Mind testability, deployability, and developer usability</em>: The Devs, Testers, and Infras are the users of the architecture that is built. It should be clear and easy to use it.</li>
-<li><em>Keep minimal viable</em>: Travel light - Making too many decisions too early might restrict future implementations. If there is a decision that might as well be set in stone later, delay it</li>
-</ul>
-<h3 id="feedback-loops" class="relative group">Feedback loops <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#feedback-loops" aria-label="Anchor">#</a></span></h3><p>One of the from my point of view most important perspectives of the Quality Attribute Requirements is the visibility of the result. How are those architectural requirements visible to the user, the dev (so the user of the code), or the tester?</p>
-<p>Looking at the former requirements, the respective user may be asked if the decisions led to the desired quality attributes. When a new Developer joins the team, is the code structure easy to follow and understand? How clear is it for the tester to confirm the testability? How easy is the project to deploy and how often do the architecture decisions cause interruptions? Do the current devs enjoy working in the architecture?</p>
-<p>Refining such quality attributes and assessing them across teams might be a part of the modern interpretation of an architect&rsquo;s role.</p>
-<h2 id="conclusion" class="relative group">Conclusion <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#conclusion" aria-label="Anchor">#</a></span></h2><p>Architecture is no longer a step in development, but a continuous process of iterative decisions. As those decisions happen in strong coupling with the current product requirements and the developers who are working on the code they can and should not be practised in a closed room, but in an open space. Architecture decisions should be documented, evaluated, experimented, and assessed.</p>
-<p>Happy Coding :)</p>
-<div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p><a href="https://insights.sei.cmu.edu/documents/1395/2014_101_001_493902.pdf" target="_blank" rel="noreferrer">How to Agilely Architect an Agile Architecture</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p><a href="https://www.infoq.com/podcasts/continuous-architecture/" target="_blank" rel="noreferrer">Continuous Architecture with Kurt Bittner and Pierre Pureur</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:3">
-<p><a href="https://www.win.tue.nl/~wstomv/edu/2ii45/year-0910/Software_Architecture_in_Practice_2nd_Edition_Chapter4.pdf" target="_blank" rel="noreferrer">Software Architecture in Practice, Felix Bachman and Mark Klein</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:4">
-<p><a href="https://scaledagileframework.com/nonfunctional-requirements/" target="_blank" rel="noreferrer">Non Functional Requirements</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:5">
-<p><a href="https://continuousarchitecture.com/2021/12/21/minimum-viable-architecture-how-to-continuously-evolve-an-architectural-design-over-time/" target="_blank" rel="noreferrer">Minimal Viable Architecture</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>
-
-      </div>
-    </section>
-    <footer class="max-w-prose pt-8 print:hidden">
-      
-  <div class="flex">
-    
-    
-    
-    <div class="place-self-center">
-      
-        <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
-          Author
-        </div>
-        <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
-          Sofia Fischer
-        </div>
-      
-      
-      <div class="text-2xl sm:text-lg">
-  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
-    
-      
-        <a
-          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
-          style="will-change:transform;"
-          href="mailto:sofia@philodev.com"
-          target="_blank"
-          aria-label="Email"
-          rel="me noopener noreferrer"
-          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
-</span></a
-        >
-      
-    
-      
-        <a
-          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
-          style="will-change:transform;"
-          href="https://github.com/sofia-fischer"
-          target="_blank"
-          aria-label="Github"
-          rel="me noopener noreferrer"
-          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-</span></a
-        >
-      
-    
-      
-        <a
-          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
-          style="will-change:transform;"
-          href="https://www.linkedin.com/in/sofia-fischer-58b1611b9/"
-          target="_blank"
-          aria-label="Linkedin"
-          rel="me noopener noreferrer"
-          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
-</span></a
-        >
-      
-    
-  </div>
-
-</div>
-    </div>
-  </div>
-
-
-      
-
-      
-  
-    
-    
-    
-    <div class="pt-8">
-      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
-      <div class="flex justify-between pt-3">
-        <span>
-          
-            <a class="group flex" href="/posts/2024-04-event-sourcing/">
-              <span
-                class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
-                ><span class="ltr:inline rtl:hidden">&larr;</span
-                ><span class="ltr:hidden rtl:inline">&rarr;</span></span
-              >
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >Event Sourcing for long living projects</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                    <time datetime="2024-04-28 10:20:44 &#43;0200 CEST">28 April 2024</time>
-                  
-                </span>
-              </span>
-            </a>
-          
-        </span>
-        <span>
-          
-            <a class="group flex text-right" href="/posts/2024-05-agile-architecture/">
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >Agile Software Architecture</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                    <time datetime="2024-05-28 10:20:44 &#43;0200 CEST">28 May 2024</time>
-                  
-                </span>
-              </span>
-              <span
-                class="ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[-2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
-                ><span class="ltr:inline rtl:hidden">&rarr;</span
-                ><span class="ltr:hidden rtl:inline">&larr;</span></span
-              >
-            </a>
-          
-        </span>
-      </div>
-    </div>
-  
-
-
-      
-    </footer>
-  </article>
-
-      </main>
-      
-        <div
-          class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12"
-          id="to-top"
-          hidden="true"
-        >
-          <a
-            href="#the-top"
-            class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
-            aria-label="Scroll to top"
-            title="Scroll to top"
-          >
-            &uarr;
-          </a>
-        </div>
-      <footer class="py-10 print:hidden">
-  
-  
-  <div class="flex items-center justify-between">
-    <div>
-      
-      
-        <p class="text-sm text-neutral-500 dark:text-neutral-400">
-            &copy;
-            2024
-            Sofia Fischer
-        </p>
-      
-      
-      
-        <p class="text-xs text-neutral-500 dark:text-neutral-400">
-          
-          
-          Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
-            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href="https://github.com/jpanther/congo" target="_blank" rel="noopener noreferrer">Congo</a>
-        </p>
-      
-    </div>
-    <div class="flex flex-row items-center">
-      
-      
-      
-      
-        <div
-          class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
-        >
-          <button id="appearance-switcher-0" type="button" aria-label="appearance switcher">
-            <div
-              class="flex h-12 w-12 items-center justify-center dark:hidden"
-              title="Switch to dark appearance"
-            >
-              <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
-</span>
-            </div>
-            <div
-              class="hidden h-12 w-12 items-center justify-center dark:flex"
-              title="Switch to light appearance"
-            >
-              <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
-</span>
-            </div>
-          </button>
-        </div>
-      
-    </div>
-  </div>
-  
-  
-</footer>
-
-    </div>
-  </body>
-</html>
+<!doctype html><html lang=en dir=ltr class=scroll-smooth data-default-appearance=dark data-auto-appearance=true><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#FFFFFF"><title>Writing useful Documentation &#183; PhiloBlog</title>
+<meta name=title content="Writing useful Documentation &#183; PhiloBlog"><script type=text/javascript src=/js/appearance.min.8a082f81b27f3cb2ee528df0b0bdc39787034cf2cc34d4669fbc9977c929023c.js integrity="sha256-iggvgbJ/PLLuUo3wsL3Dl4cDTPLMNNRmn7yZd8kpAjw="></script><link type=text/css rel=stylesheet href=/css/main.bundle.min.cd65e744f39f2e1530fc9baa021748abbe422c38751e5618d85bc544b7eae4c1.css integrity="sha256-zWXnRPOfLhUw/JuqAhdIq75CLDh1HlYY2FvFRLfq5ME="><meta name=description content="
+      It might depend on your project if you only need a README or a handbook - although the worst documentation is no documentation
+    "><link rel=canonical href=https://www.blog.philodev.one/posts/2024-07-writing-documentation/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><meta property="og:url" content="https://www.blog.philodev.one/posts/2024-07-writing-documentation/"><meta property="og:site_name" content="PhiloBlog"><meta property="og:title" content="Writing useful Documentation"><meta property="og:description" content="It might depend on your project if you only need a README or a handbook - although the worst documentation is no documentation"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-10-06T10:20:44+02:00"><meta property="article:modified_time" content="2024-10-06T10:20:44+02:00"><meta property="article:tag" content="Development"><meta property="article:tag" content="Agile"><meta name=twitter:card content="summary"><meta name=twitter:title content="Writing useful Documentation"><meta name=twitter:description content="It might depend on your project if you only need a README or a handbook - although the worst documentation is no documentation"><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","articleSection":"Posts","name":"Writing useful Documentation","headline":"Writing useful Documentation","description":"It might depend on your project if you only need a README or a handbook - although the worst documentation is no documentation","inLanguage":"en","url":"https:\/\/www.blog.philodev.one\/posts\/2024-07-writing-documentation\/","author":{"@type":"Person","name":"Sofia Fischer"},"copyrightYear":"2024","dateCreated":"2024-10-06T10:20:44\u002b02:00","datePublished":"2024-10-06T10:20:44\u002b02:00","dateModified":"2024-10-06T10:20:44\u002b02:00","keywords":["Development","Agile"],"mainEntityOfPage":"true","wordCount":"2618"}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.blog.philodev.one/","name":"Philo Blog","position":1},{"@type":"ListItem","item":"https://www.blog.philodev.one/posts/","name":"Posts","position":2},{"@type":"ListItem","name":"Writing Useful Documentation","position":3}]}</script><meta name=author content="Sofia Fischer"><link href=mailto:sofia@philodev.com rel=me><link href=https://github.com/sofia-fischer rel=me><link href=https://www.linkedin.com/in/sofia-fischer-58b1611b9/ rel=me></head><body class="m-auto flex h-screen max-w-7xl flex-col bg-neutral px-6 text-lg leading-7 text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"><div id=the-top class="absolute flex self-center"><a class="-translate-y-8 rounded-b-lg bg-primary-200 px-3 py-1 text-sm focus:translate-y-0 dark:bg-neutral-600" href=#main-content><span class="pe-2 font-bold text-primary-600 dark:text-primary-400">&darr;</span>Skip to main content</a></div><header class="py-6 font-semibold text-neutral-900 dark:text-neutral sm:py-10 print:hidden"><nav class="flex items-start justify-between sm:items-center"><div class="flex flex-row items-center"><a href=/ class=mr-2><img src=/logo.png width=1012 height=1012 class="max-h-[10rem] max-w-[10rem] object-scale-down object-left" alt=PhiloBlog>
+</a><a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2" rel=me href=/>PhiloBlog</a></div><ul class="flex list-none flex-col text-end sm:flex-row"><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=/posts/ title><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">Posts</span></a></li><li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5"><a href=/tags/ title><span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">Tags</span></a></li></ul></nav></header><div class="relative flex grow flex-col"><main id=main-content class=grow><article><header class=max-w-prose><ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden"><li class="hidden inline"><a class="dark:underline-neutral-600 decoration-neutral-300 hover:underline" href=/>PhiloBlog</a><span class="px-1 text-primary-500">/</span></li><li class=inline><a class="dark:underline-neutral-600 decoration-neutral-300 hover:underline" href=/posts/>Posts</a><span class="px-1 text-primary-500">/</span></li><li class="hidden inline"><a class="dark:underline-neutral-600 decoration-neutral-300 hover:underline" href=/posts/2024-07-writing-documentation/>Writing useful Documentation</a><span class="px-1 text-primary-500">/</span></li></ol><h1 class="mb-8 mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">Writing useful Documentation</h1><div class="mb-10 text-base text-neutral-500 dark:text-neutral-400 print:hidden"><div class="flex flex-row flex-wrap items-center"><time datetime="2024-10-06 10:20:44 +0200 CEST">6 October 2024</time><span class="px-2 text-primary-500">&#183;</span><span title="Reading time">13 mins</span></div><div class="my-1 flex flex-wrap text-xs leading-relaxed text-neutral-500 dark:text-neutral-400"><a href=/tags/development/ class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400">Development</a>
+<a href=/tags/agile/ class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400">Agile</a></div></div></header><section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row"><div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8"><div class="toc pe-5 lg:sticky lg:top-10 print:hidden"><details open class="-ms-5 mt-0 overflow-hidden rounded-lg ps-5"><summary class="block cursor-pointer bg-neutral-100 py-1 ps-5 text-lg font-semibold text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">Table of Contents</summary><div class="border-s border-dotted border-neutral-300 py-2 ps-5 dark:border-neutral-600"><nav id=TableOfContents><ul><li><ul><li><a href=#the-readers-perspective>The Readers Perspective</a><ul><li><a href=#accessibility>Accessibility</a></li><li><a href=#feedback-loops>Feedback loops</a></li></ul></li><li><a href=#technical-writing>Technical Writing</a><ul><li><a href=#terminology>Terminology</a></li><li><a href=#writing-style>Writing Style</a></li><li><a href=#diagrams>Diagrams</a></li><li><a href=#structure>Structure</a></li></ul></li><li><a href=#testing-and-automating-documentation>Testing and Automating Documentation</a></li><li><a href=#conclusion>Conclusion</a></li></ul></li></ul></nav></div></details></div></div><div class="min-h-0 min-w-0 max-w-prose grow"><div class="lead !mb-9 text-xl">It might depend on your project if you only need a README or a handbook - although the worst documentation is no
+documentation</div><p>Technical writing is writing to convey technical information. The main key is understanding the audience and their
+needs. This article aims to cover things to consider when writing documentation, how to structure text and diagrams and
+question to ask to understand the audience. No tools are discussed, the written is applicable to any language or
+project.</p><h2 id=the-readers-perspective class="relative group">The Readers Perspective <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#the-readers-perspective aria-label=Anchor>#</a></span></h2><p>The first paragraph of a Documentation page should state the audience, topic and goal of the page.
+Documentation is always written for somebody and to answer their question - not the curiosity of the writer.</p><ul><li><strong>Know Your Audience</strong> : Define audience by roles with certain knowledge. For example, a developer that just
+started in the company; a backend developer of a different team; a product owner &mldr;</li><li><strong>Understand the Audience&rsquo;s Needs</strong> : What do they want? Meeting the needs of the audience is the primary goal of
+documentation.</li><li><strong>Know what you want from the audience</strong> : Do you need them to make decisions? Do you want them to understand the
+system? Do you want them to use the system?</li><li><strong>Understand the Audience&rsquo;s Knowledge</strong> : Experts often suffer from the curse of knowledge, which means that their
+expert understanding of a topic ruins their
+explanations to newcomers. What is their technical understanding? What is their domain knowledge? What
+diagrams can they understand?</li></ul><p>The best documentation is written by a person with empathy for their audience. Understanding the audience is key to
+communication. How much does the audience know about the topic? Does the audience know about similar topics, which
+analogies can they understand? Does the audience know the stated, but hasn&rsquo;t used the knowledge since some time? Does
+your audience have out of date knowledge? What is the audience&rsquo;s motivation to read the documentation? What does the
+audience need to learn to accomplish their goal? Does the audience need to act in a certain order? <sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup></p><div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900"><span class="pe-3 text-primary-400"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M256 0C114.6.0.0 114.6.0 256s114.6 256 256 256 256-114.6 256-256S397.4.0 256 0zm0 128c17.67.0 32 14.33 32 32 0 17.67-14.33 32-32 32s-32-14.3-32-32 14.3-32 32-32zm40 256h-80c-13.2.0-24-10.7-24-24s10.75-24 24-24h16v-64h-8c-13.25.0-24-10.75-24-24s10.8-24 24-24h32c13.25.0 24 10.75 24 24v88h16c13.25.0 24 10.75 24 24s-10.7 24-24 24z"/></svg>
+</span></span><span class=dark:text-neutral-300>Written communication holds all the complexity of spoken communication. Humans will always interpret the text, and will
+resist any message if they think their needs are not understood. Dropping empathy in business communication is not
+constructive, demonstrating understanding and alignment of goals is. Persuasion is progress.</span></div><p>For every audience, the documentation should follow a <strong>narrative</strong>. When deciding on the structure of a documentation (
+and even the structure of each diagram or chapter in it), consider drafting a narrative as guidance.
+Example narratives could be <strong>a Success Story</strong> how a solution was implemented successfully, <strong>a Failure Story</strong> how a
+solution failed and what lessons were learned, <strong>a Use Case</strong> a visualisation on how the system is used, <strong>a Clarity
+Story</strong> to expain why a decision was made.</p><h3 id=accessibility class="relative group">Accessibility <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#accessibility aria-label=Anchor>#</a></span></h3><p><strong>Accessibility is Inclusiveness</strong> : The curb cut effect describes how designing for accessibility benefits everyone.
+Originally, curb cuts (sidewalk ramps) were designed for people in wheelchairs. However, many people benefit from curb
+cuts, such as anyone with a stroller, suitcase, or delivery cart. <sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup></p><p>Accessibility in documentation means that the documentation is usable by everyone, including people who are colorblind,
+using an uncommon screen ratio, who have problems reading unstructured text due to neurodiversity, or have any other
+form of impairment possible in the audience. Things to consider could be: <sup id=fnref1:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup></p><ul><li>Do not rely on color alone to convey information (additionally form, text, or symbols). Pay attention to contrast and
+color choices in pictures or diagrams. Use tools like <a href=https://colororacle.org/ target=_blank rel=noreferrer>Color Oracle</a>to simulate color
+blindness.</li><li>Mind the device that the audience is using. Especially for phones or screen readers using tables can make the
+information harder to access.</li><li>Structure the text using linkable headings. Use paragraphs for related ideas, and use the first paragraph in a chapter
+to communicate the main idea, as readers pay more attention to the first paragraph. Use Clear language (easy to read,
+listen to, and translate)</li><li>Provide an alternative text for images that explain images in the context of the text.</li><li>Use Inclusive language and examples.</li></ul><p><strong>Keep your writing culturally neutral</strong> : &ldquo;Piece of cake&rdquo; and &ldquo;Bob&rsquo;s your uncle&rdquo; are culturally specific idioms that
+can only be understood by people from certain cultural backgrounds.</p><div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900"><span class="pe-3 text-primary-400"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M256 0C114.6.0.0 114.6.0 256s114.6 256 256 256 256-114.6 256-256S397.4.0 256 0zm0 128c17.67.0 32 14.33 32 32 0 17.67-14.33 32-32 32s-32-14.3-32-32 14.3-32 32-32zm40 256h-80c-13.2.0-24-10.7-24-24s10.75-24 24-24h16v-64h-8c-13.25.0-24-10.75-24-24s10.8-24 24-24h32c13.25.0 24 10.75 24 24v88h16c13.25.0 24 10.75 24 24s-10.7 24-24 24z"/></svg>
+</span></span><span class=dark:text-neutral-300>Accessibility also refers to the availability of skills of the audience. When there is only a subset of people that
+can read UML Diagrams, that parts of documentation are not accessible to the whole audience. If there are even less
+people who can write UML Diagrams, the documentation is prone to become stale.</span></div><h3 id=feedback-loops class="relative group">Feedback loops <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#feedback-loops aria-label=Anchor>#</a></span></h3><p>Get feedback early and often from multiple audiences. Get feedback on small parts as well as the overall design.
+Identify errors and misunderstandings early, when they were not yet repeated in the documentation. Ensure alignment with
+business. Identify risks and challanges early. <sup id=fnref2:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup></p><p><strong>Establish a dialogue with the audience</strong>. Documentation can have a formal pull request process, scrum reviews can also
+present documentation.</p><p>Focus your feedback requests on useful and representable picks of the audience. Generic feedback is not helpful, but
+regular contact with the audience can help to understand their needs and to adjust the documentation to them.</p><h2 id=technical-writing class="relative group">Technical Writing <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#technical-writing aria-label=Anchor>#</a></span></h2><h3 id=terminology class="relative group">Terminology <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#terminology aria-label=Anchor>#</a></span></h3><p>Naming things is hard. Every project should take away one thing from Domain Driven Design - the ubiquitous language that
+is shared between developers and users, and listed in the documentation. The language should be consistent, as simple
+and precise as possible (like <code>invoiceSum</code> instead of <code>commutativeTotalSum</code>), best if the terms are &ldquo;googleable&rdquo;.
+Consider that some part of the audience are using a translation tool, using simple language avoids translation errors.
+When possible introduce (or link to the glossary) new terminology in the beginning of the paragraph that rely on
+them. <sup id=fnref1:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup></p><p>While one central point &ldquo;glossary&rdquo; for the ubiquitous language can help the users and the developers.</p><p>Acronyms should be avoided. They do not provide any benefits, but only the opportunity for misunderstandings.</p><h3 id=writing-style class="relative group">Writing Style <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#writing-style aria-label=Anchor>#</a></span></h3><p><strong>Answer what, why, and how</strong> : Good paragraphs answer these three questions:
+What are you trying to tell your reader?
+Why is it important for the reader to know this?
+How should the reader use this knowledge? Alternatively, how should the reader know your point to be true?</p><blockquote><p><strong>Minto Pyramid Principle</strong> The easiest order for a reader is to receive the major, more abstract ideas before he is
+required to take in the minor supporting ones. And since the major ideas are always derived from the minor ones, the
+ideal structure of the ideas will always be a pyramid of groups of ideas tied together by a single overall
+thought.<sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup></p></blockquote><ul><li>Adopt a style guide</li><li>Replace this or that with the appropriate noun.</li><li>Prefer active voice to passive voice <code>The Code is interpreted by Python, but the code is compiled by C++</code> vs
+<code>Python interprets the code, but C++ compiles the code</code></li><li>Reduce there is / there are
+<code>There are setences starting with "there is" or "there are" that should be avoided or rewritten to replace the generic topic with a more specific one</code>
+vs
+<code>Sentences starting with "there is" or "there are" should be avoided or rewritten to replace the generic topic with a more specific one</code></li><li><strong>Keep it short</strong> - Shorter documentation reads faster. Focus each sentence on a single idea and break up long
+sentences into lists.xf</li></ul><h3 id=diagrams class="relative group">Diagrams <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#diagrams aria-label=Anchor>#</a></span></h3><p>An audience should be guided from high abstraction to detailed information, using diagrams with intention and without
+clutter. <sup id=fnref3:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup></p><p><strong>Keep the Abstraction level consistent</strong> : Levels of abstraction refer to the granularity of the information presented.
+Mixing abstraction levels can confuse readers, and depending on the audience turn a diagram unreadable.</p><div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900"><span class="pe-3 text-primary-400"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M256 0C114.6.0.0 114.6.0 256s114.6 256 256 256 256-114.6 256-256S397.4.0 256 0zm0 128c17.67.0 32 14.33 32 32 0 17.67-14.33 32-32 32s-32-14.3-32-32 14.3-32 32-32zm40 256h-80c-13.2.0-24-10.7-24-24s10.75-24 24-24h16v-64h-8c-13.25.0-24-10.75-24-24s10.8-24 24-24h32c13.25.0 24 10.75 24 24v88h16c13.25.0 24 10.75 24 24s-10.7 24-24 24z"/></svg>
+</span></span><span class=dark:text-neutral-300><p><strong>C4 Model Hierarchy of abstraction</strong> describes the four levels of abstraction for software architecture diagrams:</p><ul><li>Context Level Diagrams show the system in its environment</li><li>Container Level Diagrams show the high-level structure of the system</li><li>Component Level Diagrams show the components inside the containers</li><li>Code Level Diagrams show the implementation inside the components</li></ul></span></div><p><strong>Representational Consistency</strong> : When the audience is navigating between diagrams of different levels of abstraction,
+it should be easy to understand the relationships between the diagrams. Consistency in naming, style, and added
+container / component boxes should guide the reader and reduce cognitive load.</p><p><strong>Purposeful Styling</strong> : Colors can be used to highlight important information, but they should be used with the
+intention to provide an extra level of information (like categories, or status). Same goes for shapes and lines. Styling
+a box in a sketched way can indicate that the component is not yet implemented and can again add an extra level of
+information.</p><p><strong>Simplify the geometry</strong> : The excessive use of boxes, relationships, and lines can make a diagram unreadable. A good
+starting point can be to make a diagram symmetrical with non-crossing, uni directional lines. If you do not want to
+communicate something particular, all similar objects should have the same size. A good abstraction may
+redesign reality like subway maps are an abstraction stripped by the reality of a city map to make it more readable and
+understandable. Relationships can be of hierarchical, sequential, causal, proportional (scale) or spatial (relative
+position) nature.</p><p><strong>Include a legend and labels</strong> : Labels should be placed if they help the audience to understand the message of the
+diagram, and be moved to a legend or note if not. Similar to a coder naming a function or variable to avoid a comment,
+the message of a diagram should be explicit by composition, component, and labels.</p><p><strong>Utalise the audiences expectations</strong> : Match the diagram to expectations (of content, shapes, and flow). from
+left-to-right, top-to-bottom,
+with start of information in the top left corner, and the end in the bottom right. The audience may also expect certain
+shapes to represent certain things.
+Like a narrative, the diagram should have a beginning with which the audience starts reading, a middle, and an end with
+a result or conclusion.</p><p><strong>Single Responsibility Principle</strong> : A diagram should have a single purpose to effectively comm unicate a single
+message. It should either describe the behavior of a system or the structure of a system. Structure diagrams communicate
+what and where, visualising relationships or physical location of hardware. Behavior diagrams communicate how and whom,
+visualising the flow of data or state changes.</p><p><strong>Example Code should work</strong> : Example code should perform the task it claims to perform and be as production-ready as
+possible. Language-specific conventions should be followed.</p><h3 id=structure class="relative group">Structure <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#structure aria-label=Anchor>#</a></span></h3><p><strong>Product over Project</strong> : A project is a temporary endeavor with a defined beginning and end, while a product is
+something that is ongoing and has a lifecycle. Documentation should be written for products, not projects.</p><p>A Product Mindset comes with a long term view, and a focus on the customer. Collaboration and reusability will benefit
+on product centered documentations, especially with more than one team working on a product, or products that witch
+switching teams. The documentation can a holistic view of a product not a snapshot of a project.
+Consistency across products can emerge from templates and shared best practices.</p><p><strong>Use Metadata</strong> : Metadata can be used to structure the documentation, and to provide context to the reader. It may
+contain tags to categorize the documentation, a version number, a date of last update, or a list of contributors or
+responsible team.</p><p><strong>Perspective Driven Documentation</strong> : A pattern that focuses on Perspectives, a collection of one or more artifacts
+that address one (or multiple related) concers of a particular audience. One key principle is to no repeat information
+and use links and references instead. Perspectives are fractal and can be embedded into other perspectives. An example
+for this can be layered diagrams, which respond to different perspectives of different audiences depending on the</p><p><strong>Just in Time Documentation</strong> : &ldquo;You are not gonna need it&rdquo; is a development principle to only implement functionality
+that is needed not to avoid overengineering for use cases that never come. A principle that can be applied to
+Documentation and Knowledge management. This encourages faster, more efficient working on a more up-to-date
+documentation that is clear of fortune told waste pages, written document pages that are lost and never used. There can
+be a place to record information that could be relevant in the future.</p><p><strong>Use Architecture Design Records and document Architecture</strong>: Document architecture decisions, reasons, and future
+risks in the code base using ADRs (which I explained also in
+<a href=https://www.blog.philodev.one/posts/2023-04-communicating-between-teams/>this post about team communication</a>. Architecture can also be
+documenting by recording Architecture Characteristics (discussed in
+<a href=https://www.blog.philodev.one/posts/2024-05-agile-architecture/>this post about agile architecture</a> or by following evolutionary
+architecture and document decisions via fitness functions (discussed in
+<a href=https://www.blog.philodev.one/posts/2024-09-evolutionary-architecture/>this post about Evolutionary Architecture</a></p><p><strong>Company-wide Documentation</strong> : Documentation does not only exist in the context of a product. It should be searchable
+and accessible throughout the company where needed, if possible with the company-wide wiki or knowledge management tool.
+Also, there are documentation types about the company, like a tech radar, or how to things work around the company (from
+using HRs &ldquo;products&rdquo; like how to access educational resources and of course the companies platform tools).</p><h2 id=testing-and-automating-documentation class="relative group">Testing and Automating Documentation <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#testing-and-automating-documentation aria-label=Anchor>#</a></span></h2><p><strong>Documentation as Code</strong>
+Documentation should be created, updated, and live in the same environment (e.g. IDE) as the code it describes. This
+allows easier workflows, utalises existing review processes, better discoverability, enabled collaboration, and
+automation.</p><p><strong>Automating Documentation Publishing</strong> : Not every audience is able to read documentation from the code base. Subsets
+of the documentation should be readable from outside the team or even the company. This can be enabled by providing an
+endpoint which always returns the current state of the Open Api File which is based in the code base. But it can also
+mean syncing parts of the markdown documentation files to other documentation systems like syncing the glossary to
+Confluence.</p><div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900"><span class="pe-3 text-primary-400"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M256 0C114.6.0.0 114.6.0 256s114.6 256 256 256 256-114.6 256-256S397.4.0 256 0zm0 128c17.67.0 32 14.33 32 32 0 17.67-14.33 32-32 32s-32-14.3-32-32 14.3-32 32-32zm40 256h-80c-13.2.0-24-10.7-24-24s10.75-24 24-24h16v-64h-8c-13.25.0-24-10.75-24-24s10.8-24 24-24h32c13.25.0 24 10.75 24 24v88h16c13.25.0 24 10.75 24 24s-10.7 24-24 24z"/></svg>
+</span></span><span class=dark:text-neutral-300>I made perfect experiences writing the glossary as code, matching it to class and variable names, and ensuring a
+developer wrote and one reviewed the description; and syncing it to confluence to provide visibility and exchange with
+management or product.</span></div><p><strong>Generating Documentation</strong> : Generating documentation should be used with care. Using AI to generate documentation
+especially, as AI tools are still in their infancy. But generating selected parts of the architecture can be very
+helpful and ease keeping the docs up to date; like generating a state graph out of the events and handlers in an
+event-driven architecture.</p><div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900"><span class="pe-3 text-primary-400"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M256 0C114.6.0.0 114.6.0 256s114.6 256 256 256 256-114.6 256-256S397.4.0 256 0zm0 128c17.67.0 32 14.33 32 32 0 17.67-14.33 32-32 32s-32-14.3-32-32 14.3-32 32-32zm40 256h-80c-13.2.0-24-10.7-24-24s10.75-24 24-24h16v-64h-8c-13.25.0-24-10.75-24-24s10.8-24 24-24h32c13.25.0 24 10.75 24 24v88h16c13.25.0 24 10.75 24 24s-10.7 24-24 24z"/></svg>
+</span></span><span class=dark:text-neutral-300>Especially with generated Open Api Files I did make unpleasant experiences which is why I would suggest consumer facing
+documentation to be written by hand. But it can help a lot to either generate code based on the Open Api file, or to
+<a href=https://www.blog.philodev.one/posts/2023-03-testing-open-api-specs/ target=_blank rel=noreferrer>test the implementation against the expected Open Api File</a>.</span></div><h2 id=conclusion class="relative group">Conclusion <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style=text-decoration-line:none!important href=#conclusion aria-label=Anchor>#</a></span></h2><p>Documentation is a key part of the development process. It should be written with empathy for the audience, with care,
+with a spark of creativity.</p><p>Happy documenting :)</p><p>[//]: # (
+Writing Error Messages
+Deliver the best user experience.
+Are universally accessible. To learn more, take Tech Writing for Accessibility
+Enable users to help themselves.
+Reduce the support workload.
+Enable faster resolution of issues.
+This is not only for frontend, but also for backend, and API&rsquo;s !!!</p><ul><li>Don&rsquo;t fail silently<ul><li>follow error standard <a href=https://google.aip.dev/193 target=_blank rel=noreferrer>https://google.aip.dev/193</a></li><li>Avoid swallowing the root cause e.g. <code>server error</code></li><li>Log the error codes and provide unique error codes in your aplication</li><li>Raise errors as early as possible</li><li>Tell users exactly what went wrong. Be specific—vague error messages frustrate users e.g. what input is wrong how,
+with all requirements, not only the current most wrong</li><li>Explain how to fix the problem</li><li>Provide examples</li><li>Write for the audience, in simple, active, not-double-negative language</li><li>Readability over magic numbers!
+)</li></ul></li></ul><div class=footnotes role=doc-endnotes><hr><ol><li id=fn:1><p><a href=https://www.oreilly.com/library/view/communication-patterns/9781098140533/ target=_blank rel=noreferrer>Communication Patterns by Jacqui Read</a>&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a>&#160;<a href=#fnref1:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a>&#160;<a href=#fnref2:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a>&#160;<a href=#fnref3:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:2><p><a href=https://developers.google.com/tech-writing/overview target=_blank rel=noreferrer>Google Technical writing courses</a>&#160;<a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a>&#160;<a href=#fnref1:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:3><p>Barbara Minto about the Pyramid Principle. Citation copied from &ldquo;Communication Patterns by Jacqui Read&rdquo;&#160;<a href=#fnref:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></div></div></section><footer class="max-w-prose pt-8 print:hidden"><div class=flex><div class=place-self-center><div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">Author</div><div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">Sofia Fischer</div><div class="text-2xl sm:text-lg"><div class="flex flex-wrap text-neutral-400 dark:text-neutral-500"><a class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400" style=will-change:transform href=mailto:sofia@philodev.com target=_blank aria-label=Email rel="me noopener noreferrer"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1-27.64 140.9 68.65 266.2 199.1 285.1 19.01 2.888 36.17-12.26 36.17-31.49l1e-4-.6631c0-15.74-11.44-28.88-26.84-31.24-84.35-12.98-149.2-86.13-149.2-174.2.0-102.9 88.61-185.5 193.4-175.4 91.54 8.869 158.6 91.25 158.6 183.2v16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98.0036c-7.299.0-13.2 4.992-15.12 11.68-24.85-12.15-54.24-16.38-86.06-5.106-38.75 13.73-68.12 48.91-73.72 89.64-9.483 69.01 43.81 128 110.9 128 26.44.0 50.43-9.544 69.59-24.88 24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3c0-149.2-133.9-265.632-287.3-235.57zM239.1 304.3c-26.47.0-48-21.56-48-48.05s21.53-48.05 48-48.05 48 21.56 48 48.05-20.6 48.05-48 48.05z"/></svg>
+</span></a><a class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400" style=will-change:transform href=https://github.com/sofia-fischer target=_blank aria-label=Github rel="me noopener noreferrer"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 496 512"><path fill="currentcolor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6.0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6.0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3.0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1.0-6.2-.3-40.4-.3-61.4.0.0-70 15-84.7-29.8.0.0-11.4-29.1-27.8-36.6.0.0-22.9-15.7 1.6-15.4.0.0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5.0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9.0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4.0 33.7-.3 75.4-.3 83.6.0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6.0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9.0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></a><a class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400" style=will-change:transform href=https://www.linkedin.com/in/sofia-fischer-58b1611b9/ target=_blank aria-label=Linkedin rel="me noopener noreferrer"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 448 512"><path fill="currentcolor" d="M416 32H31.9C14.3 32 0 46.5.0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6.0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3.0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2.0 38.5 17.3 38.5 38.5.0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6.0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2.0 79.7 44.3 79.7 101.9V416z"/></svg></span></a></div></div></div></div><div class=pt-8><hr class="border-dotted border-neutral-300 dark:border-neutral-600"><div class="flex justify-between pt-3"><span><a class="group flex" href=/posts/2024-09-evolutionary-architecture/><span class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"><span class="ltr:inline rtl:hidden">&larr;</span><span class="ltr:hidden rtl:inline">&rarr;</span></span>
+<span class="flex flex-col"><span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500">📚 Book takeaways: Building Evolutionary Architecture</span>
+<span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400"><time datetime="2024-09-27 10:20:44 +0200 CEST">27 September 2024</time>
+</span></span></a></span><span></span></div></div></footer></article></main><div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12" id=to-top hidden=true><a href=#the-top class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400" aria-label="Scroll to top" title="Scroll to top">&uarr;</a></div><footer class="py-10 print:hidden"><div class="flex items-center justify-between"><div><p class="text-sm text-neutral-500 dark:text-neutral-400">&copy;
+2024
+Sofia Fischer</p><p class="text-xs text-neutral-500 dark:text-neutral-400">Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://gohugo.io/ target=_blank rel="noopener noreferrer">Hugo</a> & <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href=https://github.com/jpanther/congo target=_blank rel="noopener noreferrer">Congo</a></p></div><div class="flex flex-row items-center"><div class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"><button id=appearance-switcher-0 type=button aria-label="appearance switcher"><div class="flex h-12 w-12 items-center justify-center dark:hidden" title="Switch to dark appearance"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M32 256C32 132.2 132.3 32 255.8 32c11.36.0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z"/></svg></span></div><div class="hidden h-12 w-12 items-center justify-center dark:flex" title="Switch to light appearance"><span class="icon relative inline-block px-1 align-text-bottom"><svg viewBox="0 0 512 512"><path fill="currentcolor" d="M256 159.1c-53.02.0-95.1 42.98-95.1 95.1s41.2 96.9 95.1 96.9 95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347l-63.2-91.9 63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89 164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6 12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256 2.74 347.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7 19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109 109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69.0-127.1-57.31-127.1-127.1.0-70.69 57.31-127.1 127.1-127.1S383.1 186.2 383.1 256c0 70.7-56.4 127.1-127.1 127.1z"/></svg></span></div></button></div></div></div></footer></div></body></html>

@@ -116,8 +116,8 @@ The analysis that resulted in the Architecture Characteristics will impact their
 characteristics, the (random number, 7) most important should be documented, with the areas of the system the
 characteristics apply to and the sources of the characteristics (like an event storming session).
 
-If the characteristics are measurable, documenting them as [fitness functions]({{< ref "
-posts/2024-09-evolutionary-architecture" >}}) can be a great pattern.
+If the characteristics are measurable, documenting them as
+[fitness functions]({{< ref "posts/2024-09-evolutionary-architecture" >}}) can be a great pattern.
 
 ## How to design Agile Architecture
 
