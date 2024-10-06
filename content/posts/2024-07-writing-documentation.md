@@ -3,7 +3,7 @@ title: "Writing good Documentation"
 
 date: 2024-10-06T10:20:44+02:00
 
-draft: true
+draft: false
 
 description: It might depend on your project if you only need a README or a handbook - although the worst documentation is no documentation
 
