@@ -5,24 +5,22 @@ date: 2024-10-06T10:20:44+02:00
 
 draft: false
 
-description: It might depend on your project if you only need a README or a handbook - although the worst documentation is no documentation
+description: Exploring useful, well written, up-to-date documentation to get away from the outdated mess.
 
 tags: [ "Development", "Agile" ]
 ---
 
 {{< lead >}}
-It might depend on your project if you only need a README or a handbook - although the worst documentation is no
-documentation
+Docs, or it didn't happen.
 {{< /lead >}}
 
-Technical writing is writing to convey technical information. The main key is understanding the audience and their
-needs. This article aims to cover things to consider when writing documentation, how to structure text and diagrams and
-question to ask to understand the audience. No tools are discussed, the written is applicable to any language or
-project.
+Documentation can determine how fast new developers can be onboarded, how easy consumers can answer their questions, and
+can serve as public communication point between team and product or other teams - it is both time saver and opportunity
+provider. It may be well-structured, even interesting to read, the start of discussion points for feature development,
+consumed for automation (like Open Api files), or on the other hand, it can be a mess of outdated information.
 
 ## The Readers Perspective
 
-The first paragraph of a Documentation page should state the audience, topic and goal of the page.
 Documentation is always written for somebody and to answer their question - not the curiosity of the writer.
 
 - **Know Your Audience** : Define audience by roles with certain knowledge. For example, a developer that just
@@ -114,6 +112,8 @@ Acronyms should be avoided. They do not provide any benefits, but only the oppor
 ### Writing Style
 
 [^google]: [Google Technical writing courses](https://developers.google.com/tech-writing/overview)
+
+The first paragraph of a Documentation page should state the audience, topic and goal of the page.
 
 **Answer what, why, and how** : Good paragraphs answer these three questions:
 What are you trying to tell your reader?
@@ -207,7 +207,7 @@ contain tags to categorize the documentation, a version number, a date of last u
 responsible team.
 
 **Perspective Driven Documentation** : A pattern that focuses on Perspectives, a collection of one or more artifacts
-that address one (or multiple related) concers of a particular audience. One key principle is to no repeat information
+that address one (or multiple related) concerns of a particular audience. One key principle is to no repeat information
 and use links and references instead. Perspectives are fractal and can be embedded into other perspectives. An example
 for this can be layered diagrams, which respond to different perspectives of different audiences depending on the
 
