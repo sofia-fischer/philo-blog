@@ -3,7 +3,7 @@ title: "Consuming and Publishing to an external Service with Symfony Messenger"
 
 date: 2024-10-20T10:20:44+02:00
 
-draft: true
+draft: false
 
 description: Implementing a Queue Request / Response with Symfony Messenger to explore the benefits of asynchronous communication
   between services
