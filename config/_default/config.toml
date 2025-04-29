@@ -6,7 +6,7 @@ baseURL = "https://www.blog.philodev.one"
 defaultContentLanguage = "en"
 
 enableRobotsTXT = true
-paginate = 10
+pagerSize = 10
 summaryLength = 0
 
 [outputs]
