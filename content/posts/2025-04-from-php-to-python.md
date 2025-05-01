@@ -34,6 +34,8 @@ beginner-friendliness, to now owning established libraries for data manipulation
 dominates the web, historically started as template engine, growing whatever Wordpress is now, and powering many old and
 new web projects.
 
+![Corgi meeting a snake](/images/2025-04-python.png)
+
 ## The different levels of learning a new language
 
 First, how do you run the code, aka how do you get the "Hello World" on the screen? Is the common practice using a
