@@ -38,10 +38,19 @@ new web projects.
 
 First, how do you run the code, aka how do you get the "Hello World" on the screen? Is the common practice using a
 docker container or a virtualenv to control language version? How do you install packages? How do you run the tests?
-Which frameworks are common? I am going to skip this part, like each developer trying to teach coding to a Coding
-Padawan, skipping to the fun parts.
+Which frameworks are common?
 
-### Describing Datastructures Intentions: Typing and Magic Methods
+Supported by a nice coding AI, its about learning the syntax, the data structures, the libraries, and the tools. What
+can you do with the langauge, where are limits and the pit falls? How are tests written and how does debugging work?
+
+At some point, it is unavoidable to include the human factor. How doe the developers of the language think, what are the
+common practices and patterns? How do they uses the given tools?
+
+{{< alert "circle-info" >}}
+**This is no tutorial**: This are fractions of what I learned that I found interesting and wanted to share.
+{{< /alert >}}
+
+### How do Python Developers communicate intention in code?
 
 Typing: Typing always conveys intention, and in Python this can be done even more verbose than in PHP. Python provides
 Generators, supports Union types, specialised Types like Literals, and Annotated Types.
@@ -105,7 +114,7 @@ These are only a few examples of the magic methods that Python provides. Much mo
 
 [^magicMethods]: [Magic Methods in Python](https://www.pythonmorsels.com/every-dunder-method/)
 
-### Classes, Types, and Functions - The Power of Classes
+### How do Classes, Functions, and Types relate to each other in Python?
 
 All Types in Python are (Meta)Classes that inherit from `type`, but all instances of a Type are Classes.
 
