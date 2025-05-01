@@ -52,7 +52,7 @@ common practices and patterns? How do they uses the given tools?
 **This is no tutorial**: This are fractions of what I learned that I found interesting and wanted to share.
 {{< /alert >}}
 
-### How do Python Developers communicate intention in code?
+### Python Data Structures
 
 Typing: Typing always conveys intention, and in Python this can be done even more verbose than in PHP. Python provides
 Generators, supports Union types, specialised Types like Literals, and Annotated Types.
@@ -62,17 +62,48 @@ like a DefaultDict? Is it designed to be stored in a database like a flag? [^rob
 
 [^robustPython]: [Robust Python](https://www.oreilly.com/library/view/robust-python/9781098100650/)
 
-Magic Methods - "Dunder Methods" (because "Doubler Underscore"): In Python there are magic methods that allow you to
-overload operators and define what happens with the Class on casting, or how Classes can behave like a list or a
-dictionary.
+|            | Description                                                                                            | Mutable | Ordered | Duplicates |
+|------------|--------------------------------------------------------------------------------------------------------|---------|---------|------------|
+| List       | A collection that is meant to be iterated over or indexed, `[1, "two"]`                                | ✅       | ✅       | ✅          |
+| Range      | Immutable sequence of numbers and is commonly used for looping `list(range(0, 10, 3)) == [0, 3, 6, 9]` | ❌       | ✅       | ✅          |
+| Tuple      | Immutable collection, e.g. an extracted database row `(4, "Ball Python", "#EA387D")`                   | ❌       | ✅       | ✅          |
+| Set        | A collection free of duplicates, containing only immutable objects `{"#EA387D", "#003F23"}`            | ✅       | ❌       | ❌          |
+| FrozenSet  | Immutable Sets `frozenset("Frozen Snakey")`                                                            | ❌       | ❌       | ❌          |
+| Dictionary | A key value structure, possibly nested like a json `{"animal": "Ball Python", "name": "Snickers"}`     | ✅       | ✅       | (🔑❌)      | |
+
+Table infos from [^PythonDocs]
+
+[^PythonDocs]: [Python Docs](https://docs.python.org/3/library/stdtypes.html)
+
+Lists are the most common data structure as they support many operations that also make them easy to use stacks or
+queues. Also they support the awesome list comprehensions to create lists almost in mathematical notation.
+
+```python
+[snake for snake in snakes if snake.size > 2]
+```
+
+As mutable data structures, they also cause one of the weirdest pitfalls: Python uses pass by reference, even
+on function parameter defaults. The Python compiler will go through a function parameter with the default value
+`[]` and will create a pointer to a list. If the function is called multiple times, the same pointer is used,
+potentially reusing a filled list. Avoid this by using `None` as default value or use immutable data structures like
+tuples. [^mutableSideEffects]
+
+[^mutableSideEffects]: [Mutable Arguments and their problems](https://www.pythonmorsels.com/mutable-default-arguments/)
+
+### Magic Methods
+
+In Python there are magic methods that allow you to overload operators and define what happens with the Class on
+casting, or how Classes can behave like a list or a dictionary - "Dunder Methods" (because "Doubler Underscore")
 Be careful with them - if it is not doubtlessly clear what the code does, the developer can not easily click on the
 operator to check the behavior like with a non-magic function, eventually tracing down inheritances to find the magic
 method to understand the code.
+
 Nevertheless, they are a powerful tool to make the code more readable and to convey intention.
 
 ```python
 class Snake:
     latin_name: str = "Serpens"
+    size: int
 
     def __init__(self, size: int):
         """Constructor"""
@@ -116,71 +147,57 @@ These are only a few examples of the magic methods that Python provides. Much mo
 
 [^magicMethods]: [Magic Methods in Python](https://www.pythonmorsels.com/every-dunder-method/)
 
-### How do Classes, Functions, and Types relate to each other in Python?
+### Typing
 
-All Types in Python are (Meta)Classes that inherit from `type`, but all instances of a Type are Classes.
+Python allows much more Typing options than PHP, while both support Type unions, None type, and casting (and magic
+methods to cast), Python also has some special things.
 
-```bash
->>> Snake(1)
-<class 'Snake'>
-
->>> Snake
-<class 'Snake'>
-
->>> type(Snake)
-<class 'type'>
-
->>> Snake.__str__.
-<class 'function'>
-```
-
-This means that Types can be defined like properties. This can be handy! But, it almost made me cry when debugging
-that one property was set to a type instead of type hinted.
+**Type Alias** Because Python Types are somewhat classes, you can create Type Aliases.
 
 ```python
-Snake_Or_Goat = Snake | Goat
-animal: Snake_Or_Goat = Snake(1)
+Hydra = list[Snake]
+snakes: Hydra = [Snake(1), Snake(2), Snake(3)]
 ```
 
-One more magic method: Classes also have a `__dict__` attribute, which is a dictionary that contains the Class's
-attributes and methods. These dicts are used to get attributes of a Class or Instance - and no, the two are not the
-same. The dict of a Class contains the Class's attributes and methods, while the dict of an Instance contains the
-Instance's attributes that can be accessed using `self`.
-
-```bash
->>> severus = Snake(5)
->>> severus.latin_name
-'Serpens'
->>> severus.size
-5
->>> severus.__dict__
-{'size': 5}
->>> Snake.__dict__
-{'__module__': 'builtins', 'latin_name': "Serpens", '__init__': <function ...
-```
-
-If Types are MetaClasses, and Classes can be callable, what can Functions do? A lot, actually. They can be stored in an
-array and iterated over, they can have attributes, wrapped by a decorator, and functions can have functions.
-And if I got Trey Hunner [^blog] [^metaProgramming] correctly, Python functions are Descriptor Objects, which would mean
-they are also ... Classes?
+**Type Hinted Functions** Python supports Typed Functions, which I feel like a blessing, as it seems to be "Pythonic" to
+hand over functions as parameters to make functions work in different use cases.
 
 ```python
-def feed(snake: Snake) -> None:
+def feed(snake: Snake, food_count: int) -> Snake:
     snake.size += 1
+    return snake
 
 
-def sleep(snake: Snake) -> None:
+def sleep(snake: Snake, days: int) -> Snake:
     snake.size -= 1
+    return snake
 
 
-caring_methods = [feed, sleep]
-[caring_methods[index % 2](snake) for index, snake in [Snake(1), Snake(2), Snake(3)]]
+snake_care_methods: list[Callable[[Snake, int], Snake]] = [feed, sleep]
 ```
 
-[^blog]: [Python built-in functions](https://treyhunner.com/2019/05/python-builtins-worth-learning/)
-[^metaProgramming]: [Meta Programming in Python](https://www.oreilly.com/live-events/python-metaprogramming-in-practice/0642572014596/)
+**Generics** A feature PHP misses, Generics allow to define that a Type will stay consistent, for example that a
+function that sorts a list of one type will also return a list of the same type, independent of the type.
 
-### Pythonic Culture
+**Annotated** Python even allows adding more meta information to a Type, although this is often not checked by the type
+checker, but it can be used with `ValueRange` or other self implemented classes, to give contexts like "Is this
+Percentage a float between 0 and 100, or 0 and 1?", or "Does country refer to a country code or a country name?".
+
+```python
+from typing import Annotated
+
+
+class Snake:
+    size: Annotated[int, "Should be nice",] = 3
+
+
+severus = Snake()
+print(severus.__annotations__)
+
+>> > {'size': typing.Annotated[int, 'Should be nice']}
+```
+
+## Pythonic Culture
 
 Code should be natural to interact with, which also means that if follows cultural conventions (which starts with
 naming, but extends up to patterns). It means that it uses magic with caution, and is braced for misuse - which is
@@ -190,11 +207,14 @@ knowledge. [^robustPython]
 In Python there is so much possible. There are many conventions on how to solve common things, and while the fun part
 about switching languages is sometimes challenging those conventions, there is also a lot to learn.
 When to use dataclasses, when Attr, and when Pydentic [^dataclass]? Why to Python developers so rarely use Dependency
-Injection, and how else do I solve Inverting Control Problems [^ControlInversion]? When to use Flags? Why is nobody use
-match case?
+Injection, and how else do I solve Inverting Control Problems [^ControlInversion]? When to use Flags? Why is nobody
+using match case?
 
 [^dataclass]: [Dataclass vs Attrs vs Pydantic](https://jackmckew.dev/dataclasses-vs-attrs-vs-pydantic.html)
 [^ControlInversion]: [Dependency Injection in Python](https://seddonym.me/2019/08/03/ioc-techniques/)
+
+What Pythonic is and what not is still something I am learning, but while many learnings in a new language can be
+discovered in self-study; this is something that requires working in one project with other experienced developers.
 
 ## Conclusion: Stay Curious
 
