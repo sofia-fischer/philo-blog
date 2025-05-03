@@ -5,8 +5,7 @@ date: 2025-04-20T10:20:44+02:00
 
 draft: false
 
-description: Learning a new language is like learning a new way of thinking. It is not just about the syntax, but also about the
-  patterns, the culture.
+description: Learning a new language is like learning a new way of thinking. It is not just about the syntax, but also about the patterns, the culture.
 
 tags: [ "Python", "Development" ]
 ---
