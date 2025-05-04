@@ -1,7 +1,7 @@
 ---
 title: "Meta Programming in Python"
 
-date: 2025-04-20T10:20:44+02:00
+date: 2025-05-03T10:20:44+02:00
 
 draft: false
 
@@ -17,23 +17,20 @@ Python can do with itself, and how it is used in frameworks.
 
 ## Meta Programming
 
-As the name suggests, Metaprogramming is the process of writing programs that interact with the code itself.
+As the name suggests, Metaprogramming means writing programs that interact with the code itself.
 
 The most simple example is checking the type of a variable, so gathering information about the code at runtime, and
 making decisions based of that. Especially when coding within a framework, there are many contact points with meta
 programming, for example when using decorators that "magically" transform a function into a job, inheriting from a class
-that "magically" transforms a class into a model that triggers migrations on change.
-
-Metaprogramming is a powerful tool, especially when writing code that is consumes other code, like a framework. But to
-understand the mechanics behind the frameworks learning about metaprogramming is an interesting side quest,
-understanding the "magic" to make it into a tool to use the framework even more confident.
+that "magically" transforms a class into a model that triggers migrations on change. Metaprogramming is a powerful tool,
+especially when writing code that is used by other developers consuming their code, like a framework.
 
 ### When to use it?
 
-Metaprogramming is a powerful tool, but it should be used with caution. It is often used to hide complexity from the
-developer who just wants to use the magic. This hiding is what makes many frameworks so magically working without the
-need to understand the internal processes. But on the other hand, it makes it really hard to go through the code,
-following the flow of data, because it is hidden, and touched, manipulated, or read at places where it is not expected.
+Metaprogramming should be used with caution. It is often used to hide complexity from the developer who just wants to
+use the magic. This hiding is what makes many frameworks so magically working without the need to understand the
+internal processes. But on the other hand, it makes it really hard to go through the code, following the flow of data,
+because it is hidden - objects or classes are touched, manipulated, or read at places where it is not expected.
 
 It sometimes can be tempting to implement a program using metaprogramming, but it is often better to use simpler,
 understandable code to ensure the next developer can continue.
@@ -42,6 +39,8 @@ understandable code to ensure the next developer can continue.
 Metaprogramming is a powerful hammer in a world with only very few nails. Use it with caution, if you are not developing
 a framework, and your code aims to be maintainable, most likely you should use a different tool.
 {{< /alert >}}
+
+![Corgi warnging for dark magic](/images/2025-05-dark-magic.png)
 
 ## Metaprogramming in Python
 
@@ -84,9 +83,6 @@ if any(isinstance(magic, Magic) for magic in get_args(annotation)):
 typing.Annotated[str, 'magic', <__main__.Magic object at 0x1006bffd0>]
 Merlina can use magic!
 ```
-
-**Mystery Factor** : This adding of Meta information visible to the next developer, and while it is no obvious what the
-Annotations was intended for, a developer can go look for the class usage and follow the unchanged flow of the code.
 
 ### Decorators: I want to add functionality to a function
 
@@ -291,8 +287,9 @@ Class Dict
 
 In Python the logic of attribute lookup is implemented in C for performance reasons (after all, this code will run on
 every attribute access). The Code can be found in
-the [CPython repository](https://github.com/python/cpython/tree/main/Objects) in a method called
-`_PyObject_GenericGetAttrWithDict`. But a pure Python implementation is provided in the Python docs[^pythonDescriptors].
+the [CPython repository](https://github.com/python/cpython/blob/3e256b9118eded25e6aca61e3939fd4e03b87082/Objects/object.c#L1670)
+in a method called `_PyObject_GenericGetAttrWithDict`. But a pure Python implementation is provided in the Python
+docs[^pythonDescriptors].
 
 [^pythonDescriptors]: [Python Descriptors](https://docs.python.org/3/howto/descriptor.html#descriptor-protocol)
 
