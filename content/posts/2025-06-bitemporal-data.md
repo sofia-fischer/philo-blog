@@ -11,7 +11,7 @@ tags: [ "Python", "Development" ]
 ---
 
 {{< lead >}}
-Storing historic data becomes more complex if the historic data needs might also change over time and if those changes
+Storing historic data becomes more complex if the historic data changes over time and if those changes
 should be accessible. Bitemporal data is a way to store data that has two time dimensions: the actual time and the
 record time.
 {{< /lead >}}
@@ -351,24 +351,9 @@ visualizations, often different namings, with mostly the same approaches to the 
 the approach I presented here is one proven way to handle bitemporal data.
 
 The main inspiration for this article was Simeon, who phrased it as "You understand bitemporal data,
-until you don't. And when you need it, you understand it again."
+until you don't. And when you need it, you understand it again". Big thanks for the inspiration!
 
 This article, as all my public learnings, is my way to understand things, and hopefully have an easy time to
-re-understand the concepts and patterns. 
+re-understand the concepts and patterns.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Happy coding :)
