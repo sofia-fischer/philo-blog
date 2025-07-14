@@ -323,7 +323,7 @@ These patterns do not feel like most relational database patterns. After some re
 specialised to bitemporal data, like [XTDB](https://github.com/xtdb/xtdb). The database is written in Clojure, and uses
 event storage under the hood to handle second dimensions of time [^podcast].
 Looking at the pattern, the partial immutability of the data, and the inserting of new periods as new entries, even if
-it to update existing data, id displays indeed many similarities to event sourcing. 
+it to update existing data, id displays indeed many similarities to event sourcing.
 
 [^podcast]: [Clojure Podcast on XTDB](https://podcasts.apple.com/au/podcast/bitemporal-databases-what-they-are-and-why-they/id1687271887?i=1000616019962)
 
@@ -350,8 +350,8 @@ one book, and one podcasts to understand some more granular details of the patte
 visualizations, often different namings, with mostly the same approaches to the problem. So while I am confident that
 the approach I presented here is one proven way to handle bitemporal data.
 
-The main inspiration for this article was Simeon, who phrased it as "You understand bitemporal data,
-until you don't. And when you need it, you understand it again". Big thanks for the inspiration!
+The main inspiration for this article was Simeon (big thanks!), who phrased it in his talks as "You understand
+bitemporal data, until you don't. And when you need it, you understand it again".
 
 This article, as all my public learnings, is my way to understand things, and hopefully have an easy time to
 re-understand the concepts and patterns.
