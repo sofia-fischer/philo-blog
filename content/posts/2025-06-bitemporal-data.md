@@ -344,7 +344,17 @@ complexity, and reasearchability of the used patterns - if you think otherwise I
 
 ## Conclusion
 
-Bitemporal data is always complex to wrap around. The best
+Bitemporal data is always complex to wrap around.
+The amount of articles and resources on this topic is extensive, and I did read through many of posts,
+one book, and one podcasts to understand some more granular details of the patterns. They all use different
+visualizations, often different namings, with mostly the same approaches to the problem. So while I am confident that
+the approach I presented here is one proven way to handle bitemporal data.
+
+The main inspiration for this article was Simeon, who phrased it as "You understand bitemporal data,
+until you don't. And when you need it, you understand it again."
+
+This article, as all my public learnings, is my way to understand things, and hopefully have an easy time to
+re-understand the concepts and patterns. 
 
 
 
