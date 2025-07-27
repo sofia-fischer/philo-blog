@@ -1,1 +1,131 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on PhiloBlog</title><link>https://www.blog.philodev.one/tags/</link><description>Recent content in Tags on PhiloBlog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 06 Oct 2024 10:20:44 +0200</lastBuildDate><atom:link href="https://www.blog.philodev.one/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>Agile</title><link>https://www.blog.philodev.one/tags/agile/</link><pubDate>Sun, 06 Oct 2024 10:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/agile/</guid><description/></item><item><title>Development</title><link>https://www.blog.philodev.one/tags/development/</link><pubDate>Sun, 06 Oct 2024 10:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/development/</guid><description/></item><item><title>Architecture</title><link>https://www.blog.philodev.one/tags/architecture/</link><pubDate>Fri, 27 Sep 2024 10:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/architecture/</guid><description/></item><item><title>Book</title><link>https://www.blog.philodev.one/tags/book/</link><pubDate>Fri, 27 Sep 2024 10:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/book/</guid><description/></item><item><title>Metrics</title><link>https://www.blog.philodev.one/tags/metrics/</link><pubDate>Fri, 27 Sep 2024 10:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/metrics/</guid><description/></item><item><title>DevOps</title><link>https://www.blog.philodev.one/tags/devops/</link><pubDate>Tue, 10 Sep 2024 10:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/devops/</guid><description/></item><item><title>Standards</title><link>https://www.blog.philodev.one/tags/standards/</link><pubDate>Tue, 10 Sep 2024 10:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/standards/</guid><description/></item><item><title>Software Pattern</title><link>https://www.blog.philodev.one/tags/software-pattern/</link><pubDate>Sun, 28 Apr 2024 10:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/software-pattern/</guid><description/></item><item><title>Symfony</title><link>https://www.blog.philodev.one/tags/symfony/</link><pubDate>Sun, 28 Apr 2024 10:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/symfony/</guid><description/></item><item><title>Queue</title><link>https://www.blog.philodev.one/tags/queue/</link><pubDate>Thu, 01 Feb 2024 10:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/queue/</guid><description/></item><item><title>PHP</title><link>https://www.blog.philodev.one/tags/php/</link><pubDate>Sat, 20 Jan 2024 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/php/</guid><description/></item><item><title>Testing</title><link>https://www.blog.philodev.one/tags/testing/</link><pubDate>Tue, 28 Mar 2023 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/testing/</guid><description/></item><item><title>Laravel</title><link>https://www.blog.philodev.one/tags/laravel/</link><pubDate>Sat, 28 Jan 2023 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/laravel/</guid><description/></item><item><title>Validation</title><link>https://www.blog.philodev.one/tags/validation/</link><pubDate>Mon, 26 Dec 2022 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/validation/</guid><description/></item><item><title>Developer Life</title><link>https://www.blog.philodev.one/tags/developer-life/</link><pubDate>Wed, 31 Aug 2022 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/developer-life/</guid><description/></item><item><title>Ethical Development</title><link>https://www.blog.philodev.one/tags/ethical-development/</link><pubDate>Wed, 31 Aug 2022 14:20:44 +0200</pubDate><guid>https://www.blog.philodev.one/tags/ethical-development/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on PhiloBlog</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on PhiloBlog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 10 Jul 2025 10:20:44 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Development</title>
+      <link>http://localhost:1313/tags/development/</link>
+      <pubDate>Thu, 10 Jul 2025 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/development/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>http://localhost:1313/tags/python/</link>
+      <pubDate>Thu, 10 Jul 2025 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Queue</title>
+      <link>http://localhost:1313/tags/queue/</link>
+      <pubDate>Sun, 20 Oct 2024 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/queue/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software Pattern</title>
+      <link>http://localhost:1313/tags/software-pattern/</link>
+      <pubDate>Sun, 20 Oct 2024 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/software-pattern/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Symfony</title>
+      <link>http://localhost:1313/tags/symfony/</link>
+      <pubDate>Sun, 20 Oct 2024 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/symfony/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Agile</title>
+      <link>http://localhost:1313/tags/agile/</link>
+      <pubDate>Sun, 06 Oct 2024 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/agile/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Architecture</title>
+      <link>http://localhost:1313/tags/architecture/</link>
+      <pubDate>Fri, 27 Sep 2024 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/architecture/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Book</title>
+      <link>http://localhost:1313/tags/book/</link>
+      <pubDate>Fri, 27 Sep 2024 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/book/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Metrics</title>
+      <link>http://localhost:1313/tags/metrics/</link>
+      <pubDate>Fri, 27 Sep 2024 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/metrics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DevOps</title>
+      <link>http://localhost:1313/tags/devops/</link>
+      <pubDate>Tue, 10 Sep 2024 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/devops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Standards</title>
+      <link>http://localhost:1313/tags/standards/</link>
+      <pubDate>Tue, 10 Sep 2024 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/standards/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PHP</title>
+      <link>http://localhost:1313/tags/php/</link>
+      <pubDate>Sat, 20 Jan 2024 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/php/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Testing</title>
+      <link>http://localhost:1313/tags/testing/</link>
+      <pubDate>Tue, 28 Mar 2023 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/testing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Laravel</title>
+      <link>http://localhost:1313/tags/laravel/</link>
+      <pubDate>Sat, 28 Jan 2023 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/laravel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Validation</title>
+      <link>http://localhost:1313/tags/validation/</link>
+      <pubDate>Mon, 26 Dec 2022 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/validation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Developer Life</title>
+      <link>http://localhost:1313/tags/developer-life/</link>
+      <pubDate>Wed, 31 Aug 2022 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/developer-life/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ethical Development</title>
+      <link>http://localhost:1313/tags/ethical-development/</link>
+      <pubDate>Wed, 31 Aug 2022 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/tags/ethical-development/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

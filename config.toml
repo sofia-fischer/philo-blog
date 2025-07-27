@@ -3,4 +3,3 @@ baseURL = "https://www.blog.philodev.one/"
 
 languageCode = 'en-us'
 title = 'PhiloBlog'
-theme = "congo"

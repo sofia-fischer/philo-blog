@@ -1,0 +1,1040 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#FFFFFF" />
+  
+  <title>Meta Programming in Python &middot; PhiloBlog</title>
+    <meta name="title" content="Meta Programming in Python &middot; PhiloBlog" />
+  
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="http://localhost:1313/js/appearance.min.8a082f81b27f3cb2ee528df0b0bdc39787034cf2cc34d4669fbc9977c929023c.js"
+    integrity="sha256-iggvgbJ/PLLuUo3wsL3Dl4cDTPLMNNRmn7yZd8kpAjw="
+  ></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="http://localhost:1313/css/main.bundle.min.14c0530276ab23a81a1b590ad04c824b39a6eb6e1b6446a5c58dc39ba3b4afcd.css"
+    integrity="sha256-FMBTAnarI6gaG1kK0EyCSzmm624bZEalxY3Dm6O0r80="
+  />
+  
+    
+    
+    
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="http://localhost:1313/js/main.bundle.min.85588ca4a09487934eca6830f4d8ec6b443b96cf1895ddf10249e8f2ddddeb74.js"
+      integrity="sha256-hViMpKCUh5NOymgw9Njsa0Q7ls8Yld3xAkno8t3d63Q="
+      data-copy="Copy"
+      data-copied="Copied"
+    ></script>
+  
+  
+  <meta
+    name="description"
+    content="
+      Metaprogramming is a powerful tool in Python, but it should be used with caution. In this post, we will explore what Python can do with itself, and how it is used in frameworks.
+    "
+  />
+  
+  
+  
+  
+    <link rel="canonical" href="http://localhost:1313/posts/2025-05-python-meta-programming/" />
+  
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="http://localhost:1313/posts/2025-05-python-meta-programming/">
+  <meta property="og:site_name" content="PhiloBlog">
+  <meta property="og:title" content="Meta Programming in Python">
+  <meta property="og:description" content="Metaprogramming is a powerful tool in Python, but it should be used with caution. In this post, we will explore what Python can do with itself, and how it is used in frameworks.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-03T10:20:44+02:00">
+    <meta property="article:modified_time" content="2025-05-03T10:20:44+02:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Development">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Meta Programming in Python">
+  <meta name="twitter:description" content="Metaprogramming is a powerful tool in Python, but it should be used with caution. In this post, we will explore what Python can do with itself, and how it is used in frameworks.">
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Meta Programming in Python",
+    "headline": "Meta Programming in Python",
+    "description": "Metaprogramming is a powerful tool in Python, but it should be used with caution. In this post, we will explore what Python can do with itself, and how it is used in frameworks.",
+    
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/posts\/2025-05-python-meta-programming\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Sofia Fischer"
+    },
+    "copyrightYear": "2025",
+    "dateCreated": "2025-05-03T10:20:44\u002b02:00",
+    "datePublished": "2025-05-03T10:20:44\u002b02:00",
+    
+    "dateModified": "2025-05-03T10:20:44\u002b02:00",
+    
+    "keywords": ["Python","Development"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "2117"
+  }
+  </script>
+    
+    <script type="application/ld+json">
+    {
+   "@context": "https://schema.org",
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+     {
+       "@type": "ListItem",
+       "item": "http://localhost:1313/",
+       "name": "Philo Blog",
+       "position": 1
+     },
+     {
+       "@type": "ListItem",
+       "item": "http://localhost:1313/posts/",
+       "name": "Posts",
+       "position": 2
+     },
+     {
+       "@type": "ListItem",
+       "name": "Meta Programming in Python",
+       "position": 3
+     }
+   ]
+ }
+  </script>
+
+  
+  
+    <meta name="author" content="Sofia Fischer" />
+  
+  
+    
+      <link href="mailto:sofia@philodev.com" rel="me" />
+    
+      <link href="https://github.com/sofia-fischer" rel="me" />
+    
+      <link href="https://www.linkedin.com/in/sofia-fischer-58b1611b9/" rel="me" />
+    
+  
+  
+  
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+</head>
+<body
+    class="m-auto flex h-screen max-w-7xl flex-col bg-neutral px-6 text-lg leading-7 text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="-translate-y-8 rounded-b-lg bg-primary-200 px-3 py-1 text-sm focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="pe-2 font-bold text-primary-600 dark:text-primary-400">&darr;</span
+        >Skip to main content</a
+      >
+    </div>
+    
+    
+      <header class="py-6 font-semibold text-neutral-900 dark:text-neutral sm:py-10 print:hidden">
+  <nav class="flex items-start justify-between sm:items-center">
+    
+    <div class="flex flex-row items-center">
+      
+    <a href="/" class="mr-2">
+      
+      <img
+        src="http://localhost:1313/logo.png"
+        width="1012"
+        height="1012"
+        class="max-h-[10rem] max-w-[10rem] object-scale-down object-left
+        "
+        alt="PhiloBlog"
+      />
+    </a>
+  <a
+    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+    rel="me"
+    href="/"
+    >PhiloBlog</a
+  >
+
+    </div>
+    
+    
+      <ul class="flex list-none flex-col text-end sm:flex-row">
+        
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/posts/"
+                  title="Posts"
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Posts</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/tags/"
+                  title="Tags"
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Tags</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+          
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0">
+              <button id="search-button-m0" title="Search (/)">
+                <span
+                  class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                >
+                  <span class="icon relative inline-block px-1 align-text-bottom"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+                </span>
+              </button>
+            </li>
+          
+        
+      </ul>
+    
+  </nav>
+</header>
+
+    
+    <div class="relative flex grow flex-col">
+      <main id="main-content" class="grow">
+        
+  <article>
+    <header class="max-w-prose">
+      
+        <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+  <li class="hidden inline">
+    <a
+      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
+      href="http://localhost:1313/"
+      >PhiloBlog</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class=" inline">
+    <a
+      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
+      href="http://localhost:1313/posts/"
+      >Posts</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="hidden inline">
+    <a
+      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
+      href="http://localhost:1313/posts/2025-05-python-meta-programming/"
+      >Meta Programming in Python</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+      
+      <h1 class="mb-8 mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Meta Programming in Python
+      </h1>
+      
+        <div class="mb-10 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+          
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2025-05-03 10:20:44 &#43;0200 CEST">3 May 2025</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">10 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+  
+    <div class="my-1 flex flex-wrap text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
+      
+        
+      
+        
+          
+            <a
+              href="http://localhost:1313/tags/python/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Python</a
+            >
+          
+            <a
+              href="http://localhost:1313/tags/development/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Development</a
+            >
+          
+        
+      
+    </div>
+  
+
+
+        </div>
+      
+      
+    </header>
+    <section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row">
+      
+        <div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8">
+          <div class="toc pe-5 lg:sticky lg:top-10 print:hidden">
+            <details open class="-ms-5 mt-0 overflow-hidden rounded-lg ps-5">
+  <summary
+    class="block cursor-pointer bg-neutral-100 py-1 ps-5 text-lg font-semibold text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden"
+  >
+    Table of Contents
+  </summary>
+  <div class="border-s border-dotted border-neutral-300 py-2 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#meta-programming">Meta Programming</a>
+          <ul>
+            <li><a href="#when-to-use-it">When to use it?</a></li>
+          </ul>
+        </li>
+        <li><a href="#metaprogramming-in-python">Metaprogramming in Python</a>
+          <ul>
+            <li><a href="#introspection-i-want-to-know-about-the-technical-properties-of-an-object">Introspection: I want to know about the technical properties of an object</a></li>
+            <li><a href="#decorators-i-want-to-add-functionality-to-a-function">Decorators: I want to add functionality to a function</a></li>
+            <li><a href="#descriptors-i-want-to-control-how-a-class-attribute-is-accessed-or-modified">Descriptors: I want to control how a class attribute is accessed or modified</a></li>
+            <li><a href="#metaclasses-i-want-to-create-a-new-type-and-control-how-classes-are-created">MetaClasses: I want to create a new Type and control how classes are created</a></li>
+          </ul>
+        </li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+          </div>
+        </div>
+      
+      <div class="min-h-0 min-w-0 max-w-prose grow">
+        <div class="lead !mb-9 text-xl">
+  Metaprogramming is a powerful tool in Python, but it should be used with caution. In this post, we will explore what
+Python can do with itself, and how it is used in frameworks.
+</div>
+
+<h2 id="meta-programming" class="relative group">Meta Programming <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#meta-programming" aria-label="Anchor">#</a></span></h2><p>As the name suggests, Metaprogramming means writing programs that interact with the code itself.</p>
+<p>The most simple example is checking the type of a variable, so gathering information about the code at runtime, and
+making decisions based of that. Especially when coding within a framework, there are many contact points with meta
+programming, for example when using decorators that &ldquo;magically&rdquo; transform a function into a job, inheriting from a class
+that &ldquo;magically&rdquo; transforms a class into a model that triggers migrations on change. Metaprogramming is a powerful tool,
+especially when writing code that is used by other developers consuming their code, like a framework.</p>
+<h3 id="when-to-use-it" class="relative group">When to use it? <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#when-to-use-it" aria-label="Anchor">#</a></span></h3><p>Metaprogramming should be used with caution. It is often used to hide complexity from the developer who just wants to
+use the magic. This hiding is what makes many frameworks so magically working without the need to understand the
+internal processes. But on the other hand, it makes it really hard to go through the code, following the flow of data,
+because it is hidden - objects or classes are touched, manipulated, or read at places where it is not expected.</p>
+<p>It sometimes can be tempting to implement a program using metaprogramming, but it is often better to use simpler,
+understandable code to ensure the next developer can continue.</p>
+<div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900">
+  <span class="pe-3 text-primary-400">
+    <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"/></svg>
+</span>
+  </span>
+  <span class="dark:text-neutral-300">Metaprogramming is a powerful hammer in a world with only very few nails. Use it with caution, if you are not developing
+a framework, and your code aims to be maintainable, most likely you should use a different tool.</span>
+</div>
+
+<p>
+
+
+
+
+
+
+  
+  
+<figure><img src="/images/2025-05-dark-magic.png" alt="Corgi warnging for dark magic" class="mx-auto my-0 rounded-md" />
+</figure>
+</p>
+<h2 id="metaprogramming-in-python" class="relative group">Metaprogramming in Python <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#metaprogramming-in-python" aria-label="Anchor">#</a></span></h2><p>This post is strongly inspired by the Meta Programming Course by Trey Hunner <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<h3 id="introspection-i-want-to-know-about-the-technical-properties-of-an-object" class="relative group">Introspection: I want to know about the technical properties of an object <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#introspection-i-want-to-know-about-the-technical-properties-of-an-object" aria-label="Anchor">#</a></span></h3><p>Python provides many built-in functions to introspect objects like does it have a certain attribute <code>hasattr</code>, what is
+the type of the object <code>type</code>, what is the name of the class <code>__name__</code>, or is it callable <code>callable</code>. I would like to
+highlight Annotated Properties, because they not only enable reading meta information about a property, but also a way
+to add meta information to a class property.</p>
+<p>An easy, somewhat common form of Metaprogramming, given meta information about a class property, that are stored
+there using the Annotated Property. Using the <code>__annotations__</code> attribute of a class, you can get the annotation of a
+class, and build therefore code based on how the other code is written or types.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">get_args</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Magic</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_dark</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">is_dark</span> <span class="o">=</span> <span class="n">is_dark</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Wizard</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wand</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&#34;magic&#34;</span><span class="p">,</span> <span class="n">Magic</span><span class="p">(</span><span class="kc">True</span><span class="p">)]</span> <span class="o">=</span> <span class="s2">&#34;Magic Staff&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">merlina</span> <span class="o">=</span> <span class="n">Wizard</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">annotation</span> <span class="o">=</span> <span class="n">merlina</span><span class="o">.</span><span class="vm">__annotations__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;wand&#34;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">annotation</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">magic</span><span class="p">,</span> <span class="n">Magic</span><span class="p">)</span> <span class="k">for</span> <span class="n">magic</span> <span class="ow">in</span> <span class="n">get_args</span><span class="p">(</span><span class="n">annotation</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Merlina can use magic!&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code class="language-terminaloutput" data-lang="terminaloutput">typing.Annotated[str, &#39;magic&#39;, &lt;__main__.Magic object at 0x1006bffd0&gt;]
+Merlina can use magic!
+</code></pre><h3 id="decorators-i-want-to-add-functionality-to-a-function" class="relative group">Decorators: I want to add functionality to a function <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#decorators-i-want-to-add-functionality-to-a-function" aria-label="Anchor">#</a></span></h3><p>Decorators are meta programmatic tools that diverge from the expected flow of the code. They are used to wrap around a
+function (or class). A decorator is a function that takes another function as an argument and returns a new function
+that adds some kind of behaviors. <sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>The wrapper function should be able to receive the same arguments as the original function, so it needs to hand down its
+<code>*args, **kwargs</code> to the original function. It should also return the value of the original function.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_magic</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">magic_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;✨Magic started ✨&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">value</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;✨Magic ended ✨&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">magic_wrapper</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">abracadabra</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Abracadabra &#34;</span> <span class="o">+</span> <span class="nb">input</span> <span class="o">+</span> <span class="s2">&#34;!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">abracadabra</span> <span class="o">=</span> <span class="n">make_magic</span><span class="p">(</span><span class="n">abracadabra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">abracadabra</span><span class="p">(</span><span class="s2">&#34;Hoc&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code class="language-terminaloutput" data-lang="terminaloutput">✨Magic started ✨
+Abracadabra Hoc!
+✨Magic ended ✨
+</code></pre><p>Now the original <code>abracadabra</code> function is overwritten by the <code>magic_wrapper</code> function which contains the original
+function. Python provides a syntactic sugar to make this easier, using the <code>@</code> symbol to decorate the function instead
+of <code>abracadabra = make_magic(abracadabra)</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@make_magic</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">abracadabra</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Abracadabra &#34;</span> <span class="o">+</span> <span class="nb">input</span> <span class="o">+</span> <span class="s2">&#34;!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">abracadabra</span><span class="p">(</span><span class="s2">&#34;Hic&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code class="language-terminaloutput" data-lang="terminaloutput">✨Magic started ✨
+Abracadabra Hic!
+✨Magic ended ✨
+</code></pre><p>Decorators can be very versatile! They can be used to add functionality to a function, allow some meta information added
+to the function, add a parameter, or (e.g. a decorator to skip a test) even to replace the function itself.</p>
+<p>Mind the scopes, variables defined in the decorator are not available in the wrapper function, but Python allows adding
+variables to</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_magic</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">magic_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;✨Magic started ✨&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">value</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">magic_wrapper</span><span class="o">.</span><span class="n">mana</span> <span class="o">-=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span> <span class="o">-</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;✨Magic ended ✨Mana left: &#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">magic_wrapper</span><span class="o">.</span><span class="n">mana</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Mind the scopes! A variable defined in the decorator is not available in the wrapper function.</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Also avoid adding variables to the wrapped function (func) itself to avoid unexpected side effects. </span>
+</span></span><span class="line"><span class="cl">    <span class="n">magic_wrapper</span><span class="o">.</span><span class="n">mana</span> <span class="o">=</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">magic_wrapper</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@make_magic</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">abracadabra</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;  A magic function that prints a message. &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Abracadabra &#34;</span> <span class="o">+</span> <span class="nb">input</span> <span class="o">+</span> <span class="s2">&#34;!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">abracadabra</span><span class="p">(</span><span class="s2">&#34;Mundus&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">abracadabra</span><span class="p">(</span><span class="s2">&#34;est&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">abracadabra</span><span class="p">(</span><span class="s2">&#34;magia&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><pre tabindex="0"><code class="language-terminaloutput" data-lang="terminaloutput">✨Magic started ✨
+Abracadabra Mundus!
+✨Magic ended ✨Mana left: 93
+✨Magic started ✨
+Abracadabra est!
+✨Magic ended ✨Mana left: 89
+✨Magic started ✨
+Abracadabra magia!
+✨Magic ended ✨Mana left: 83
+</code></pre><p>There is one problem with this approach: What looks like the original function is in fact a wrapper function. The
+information of identity, DocStrings, etc is lost.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">help</span><span class="p">(</span><span class="n">abracadabra</span><span class="p">))</span>
+</span></span></code></pre></div><pre tabindex="0"><code class="language-terminaloutput" data-lang="terminaloutput">Help on function magic_wrapper in module __main__:
+
+magic_wrapper(*args, **kwargs)
+</code></pre><p>To avoid this, Python provides a <code>functools.wraps</code> decorator. This decorator is used to update the wrapper function with
+all the attributes of the original function, including its name, docstring, and module. Internally it adds the original
+function to the <code>__wrapped__</code> property of the wrapper function.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_magic</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">magic_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;✨Magic started ✨&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">value</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;✨Magic ended ✨&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">magic_wrapper</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@make_magic</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">abracadabra</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;  A magic function that prints a message. &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Abracadabra &#34;</span> <span class="o">+</span> <span class="nb">input</span> <span class="o">+</span> <span class="s2">&#34;!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">help</span><span class="p">(</span><span class="n">abracadabra</span><span class="p">))</span>
+</span></span></code></pre></div><pre tabindex="0"><code class="language-terminaloutput" data-lang="terminaloutput">Help on function abracadabra in module __main__:
+
+abracadabra(input: str) -&gt; None
+A magic function that prints a message.
+</code></pre><div class="flex rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900">
+  <span class="pe-3 text-primary-400">
+    <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"/></svg>
+</span>
+  </span>
+  <span class="dark:text-neutral-300">Be a nice developer and add <code>@wraps</code> to every decorator you implement. And reconsider the need for a decorator in the
+first place.</span>
+</div>
+
+<p><strong>Decorators in Practice:</strong> Most frameworks use decorators to add functionality to functions or classes, even many
+libraries. For example Celery <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> uses decorators to define tasks. Well written decorators are easy to find a
+project by searching for <code>@wraps</code> in the code, so feel free to find out how your project uses decorators.</p>
+<p><strong>Class Decorator</strong> work the same way, but instead of a function, a class is passed to the decorator, and a class is
+returned. A common used Class Decorator is <code>@dataclass</code>, which returns the same class as was passed in, but with dunder
+methods added.</p>
+<h3 id="descriptors-i-want-to-control-how-a-class-attribute-is-accessed-or-modified" class="relative group">Descriptors: I want to control how a class attribute is accessed or modified <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#descriptors-i-want-to-control-how-a-class-attribute-is-accessed-or-modified" aria-label="Anchor">#</a></span></h3><p>Sometimes it is handy to have an attribute that is not just a simple value, but calculated based on another value, like
+the radius of a circle and its area. Also it would be nice if the attribute could be set and the related value would
+also update. Such a behavior can be implemented using a descriptor.</p>
+<p>Descriptors are objects that define how attributes are accessed or modified. They are defined by a class that
+implements either of the three methods <code>__get__</code>, <code>__set__</code>, or <code>__delete__</code> <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. A descriptor that
+implements only the <code>__get__</code> method is called a non-data descriptor, while a descriptor that implements more is called
+a data descriptor. To understand how descriptors work, it is important to understand how Python looks up attributes.</p>
+<p>To understand how Python looks up attributes on an object the <code>__dict__</code> attribute of the object is used. This attribute
+is a dictionary that contains the properties of the object, or if used on the type of the object, the class properties.
+Instance properties override class properties.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Potion</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">milliliter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span>
+</span></span><span class="line"><span class="cl">    <span class="n">color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&#34;yellow&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">invisibility_potion</span> <span class="o">=</span> <span class="n">Potion</span><span class="p">(</span><span class="s2">&#34;magenta&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Instance Dict&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">invisibility_potion</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Class Dict&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">Potion</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code class="language-terminaloutput" data-lang="terminaloutput">Instance Dict
+{&#39;color&#39;: &#39;magenta&#39;}
+Class Dict
+{&#39;__module__&#39;: &#39;__main__&#39;, &#39;__annotations__&#39;: {&#39;milliliter&#39;: &lt;class &#39;int&#39;&gt;, &#39;color&#39;: &lt;class &#39;str&#39;&gt;}, &#39;milliliter&#39;: 50, &#39;color&#39;: &#39;yellow&#39;, &#39;__init__&#39;: &lt;function Potion.__init__ at 0x105751f30&gt;, &#39;__dict__&#39;: &lt;attribute &#39;__dict__&#39; of &#39;Potion&#39; objects&gt;, &#39;__weakref__&#39;: &lt;attribute &#39;__weakref__&#39; of &#39;Potion&#39; objects&gt;, &#39;__doc__&#39;: None}
+</code></pre><p>In Python the logic of attribute lookup is implemented in C for performance reasons (after all, this code will run on
+every attribute access). The Code can be found in
+the <a href="https://github.com/python/cpython/blob/3e256b9118eded25e6aca61e3939fd4e03b87082/Objects/object.c#L1670" target="_blank" rel="noreferrer">CPython repository</a>
+in a method called <code>_PyObject_GenericGetAttrWithDict</code>. But a pure Python implementation is provided in the Python
+docs<sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">object_getattribute</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34; Emulate PyObject_GenericGetAttr() in Objects/object.c &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">instances_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">type_dict_at_attribute</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">instances_type</span><span class="p">,</span> <span class="s1">&#39;__dict__&#39;</span><span class="p">,</span> <span class="p">{})[</span><span class="n">attribute</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># NonData Descriptors are defined by implementing __get__ method</span>
+</span></span><span class="line"><span class="cl">    <span class="n">has_non_data_descriptor</span> <span class="o">=</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">type_dict_at_attribute</span><span class="p">,</span> <span class="s1">&#39;__get__&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Data Descriptors are NonData Descriptors that implement __set__ or __delete__ method</span>
+</span></span><span class="line"><span class="cl">    <span class="n">has_data_descriptor</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">has_non_data_descriptor</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">type_dict_at_attribute</span><span class="p">,</span> <span class="s1">&#39;__set__&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">type_dict_at_attribute</span><span class="p">,</span> <span class="s1">&#39;__delete__&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">has_data_descriptor</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># if there is a Data Descriptor, return the result of its __get__ method</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">has_data_descriptor</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">type_dict_at_attribute</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">instances_type</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># If the attribute is defined in the instance&#39;s __dict__, return it</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">instance</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># If there is a non-data descriptor, return the result of its __get__ method</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">has_non_data_descriptor</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">type_dict_at_attribute</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">instances_type</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># If the attribute is defined in the class&#39;s __dict__,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">instances_type</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">instances_type</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span>
+</span></span></code></pre></div><p><strong>Python Descriptors in Practice</strong> Descriptors are commonly used in Python to implement properties using the decorator
+<code>@property</code>, which disguises the setter and getter methods into methods of the class.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Potion</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">milliliters</span> <span class="o">=</span> <span class="mi">50</span>
+</span></span><span class="line"><span class="cl">    <span class="n">usage_size</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">use</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">milliliters</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">milliliters</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usage_size</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&#34;Potion is empty&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@property</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">usages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">milliliters</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">usage_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@usages.setter</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">usages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">milliliters</span> <span class="o">=</span> <span class="n">value</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">usage_size</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">invisibility_potion</span> <span class="o">=</span> <span class="n">Potion</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;I made 🧪 Potion with </span><span class="si">{</span><span class="n">invisibility_potion</span><span class="o">.</span><span class="n">milliliters</span><span class="si">}</span><span class="s2">ml&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">invisibility_potion</span><span class="o">.</span><span class="n">use</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;After using the potion, I have </span><span class="si">{</span><span class="n">invisibility_potion</span><span class="o">.</span><span class="n">milliliters</span><span class="si">}</span><span class="s2">ml left&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">invisibility_potion</span><span class="o">.</span><span class="n">usages</span> <span class="o">=</span> <span class="mi">20</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;After refilling the potion, I have </span><span class="si">{</span><span class="n">invisibility_potion</span><span class="o">.</span><span class="n">milliliters</span><span class="si">}</span><span class="s2">ml left&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code class="language-terminaloutput" data-lang="terminaloutput">I made 🧪 Potion with 50ml
+After using the potion, I have 40ml left
+After refilling the potion, I have 200ml left
+</code></pre><p>An example of a data descriptor that abstracts logic away would be Djangos <code>ForeignKey</code> <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. While the developer
+who wants to use the framework does not need to know how the <code>ForeignKey</code> works, they can use it like property, but
+Django uses the descriptor to implement the retrival or storage of the related object in the database.</p>
+<h3 id="metaclasses-i-want-to-create-a-new-type-and-control-how-classes-are-created" class="relative group">MetaClasses: I want to create a new Type and control how classes are created <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#metaclasses-i-want-to-create-a-new-type-and-control-how-classes-are-created" aria-label="Anchor">#</a></span></h3><p>All Types in Python are(Meta)Classes that inherit from <code>type</code>, but all instances of a Type are Classes.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Wizard</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;A wizard instance is: &#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">Wizard</span><span class="p">())))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Wizard class is a: &#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">Wizard</span><span class="p">)))</span>
+</span></span></code></pre></div><pre tabindex="0"><code class="language-terminaloutput" data-lang="terminaloutput">A wizard instance is: &lt;class &#39;__main__.Wizard&#39;&gt;
+Wizard class is a: &lt;class &#39;type&#39;&gt;
+</code></pre><p>Having a MeterClass allows to control how classes are created, for example if they are Singletons <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.
+The usage of methods like <code>__new__</code> and <code>__init__</code> can be overwritten to control the creation of many classes.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">OrderOfWizards</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    The Maiar of the Order of Wizards may be found in many places,
+</span></span></span><span class="line"><span class="cl"><span class="s2">    but wherever one class of Maiar is found, it will be always the same instance.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wizards</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&#34;OrderOfWizards&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="n">wizard_class</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">wizard_class</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">wizard_class</span><span class="o">.</span><span class="n">wizards</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">wizard_class</span><span class="o">.</span><span class="n">wizards</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">wizard_class</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">OrderOfWizards</span><span class="p">,</span> <span class="n">wizard_class</span><span class="p">)</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">wizard_class</span><span class="o">.</span><span class="n">wizards</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">wizard_class</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Gandalf</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">OrderOfWizards</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&#34;grey&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">gandalf</span> <span class="o">=</span> <span class="n">Gandalf</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;There he is, Gandalf the </span><span class="si">{</span><span class="n">gandalf</span><span class="o">.</span><span class="n">color</span><span class="si">}</span><span class="s2">!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">gandalf</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&#34;white&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">gandalf</span> <span class="o">=</span> <span class="n">Gandalf</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;There he is, Gandalf the </span><span class="si">{</span><span class="n">gandalf</span><span class="o">.</span><span class="n">color</span><span class="si">}</span><span class="s2">!&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code class="language-terminaloutput" data-lang="terminaloutput">There he is, Gandalf the grey!
+There he is, Gandalf the white!
+</code></pre><p><strong>Metaclasses in practice:</strong> Django uses metaclasses to control models. The <code>Model</code> class that is extended by all models
+has the BaseModel as MetaClass<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>. This class is used to handle Model metadata, like the database table or
+the migration status.</p>
+<h2 id="conclusion" class="relative group">Conclusion <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#conclusion" aria-label="Anchor">#</a></span></h2><p>All these tools are powerful, and looking how frameworks use them to provide a magically smooth experience for the
+developer can be inspiring. But it is important to understand, that many of these tools are not easy to understand
+without knowing the underlying mechanics. They are hard to debug, it&rsquo;s not easy to follow the flow of code, and when not
+implemented correctly, they can lead to unexpected behavior.</p>
+<p>If you think about using them, ask yourself if you just want to use the magic like a dark magic apprentice, or if you
+explicitly want to hide complexity from the developer who will use your code.</p>
+<p>On this very post, Happy Understanding :)</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://www.oreilly.com/live-events/python-metaprogramming-in-practice/0642572014596/" target="_blank" rel="noreferrer">Meta Programming by Trey Hunner</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://book.pythontips.com/en/latest/decorators.html" target="_blank" rel="noreferrer">Python Decorators in Python Tips</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://docs.celeryq.dev/en/stable/django/first-steps-with-django.html#django-first-steps" target="_blank" rel="noreferrer">Celery using Decorators</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://docs.python.org/3/howto/descriptor.html#descriptor-protocol" target="_blank" rel="noreferrer">Python Descriptors</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://github.com/django/django/blob/main/django/db/models/fields/related_descriptors.py" target="_blank" rel="noreferrer">Django ForeignKeys as Descriptors</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p><a href="https://python-course.eu/oop/metaclasses.php" target="_blank" rel="noreferrer">Meta Classes as Singletons</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p><a href="https://github.com/django/django/blob/main/django/db/models/base.py" target="_blank" rel="noreferrer">Django Models usage of Meta Classes</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+      </div>
+    </section>
+    <footer class="max-w-prose pt-8 print:hidden">
+      
+  <div class="flex">
+    
+    
+    
+    <div class="place-self-center">
+      
+        <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+          Author
+        </div>
+        <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+          Sofia Fischer
+        </div>
+      
+      
+      <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="mailto:sofia@philodev.com"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://github.com/sofia-fischer"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://www.linkedin.com/in/sofia-fischer-58b1611b9/"
+          target="_blank"
+          aria-label="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+    </div>
+  </div>
+
+
+      
+
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="group flex" href="http://localhost:1313/posts/2025-04-from-php-to-python/">
+              <span
+                class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+                ><span class="ltr:inline rtl:hidden">&larr;</span
+                ><span class="ltr:hidden rtl:inline">&rarr;</span></span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Learning a new language - from PHP to Python</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2025-04-20 10:20:44 &#43;0200 CEST">20 April 2025</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="group flex text-right" href="http://localhost:1313/posts/2025-06-bitemporal-data/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Bitemporal Data: Timetravel your Data</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2025-07-10 10:20:44 &#43;0200 CEST">10 July 2025</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[-2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+                ><span class="ltr:inline rtl:hidden">&rarr;</span
+                ><span class="ltr:hidden rtl:inline">&larr;</span></span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+      </main>
+      
+        <div
+          class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12"
+          id="to-top"
+          hidden="true"
+        >
+          <a
+            href="#the-top"
+            class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+            aria-label="Scroll to top"
+            title="Scroll to top"
+          >
+            &uarr;
+          </a>
+        </div>
+      <footer class="py-10 print:hidden">
+  
+  
+  <div class="flex items-center justify-between">
+    <div>
+      
+      
+        <p class="text-sm text-neutral-500 dark:text-neutral-400">
+            &copy;
+            2025
+            Sofia Fischer
+        </p>
+      
+      
+      
+        <p class="text-xs text-neutral-500 dark:text-neutral-400">
+          
+          
+          Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href="https://github.com/jpanther/congo" target="_blank" rel="noopener noreferrer">Congo</a>
+        </p>
+      
+    </div>
+    <div class="flex flex-row items-center">
+      
+      
+      
+      
+        <div
+          class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        >
+          <button id="appearance-switcher-0" type="button" aria-label="appearance switcher">
+            <div
+              class="flex h-12 w-12 items-center justify-center dark:hidden"
+              title="Switch to dark appearance"
+            >
+              <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+            </div>
+            <div
+              class="hidden h-12 w-12 items-center justify-center dark:flex"
+              title="Switch to light appearance"
+            >
+              <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+            </div>
+          </button>
+        </div>
+      
+    </div>
+  </div>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 z-50 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="http://localhost:1313/"
+>
+  <div
+    id="search-modal"
+    class="top-20 mx-auto flex min-h-0 w-full max-w-3xl flex-col rounded-md border border-neutral-200 bg-neutral shadow-lg dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex flex-none items-center justify-between px-2">
+      <form class="flex min-w-0 flex-auto items-center">
+        <div class="flex h-8 w-8 items-center justify-center text-neutral-400">
+          <span class="icon relative inline-block px-1 align-text-bottom"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="mx-1 flex h-12 flex-auto appearance-none bg-transparent focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex h-8 w-8 items-center justify-center text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto overflow-auto px-2">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+</html>
