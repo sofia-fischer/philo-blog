@@ -1,17 +1,18 @@
 ---
 title: "Leveling Up Git Skills"
 
-date: 2025-07-10T10:20:44+02:00
+date: 2025-08-10T10:20:44+02:00
 
 draft: false
 
-description: Learning more about git
+description: Git is a powerful tool for version control, but it can be complex and unintuitive. I tried to dive in the concepts of git, and learn why and how to keep a clean commit history.
 
 tags: [ "Development" ]
 ---
 
 {{< lead >}}
-
+Git is a powerful tool for version control, but it can be complex and unintuitive. I tried to dive in the concepts of
+git, and learn why and how to keep a clean commit history.
 {{< /lead >}}
 
 ## Git Step by Step from File to Commit
@@ -19,7 +20,7 @@ tags: [ "Development" ]
 Working with Git is a common task for developers. Different projects have different expectations on git should be used.
 In the last months I had to upgrade my git skills and wanted to share some of the things I learned.
 
-‼️ This post about what I learned additionally, therefore some basic git knowledge is assumed. 
+‼️ This post about what I learned additionally, therefore some basic git knowledge is assumed.
 
 ### Hashes as Object IDs
 
@@ -223,17 +224,72 @@ The fixup commit will be squashed into the `b032c2` commit on interactive rebase
 
 Interactive rebase is a powerful tool to change the commit history. It allows you to reorder, squash, or edit commits.
 
+`git rebase -i <commit hash>` will open an editor with a list of commits starting from the given commit hash.
 
+```shell
+> git rebase --interactive 96b73cbfd9cb66356737ce3282986c2f8aa225b1
 
-## ToDo
+pick 1e57725 # ✨  Post about git
+pick be9293c # 🖋continue on git post
+pick 3003a57 # 🖋add disclaimer for git post
 
-Git has three stages
+# Rebase 96b73cb..3003a57 onto 96b73cb (3 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop for amending
+# s, squash <commit> = use commit, but meld into previous commit
+# f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+#                    commit's log message, unless -C is used, in which case
+#                    keep only this commit's message; -c is same as -C but
+#                    opens the editor
+# x, exec <command> = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop <commit> = remove commit
+# l, label <label> = label current HEAD with a name
+# t, reset <label> = reset HEAD to a label
+```
 
+Don't Panik - this is vim 😬 In this text file the pick can be replaced with for example `break` which will stop the
+reabase at this commit and allow making changes to the commit. Also, the order of the commits can be changed.
+With the decision what should be done with each commit, `:wq` will save the changes and exit the editor, and start the
+rebase. If all the commits are picked, the rebase will continue without stopping as a regular rebase.
+If there is a commit set to `break`, the rebase will stop at that commit, any changes can be made to the files; after
+which I can add / stage the changes and continue the rebase with `git rebase --continue`.
 
+Mind that creating a new commit in this stage will insert a new commit into the history before the commit that is
+currently being edited.
 
+In the GUI of PyCharm, the interactive rebase can be started by right-clicking on a commit and selecting "Interactive
+Rebase from here". The GUI will show a list of commits than can be reordered, or selected and breaked by clicking on
+the "pause" button.
+The IDE will then stop at the selected commit and allow to make changes to the files, then again adding and
+continuing is also possible graphically (in the current version of PyCharm, the continue button is in the top left).
 
+## Why the fuzz? Conclusion
 
+Many of these features are not easy to learn, and feel spooky even the third time. Many people who use git find it hard
+to understand and not very user-friendly - which is just true. Git is so unintuitively that it even has the concept of "
+porcelane commands" which are commands that are easier to use and follow a mental model of git storing changes instead
+of trees; and "plumbing commands" which are the commands that require understanding of how git works internally.
 
+{{< alert "circle-info" >}}
+**There are alternatives**: While git is the gold standard for version control, there are alternatives that build on top
+of git, like [Jujutsu](https://jj-vcs.github.io/jj/latest/github/) which keep a much simpler mental model and detailed
+operation history. It is build to edit past commits, without the need for interactive rebase; it provides a much nicer
+UI by supporting things like "undo" (what a concept!), and it does not neet to separate between "plumbing" and "
+porcelain" commands.
 
+Looking into this is on my to-do list, but I am already missing the GUI of PyCharm to visualize the changes.
+{{< /alert >}}
 
+But there are reasons why an advanced usage of git is worth the effort:
+A clean commit history provides information about how a file or repository evolved, which can be useful for new
+developers or those who revisit their project after some time.
+Clean commits in a Pull Request makes reviews much more understandable, and therefor easier and faster. It can separate
+the steps taken to implement a feature, and allow to understand the reasoning behind the changes.
+Also, I found it a good practice to split up the work in smaller steps that still all pass tests and work, makes my
+implementation more reliable, easier to map in my head, and easier to debug.
 
+Happy Coding :)
