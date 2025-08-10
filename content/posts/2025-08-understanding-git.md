@@ -19,6 +19,8 @@ tags: [ "Development" ]
 Working with Git is a common task for developers. Different projects have different expectations on git should be used.
 In the last months I had to upgrade my git skills and wanted to share some of the things I learned.
 
+‼️ This post about what I learned additionally, therefore some basic git knowledge is assumed. 
+
 ### Hashes as Object IDs
 
 Git uses a lot of hashes of files referred to as Object IDs (OID).
