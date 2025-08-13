@@ -22,7 +22,7 @@ In the last months I had to upgrade my git skills and wanted to share some of th
 
 ‼️ This post about what I learned additionally, therefore some basic git knowledge is assumed.
 
-Within this blog post I mainly used the Git Book [^GitBook] and the O'Reilly Course [Git Course].
+Within this blog post I mainly used the Git Book [^GitBook] and the O'Reilly Course [^Git Course].
 
 [^GitBook]: [Pro Git Book](https://git-scm.com/book/en/v2)
 [^Git Course]: [Git Next Steps by Raju Gandhi](https://www.oreilly.com/live-events/git-next-steps/0636920457459/)
