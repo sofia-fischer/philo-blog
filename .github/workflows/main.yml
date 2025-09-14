@@ -30,7 +30,7 @@ jobs:
       # up Hugo on the runner and runs the hugo command to build
       # the site
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         # defaults to latest, in case breaking hugo update this might help
         with:
           hugo-version: '0.148.1'
