@@ -11,7 +11,8 @@ autoSwitchAppearance = true
 footer.showAppearanceSwitcher = true
 
 enableSearch = true
-enableCodeCopy = false
+enableCodeCopy = true
+enableImageWebp = false
 
 # mainSections = ["section1", "section2"]
 # robots = ""
