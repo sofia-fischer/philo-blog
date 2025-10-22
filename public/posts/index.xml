@@ -9,10 +9,24 @@
     <lastBuildDate>Thu, 10 Jul 2025 10:20:44 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>📚 Communication Patterns</title>
+      <link>http://localhost:1313/posts/2025-10-communication-patterns/</link>
+      <pubDate>Thu, 10 Jul 2025 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2025-10-communication-patterns/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Bitemporal Data: Timetravel your Data</title>
       <link>http://localhost:1313/posts/2025-06-bitemporal-data/</link>
       <pubDate>Thu, 10 Jul 2025 10:20:44 +0200</pubDate>
       <guid>http://localhost:1313/posts/2025-06-bitemporal-data/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Leveling Up Git Skills</title>
+      <link>http://localhost:1313/posts/2025-09-datadog/</link>
+      <pubDate>Thu, 10 Jul 2025 10:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2025-09-datadog/</guid>
       <description></description>
     </item>
     <item>
@@ -107,6 +121,27 @@
       <description></description>
     </item>
     <item>
+      <title>From Php to GoLang</title>
+      <link>http://localhost:1313/posts/2023-05-looking-into-go/</link>
+      <pubDate>Sat, 06 May 2023 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2023-05-looking-into-go/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Job Interview questions 2023</title>
+      <link>http://localhost:1313/posts/2023-05-interview-questions-2023/</link>
+      <pubDate>Sat, 06 May 2023 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2023-05-interview-questions-2023/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Job Interview questions 2023</title>
+      <link>http://localhost:1313/posts/2023-07-the-artist-way/</link>
+      <pubDate>Sat, 06 May 2023 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2023-07-the-artist-way/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Communication between different teams working on the same codebase</title>
       <link>http://localhost:1313/posts/2023-04-communicating-between-teams/</link>
       <pubDate>Sun, 16 Apr 2023 14:20:44 +0200</pubDate>
@@ -153,6 +188,13 @@
       <link>http://localhost:1313/posts/2022-08-etchical-development/</link>
       <pubDate>Wed, 31 Aug 2022 14:20:44 +0200</pubDate>
       <guid>http://localhost:1313/posts/2022-08-etchical-development/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ethical Development</title>
+      <link>http://localhost:1313/posts/2022-09-testing/</link>
+      <pubDate>Wed, 31 Aug 2022 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2022-09-testing/</guid>
       <description></description>
     </item>
     <item>

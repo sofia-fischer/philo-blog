@@ -15,5 +15,12 @@
       <guid>http://localhost:1313/posts/2023-03-testing-open-api-specs/</guid>
       <description></description>
     </item>
+    <item>
+      <title>Ethical Development</title>
+      <link>http://localhost:1313/posts/2022-09-testing/</link>
+      <pubDate>Wed, 31 Aug 2022 14:20:44 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2022-09-testing/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

@@ -4,11 +4,29 @@
   
     
       <url>
+            <loc>http://localhost:1313/posts/2025-10-communication-patterns/</loc>
+            <lastmod>2025-07-10T10:20:44+02:00</lastmod>
+          </url>
+    
+  
+    
+      <url>
             <loc>http://localhost:1313/posts/2025-06-bitemporal-data/</loc>
             <lastmod>2025-07-10T10:20:44+02:00</lastmod>
           </url>
     
   
+    
+  
+    
+  
+    
+  
+    
+      <url>
+            <loc>http://localhost:1313/posts/2025-09-datadog/</loc>
+            <lastmod>2025-07-10T10:20:44+02:00</lastmod>
+          </url>
     
   
     
@@ -81,8 +99,6 @@
     
   
     
-  
-    
       <url>
             <loc>http://localhost:1313/posts/2024-09-o-auth-2/</loc>
             <lastmod>2024-09-10T10:20:44+02:00</lastmod>
@@ -141,6 +157,31 @@
     
   
     
+  
+    
+      <url>
+            <loc>http://localhost:1313/posts/2023-05-looking-into-go/</loc>
+            <lastmod>2023-05-06T14:20:44+02:00</lastmod>
+          </url>
+    
+  
+    
+  
+    
+      <url>
+            <loc>http://localhost:1313/posts/2023-05-interview-questions-2023/</loc>
+            <lastmod>2023-05-06T14:20:44+02:00</lastmod>
+          </url>
+    
+  
+    
+      <url>
+            <loc>http://localhost:1313/posts/2023-07-the-artist-way/</loc>
+            <lastmod>2023-05-06T14:20:44+02:00</lastmod>
+          </url>
+    
+  
+    
       <url>
             <loc>http://localhost:1313/posts/2023-04-communicating-between-teams/</loc>
             <lastmod>2023-04-16T14:20:44+02:00</lastmod>
@@ -189,10 +230,15 @@
     
   
     
+      <url>
+            <loc>http://localhost:1313/posts/2022-08-etchical-development/</loc>
+            <lastmod>2022-08-31T14:20:44+02:00</lastmod>
+          </url>
+    
   
     
       <url>
-            <loc>http://localhost:1313/posts/2022-08-etchical-development/</loc>
+            <loc>http://localhost:1313/posts/2022-09-testing/</loc>
             <lastmod>2022-08-31T14:20:44+02:00</lastmod>
           </url>
     
