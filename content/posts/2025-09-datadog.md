@@ -11,15 +11,17 @@ tags: [ "Metrics", "Observability" ]
 ---
 
 {{< lead >}}
-I have spent some time pushing the monitoring and alerting in the team I am currently working away from users reporting
-incidents, to monitors to observe the current state of the system and alerting before users find issues severe enough to
-report. This blog post summarizes some of the key concepts and best practices I have learned along the way.
+I have spent some time improving the monitoring and alerting in the team I am currently working to design monitors 
+that capture the current state of the system and alert before users find issues severe enough to report them.
+This blog post summarizes some of the things I have learned along the way.
 {{< /lead >}}
 
-## Three pillars of observability
+## If the goal is Observability, what is the data to collect?
 
-> Raw data is a oxymoron, there always decisions made what to collect and how to store it. (Pydata 25 Melbourne, "
-> Falshoods Devs beliebe")
+> Raw data is a oxymoron, there are always decisions made what to collect and how to store it.
+> (Pydata 25 Melbourne, "Falshoods Devs believe")
+
+### Three pillars of observability - how to collect data
 
 Observability starts with collecting data about the system. The three pillars of observability are the main three ways
 in which data may be collected. [^DataDogTraining]
@@ -37,16 +39,6 @@ in which data may be collected. [^DataDogTraining]
 * **Traces** - A static trace id in a request can be used to track a request life-cycle across multiple components.
   Traces are useful to understand the flow of requests, identify bottlenecks, and debug issues in complex
   distributed systems.
-
-### Why Monitoring and Observability?
-
-There are many reasons why monitoring and observability is important for software systems, I would emphasize:
-
-* Operation: Understanding the current state of the system
-* Alerting: Fast detection and resolution of incidents
-* Working Datadriven: Being able to conduct experiments and measure their impact
-
-## What to Log?
 
 ### Service Level Indicators (SLIs), Service Level Objectives (SLOs) and Service Level Agreements (SLAs)
 
@@ -73,7 +65,7 @@ Explicit SLAs can be legally binding requirements, while implicit SLAs are expec
 A special form of SLA is the error budget, which defines for developers how much unreliability is acceptable within a
 certain period, until developers need to focus on reliability improvements over feature development.
 
-### Choosing what to monitor
+### How to choose what to monitor
 
 The golden signals are a good starting point for choosing what to monitor: [^SideReliabilityEngineering]
 
@@ -82,12 +74,20 @@ The golden signals are a good starting point for choosing what to monitor: [^Sid
 * Errors - Rate of failed requests
 * Saturation - Resource utilization with focus on bottlenecks
 
-Additionally, business relevant metrics should be monitored. These should reflex both the users perspective and the
-business goals. For a data pipeline, this could be volume of processed data, the quality of the data sources, or the
-quality of the output data.
+{{< alert "comment" >}}
+Monitoring (like so many other things) have multiple audiences with different needs:
 
-Besides talking to users and stakeholders, it is very useful to include the monitoring into the post-mortems of
-incidents. Which indicator would have helped to detect the incident earlier or identify the root cause faster?
+* **Developers** want to understand how the system behaves, and be able to debug issues quickly.
+* **Operators** (who might also be Developers) want to ensure the system is running smoothly, and be alerted when
+  something goes wrong.
+* **Business Stakeholders** want to understand how the system is performing against business goals, and make informed
+  decisions based on data, or evaluate experiments.
+
+If your audience can not phrase their needs, the best metrics are still found in their perspective.
+What are Operators talking in incident post-mortems - Which indicator spiked frist or would have helped to detect the
+incident earlier or identify the root cause faster? What are Business Stakeholders asking about the system?
+What find Users so severe that they report incidents? **Talk and Listen to your Audience!**
+{{< /alert >}}
 
 **First principles** are basic assumption about the system that are not deduced from other assumptions.
 The idea of first principles is usefully as good observability should allow a developer to debug a system without a lot
@@ -182,3 +182,16 @@ Dashboards should therefore include baselines, indicating what is normal for a m
 * Provide context about external factors that influence the metric, like deployments, incidents, marketing campaigns,
 * Have meaningful titles, and add hints, explanations, links to runbooks to help interpreting the data
 
+### Dashboard Graphs should tell a Story
+
+On the question of how to use graphics to communicate data effectively, I learned a lot from the book "Communication
+Patterns", which I wrote about in [my previous blog post]({{< ref "posts/2025-10-communication-patterns" >}})
+
+## Conclusion
+
+I searched for good resources about observability, monitoring and alerting, and found way less than I anticipated.
+Especially good practices about what data to collect, how to design dashboards are hard to find (but honestly, so are
+good designed Dashboards). I hope to learn more about this topic in the future, and share my learnings in future blog
+posts.
+
+Happy Coding :)
