@@ -453,7 +453,6 @@ class Husky(registry.BaseDog):
     request_type = "Pulling"
 ``` 
 
-
 ### Testing the `pkgutil` Registry
 
 Similar to the config-based registry, the selection logic and the completeness of the registry can be tested separately.
@@ -478,11 +477,13 @@ similar hooks to control when the registration should happen.
 
 ## Conclusion
 
-The line between _magically working dev experience_ and _hard to debug code_ is thin. Debugging import-related issues
-inspired me to write this
+_Magically working dev experience_ and _hard to debug code_ often go hand in hand. Still, things can be done to minimize
+the knowledge required from the developer to use the code. Tests that fail with dev-friendly messages when something is
+not imported or registered correctly can help a lot, and move the magic to the tests instead of the business code.
+If the magic is in the business code, good documentation to spread awareness about the pitfalls of the current
+implementation and minimizing the errors developers can make is crucial.
 
-post, and dive deep to understand what patterns exists, and how Python imports work under the
-hood. Depending on the use case, the next developer could be spared such debugging sessions by choosing a simpler
-pattern, but on the other hand there are use cases in which the magic is worth it, not only for framework development.
+Again big thanks to [Markus Holtermann](https://github.com/markush) for the debugging help on import related bugs, many
+insights about python and inspiration for this post!
 
 Happy coding :)
