@@ -23,4 +23,5 @@ dateFormat = "2 January 2006"
     { email = "mailto:sofia@philodev.com" },
     { github = "https://github.com/sofia-fischer" },
     { linkedin = "https://www.linkedin.com/in/sofia-fischer-58b1611b9/" },
+    { rss = "https://philodev.one/index.xml" },
   ]
