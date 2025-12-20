@@ -113,6 +113,14 @@ class DogRegistry:
 This solution is still straightforward and easy to understand. The selection logic is now separated from the mapping,
 new implementations can be added without modifying the code.
 
+A pattern that I personally find "topologically equal" is a having a function that registers all handlers in a
+dictionary `handler_registry.register("Pulling", Husky)` individually. That is verbose, and allows programmatic "
+un-register"[^similar_post]. Mind that in that blog post mentioned solution of importing and looping through all
+subclasses causes the similar import-based problems, as a missing Handler in an init file will cause the Handler to
+remain unregistered.
+
+[^similar_post]: [Registry Patterns in Python](https://dev.to/dentedlogic/stop-writing-giant-if-else-chains-master-the-python-registry-pattern-ldm)
+
 ### Testing the Config Registry / Test to ensure a new implementation is listed in the config
 
 Tests can be separated into testing the selection logic and testing the configuration. Also, tests
