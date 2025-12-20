@@ -389,7 +389,7 @@ files [^django_migrations].
 [^django_migrations]: [Django discovering Migrations](https://github.com/django/django/blob/0174a85770356fd12e4c8daa42a4f1c752ae00e6/django/db/migrations/loader.py#L112-L116)
 
 {{< alert "comment" >}}
-This implementation is heavily inspired by (/shamelessly copied from) [Markus Holtermann](https://github.com/markush).
+This implementation is heavily inspired by (/shamelessly copied from) [Markus](https://github.com/markush).
 Big thanks for the inspiration for this blog post!
 {{< /alert >}}
 
@@ -491,7 +491,7 @@ not imported or registered correctly can help a lot, and move the magic to the t
 If the magic is in the business code, good documentation to spread awareness about the pitfalls of the current
 implementation and minimizing the errors developers can make is crucial.
 
-Again big thanks to [Markus Holtermann](https://github.com/markush) for the debugging help on import related bugs, many
+Again big thanks to [Markus](https://github.com/markush) for the debugging help on import related bugs, many
 insights about python and inspiration for this post!
 
 Happy coding :)
