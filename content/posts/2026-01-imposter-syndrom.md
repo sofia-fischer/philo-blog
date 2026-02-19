@@ -3,7 +3,7 @@ title: "Is it my Imposter Syndrome or is it our Team Culture?"
 
 date: 2026-01-29T10:20:44+02:00
 
-draft: true
+draft: false
 
 description: "Is Imposter Syndrome an individual problem or a team culture issue? How can team dynamics influence 
 feelings of inadequacy among developers?"
@@ -18,11 +18,11 @@ feelings of inadequacy among developers?
 
 ## From Individual Problem to Team Culture Issue
 
-> The term [Imposter Syndrom] pathologizes the insecurities regarding ones capabilities to a defect of the individual,
-> instead of a reaction to systemic issues
-> like lack of recognition, absence of promotion opportunities, or discrimination in the workplace.
+> The term [Imposter Syndrom] pathologizes the insecurities regarding ones capabilities [...] to a mental illness to be
+> cured, not as a reaction to a lack of recognition, missing role models, absence of promotion opportunities,
+> discrimination in the workplace.
 
-(Sophia Fritz, Toxische Weiblichkeit, my translation)
+Sophia Fritz, Toxische Weiblichkeit (Toxic Femininity), my translation
 
 [^toxischeWeiblichkeit]: Toxische Weiblichkeit: Wie Frauen sich und anderen schaden (German Edition) by Sophia Fritz
 
@@ -87,8 +87,8 @@ experiences, working after career breaks, or as a result of competitions.
 
 Still, Imposter Syndrome is often described as a personality trait, focusing on correlations with low self-esteem,
 neuroticism, and perfectionism. Multiple studies found higher prevalence among woman and other marginalized groups.
-Not all studies find such correlations though, especially when comparing people within the same role (the probed roles
-where leadership roles or surgeons); while students and post-graduates showed the highest gender difference[^paper].
+Not all studies find such correlations though, especially when comparing people within the same role (the surveyed roles
+were leadership roles or surgeons); while students and post-graduates showed the highest gender disparity[^paper].
 
 {{< alert "comment" >}}
 The connection of Imposter Syndrome to marginalized groups is tricky. Some symptoms of Imposter Syndrome like lack of
@@ -100,18 +100,27 @@ leaving a bias in studies focusing on such roles. The origin of this can both be
 might not apply for such roles or people who do not advance in their careers are more prone to develop imposter
 feelings.
 
-Linking Imposter Syndrome to marginalized groups can easily backfire to the question if imposter syndrome
-might be a symptom (or even a driver?) of career inequalities in marginalized groups.
+In my opinion, papers linking Imposter Syndrome to marginalized groups to argue that Imposter syndrome is a trait of
+individuals in such groups, are underestimating the complexity of causal relationship; ignoring the
+question if imposter syndrome might be a symptom (or even a driver?) of career inequalities in marginalized groups.
 {{< /alert >}}
 
-To conclude, the beliefs that feed the Imposter Syndrome can come from individuals themselves or the situations they are
-in. In both cases, it is not a trait that someone has all their life or never - but a state that can change over time
-and with context, and for which some people might be more vulnerable.
+To conclude, the beliefs that feed Imposter Syndrome can come both from individuals themselves or the situations they
+are in. In either cases, it is not a trait that someone has throughout their life or never at all - but a state that can
+change over time and with context, and for which some people might be more susceptible.
 
 ## Team Culture Patterns and Anti-Patterns to reduce Imposter Feelings
 
-Regardless of the question of Trait vs State, in a team context one can allways assume that team culture is easier to
-change than personality traits of individuals.
+During my research I learned that there are different types of psychotherapy. Depth psychology focuses on the
+unconscious and experiences to resolve current problems; Cognitive Behavioral Therapy focuses on changing the
+current beliefs and behaviors to resolve current problems; and (quite new) Systemic Therapy focuses on the interactions
+between people and their environment to resolve current problems.
+Systemic Therapy aims to recognize that one cannot change people or systems, and to find creative nudges to which helps
+the system to change themselves.
+
+Regardless of the question of Trait vs State, in a team context one can always assume that team culture is easier to
+change than personality traits of individuals. Therefore, I want to share some nudges that can help to create a team
+culture that reduces feelings of inadequacy and fosters feelings of belonging and competence.
 
 ### A feeling of belonging
 
@@ -120,26 +129,62 @@ whole team are a basis for creating a safe environment. A good example are the S
 Center [^socialRules]
 
 * "No feigning surprise" - don't act surprised when someone does not know something
-* "No well actuallys" - don't correct someone if the correction does not benefit the conversation
+* "No well actually's" - don't correct someone if the correction does not benefit the conversation
 * "No Backseat Driving" - don't give unsolicited advice on how to solve a problem you are not working on
 * "No Subtle -isms" - no sexism, racism, ableism, ageism, or any other -ism that can make people feel excluded
 
 [^socialRules]: (Social Rules of the Recurse Center)[https://www.recurse.com/social-rules]
 
-**Anticipate new Joiners** You are here because we want you to be here and believe in you!
-A feeling that is easier for teams to spread that have the autonomy to select new members, but still
-possible in more hierarchical structures. Something I mostly observed for very famous new joiners, but a habit that I
-would wish for every new joiner: In the first days showing excitement about the new team member joining, show interested
-in past projects, skills, and experiences. Maybe the manager already provided some information, a blog, a past project,
+**Anticipate New Joiners** "You are here because we want you to be here and believe in you!"
+This feeling that is easier for teams to spread that have the autonomy to select new members, but still
+possible in more hierarchical structures. Something I mostly observed for new joiners, who are well known within a
+community, but a habit that I would wish every new joiner:
+In the first days showing excitement about the new team member joining, show interested in past projects, skills, and
+experiences. Maybe the manager already provided some information, a blog, a past project,
 or open source contributions. This helps to create a feeling of being wanted and welcomed for the skills and
 experiences.
 
-**Show a shared Vision** Belonging to a team means working on a shared goal. A critical part of that is also to be able
+**Show a Shared Vision** Belonging to a team means working on a shared goal. A critical part of that is also to be able
 to connect the current tasks to the big picture. There will be "high impact" tasks that are directly contributing, and
 they should be shared in the team. On the other hand, the "low impact" tasks require a context to connect them to the
 vision.
 
-**Love Power sharing - Hate Power Trips** In this context "Power" does not mean "authority", Power means having a
+**Have a Diverse Team and Diverse Leaders**. Missing representation can lead to feelings of not belonging. If there is
+no one that resembles your background / culture / gender in the hierarchy above you, it is harder to believe that you
+can also reach such a position. Diverse teams also help to create an environment where different perspectives are
+valued, and different communication and working styles are accepted.[^representation]
+
+**Asking for Help is Normalized** Asking for pairing should not just be done by the team members who are looking for
+guidance - but also by team members who want to share knowledge. It does not require a "I need some help here", it can
+be "Is someone up for discussions on the technical approach?" or "Would be great to share knowledge about this domain".
+Any habit that is only perceived from juniors or new joiners will create a hesitation to pursue such habit - this can be
+asking for help, seeking validation, or admitting mistakes. [^culture]
+
+### Make it easy to Achieve
+
+**Enable Achievements Outside of Code** Software Development is more than coding - Shadowing Users, Writing
+documentation, improving processes, code reviews, sharing knowledge ... Such tasks should be recognized as valuable
+contributions to the team vision, should be mentioned, should be celebrated.
+
+**Let Ticket Refinements Happen in the Team** A refinement can be a safe space to ask questions, clarify the business
+need behind the ticket, and discuss possible implementations. This can easily change the perspective from a ticket that
+sounds "too complex or to hard for me" to a ticket for which "I know the solution and the pitfalls to avoid". It is
+easier to pick up such a refined ticket, easier to start working without big code investigation, it instantly provides a
+feeling of competence for the task.
+
+**There Should be Easy Tickets** An easy ticket should include all necessary information, enable one immediately to
+start coding, and be achievable in less than a day. This is important for new joiners, as distraction from highly
+complex tasks, or on dull afternoons.
+Never will all tickets be easy - but there should always be some easy tickets available to pick from.
+
+**Tickets Should Have a Definition of Done.** Having to go over and over a task because the result is unclear or
+requires multiple feedback loops is a common source of frustration and self-doubt. Why didn't I got it right the first
+time? Why don't I understand what is expected from me? A clear definition of done helps to avoid such situations and
+also helps to estimate ones resources required to finish the task.
+
+### Have a Culture of Recognition - not Competition
+
+**Love Power Sharing - Hate Power Trips** In this context "Power" does not mean "authority", Power means having a
 privilege another person is lacking - not having Imposter feelings, knowing the codebase well, not being part of a
 marginalized group...
 A team member that calls out the achievements of others, shows vulnerability, shares knowledge altruistically, is open
@@ -148,49 +193,14 @@ for cooperation / pairing shares power[^39C3].
 [^39C3]: On the 39C3 the phrase "Love Power sharing - Hate Power Trips" was used on multiple occasions to describe how
 to create inclusive environments in and outside the hacker community.
 
-**Have a diverse Team and diverse Leaders**. Missing representation can lead to feelings of not belonging. If there is
-no one that resembles your background / culture / gender in the hierarchy above you, it is harder to believe that you
-can also reach such a position. Diverse teams also help to create an environment where different perspectives are
-valued, and different communication and working styles are accepted.[^representation]
-
-### Make it easy to Achieve
-
-**Enable Achievements outside of Code** Software Development is more than coding - Shadowing Users, Writing
-documentation, improving processes, code reviews, sharing knowledge ... Such tasks should be recognized as valuable
-contributions to the team vision, should be mentioned, should be celebrated.
-
-**Let Ticket Refinements happen in the Team** A refinement can be a safe space to ask questions, clarify the business
-need behind the ticket, and discuss possible implementations. This can easily change the perspective from a ticket that
-sounds "too complex or to hard for me" to a ticket for which "I know the solution and the pitfalls to avoid". It is
-easier to pick up such a refined ticket, easier to start working without big code investigation, it instantly provides a
-feeling of competence for the task.
-
-**There should be easy tickets** An easy ticket should include all necessary information, enable one immediately to
-start coding, and be achievable in less than a day. This is important for new joiners, as distraction from highly
-complex tasks, or on dull afternoons.
-Never will all tickets be easy - but there should always be some easy tickets available to pick from.
-
-**Tickets should have a definition of done.** Having to go over and over a task because the result is unclear or
-requires multiple feedback loops is a common source of frustration and self-doubt. Why didn't I got it right the first
-time? Why don't I understand what is expected from me? A clear definition of done helps to avoid such situations and
-also helps to estimate ones resources required to finish the task.
-
-### Have a Culture of Recognition - not Competition
-
-**Asking for Help is normalized** Asking for pairing should not just be done by the team members who are looking for
-guidance - but also by team members who want to share knowledge. It does not require a "I need some help here", it can
-be "Is someone up for discussions on the technical approach?" or "Would be great to share knowledge about this domain".
-Any habit that is only perceived from juniors or new joiners will create a hesitation to pursue such habit - this can be
-asking for help, seeking validation, or admitting mistakes. [^culture]
-
-**Post only Team Metrics - never individual Metrics** Any metric that compares the performance of individuals will be
+**Post only Team Metrics - Never Individual Metrics** Any metric that compares the performance of individuals will be
 exploited by team members who are driven by competition and will foster a feeling of inadequacy in those who are not.
 No metric will adequately reflect productivity. It cannot capture learning curves, mentoring efforts, or
 the contributions in discussions, documentations, mentoring, code reviews, or team culture.
 AFrom looking up "the number of PRs per month for each team member" to weekly postings of "who closed the most
 tickets" - any of those metrics should be handed with care.
 
-**Everyone should be part of Celebration** Celebrating team successes helps to create a feeling of belonging and
+**Everyone Should be Part of Celebration** Celebrating team successes helps to create a feeling of belonging and
 achievement - but only if everyone is included. Meaning, on that celebration slide every team member should find
 at least one point they connect to their contributions. This does not mean that everyone has to be named (I personally
 would even discourage that), but that everyone can find their part in the success story.
@@ -219,18 +229,18 @@ I want to provide some questions and reflections that can help to better underst
   allow Myself to be curious about these beliefs, where do they come from?
 * **Investigate Alternatives** How do I define Success and Competence? Do I like my definition? Are there other team
   members struggling with similar issues? Can I talk to them about it?
-* **What can help?** What does help I with these feelings? How can I ground Myself in moments of insecurity, and remind
+* **What can Help?** What does help I with these feelings? How can I ground Myself in moments of insecurity, and remind
   Myself of my skills and achievements? Can I do a training that helps me to get more confident in the skill I feel
   lacking?
 
 ## Conclusion
 
-Imposter Syndrome is not a personality trait. I worked at companies where I did felt valuable and competent after a few
-days, others in which I was struggling with feelings of inadequacy for months.
-I worked in teams where a belonging and communication was a high priority, and other where it wasn't.
-I had managers who emphasized my growth and opportunities, and others who only cared about results and numbers of
-whatever metric they valued. Imposter Syndrome was and is a companion in my career, but it's strength and impact is
+Imposter Syndrome was and is a companion in my career, but it's strength and impact is
 highly influenced by the team culture I am in.
+I worked at companies where I did felt valuable and competent after a few days, others in which I was struggling with
+feelings of inadequacy for months. I worked in teams where a belonging and communication was a high priority, and other
+where it wasn't. I had managers who emphasized my growth and opportunities, and others who only cared about results and
+numbers of whatever metric they valued.
 
 I am striving to create a culture in my team in which Imposter Feelings are acknowledged and quickly replaced by
 feelings of belonging and value.
