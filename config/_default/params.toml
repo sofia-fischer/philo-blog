@@ -5,6 +5,7 @@
 # Refer to the theme docs for more details about each of these parameters.
 # https://jpanther.github.io/congo/docs/configuration/#theme-parameters
 
+header.logo = "logo.png"
 colorScheme = "philo"
 defaultAppearance = "dark" # valid options: light or dark
 autoSwitchAppearance = true
@@ -21,7 +22,21 @@ footer.showScrollToTop = true
 [homepage]
   layout = "custom" # valid options: page, profile, custom
   showRecent = true
-  recentLimit = 10
+  recentLimit = 20
+
+
+[author]
+  name = "Sofia Fischer"
+  email = "sofia@philodev.com"
+  # image = "img/author.jpg"
+  headline = "Philomathic Developer | Backend Developer | Agile Enthusiast"
+  # bio = "A little bit about me"
+  links = [
+    { email = "mailto:sofia@philodev.com" },
+    { github = "https://github.com/sofia-fischer" },
+    { linkedin = "https://www.linkedin.com/in/sofia-fischer-58b1611b9/" },
+    { rss = "https://philodev.one/atom.xml" },
+  ]
 
 [article]
   showDate = true

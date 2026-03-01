@@ -1,0 +1,35 @@
+# -- Site Configuration --
+# Refer to the theme docs for more details about each of these parameters.
+# https://jpanther.github.io/congo/docs/getting-started/
+
+baseURL = "https://www.blog.philodev.one"
+defaultContentLanguage = "en"
+
+enableRobotsTXT = true
+pagerSize = 10
+summaryLength = 0
+
+title = "Philodev Blog"
+# copyright = "Copy, _right?_ :thinking_face:"
+
+dateFormat = "2 January 2006"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON", "ATOM"]
+
+[module]
+  [[module.imports]]
+    path = "github.com/jpanther/congo/v2"
+
+[mediaTypes."application/atom+xml"]
+  suffixes = ["xml"]
+[outputFormats.Atom]
+  # https://validator.w3.org/feed/docs/atom.html#whatIsAtom
+  name = "Atom"
+  mediaType = "application/atom+xml"
+  baseName = "atom" # generated file = <baseName>.<mediaType."application/atom+xml".suffixes[0]> = atom.xml
+  isPlainText = false
+  rel = "alternate"
+  isHTML = false
+  noUgly = true
+  permalinkable = false

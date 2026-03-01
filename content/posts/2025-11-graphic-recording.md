@@ -22,4 +22,4 @@ Julia Evans [^JuliaEvans].
 [^JuliaEvans]: https://jvns.ca/
 [^book]: https://www.oreilly.com/library/view/graphic-recording/9783747502686/
 
-{{ $image := resources.Get "images/sunset.jpg" }}
+![Graphic Recording](/images/2025-11-graphic-recording.png)
