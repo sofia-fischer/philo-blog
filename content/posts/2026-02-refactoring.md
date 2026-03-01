@@ -1,23 +1,88 @@
 ---
-title: "📚 Book Review: Refactoring by Martin Fowler"
+title: "📚 Book takeaways Refactoring by Martin Fowler"
 
 date: 2026-02-28T10:20:44+02:00
 
-draft: true
+draft: false
 
-description: ""
+description: "A classic book by Martin Fowler about refactoring, providing a collection of code smells and refactoring techniques to
+improve them"
 
-tags: [ "Agile", "Devops" ]
+tags: [ "Development", "Software Pattern", "Book"]
 
 ---
 
 {{< lead >}}
-
+A classic book by Martin Fowler about refactoring, providing a collection of code smells and refactoring techniques to
+improve them.
 {{< /lead >}}
+
+{{< alert "comment" >}}
+In these call-outs I flag my personal opinion or additions.
+Like for other books, this post reflects my learnings and opinions. It does not aim for a true representation or summary
+of the book. Some chapters (like the one about self-testing code) are missing completely, because I honestly did not
+feel like this book is a good way to learn about tests compared to books which are focused on modern test strategies.
+
+I very much changed the structure of the book. As a reader I may enjoy the freedom of reading it the way I
+please and find easy to follow, regardless on the structure the author envisioned.
+In this case this means, Martin Fowler offered one chapter of code smells linking to
+the following chapters of categorized ways of refactoring with examples; while I will present here a selection of code
+smells with examples and the best fitting refactorings to fix them. The code examples are all self designed code smell
+asci monsters (even if they look like a tree).
+{{< /alert >}}
 
 ## Refactoring
 
+Refactoring is a code change that does not change the external behavior of the Code.
+
+It should be driven by change, not by personal opinions on code aesthetics.
+
+Reasons and moments to refactor could be:
+
+* If a new feature should be implemented, and there is no simple way to add the new code
+* Reducing the future cost of change. Modularity can improve the speed in which new functionality can be added (if we
+  are aware of the upcoming functionality)
+* Emphasize architecture decisions that sometimes get buried under short term decisions
+* Comprehensive Refactoring to understand complicated code
+* Litter pickup to allways leave the code cleaner that you encountered it
+* Refactor as review style
+
+Refactoring can allways be performed step by step, with reliable tests running, and do not need a massive change of the
+code base with hours of trying to get a now completely different code running to the same tests. Every refactoring is
+possible in a loop of one line change, tests passing, and the next one line change. Need to refactor a property into a
+getter? Write the getter, replace property access by property access with the getter. Need to extract a function (and
+don't want to use the IDEs refactor function)? Move it line by line into the function, while keeping the tests passing.
+Having a hard time with many variables? Replace them with function calls during refactoring to enable you to move slowly
+with passing tests.
+
+Because refactoring does not change the external behavior, it can be completely separated from feature development,
+coining the phrase `First make the change easy, then make the easy change`. This emphasizes feature adding and
+refactoring are two steps, valuing different skills and knowledge, and aiming for different goals - different jobs that
+can be imagined as two hats be worn to different occasions, never simultaneously.
+
+{{< alert "comment" >}}
+I even would add a Optimization hat for even another job: identifying and improving bottlenecks in a system. 
+{{< /alert >}}
+
+![Cowboy Refactoring hat, Code Wizards Cylinder, Optimization Artist Beret](/images/2026-02-refactoring.png)
+
 ### Refactoring and Performance
+
+Most performance issues are located in a very small fraction of the code. Most of the time, refactoring makes it easier
+to identify and tackle those bottlenecks, which in practise is often more relevant than performance drawbacks from
+refactoring e.g. running through the same loop twice to separate two steps of processing.
+
+{{< alert "comment" >}}
+In most cases, replacing a variable with a query does not harm the performance in a way that matters, but it can be a
+good idea to check if the query is expensive to execute before doing this refactoring. By expensiveness, I don't mean
+algorithmic complexity growing from O(n) to O(2n), but more excessive database queries that cost measurable amounts of
+resources in a software system.
+
+Many arguments regarding performance because of refactorings in my experience are not based on actual measurements, but
+rather on a gut feeling, that often not even accounts for the languages / compiler specific optimizations. If a
+refactoring causes a measurable performance decrease (to which I would call number of database queries), then the
+refactoring is questionable.
+{{< /alert >}}
 
 ## Code Smells
 
@@ -144,6 +209,12 @@ def long_function_monster() -> str:
     return snake
 ```
 
+Similar to this, **Large classes** cause the same problems, which might or might not allow the [extraction of whole
+class](#extract-class). Additionally, here identifying
+and [replacing possible subclasses with different types](#replace-conditional-with-polymorphism) might help, this way
+properties and functions that only belong to some subtypes are moved out of the way to only leave the things that are
+common and used among all subclasses.
+
 #### Extract a Function
 
 A function symbolizes a differentiation between intent and implementation. Extracting a function means replacing the old
@@ -153,7 +224,9 @@ line of code can be valid if it describes the intent of the code fragment better
 way extracting a function can replace the need of a comment.
 
 A large block of code can have a clearer intention if the code blogs within conditionals are extracted, leaving just the
-conditional easily readable in the original function.
+conditional easily readable in the original function. How the conditions are structured can also have drawbacks and
+benefits. Sometimes it is a clean solution to have on consolidated check that replaces a big nested check can make
+things easier to understand than a big conditional with many branches.
 
 Pulling up a method means moving a method from a subclass to its superclass. This is useful when the method is
 duplicated in multiple subclasses, or only differs in small parts, naming, or parameters.
@@ -174,18 +247,6 @@ to corrupt or stale the value.
 Replacing a variable with a query only makes sense if the redone calculation of the variables will not change the
 outcome. While formatting for example would allways produce the same result, a database query might produce different
 results each time it is executed (which can be intentional in the same function, but sometimes is not).
-
-{{< alert "comment" >}}
-In most cases, replacing a variable with a query does not harm the performance in a way that matters, but it can be a
-good idea to check if the query is expensive to execute before doing this refactoring. By expensiveness, I don't mean
-algorithmic complexity growing from O(n) to O(2n), but more excessive database queries that cost measurable amounts of
-resources in a software system.
-
-Many arguments regarding performance because of refactorings in my experience are not based on actual measurements, but
-rather on a gut feeling, that often not even accounts for the languages / compiler specific optimizations. If a
-refactoring causes a measurable performance decrease (to which I would call number of database queries), then the
-refactoring is questionable.
-{{< /alert >}}
 
 #### Replace Function with Command
 
@@ -310,7 +371,13 @@ routing access to a mutable data property can be routed through a function (like
 for easier refactoring in the future.
 
 The next step to this would be to remove setting methods to replace them by enforcing settings on initialisation, making
-the configuration of a class immutable.
+the configuration of a class immutable. If that initialisation becomes more and more complex a factory function can help
+to organise the initialisation of classes in a readable and flexible way.
+
+{{< alert "comment" >}}
+Even some patterns like Builder pattern can help here to collect the information needed to initialise a function in
+multiple places.
+{{< /alert >}}
 
 #### Separate Query from Modifier
 
@@ -507,74 +574,129 @@ calculating. This is strongly tied, but not limited to [Parameter Objects](#intr
 
 ### Speculative Generality
 
+There are cases in which the code is made more flexible that it really needs to be. Sometimes because a refactoring
+aimed for features that never came, sometimes because business mentioned featured that never reached the code but their
+preparation did, sometimes a developer is eager to implement a pattern that is too complex for the current code.
+
+Code that is not reachable can be removed. Version control system enable us to just delete code, not just commenting
+them out. If removing code enables, then also the unused (or now always
+equal) [function parameters should be removed](#change-the-declaration-of-a-function-property-or-variable)
+
+```python
+from abc import ABC
 
 
-# List
+class Monster(ABC):
+    identifier: str
 
-✅Extract Function
-✅Inline Function
-✅Extract Variable
-✅Inline Variable
-✅Change Function Declaration
-✅Encapsulate Variable
-✅Rename Variable
-✅Introduce Parameter Object
-✅Combine Functions into Class
-✅Combine Functions into Transform
-✅Split Phase
+    def draw(self) -> str:
+        pass
 
-Encapsulate Record
-Encapsulate Collection
-~~Replace Primitive with Object~~
-~~Extract Class~~
-~~Inline Class~~
-Hide Delegate
-Remove Middle Man
-Substitute Algorithm
-~~Replace Temp with Query~~
 
-~~Move Function~~
-~~Move Field~~
-Move Statements into Function
-Move Statements to Callers
-Replace Inline Code with Function Call
-~~Replace Loop with Pipeline~~
-Remove Dead Code
-~~Split Loop~~
-~~Slide Statements~~
+class SpeculativeMonster(Monster):
+    identifier: str = 'SpeculativeMonster'
 
-Change Reference to Value
-~~Change Value to Reference~~
-~~Replace Derived Variable with Query~~
-~~Split Variable~~
-~~Rename Field~~
+    def draw(self) -> str:
+        return self.speculative_monster()
 
-Consolidate Conditional Expression
-Replace Nested Conditional with Guard Clauses
-Introduce Special Case
-Introduce Assertion
-~~Replace Conditional with Polymorphism~~
-~~Decompose Conditional~~
+    @staticmethod
+    def speculative_monster() -> str:
+        return (f"""
+   .-----.   
+ /         \ 
+|\/(o) (o)\/|
+|           | 
+ \         / 
+   \_____/
+        """)
+```
 
-Parameterize Function
-Replace Query with Parameter
-Replace Command with Function
-Replace Constructor with Factory Function
-~~Separate Query from Modifier~~
-~~Remove Flag Argument~~
-~~Preserve Whole Object~~
-~~Replace Parameter with Query~~
-~~Remove Setting Method~~
-~~Replace Function with Command~~
+#### Collapse Hierarchy
 
-Pull Up Field
-Pull Up Constructor Body
-Push Down Method
-Push Down Field
-~~Replace Type Code with Subclasses~~
-Remove Subclass
-Extract Superclass
+If a class hierarchy is no longer needed, remove them. Changes to the parent class allways affect children - if this
+behavior is causing more work than benefits, an interface might provide the same benefits without the strong coupling.
+Work step by step and move all functions from the parent to the child in question, and remove the heritage.
 Collapse Hierarchy
-Replace Subclass with Delegate
-Replace Superclass with Delegate
-~~Pull Up Method~~
+
+### Message Chains or Middle Mans
+
+Following the flow of data sometimes reveals a series of getters. Navigating this path of getters means the original
+client caller is coupled to each class stepped through. Often this can be simplified by
+the [extraction of these methods](#extract-a-function) to a place in which multiple clients may access the data.
+
+A special case of this would be a Middle Man, a class that only offers or redirect delegates. Maybe the class had a
+reason to exist in the past, or some idea of encapsulation got carried out a bit too much. One first step might be to
+[inline the functions](#inline-function-variable-or-inline-class) and see if the class is actually bringing benefit.
+
+```python
+class Client:
+    def get_output(self) -> str:
+        return Service().get_monster().speculative_monster()
+
+
+class Monster:
+    def speculative_monster(self) -> str:
+        return (f"""
+     \ ________
+      |          \  
+     /_/~~~~| |\ /9`\__‚  
+    |b      |b   \/~~~~/
+            """)
+
+
+class Service:
+    def get_monster(self) -> Monster:
+        return Monster()
+```
+
+#### Hide Delegate
+
+Is some client code calls a method that is defined on an object provided by some service, the client requires knowledge
+about the delegate object. This coupling can be removed by adding a function on the service that will call the method of
+the delegate and only returns its result, hiding the delegate. Changes made to the delegate do not propagate to the
+(or even multiple) client(s), only to the service.
+
+#### Replace Middle Man by Delegate
+
+If I hide a delegate too often, this can also cause a lot of code that is hard to maintain, especially the class used to
+hide the delegate does not provide any other benefit. Then a getter function may be introduced to get the whole object
+and all get_delegate_property functions may be replaced by that.
+
+This can applicable as well for Superclasses. If it does not make sense for a subclass to use or overwrite all the
+functions of its superclass, it might be that inheritance is too strong of a coupling, and a delegate object instead of
+a superclass might be more fitting. Same for the subclass if more axes variations is needed than practical for
+inheritance, or is the coupling between subclasses causes problems.
+
+### Alternative classes with different interfaces
+
+One of the best benefits of classes are the option to substitute classes. Matching interfaces (so matching function
+declarations) allow substitution in the long term and helps to find patterns in the current code.
+
+{{< alert "comment" >}}
+How I miss Dependency Injection with different classes 🥲 But honestly I did not really cross a two classes that itched
+to follow the same interface when that was not intended from the very beginning.
+{{< /alert >}}
+
+### Comments
+
+If you need a comment to explain what the code does it either has
+a [bad name](#mysterious-name), [can be a function](#extract-a-function), or should
+be [encapsulated and validated by a dataclass](#replace-primitive-with-object).
+
+Comments may be helpful to explain business decisions ("This contradicts industry standard, but we decided to accept the
+message anyway"), historical learnings ("Cannot be deleted to maintain backwards compatibility"), or explain
+uncertainty ("Checking data consistency because imported data might be inconsistent here").
+
+# Conclusion
+
+The book provides a nice overview over code smells and how to fix them. It was quite fun to explore the code smells,
+think about how to display them in code, and also keeping an eye on my work code base spotting both code smells and nice
+refactorings.
+
+Besides all the hard skill learnings, the idea of refactoring line by line, with passing tests, allways ensuring no
+external behavior is changed is the most enlightening skill I took from this book. It is a challenge, and I am not
+saying that I will never again look at smelly code and just creating a new file rewriting it from scratch, I now know I
+always have the option to only change it in a save and sane way, bit by bit (and might request the same for code I
+review).
+
+Happy Coding :)
