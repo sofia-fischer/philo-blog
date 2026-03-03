@@ -48,6 +48,13 @@ Nouf Al Rawahi, Tahlil Waladwadi, Reem Almadailwi and more
 [^academic_imposters]: Imposter Syndrome in Academic and Professional Contexts: A Systematic Review of Prevalence,
 Psychological Impact, Cultural Influences, and Intervention Strategies by Sonali Panda, Dr. Megha Das
 
+One very interesting paper is the first paper that coined the term "Imposter (Phenomenon)" a 1978 Paper from two
+Psychologists "The Imposter Phenomenon in High Achieving Women" [^first_paper] which observed and named the feeling
+based on observations of high achieving woman during a time in which woman where quite new in (academic) careers. 
+
+[^first_paper]: The Imposter Phenomenon in High Achieving Women: Dynamics and Therapeutic Intervention Pauline Rose
+Clance & Suzanne Imes
+
 ### History, Definition, and Symptoms
 
 "Imposter Syndrome" is a very modern term, that got more popular since around 2015.
@@ -133,7 +140,7 @@ Center [^socialRules]
 * "No Backseat Driving" - don't give unsolicited advice on how to solve a problem you are not working on
 * "No Subtle -isms" - no sexism, racism, ableism, ageism, or any other -ism that can make people feel excluded
 
-[^socialRules]: (Social Rules of the Recurse Center)[https://www.recurse.com/social-rules]
+[^socialRules]: [Social Rules of the Recurse Center](https://www.recurse.com/social-rules)
 
 **Anticipate New Joiners** "You are here because we want you to be here and believe in you!"
 This feeling that is easier for teams to spread that have the autonomy to select new members, but still
