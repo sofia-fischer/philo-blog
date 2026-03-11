@@ -44,10 +44,10 @@ Reasons and moments to refactor could be:
   are aware of the upcoming functionality)
 * Emphasize architecture decisions that sometimes get buried under short term decisions
 * Comprehensive Refactoring to understand complicated code
-* Litter pickup to allways leave the code cleaner that you encountered it
+* Litter pickup to always leave the code cleaner that you encountered it
 * Refactor as review style
 
-Refactoring can allways be performed step by step, with reliable tests running, and do not need a massive change of the
+Refactoring can always be performed step by step, with reliable tests running, and do not need a massive change of the
 code base with hours of trying to get a now completely different code running to the same tests. Every refactoring is
 possible in a loop of one line change, tests passing, and the next one line change. Need to refactor a property into a
 getter? Write the getter, replace property access by property access with the getter. Need to extract a function (and
@@ -245,7 +245,7 @@ Replacing properties with queries can also remove mutable data that can also be 
 to corrupt or stale the value.
 
 Replacing a variable with a query only makes sense if the redone calculation of the variables will not change the
-outcome. While formatting for example would allways produce the same result, a database query might produce different
+outcome. While formatting for example would always produce the same result, a database query might produce different
 results each time it is executed (which can be intentional in the same function, but sometimes is not).
 
 #### Replace Function with Command
@@ -331,14 +331,14 @@ One way to solve this is to [extract the re-instantiation into a function](#extr
 or [replacing the mutable
 variable directly with a query](#replace-variable-property-or-parameter-with-query).
 
-{{ <alert "comment"> }}
+{{< alert "comment" >}}
 Rust does a great job in sensitizing one on the restrictions of mutable data. In Rust everything is immutable by
 default, requiring the dev to explicitly declare it as mutable. Even pointers may be mutable or not.
 
 Rust has the concept of Ownership - every object has an owner that may the only one who may mutate a mutable object.
 This again causes more friction for the developer, forcing them to be conscious about mutability and hinting towards
 queries over variables.
-{{ </alert> }}
+{{< /alert >}}
 
 ```python
 def mutable_data_monster() -> str:
@@ -568,7 +568,7 @@ def primitive_monster(length: int) -> str:
 #### Replace Primitive with Object
 
 Packing a primitive into an object provides a single point of validation, data extraction, and defines the value.
-Objects can answer the questions about the data like "is this `amount` in cent or euro?", "Do telephone numbers allways
+Objects can answer the questions about the data like "is this `amount` in cent or euro?", "Do telephone numbers always
 include a country code?", "Can this `length` be negative?". Such objects also provide space for comparing or
 calculating. This is strongly tied, but not limited to [Parameter Objects](#introduce-parameter-object)
 
@@ -613,7 +613,7 @@ class SpeculativeMonster(Monster):
 
 #### Collapse Hierarchy
 
-If a class hierarchy is no longer needed, remove them. Changes to the parent class allways affect children - if this
+If a class hierarchy is no longer needed, remove them. Changes to the parent class always affect children - if this
 behavior is causing more work than benefits, an interface might provide the same benefits without the strong coupling.
 Work step by step and move all functions from the parent to the child in question, and remove the heritage.
 Collapse Hierarchy
@@ -693,7 +693,7 @@ The book provides a nice overview over code smells and how to fix them. It was q
 think about how to display them in code, and also keeping an eye on my work code base spotting both code smells and nice
 refactorings.
 
-Besides all the hard skill learnings, the idea of refactoring line by line, with passing tests, allways ensuring no
+Besides all the hard skill learnings, the idea of refactoring line by line, with passing tests, always ensuring no
 external behavior is changed is the most enlightening skill I took from this book. It is a challenge, and I am not
 saying that I will never again look at smelly code and just creating a new file rewriting it from scratch, I now know I
 always have the option to only change it in a save and sane way, bit by bit (and might request the same for code I
