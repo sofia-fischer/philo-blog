@@ -8,7 +8,7 @@ draft: false
 description: "Is Imposter Syndrome an individual problem or a team culture issue? How can team dynamics influence 
 feelings of inadequacy among developers?"
 
-tags: [ "Agile", "Developer Life" ]
+tags: [ "Agile", "Developer Life", "Society" ]
 ---
 
 {{< lead >}}
