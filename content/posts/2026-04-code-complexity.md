@@ -239,12 +239,21 @@ There are a few questions you can ask when interpreting the metrics:
 * average complexity of all functions, to get a sense of the overall health of a project, ignoring outliers?
 * maximum complexity of all functions, to identify the outliers that are in most need of simplification?
 
+An example of complexity aggregated by maximum of the django framework codebase:
+
+![Complexity Sunburst by Maximumg](/images/2026-04-complexity-cyclomatic.png)
+
 **Combining Metrics** maybe complexity itself is not the issue, but rather:
 
 * **Coupling** is a complex file easy to refactor because it is never imported and safe to change? Or is it
   imported very often and must therefore be stable and bug-free?
 * **Churn** is a complex file changed regularly, introducing bugs, such that simplifying it would provide a great
   gain? Or does it not matter because it is never touched? Or is it so complex that nobody dares touch it?
+
+An example of complexity combined with churn and afferent coupling of the django framework codebase:
+
+
+![Complexity Scatter with Churn and Coupling](/images/2026-04-complexity-churn.png)
 
 Like all graphs (as discussed
 in [this post about Communication Patterns]({{< ref "/posts/2025-10-communication-patterns" >}})),
