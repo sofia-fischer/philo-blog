@@ -9,13 +9,16 @@ enableRobotsTXT = true
 pagerSize = 10
 summaryLength = 0
 
-title = "Philodev Blog"
-# copyright = "Copy, _right?_ :thinking_face:"
+title = "Sofia Fischer; Philodev"
+copyright = "© 2026 Sofia Fischer. Licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)"
 
 dateFormat = "2 January 2006"
 
 [outputs]
   home = ["HTML", "RSS", "JSON", "ATOM"]
+
+[taxonomies]
+  tag = "tags"
 
 [module]
   [[module.imports]]
