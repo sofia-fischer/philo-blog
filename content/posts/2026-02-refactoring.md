@@ -8,7 +8,7 @@ draft: false
 description: "A classic book by Martin Fowler about refactoring, providing a collection of code smells and refactoring techniques to
 improve them"
 
-tags: [ "Development", "Software Pattern", "Book"]
+tags: [ "Code Quality", "Software Patterns", "Books"]
 
 ---
 

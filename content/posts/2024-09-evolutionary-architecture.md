@@ -9,7 +9,7 @@ description: With evolving requirements and knowledge about the product, the arc
   provides an explanation of the concept, examples of fitness functions for architectures, and recommendations on how to
   build incrementally.
 
-tags: [ "Book", "Architecture", "Metrics", "Development" ]
+tags: [ "Books", "Architecture", "DevOps", "Observability" ]
 ---
 
 {{< lead >}}

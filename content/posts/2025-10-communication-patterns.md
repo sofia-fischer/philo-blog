@@ -7,7 +7,7 @@ draft: false
 
 description: My learnings, thoughts, and key aspects of the book "Communication Patterns" by Jacqui Read
 
-tags: [ "Book", "Documentation" ]
+tags: [ "Books", "Documentation", "Communication" ]
 ---
 
 {{< lead >}}

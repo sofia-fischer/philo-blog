@@ -8,7 +8,7 @@ draft: false
 description: "What code complexity can mean — from Big O notation and Cyclomatic Complexity to the surprising 
 insights psycholinguistics can offer software developers."
 
-tags: [ "Dev User Experience", "Metrics", ]
+tags: [ "Code Quality", "Observability" ]
 
 ---
 

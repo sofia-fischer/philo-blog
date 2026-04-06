@@ -8,7 +8,7 @@ draft: false
 description: "Scopes are nice, but by extending the Eloquent Builder for a Model enables you to add custom,
 model-specific methods that are often used or should have a central definition"
 
-tags: ["Development", "Software Pattern", "Laravel"]
+tags: ["PHP", "Software Patterns", "Laravel"]
 ---
 
 {{< lead >}} Scopes are nice, but by extending the Eloquent Builder for a Model enables you to add custom,

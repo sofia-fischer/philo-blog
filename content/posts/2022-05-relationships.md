@@ -8,7 +8,7 @@ draft: false
 description: "Programmer giving Relationship Advice - A summary about Laravel / Eloquent relationships including some
 hints, advanced techniques to use and misuse relations"
 
-tags: ["Development", "Laravel"]
+tags: ["PHP", "Laravel"]
 ---
 
 {{< lead >}} Programmer giving Relationship Advice - A summary about Laravel / Eloquent relationships including some

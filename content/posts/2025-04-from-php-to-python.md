@@ -7,7 +7,7 @@ draft: false
 
 description: Learning a new language is like learning a new way of thinking. It is not just about the syntax, but also about the patterns, the culture.
 
-tags: [ "Python", "Development" ]
+tags: [ "Python", "PHP", "Career" ]
 ---
 
 {{< lead >}}

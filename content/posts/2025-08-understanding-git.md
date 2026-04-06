@@ -7,7 +7,7 @@ draft: false
 
 description: Git is a powerful tool for version control, but it can be complex and unintuitive. I tried to dive in the concepts of git, and learn why and how to keep a clean commit history.
 
-tags: [ "Development" ]
+tags: [ "Tools" ]
 ---
 
 {{< lead >}}

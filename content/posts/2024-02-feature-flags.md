@@ -8,7 +8,7 @@ draft: false
 description: Feature Flags are both - a hit on the bullshit bingo and case for a trigger warning. This blog post is about how they
   can help, and how to use them in Gitlab.
 
-tags: [ "DevOps", "Development" ]
+tags: [ "DevOps", "Tools" ]
 ---
 
 {{< lead >}}

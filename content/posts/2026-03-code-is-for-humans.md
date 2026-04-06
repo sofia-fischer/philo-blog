@@ -7,7 +7,7 @@ draft: true
 
 description: "A book take away for \"Code is for Humans\"."
 
-tags: [ "Development", "Software Pattern", "Book" ]
+tags: [ "Code Quality", "Software Patterns", "Books" ]
 
 ---
 

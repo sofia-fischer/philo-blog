@@ -8,7 +8,7 @@ draft: false
 description: Discovering Patterns for one Problem - Different requests reach the system, and based on the properties of each request a different
   implementation should handle the request
 
-tags: [ "Python", "Patterns", "Architecture" ]
+tags: [ "Python", "Software Patterns", "Architecture" ]
 ---
 
 {{< lead >}}

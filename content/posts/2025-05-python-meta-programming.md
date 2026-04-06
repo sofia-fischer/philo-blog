@@ -7,7 +7,7 @@ draft: false
 
 description: Metaprogramming is a powerful tool in Python, but it should be used with caution. In this post, we will explore what Python can do with itself, and how it is used in frameworks.
 
-tags: [ "Python", "Development" ]
+tags: [ "Python", "Software Patterns" ]
 ---
 
 {{< lead >}}

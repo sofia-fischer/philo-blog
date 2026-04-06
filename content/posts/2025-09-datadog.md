@@ -7,7 +7,7 @@ draft: false
 
 description: My learnings about monitoring, alerting and observability in software systems.
 
-tags: [ "Metrics", "Observability" ]
+tags: [ "Observability", "Tools", "DevOps" ]
 ---
 
 {{< lead >}}

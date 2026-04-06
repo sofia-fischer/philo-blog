@@ -7,7 +7,7 @@ draft: false
 
 description: Bitemporal data is a way to store data that has two time dimensions - the actual time and the record time.
 
-tags: [ "Python", "Development" ]
+tags: [ "Software Patterns", "Data" ]
 ---
 
 {{< lead >}}

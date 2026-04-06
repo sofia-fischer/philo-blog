@@ -7,7 +7,7 @@ draft: false
 
 description: Architecture is no longer a set of diagrams that define upfront how features are implemented, but a continuously growing and evolving set of decisions
 
-tags: [ "Development", "Agile" ]
+tags: [ "Agile", "Architecture" ]
 ---
 
 {{< lead >}}

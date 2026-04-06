@@ -7,7 +7,7 @@ draft: true
 
 description: ""
 
-tags: [ "Agile", "Devops" ]
+tags: [ "Python" ]
 
 ---
 

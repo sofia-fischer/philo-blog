@@ -7,7 +7,7 @@ draft: false
 
 description: Exploring useful, well written, up-to-date documentation to get away from the outdated mess.
 
-tags: [ "Development", "Agile" ]
+tags: [ "Documentation", "Agile" ]
 ---
 
 {{< lead >}}

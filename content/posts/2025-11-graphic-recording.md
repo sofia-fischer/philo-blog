@@ -6,6 +6,8 @@ date: 2025-09-14T10:20:44+02:00
 draft: false
 
 description: Graphic Recording is the skill of listening, synthesizing, and translating given information into a drawing.
+
+tags: [ "Communication" ]
 ---
 
 Graphic Recording is a visual practice that involves capturing and synthesizing information in real-time during

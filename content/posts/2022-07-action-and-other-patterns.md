@@ -13,7 +13,7 @@ Events (and gives inspiration for piptes) - not to find the best for all use cas
 question when the different patterns
 offer advantages over the others."
 
-tags: ["Development", "Laravel", "Software Pattern", "Queue"]
+tags: ["PHP", "Laravel", "Software Patterns", "Queues"]
 ---
 
 {{< lead >}} Simple REST APIs are nice. But once a Controller needs to perform more than just the basic update, create,

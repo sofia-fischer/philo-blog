@@ -10,7 +10,7 @@ framework. It's important to understand how Drivers and Managers work to underst
 problems, but it's also a nice pattern to keep in mind for example to write tests that usually work with third-party
 APIs"
 
-tags: ["Development", "Software Pattern", "Laravel"]
+tags: ["PHP", "Software Patterns", "Laravel"]
 ---
 
 {{< lead >}}
@@ -22,7 +22,7 @@ APIs
 
 {{</lead >}}
 
-## Manager and Driver Pattern (ad other Patterns)
+## Manager and Driver Pattern (and other Patterns)
 
 I started the research for this post to learn more about the software patterns. After my last learning on the usage of
 the Repository Pattern in [this post]({{< ref "posts/2022-05-custom-query-builder-pattern" >}}) about something similar

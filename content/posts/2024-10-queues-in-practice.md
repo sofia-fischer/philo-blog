@@ -8,7 +8,7 @@ draft: false
 description: Implementing a Queue Request / Response with Symfony Messenger to explore the benefits of asynchronous communication
   between services
 
-tags: [ "Symfony", "Queue", "Software Pattern", "Development" ]
+tags: [ "Symfony", "Queues", "Software Patterns" ]
 ---
 
 {{< lead >}}

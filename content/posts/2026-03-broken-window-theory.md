@@ -8,7 +8,7 @@ draft: false
 description: "Some lightheaded quotes of broken window theory hunted me down a rabbit hole about its history and how 
 it is still used as metaphor in software engineering."
 
-tags: [ "Development", "Society" ]
+tags: [ "Code Quality", "Society" ]
 
 ---
 

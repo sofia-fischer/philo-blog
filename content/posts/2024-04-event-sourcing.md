@@ -9,7 +9,7 @@ description: Event Sourcing is a software pattern for stateful entity management
   only the state changes are stored. This blog post is about the advantages and disadvantages of the pattern, and how to
   avoid some challenges I faced in long living projects.
 
-tags: [ "Development", "Software Pattern", "Symfony"]
+tags: [ "Software Patterns", "Symfony", "Architecture"]
 ---
 
 {{< lead >}}
