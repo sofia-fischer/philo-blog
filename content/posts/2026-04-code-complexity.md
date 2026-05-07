@@ -166,6 +166,8 @@ properties. Historically, both seem to have influenced each other. Natural langu
 formal grammar did form the basis for compilers, and vice versa, programming complexities like Cyclomatic Complexity
 inspired parse trees in linguistics; to just name one of many examples.
 
+![Programming and Linguistic Corgi](/images/2026-04-complexity-corgi.png)
+
 **Subordination index** Count of subordinate clauses, each of which adds a new "branch" to parse.
 _"If it rains, I will stay inside"_ has a Subordination index of 2 because of the subordinate clause _"if it rains"_ (
 conditional).
