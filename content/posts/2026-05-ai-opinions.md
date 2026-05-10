@@ -33,64 +33,66 @@ Accelerate software development: Participants
 from several empirical studies, particularly those using self-reported methods, suggest that LLM-assistants can
 accelerate software development. Found in experiements. But also perceived "stay in flow"
 
-> Minimize online code search: LLM-assistants over searching for solutions via traditional online resources, 
-including Q&A
-platforms such as Stack Overflow. state of flow
+> Minimize online code search: LLM-assistants over searching for solutions via traditional online resources,
+> including Q&A
+> platforms such as Stack Overflow. state of flow
 (e.g., “stay in the flow”), improving the speed of syntax recall, facilitating the discovery of unfamiliar APIs, and
-providing an alternative in situations where online search methods fail to deliver. conducts a study with 44
-participants
-comparing ChatGPT and Stack Overflow across algorithmic problems, library usage, and debugging tasks, finding
-higher-quality outputs for ChatGPT in algorithmic and library tasks, while Stack Overflow performs better for debugging,
-with no statistically significant difference in task completion time
+> providing an alternative in situations where online search methods fail to deliver. conducts a study with 44
+> participants
+> comparing ChatGPT and Stack Overflow across algorithmic problems, library usage, and debugging tasks, finding
+> higher-quality outputs for ChatGPT in algorithmic and library tasks, while Stack Overflow performs better for
+> debugging,
+> with no statistically significant difference in task completion time
 
 > Automate trivial/ repetitive tasks. reduces trivial tasks by generating boilerplate code and tests
 
-> Support knowledge acquisition, Professional developers increasingly perceive these tools as a valuable aid for 
+> Support knowledge acquisition, Professional developers increasingly perceive these tools as a valuable aid for
 > learning
-and knowledge
-acquisition
+> and knowledge
+> acquisition
 
-> Support codeadjacent tasks. Developers also use LLM tools for composing emails, generating meeting minutes, and 
+> Support codeadjacent tasks. Developers also use LLM tools for composing emails, generating meeting minutes, and
 > creating
-onboarding
-documentation
+> onboarding
+> documentation
 
-> Reduce task initiation overhead. proof-of-concept applications by generating multiple candidate implementations 
+> Reduce task initiation overhead. proof-of-concept applications by generating multiple candidate implementations
 > for the
-same task [PS11] generating an initial structure
-when starting new topics
+> same task [PS11] generating an initial structure
+> when starting new topics
 
 > Improve code quality. Their
-findings indicate that three of the five teams experience a measurable reduction in code smells, and all five teams
-show a decrease in the number of software defects following the integration of LLM-assistants
+> findings indicate that three of the five teams experience a measurable reduction in code smells, and all five teams
+> show a decrease in the number of software defects following the integration of LLM-assistants
 
 > Support debugging/ troubleshooting: Additionally, several
-developers report that LLM-assistants accelerate the debugging process, by enabling faster bug identification and early
-defect detection by recognizing patterns and errors that developers may miss at manual check
+> developers report that LLM-assistants accelerate the debugging process, by enabling faster bug identification and
+> early
+> defect detection by recognizing patterns and errors that developers may miss at manual check
 
 DOWNSIDES
 
 > Fail to meet requirements. Developers acknowledge that not all the suggestions of LLM-assistants are accurate. For
-example, 50% of participants report missing or misunderstanding the requirement context
+> example, 50% of participants report missing or misunderstanding the requirement context
 
-> Promote over-reliance and cognitive offloading.encouraging users to understand the tools’ capabilities and 
+> Promote over-reliance and cognitive offloading.encouraging users to understand the tools’ capabilities and
 > limitations.
-Finding the right balance between leveraging AI
-support and maintaining developer competence remains an open challenge
+> Finding the right balance between leveraging AI
+> support and maintaining developer competence remains an open challenge
 
 > Disrupt the flow. Issues that impact
-developer state of flow have been attributed to various kinds of interruptions, including unwanted LLM suggestions
+> developer state of flow have been attributed to various kinds of interruptions, including unwanted LLM suggestions
 [PS33], interface switching, and verbose answers
 
 > Limit code quality. Code quality issues arise when developers overestimate the
-capabilities of such tools, which can introduce vulnerabilities and bugs. LLM-assistants often struggle with
-optimization
-and refactoring tasks, especially when lacking semantic context. Hallucinations remain a persistent concern
+> capabilities of such tools, which can introduce vulnerabilities and bugs. LLM-assistants often struggle with
+> optimization
+> and refactoring tasks, especially when lacking semantic context. Hallucinations remain a persistent concern
 
 > Reduce team collaboration. observes that excessive use of LLM-assistants
-may lead developers to favor consulting a chatbot over a colleague. In fact, the overconfidence of LLM-assistants’
-responses can create the impression that team discussions are unnecessary, reducing opportunities for communicative
-learning and discovery
+> may lead developers to favor consulting a chatbot over a colleague. In fact, the overconfidence of LLM-assistants’
+> responses can create the impression that team discussions are unnecessary, reducing opportunities for communicative
+> learning and discovery
 
 SPACE framewrok
 Dimension Sub-dimensions Primary Studies %
@@ -116,20 +118,20 @@ Automation
 Study (2026) https://arxiv.org/pdf/2507.03156
 
 > Context agent.md files:
-LLM-generated context files increase cost and reduce
-performance LLM-generated context files cause performance drops in 5 out of 8 settings across SWE-BENCH
-LITE and AGENTBENCH (see Figure 3). In more detail,
-the average resolution rate is reduced by 0.5% and 2% on
-average on SWE-BENCH LITE and AGENTBENCH, respectively. Meanwhile, the context files increase the # steps
-in every setting on average by 2.45 and 3.92 steps, respectively, which leads to a cost increase of 20% and 23% on
-average, respectively We find that all context files consistently increase the number of steps required to complete
-tasks. LLM-generated context files have a marginal negative effect on task success rates, while developer-written
-ones provide a marginal performance gain.
-Our trace analyses show that instructions in context files
-are generally followed and lead to more testing and a
-broader exploration, however they do not function as effective repository overviews. Overall, our results suggest that
-context files have only marginal effect on agent behavior,
-and are likely only desirable when manually written.
+> LLM-generated context files increase cost and reduce
+> performance LLM-generated context files cause performance drops in 5 out of 8 settings across SWE-BENCH
+> LITE and AGENTBENCH (see Figure 3). In more detail,
+> the average resolution rate is reduced by 0.5% and 2% on
+> average on SWE-BENCH LITE and AGENTBENCH, respectively. Meanwhile, the context files increase the # steps
+> in every setting on average by 2.45 and 3.92 steps, respectively, which leads to a cost increase of 20% and 23% on
+> average, respectively We find that all context files consistently increase the number of steps required to complete
+> tasks. LLM-generated context files have a marginal negative effect on task success rates, while developer-written
+> ones provide a marginal performance gain.
+> Our trace analyses show that instructions in context files
+> are generally followed and lead to more testing and a
+> broader exploration, however they do not function as effective repository overviews. Overall, our results suggest that
+> context files have only marginal effect on agent behavior,
+> and are likely only desirable when manually written.
 
 PLANNING mode [^planning_mode]
 
@@ -176,26 +178,27 @@ confused one.
 
 THE GITCLEAR STUDY [^gitclear]
 
-[^gitclear]: AI Copilot Code Quality - Evaluating 2024's Increased Defect Rate via Code Quality Metrics 
-https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf 
+[^gitclear]: AI Copilot Code Quality - Evaluating 2024's Increased Defect Rate via Code Quality Metrics
+https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf
 
 
 > 2024 marked the first year GitClear has ever measured where the
-number of “Copy/Pasted” lines exceeded the count of “Moved” lines. Moved
-lines strongly suggest refactoring activity. If the current trend continues, we believe it
-could soon bring about a phase change in how developer energy is spent, especially
-among long-lived repos.
+> number of “Copy/Pasted” lines exceeded the count of “Moved” lines. Moved
+> lines strongly suggest refactoring activity. If the current trend continues, we believe it
+> could soon bring about a phase change in how developer energy is spent, especially
+> among long-lived repos.
 
 > This graph shows that for every 25% increase in the adoption of AI, their model
-projects a 7.2% decrease in “delivery stability.” But Google does not have hypothesis on the cause of ascendant defects.
-In fact, they describe it as “surprising,”
-since developers opinion of AI is mostly positive:
-Given the evidence from the survey that developers are rapidly adopting AI,
-relying on it, and perceiving it as a positive performance contributor, we found
-the overall lack of trust in AI surprising.
-To Google researchers, they see AI adoption increasing, and they see developers
-reporting greater productivity, and so the decrease in quality is interpreted as
-unexpected.
+> projects a 7.2% decrease in “delivery stability.” But Google does not have hypothesis on the cause of ascendant
+> defects.
+> In fact, they describe it as “surprising,”
+> since developers opinion of AI is mostly positive:
+> Given the evidence from the survey that developers are rapidly adopting AI,
+> relying on it, and perceiving it as a positive performance contributor, we found
+> the overall lack of trust in AI surprising.
+> To Google researchers, they see AI adoption increasing, and they see developers
+> reporting greater productivity, and so the decrease in quality is interpreted as
+> unexpected.
 
 The study's core argument is a compounding problem:
 
@@ -214,12 +217,12 @@ aligns almost perfectly with Cursor's explosive growth and Copilot's enterprise 
 BUGS IN THE CODE FROM AI
 
 > Halluzinations: Particularly notable: LLMs may add a non-prompted feature to the code, leading to an error, something
-that a human developer would rarely do, which shows that LLMs bugs might not be exactly similar to human-made bugs.
+> that a human developer would rarely do, which shows that LLMs bugs might not be exactly similar to human-made bugs.
 
-> Code smells: This is precisely what GitClear is measuring at scale — the macro-level signal of refactoring dropping 
+> Code smells: This is precisely what GitClear is measuring at scale — the macro-level signal of refactoring dropping
 > from
-25% to under 10% and code cloning rising from 8.3% to 12.3% is the aggregate footprint of bucket-3 errors leaking into
-production.
+> 25% to under 10% and code cloning rising from 8.3% to 12.3% is the aggregate footprint of bucket-3 errors leaking into
+> production.
 
 Mechanism 1 (what the study directly shows): bug-prone contexts trigger memorized buggy completions. When the
 surrounding lines match a pattern that exists in training data near a known bug, the model is drawn toward reproducing
@@ -237,11 +240,48 @@ MORE BUGS
 
 Code Volume & Bug Rates
 > The clearest numbers come from Google's own 2025 DORA Report. A 90% increase in AI adoption was associated with a 9%
-climb in bug rates, a 91% increase in code review time, and a 154% increase in pull request size.
-Increased complexity: Cyclomatic Complexity, a metric correlated with maintenance difficulty, is generally higher in LLM-generated code. Since AI increases Lines of Code, Halstead Metrics, and Cyclomatic Complexity, the resulting increase of maintainability issues confirms the rising accumulation of structurally weak code.
+> climb in bug rates, a 91% increase in code review time, and a 154% increase in pull request size.
+> Increased complexity: Cyclomatic Complexity, a metric correlated with maintenance difficulty, is generally higher in
+> LLM-generated code. Since AI increases Lines of Code, Halstead Metrics, and Cyclomatic Complexity, the resulting
+> increase of maintainability issues confirms the rising accumulation of structurally weak code.
 
 [^dora]
 
 [^dora]: https://services.google.com/fh/files/misc/2025_state_of_ai_assisted_software_development.pdf
 
 [^open_source]: https://metr.org/blog/2026-02-24-uplift-update/
+
+LEGAL things
+
+1. The Core Rule: AI Must Not Impersonate HumansThis is the clearest and most universal requirement. AI designed to
+   impersonate humans (e.g. a chatbot) must inform the human it is interacting with that they are talking to AI.
+   EUR-LexThis applies in multiple jurisdictions:EU (Article 50 of the AI Act): Users must be informed when they are
+   interacting with an AI system, not a human, unless this is obvious from context. The disclosure must be made at the
+   point of first interaction.
+2. AI Act — The Most Comprehensive Framework
+   Since you're in Germany/the EU, this is your primary concern.
+   The prohibitions and AI literacy obligations entered into application from February 2, 2025. Governance rules and
+   obligations for General Purpose AI (GPAI) models became applicable on August 2, 2025. Rules for high-risk AI
+   systems have a transition period until August 2, 2026 (potentially extended further). European Commission
+   As a developer/deployer, Article 50 hits you now:
+   Providers of AI systems directly interacting with natural persons must design and develop those systems so that
+   users are informed they are interacting with an AI system. Providers of generative AI systems must mark AI
+   outputs in a machine-readable format and ensure they are detectable as artificially generated or manipulated.
+3. Data Privacy: GDPR Still Applies
+   Existing data protection law doesn't pause for AI. GDPR mandates a legal basis for processing personal data and gives
+   individuals rights like access and erasure — requirements that clash with an LLM's tendency to ingest and obscure
+   personal data. HIPAA demands strict safeguards for Protected Health Information; feeding patient data into an AI
+   model or third-party API could constitute a breach if not properly protected and logged. Medium
+   If your LLM app processes personal data of EU residents, you need a lawful basis, a data processing agreement with
+   your AI provider (e.g. Anthropic, OpenAI), and to think carefully about data minimization.
+4. AI-generated output: AI-generated works lack copyright protection under current law, as they are not human
+   creations — meaning such output is in the public domain. This matters if you're trying to protect AI-generated code
+   or content you produce.
+
+EU ACT
+Unacceptable risk (banned outright): Social scoring by governments, real-time biometric mass surveillance in public
+spaces, subliminal manipulation. These prohibitions have applied since February 2, 2025. European CommissionHigh risk:
+AI in hiring/HR, credit scoring, education, healthcare, law enforcement, border control, critical infrastructure.
+Requires conformity assessments, documentation, human oversight, and registration in an EU database.Limited risk (your
+main concern as an LLM developer): Chatbots, deepfakes, generative AI — subject to transparency and disclosure
+obligations.
