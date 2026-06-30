@@ -24,7 +24,7 @@ conf when needed.
 
 For local development run: 
 ```shell
-hugo server
+hugo server --buildDrafts
 ```
 
 Development Server will start at [`http://localhost:1313/`](http://localhost:1313/)
@@ -55,4 +55,3 @@ hugo --minify
 ```
 
 2. Push to master
-
