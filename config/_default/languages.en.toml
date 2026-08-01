@@ -1,5 +1,5 @@
-languageCode = "en"
-languageName = "English"
+Locale = "en"
+Label = "English"
 weight = 1
 
 [params]
@@ -9,4 +9,3 @@ weight = 1
     description = "The thoughts and ideas of a Developer about coding, development process and self improvement"
 
 dateFormat = "2 January 2006"
-
