@@ -7,7 +7,7 @@ draft: false
 
 description: Bitemporal data is a way to store data that has two time dimensions - the actual time and the record time.
 
-tags: [ "Software Patterns", "Data" ]
+tags: ["Software Patterns", "Data"]
 ---
 
 {{< lead >}}
@@ -26,11 +26,11 @@ storing a `created_at`. But intentionally temporal data is often implemented by 
 
 Some examples for this:
 
-* Price tracking over time: The cupcake did cost 3,55€ in the last week, but this week the price was increased to 3,75€,
+- Price tracking over time: The cupcake did cost 3,55€ in the last week, but this week the price was increased to 3,75€,
   and on monday there will be a sale and it will only cost 3€
-* library book rental history: The book was rented by Ari from 01.03 until 01.04, nobody took it for a month, then Noa
+- library book rental history: The book was rented by Ari from 01.03 until 01.04, nobody took it for a month, then Noa
   took it and still has it.
-* Chameleon color change over time: The color was green yesterday, and today the color changed from green to magenta.
+- Chameleon color change over time: The color was green yesterday, and today the color changed from green to magenta.
 
 From a technical point of view, this enables a nice implementation; a database constrain can ensure that there are no
 overlapping time periods.
@@ -62,8 +62,10 @@ vary (because naming is hard), a common combinations are `actual_from` and `reco
 Fowler [^fowler], `valid_from` and `recorded_at` coined by Richard Snodgrass [^snowdgrass].
 
 [^fowler]: [Martin Fowler on Bitemporal Data](https://martinfowler.com/articles/bitemporal-history.html)
-[^snowdgrass]: Developing Time-Oriented Database Applications in SQL (The Morgan Kaufmann Series in Data Management
-Systems) by Richard T. Snodgrass
+
+[^snowdgrass]:
+    Developing Time-Oriented Database Applications in SQL (The Morgan Kaufmann Series in Data Management
+    Systems) by Richard T. Snodgrass
 
 ```python
 import datetime
@@ -92,7 +94,7 @@ Looking at an example of a chameleon that was recorded green at 2025-01-01, then
 the system only recorded the change at 2025-01-09.
 
 | actual_from | actual_to  | color   | recorded_at | record_overwritten_at |
-|-------------|------------|---------|-------------|-----------------------|
+| ----------- | ---------- | ------- | ----------- | --------------------- |
 | 2025-01-01  | NULL       | green   | 2025-01-01  | 2025-01-09            |
 | 2025-01-01  | 2025-01-05 | green   | 2025-01-09  | NULL                  |
 | 2025-01-05  | NULL       | magenta | 2025-01-09  | NULL                  |
@@ -175,9 +177,9 @@ B -░░░░░░░--  invalid state of old period
 
 An new period is inserted by
 
-* find any collisions with existing periods
-* invalidate the existing, older periods by setting their `record_overwritten_at` to the new periods `recorded_at`
-* insert new periods to represent the current actual state of the data with `recorded_overwritten_at` set to `NULL`
+- find any collisions with existing periods
+- invalidate the existing, older periods by setting their `record_overwritten_at` to the new periods `recorded_at`
+- insert new periods to represent the current actual state of the data with `recorded_overwritten_at` set to `NULL`
 
 ## Inserting Bitemporal Data
 
@@ -196,26 +198,26 @@ But what if finite periods can be inserted in any order? Lets look at this examp
 With new data
 2025-01-05 --█-------  teal
 2025-01-04 ------██--  turquoise
-- - - - - - - - -  
-2025-01-03 --------█-  magenta 
+- - - - - - - - -
+2025-01-03 --------█-  magenta
 2025-01-03 ---███----  magenta
 2025-01-03 -█--------  magenta
 2025-01-03 █---------  green
 2025-01-03 -░░░░░░░░-  magenta
-- - - - - - - - - 
+- - - - - - - - -
 2025-01-02 ░░--------  green
 2025-01-01 ----░-----  blue
 ```
 
 To insert the magenta period,
 
-* the blue and green periods need to be invalidated, as they are older and colliding with the new period
-* the new magenta period needs to be inserted, but invalidated as there are more recent, colliding periods
-* a new green period needs to be inserted, because while the green period is partially colliding with the magenta
+- the blue and green periods need to be invalidated, as they are older and colliding with the new period
+- the new magenta period needs to be inserted, but invalidated as there are more recent, colliding periods
+- a new green period needs to be inserted, because while the green period is partially colliding with the magenta
   period, it started before the magenta period and is still valid until the start of the magenta period.
-* a new magenta period needs to be inserted to fill the gap between the green and teal period
-* a new magenta period needs to be inserted to fill the gap between the teal and turquoise period
-* a new magenta period needs to be inserted for the fraction of the magenta period that lasts longer than the turquoise
+- a new magenta period needs to be inserted to fill the gap between the green and teal period
+- a new magenta period needs to be inserted to fill the gap between the teal and turquoise period
+- a new magenta period needs to be inserted for the fraction of the magenta period that lasts longer than the turquoise
   period.
 
 ### Types of Collisions (Side Quest)
@@ -228,7 +230,7 @@ Allen [^snodgrass]. While periods can be ordered by many things (the length, the
 ordering by the start date leaves 7 relationship between each period and the next one.
 
 | Relationship                      | Visualisation                      | Definition          |
-|-----------------------------------|------------------------------------|---------------------|
+| --------------------------------- | ---------------------------------- | ------------------- |
 | A before B                        | `A -███------` <br> `B ------███-` | A₂ < B₁             |
 | A meets B                         | `A -████-----` <br> `B -----██---` | A₂ = B₁             |
 | A overlaps B                      | `A -████-----` <br> `B ----█████-` | A₁ < B₁ AND B₂ < A₂ |
@@ -316,6 +318,20 @@ def insert_period(actual_from: datetime.datetime, actual_to: datetime.datetime |
         if period.actual_to is not None or period.actual_to > actual_to:
             fractions.append((current_start, actual_to))
 ```
+
+### ⚠️ Is this the only solution for Bitemporal? (Update August 2026)
+
+No! After working with bitemporal solutions for some year I made the experience that it really depends on the use case how exactly an update can be interpreted. While in the example of colors every recorded change just overwrite the old information in the given way, there are examples like validity periods, in which the new information about start and end of a validity period might not overwrite but move the period.
+
+```text
+2025-01-05 --██████--  existing validity
+2025-01-06 --████----  new validity
+- - - - - - - - - -  Different Results by mechanism
+2025-01-06 --████|██--  Overwrite => Longest validity determines end
+2025-01-06 --████----  Move => New validity period determines end
+```
+
+It depends on the use case of your data if one or the other approach works better or fits your data set. Collecting bits of knowledge over a uncertain timeframe or sliding windows of validity are different example of how your data can change how your algorithm has to handle the data.
 
 ### Bitemporal Databases
 
