@@ -1,5 +1,5 @@
 ---
-title: "Testing is here to help"
+title: "Testing does more than finding bugs"
 
 date: 2026-08-13T08:20:44+02:00
 
